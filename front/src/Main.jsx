@@ -3,7 +3,7 @@ import React from 'react';
 function Main(props) {
     return (
         <div>
-            nnnnnn
+            드가자
         </div>
     );
 }
