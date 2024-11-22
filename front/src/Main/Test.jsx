@@ -36,7 +36,7 @@ function Test(props) {
     searchOptionReq.ItemGradeQuality = ItemGradeQuality;
 
     const response = axios
-      .post(`${process.env.REACT_APP_TEST_URL}/action/test`, searchOptionReq)
+      .post(`${process.env.REACT_APP_URL}/action/test`, searchOptionReq)
       .then((res) => {
         console.log(res);
         b(res.data.data);
