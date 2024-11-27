@@ -68,8 +68,8 @@ function TestThree(props) {
 
   const getTotal = () => {
     var tmp = responseData.reduce((sum, item) => {
-      console.log("가격", item.auctionInfo.buyPrice);
-      return sum + (item.auctionInfo.buyPrice || 0);
+      console.log("가격", item?.auctionInfo.buyPrice || 0);
+      return sum + (item?.auctionInfo.buyPrice || 0);
     }, 0);
     setTotal(tmp);
   };
