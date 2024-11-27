@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function Test(props) {
+function TestTwo(props) {
   const [a, b] = useState(null);
 
   // 상태 관리: 입력값을 저장
@@ -15,33 +15,84 @@ function Test(props) {
   const [MinValue, setMinValue] = useState("");
   const [MaxValue, setMaxValue] = useState("");
 
-  var searchOptionReq = {
-    ItemLevelMin: 0,
-    ItemLevelMax: 0,
-    EtcOptions: [
-      {
-        FirstOption: 7,
-      },
-    ],
-    Sort: "BUY_PRICE",
-    ItemTier: 4,
-    PageNo: 0,
-    SortCondition: "ASC",
+  const [total, setTotal] = useState(0);
+
+  var searchOptionReq = [
+    {
+      ItemLevelMin: 0,
+      ItemLevelMax: 0,
+      EtcOptions: [
+        {
+          FirstOption: 7,
+        },
+      ],
+      Sort: "BUY_PRICE",
+      ItemTier: 4,
+      PageNo: 0,
+      SortCondition: "ASC",
+    },
+    {
+      ItemLevelMin: 0,
+      ItemLevelMax: 0,
+      ItemGradeQuality: 70,
+      EtcOptions: [
+        {
+          FirstOption: 7,
+          SecondOption: 49,
+          MinValue: 3,
+          MaxValue: 3,
+        },
+      ],
+      CategoryCode: 200030,
+      Sort: "BUY_PRICE",
+      ItemTier: 4,
+      ItemGrade: "고대",
+      PageNo: 0,
+      SortCondition: "ASC",
+    },
+    {
+      ItemLevelMin: 0,
+      ItemLevelMax: 0,
+      ItemGradeQuality: 70,
+      EtcOptions: [
+        {
+          FirstOption: 7,
+          SecondOption: 49,
+          MinValue: 2,
+          MaxValue: 2,
+        },
+      ],
+      CategoryCode: 200030,
+      Sort: "BUY_PRICE",
+      ItemTier: 4,
+      ItemGrade: "고대",
+      PageNo: 0,
+      SortCondition: "ASC",
+    },
+  ];
+
+  const getTotal = () => {
+    var tmp = a.Items.reduce((sum, item) => {
+      console.log("가격", item.AuctionInfo.BuyPrice);
+      return sum + (item.AuctionInfo.BuyPrice || 0);
+    }, 0);
+    setTotal(tmp);
   };
+
   const result = () => {
-    searchOptionReq.ItemGradeQuality = ItemGradeQuality;
-    searchOptionReq.ItemUpgradeLevel = ItemUpgradeLevel;
-    searchOptionReq.ItemTradeAllowCount = ItemTradeAllowCount;
-    searchOptionReq.CategoryCode = CategoryCode;
-    searchOptionReq.ItemGrade = ItemGrade;
-    searchOptionReq.EtcOptions[0].SecondOption = ItemOption;
-    searchOptionReq.EtcOptions[0].MinValue = MinValue;
-    searchOptionReq.EtcOptions[0].MaxValue = MaxValue;
+    searchOptionReq[0].ItemGradeQuality = ItemGradeQuality;
+    searchOptionReq[0].ItemUpgradeLevel = ItemUpgradeLevel;
+    searchOptionReq[0].ItemTradeAllowCount = ItemTradeAllowCount;
+    searchOptionReq[0].CategoryCode = CategoryCode;
+    searchOptionReq[0].ItemGrade = ItemGrade;
+    searchOptionReq[0].EtcOptions[0].SecondOption = ItemOption;
+    searchOptionReq[0].EtcOptions[0].MinValue = MinValue;
+    searchOptionReq[0].EtcOptions[0].MaxValue = MaxValue;
 
     console.log(searchOptionReq);
 
     const response = axios
-      .post(`${process.env.REACT_APP_TEST_URL}/action/test`, searchOptionReq)
+      .post(`${process.env.REACT_APP_TEST_URL}/action/test3`, searchOptionReq)
       .then((res) => {
         console.log(res);
         b(res.data.data);
@@ -180,9 +231,10 @@ function Test(props) {
         </table>
       </div>
       <button onClick={result}>버튼</button>
+      <h3> 토탈 : {total}</h3> <button onClick={getTotal}>토탈버튼</button>
       <pre>{JSON.stringify(a, null, 2)}</pre>
     </div>
   );
 }
 
-export default Test;
+export default TestTwo;
