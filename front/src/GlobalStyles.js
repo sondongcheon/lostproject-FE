@@ -115,11 +115,11 @@ const GlobalStyles = createGlobalStyle`
 //     height: 100vh;
 //   }
 
-//   body {
-//     width: 100%;
-//     height: 100%;
-//     font-family: "Pretendard";
-//   }
+  body {
+    width: 90%;
+    margin: 0 auto;
+    font-family: "Pretendard";
+  }
 
 //   ol,
 //   ul {
@@ -144,13 +144,13 @@ const GlobalStyles = createGlobalStyle`
 //     border-spacing: 0;
 //   }
 
-//   button {
-//     background: inherit;
-//     border: none;
-//     border-radius: 0;
-//     padding: 0;
-//     cursor: pointer;
-//   }
+  // button {
+  //   background: inherit;
+  //   border: none;
+  //   border-radius: 0;
+  //   padding: 0;
+  //   cursor: pointer;
+  // }
 
 //   a {
 //     color: inherit;
@@ -167,6 +167,21 @@ const GlobalStyles = createGlobalStyle`
     width: 20%;
     border: 1px solid black;
   }
+
+.normalBtm {
+  background-color: transparent;
+  border: 1px solid rgb(252, 165, 165); /* 배경색을 테두리 색으로 */
+  border-radius: 8px; /* 외곽선을 약간 둥글게 */
+  padding: 8px 16px; /* 버튼 크기 조절 */
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
+}
+
+.normalBtm:hover {
+  background-color: rgb(252, 165, 165); /* 호버 시 배경색을 채움 */
+  color: white; /* 호버 시 텍스트 색상 변경 */
+}
 
     .boxContainer {
     display: flex;
