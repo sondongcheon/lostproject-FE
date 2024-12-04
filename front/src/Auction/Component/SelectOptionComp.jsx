@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from "react";
 
 const SelectOptionComp = ({ options, onOptionsChange }) => {
+  const [currentOption, setCurrentOption] = useState({});
+
   const handleCategoryCode = () => {
     if (options.categoryCode === 200000) {
       if (options.accName === "목걸이") {
@@ -12,6 +14,8 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
       }
     } else {
       onOptionsChange("categoryCode", 200000);
+      onOptionsChange("selectOption1", "");
+      onOptionsChange("selectOption2", "");
     }
   };
 
@@ -198,7 +202,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       <input
                         type="radio"
                         name={`${options.id}selectOption1`}
-                        value="41"
+                        value={options.optionValue.first}
                         onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
                       />
                       {options.optionName.first}
@@ -207,7 +211,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       <input
                         type="radio"
                         name={`${options.id}selectOption1`}
-                        value="42"
+                        value={options.optionValue.second}
                         onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
                       />
                       {options.optionName.second}
@@ -216,7 +220,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       <input
                         type="radio"
                         name={`${options.id}selectOption1`}
-                        value="아무 특옵"
+                        value={options.optionValue.third}
                         onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
                       />
                       {options.optionName.third}

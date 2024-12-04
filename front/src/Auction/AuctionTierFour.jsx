@@ -168,7 +168,7 @@ function AuctionTierFour(props) {
 
   const check = () => {
     console.log("ccc", selectOptionReq);
-    console.log("hi", result);
+    console.log("hi", selectOption1);
   };
 
   useEffect(() => {
