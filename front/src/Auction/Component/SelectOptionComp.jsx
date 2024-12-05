@@ -244,6 +244,16 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       />
                       {options.optionName.third}
                     </label> */}
+                    <label>
+                      <input
+                        type="radio"
+                        name={`${options.id}selectOption1`}
+                        value={null}
+                        // checked={options.selectOption1 === options.optionValue.second}
+                        onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
+                      />
+                      선택 안함
+                    </label>
                   </form>
                 </div>
               </div>
@@ -346,6 +356,16 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       />
                       {options.optionName.third}
                     </label> */}
+                    <label>
+                      <input
+                        type="radio"
+                        name={`${options.id}selectOption1`}
+                        value={null}
+                        // checked={options.selectOption1 === options.optionValue.second}
+                        onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
+                      />
+                      선택 안함
+                    </label>
                   </form>
                 </div>
               </div>
@@ -445,6 +465,16 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       />
                       {options.optionName.third}
                     </label> */}
+                    <label>
+                      <input
+                        type="radio"
+                        name={`${options.id}selectOption1`}
+                        value={null}
+                        // checked={options.selectOption1 === options.optionValue.second}
+                        onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
+                      />
+                      선택 안함
+                    </label>
                   </form>
                 </div>
               </div>

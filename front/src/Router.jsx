@@ -13,7 +13,7 @@ function Router() {
         <Route path="/test" element={<Test />}></Route>
         <Route path="/test2" element={<TestTwo />}></Route>
         <Route path="/test3" element={<TestThree />}></Route>
-        <Route path="/acttiontier4" element={<AuctionTierFour />}></Route>
+        <Route path="/auctiontier4" element={<AuctionTierFour />}></Route>
       </Routes>
     </BrowserRouter>
   );
