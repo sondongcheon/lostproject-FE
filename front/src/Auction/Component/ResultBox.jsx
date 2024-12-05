@@ -3,7 +3,7 @@ import React from "react";
 const ResultBox = ({ result }) => {
   return (
     <div>
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-3 border-2">
         <div>
           <p>등급 - {result?.grade || "1212"}</p>
           <p>이름 - {result?.name || "2121"}</p>

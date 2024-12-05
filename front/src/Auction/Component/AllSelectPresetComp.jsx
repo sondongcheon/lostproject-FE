@@ -4,7 +4,9 @@ function AllSelectPresetComp(props) {
   return (
     <div>
       <div className="h-28 border-black border-2 flex">
-        <div className="w-48 flex justify-center items-center bg-gray-200">일괄선택 프리셋</div>
+        <div className="w-48 flex flex-col justify-center items-center bg-gray-200">
+          일괄선택 프리셋<p>(현재 미구현)</p>
+        </div>
         <div className="flex flex-1 grid grid-cols-5 border-2 border-gray-500">
           <div className="border border-gray-300 text-center flex justify-center items-center">
             <button className="normalBtm">초기화</button>

@@ -16,8 +16,8 @@ function AuctionTierFour(props) {
       third: "아무 특옵",
     },
     optionValue: {
-      first: 41,
-      second: 42,
+      first: "41",
+      second: "42",
       third: "아무 특옵",
     },
     itemGrade: "",
@@ -25,12 +25,12 @@ function AuctionTierFour(props) {
     categoryCode: 200010,
     upgradeLevel: "",
     tradeAllowCount: "",
-    selectOption1: "",
-    selectValue1: "",
-    selectOption2: "",
-    selectValue2: "",
-    selectOption3: "",
-    selectValue3: "",
+    selectOption1: null,
+    selectValue1: null,
+    selectOption2: null,
+    selectValue2: null,
+    selectOption3: null,
+    selectValue3: null,
   });
   const [selectOption2, setSelectOption2] = useState({
     id: 2,
@@ -41,8 +41,8 @@ function AuctionTierFour(props) {
       third: "아무 특옵",
     },
     optionValue: {
-      first: 45,
-      second: 46,
+      first: "45",
+      second: "46",
       third: "아무 특옵",
     },
     itemGrade: "",
@@ -66,8 +66,8 @@ function AuctionTierFour(props) {
       third: "아무 특옵",
     },
     optionValue: {
-      first: 45,
-      second: 46,
+      first: "45",
+      second: "46",
       third: "아무 특옵",
     },
     itemGrade: "",
@@ -91,8 +91,8 @@ function AuctionTierFour(props) {
       third: "아무 특옵",
     },
     optionValue: {
-      first: 49,
-      second: 50,
+      first: "49",
+      second: "50",
       third: "아무 특옵",
     },
     itemGrade: "",
@@ -116,8 +116,8 @@ function AuctionTierFour(props) {
       third: "아무 특옵",
     },
     optionValue: {
-      first: 49,
-      second: 50,
+      first: "49",
+      second: "50",
       third: "아무 특옵",
     },
     itemGrade: "",
@@ -132,6 +132,8 @@ function AuctionTierFour(props) {
     selectOption3: "",
     selectValue3: "",
   });
+
+  const options = [selectOption1, selectOption2, selectOption3, selectOption4, selectOption5];
 
   const [selectOptionReq, setSelectOptionReq] = useState([
     // {
@@ -171,13 +173,24 @@ function AuctionTierFour(props) {
     console.log("hi", selectOption1);
   };
 
+  const [total, setTotal] = useState(0);
+
+  const getTotal = (res) => {
+    var tmp = res.reduce((sum, item) => {
+      console.log("가격", item?.auctionInfo.buyPrice || 0);
+      return sum + (item?.auctionInfo.buyPrice || 0);
+    }, 0);
+    setResult(res);
+    setTotal(tmp);
+  };
+
   useEffect(() => {
     if (selectOptionReq.length > 0) {
       axios
         .post(`${process.env.REACT_APP_URL}/action/test5`, selectOptionReq)
         .then((res) => {
           console.log(res);
-          setResult(res.data.data);
+          getTotal(res.data.data);
         })
         .catch((error) => {
           console.error(error);
@@ -188,8 +201,6 @@ function AuctionTierFour(props) {
   }, [selectOptionReq]); // selectOptionReq가 변경될 때마다 실행
 
   const updateSelect = () => {
-    const options = [selectOption1, selectOption2, selectOption3, selectOption4, selectOption5];
-
     const newSelectOptionReq = options.map((option) => ({
       quality: option.quality || "",
       upgradeLevel: option.upgradeLevel || "",
@@ -252,16 +263,16 @@ function AuctionTierFour(props) {
 
   return (
     <div>
-      <button className="normalBtm" onClick={() => check()}>
+      {/* <button className="normalBtm" onClick={() => check()}>
         dfsfdsa
-      </button>
+      </button> */}
       <AllSelectPresetComp></AllSelectPresetComp>
       <SelectOptionComp options={selectOption1} onOptionsChange={updateOption1}></SelectOptionComp>
       <SelectOptionComp options={selectOption2} onOptionsChange={updateOption2}></SelectOptionComp>
       <SelectOptionComp options={selectOption3} onOptionsChange={updateOption3}></SelectOptionComp>
       <SelectOptionComp options={selectOption4} onOptionsChange={updateOption4}></SelectOptionComp>
       <SelectOptionComp options={selectOption5} onOptionsChange={updateOption5}></SelectOptionComp>
-      <SelectSummary search={updateSelect}></SelectSummary>
+      <SelectSummary selectOptions={options} search={updateSelect} total={total}></SelectSummary>
       {result.map((item, index) => (
         <ResultBox key={index} result={item} />
       ))}
