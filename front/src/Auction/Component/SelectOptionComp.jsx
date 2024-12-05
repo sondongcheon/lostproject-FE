@@ -218,6 +218,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         name={`${options.id}selectOption1`}
                         value={options.optionValue.first}
                         checked={options.selectOption1 === options.optionValue.first}
+                        disabled={options.selectOption2 === options.optionValue.first}
                         onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
                       />
                       {options.optionName.first}
@@ -228,6 +229,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         name={`${options.id}selectOption1`}
                         value={options.optionValue.second}
                         checked={options.selectOption1 === options.optionValue.second}
+                        disabled={options.selectOption2 === options.optionValue.second}
                         onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
                       />
                       {options.optionName.second}
@@ -318,6 +320,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         name={`${options.id}selectOption2`}
                         value={options.optionValue.first}
                         checked={options.selectOption2 === options.optionValue.first}
+                        disabled={options.selectOption1 === options.optionValue.first}
                         onChange={(e) => onOptionsChange("selectOption2", e.target.value)}
                       />
                       {options.optionName.first}
@@ -328,6 +331,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         name={`${options.id}selectOption2`}
                         value={options.optionValue.second}
                         checked={options.selectOption2 === options.optionValue.second}
+                        disabled={options.selectOption1 === options.optionValue.second}
                         onChange={(e) => onOptionsChange("selectOption2", e.target.value)}
                       />
                       {options.optionName.second}
@@ -415,6 +419,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         name={`${options.id}selectOption3`}
                         value={options.optionValue.first}
                         checked={options.selectOption3 === options.optionValue.first}
+                        disabled={options.selectOption3 === options.optionValue.first}
                         onChange={(e) => onOptionsChange("selectOption3", e.target.value)}
                       />
                       {options.optionName.first}
@@ -425,6 +430,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         name={`${options.id}selectOption3`}
                         value={options.optionValue.second}
                         checked={options.selectOption3 === options.optionValue.second}
+                        disabled={options.selectOption3 === options.optionValue.second}
                         onChange={(e) => onOptionsChange("selectOption3", e.target.value)}
                       />
                       {options.optionName.second}
