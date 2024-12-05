@@ -1,9 +1,10 @@
 import React from "react";
 
-const ResultBox = ({ result }) => {
+const ResultBox = ({ result, option }) => {
   return (
     <div>
-      <div className="grid grid-cols-3 border-2">
+      <div className="grid grid-cols-4 border-2">
+        <div className="flex justify-center items-center">{option.accName}</div>
         <div>
           <p>등급 - {result?.grade || "1212"}</p>
           <p>이름 - {result?.name || "2121"}</p>
