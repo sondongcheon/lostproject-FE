@@ -25,7 +25,7 @@ const SelectSummary = ({ selectOptions, search, total }) => {
         </div>
         <div className="w-[70%] border-2 flex justify-center items-center text-center whitespace-pre-line">
           {category200000Text} <br />
-          그리고 {otherCategoryText}는 부위를 고정합니다.
+          {otherCategoryText}는 부위를 고정합니다.
         </div>
       </div>
     </div>

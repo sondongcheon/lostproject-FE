@@ -21,10 +21,10 @@ function AuctionTierFour(props) {
       third: "아무 특옵",
     },
     itemGrade: "",
-    quality: "",
+    quality: null,
     categoryCode: 200010,
-    upgradeLevel: "",
-    tradeAllowCount: "",
+    upgradeLevel: null,
+    tradeAllowCount: null,
     selectOption1: null,
     selectValue1: null,
     selectOption2: null,
@@ -34,7 +34,7 @@ function AuctionTierFour(props) {
   });
   const [selectOption2, setSelectOption2] = useState({
     id: 2,
-    accName: "귀걸이",
+    accName: "귀걸이1",
     optionName: {
       first: "공격력 %",
       second: "무기 공격력 %",
@@ -46,20 +46,20 @@ function AuctionTierFour(props) {
       third: "아무 특옵",
     },
     itemGrade: "",
-    quality: "",
+    quality: null,
     categoryCode: 200020,
-    upgradeLevel: "",
-    tradeAllowCount: "",
-    selectOption1: "",
-    selectValue1: "",
-    selectOption2: "",
-    selectValue2: "",
-    selectOption3: "",
-    selectValue3: "",
+    upgradeLevel: null,
+    tradeAllowCount: null,
+    selectOption1: null,
+    selectValue1: null,
+    selectOption2: null,
+    selectValue2: null,
+    selectOption3: null,
+    selectValue3: null,
   });
   const [selectOption3, setSelectOption3] = useState({
     id: 3,
-    accName: "귀걸이",
+    accName: "귀걸이2",
     optionName: {
       first: "공격력%",
       second: "무기공격력%",
@@ -71,20 +71,20 @@ function AuctionTierFour(props) {
       third: "아무 특옵",
     },
     itemGrade: "",
-    quality: "",
+    quality: null,
     categoryCode: 200020,
-    upgradeLevel: "",
-    tradeAllowCount: "",
-    selectOption1: "",
-    selectValue1: "",
-    selectOption2: "",
-    selectValue2: "",
-    selectOption3: "",
-    selectValue3: "",
+    upgradeLevel: null,
+    tradeAllowCount: null,
+    selectOption1: null,
+    selectValue1: null,
+    selectOption2: null,
+    selectValue2: null,
+    selectOption3: null,
+    selectValue3: null,
   });
   const [selectOption4, setSelectOption4] = useState({
     id: 4,
-    accName: "반지",
+    accName: "반지1",
     optionName: {
       first: "치명타 적중률%",
       second: "치명타 피해%",
@@ -96,20 +96,20 @@ function AuctionTierFour(props) {
       third: "아무 특옵",
     },
     itemGrade: "",
-    quality: "",
+    quality: null,
     categoryCode: 200030,
-    upgradeLevel: "",
-    tradeAllowCount: "",
-    selectOption1: "",
-    selectValue1: "",
-    selectOption2: "",
-    selectValue2: "",
-    selectOption3: "",
-    selectValue3: "",
+    upgradeLevel: null,
+    tradeAllowCount: null,
+    selectOption1: null,
+    selectValue1: null,
+    selectOption2: null,
+    selectValue2: null,
+    selectOption3: null,
+    selectValue3: null,
   });
   const [selectOption5, setSelectOption5] = useState({
     id: 5,
-    accName: "반지",
+    accName: "반지2",
     optionName: {
       first: "치명타 적중률%",
       second: "치명타 피해%",
@@ -121,16 +121,16 @@ function AuctionTierFour(props) {
       third: "아무 특옵",
     },
     itemGrade: "",
-    quality: "",
+    quality: null,
     categoryCode: 200030,
-    upgradeLevel: "",
-    tradeAllowCount: "",
-    selectOption1: "",
-    selectValue1: "",
-    selectOption2: "",
-    selectValue2: "",
-    selectOption3: "",
-    selectValue3: "",
+    upgradeLevel: null,
+    tradeAllowCount: null,
+    selectOption1: null,
+    selectValue1: null,
+    selectOption2: null,
+    selectValue2: null,
+    selectOption3: null,
+    selectValue3: null,
   });
 
   const options = [selectOption1, selectOption2, selectOption3, selectOption4, selectOption5];
@@ -261,21 +261,31 @@ function AuctionTierFour(props) {
     }));
   };
 
+  const updateSet = [updateOption1, updateOption2, updateOption3, updateOption4, updateOption5];
+
   return (
     <div>
       {/* <button className="normalBtm" onClick={() => check()}>
         dfsfdsa
       </button> */}
-      <AllSelectPresetComp></AllSelectPresetComp>
+      <AllSelectPresetComp updateSet={updateSet}></AllSelectPresetComp>
       <SelectOptionComp options={selectOption1} onOptionsChange={updateOption1}></SelectOptionComp>
       <SelectOptionComp options={selectOption2} onOptionsChange={updateOption2}></SelectOptionComp>
       <SelectOptionComp options={selectOption3} onOptionsChange={updateOption3}></SelectOptionComp>
       <SelectOptionComp options={selectOption4} onOptionsChange={updateOption4}></SelectOptionComp>
       <SelectOptionComp options={selectOption5} onOptionsChange={updateOption5}></SelectOptionComp>
       <SelectSummary selectOptions={options} search={updateSelect} total={total}></SelectSummary>
-      {result.map((item, index) => (
-        <ResultBox key={index} result={item} />
-      ))}
+      <div className="flex">
+        <div className="w-1/2">
+          {result.map((item, index) => (
+            <ResultBox key={index} result={item} option={options[index]} />
+          ))}
+        </div>
+        <div>
+          {" "}
+          <p> 옆에 누르면 여기에 추가 목록 뜨게 하면 될듯</p>
+        </div>
+      </div>
     </div>
   );
 }

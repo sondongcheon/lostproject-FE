@@ -58,6 +58,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     type="radio"
                     name={`${options.id}_itemGrade`}
                     value="유물"
+                    checked={options.itemGrade === "유물"}
                     className="mr-1"
                     onChange={(e) => onOptionsChange("itemGrade", e.target.value)}
                   />
@@ -68,6 +69,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     type="radio"
                     name={`${options.id}_itemGrade`}
                     value="고대"
+                    checked={options.itemGrade === "고대"}
                     className="mr-1"
                     onChange={(e) => onOptionsChange("itemGrade", e.target.value)}
                   />
@@ -85,7 +87,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   value={options.quality}
                   onChange={(e) => onOptionsChange("quality", e.target.value)}
                 >
-                  <option value="">Select</option>
+                  <option value={null}>Select</option>
                   <option value="10">10</option>
                   <option value="20">20</option>
                   <option value="30">30</option>
@@ -107,8 +109,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <input
                     type="radio"
                     name={`${options.id}_upgradeLevel`}
-                    value=""
+                    value={null}
                     className="mr-1"
+                    checked={options.upgradeLevel === null}
                     onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
                   />
                   상관 없음
@@ -154,8 +157,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <input
                     type="radio"
                     name={`${options.id}tradeCount`}
-                    value=""
+                    value={null}
                     className="mr-1"
+                    checked={options.tradeAllowCount === null}
                     onChange={(e) => onOptionsChange("tradeAllowCount", e.target.value)}
                   />
                   상관 없음
@@ -249,7 +253,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         type="radio"
                         name={`${options.id}selectOption1`}
                         value={null}
-                        // checked={options.selectOption1 === options.optionValue.second}
+                        checked={options.selectOption1 === null}
                         onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
                       />
                       선택 안함
@@ -270,6 +274,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       type="radio"
                       name={`${options.id}selectValue1`}
                       value="3"
+                      checked={options.selectValue1 === "3"}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue1", e.target.value)}
                     />
@@ -280,6 +285,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       type="radio"
                       name={`${options.id}selectValue1`}
                       value="2"
+                      checked={options.selectValue1 === "2"}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue1", e.target.value)}
                     />
@@ -290,6 +296,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       type="radio"
                       name={`${options.id}selectValue1`}
                       value="1"
+                      checked={options.selectValue1 === "1"}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue1", e.target.value)}
                     />
@@ -299,7 +306,8 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     <input
                       type="radio"
                       name={`${options.id}selectValue1`}
-                      value="0"
+                      checked={options.selectValue1 === null}
+                      value={null}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue1", e.target.value)}
                     />
@@ -359,9 +367,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     <label>
                       <input
                         type="radio"
-                        name={`${options.id}selectOption1`}
+                        name={`${options.id}selectOption2`}
                         value={null}
-                        // checked={options.selectOption1 === options.optionValue.second}
+                        checked={options.selectOption2 === null}
                         onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
                       />
                       선택 안함
@@ -382,6 +390,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       type="radio"
                       name={`${options.id}selectValue2`}
                       value="3"
+                      checked={options.selectValue2 === "3"}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue2", e.target.value)}
                     />
@@ -392,6 +401,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       type="radio"
                       name={`${options.id}selectValue2`}
                       value="2"
+                      checked={options.selectValue2 === "2"}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue2", e.target.value)}
                     />
@@ -402,6 +412,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       type="radio"
                       name={`${options.id}selectValue2`}
                       value="1"
+                      checked={options.selectValue2 === "1"}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue2", e.target.value)}
                     />
@@ -411,7 +422,8 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     <input
                       type="radio"
                       name={`${options.id}selectValue2`}
-                      value="0"
+                      value={null}
+                      checked={options.selectValue2 === null}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue2", e.target.value)}
                     />
@@ -468,9 +480,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     <label>
                       <input
                         type="radio"
-                        name={`${options.id}selectOption1`}
+                        name={`${options.id}selectOption3`}
                         value={null}
-                        // checked={options.selectOption1 === options.optionValue.second}
+                        checked={options.selectOption3 === null}
                         onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
                       />
                       선택 안함
@@ -490,6 +502,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       type="radio"
                       name={`${options.id}selectValue3`}
                       value="3"
+                      checked={options.selectValue3 === "3"}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue3", e.target.value)}
                     />
@@ -500,6 +513,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       type="radio"
                       name={`${options.id}selectValue3`}
                       value="2"
+                      checked={options.selectValue3 === "2"}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue3", e.target.value)}
                     />
@@ -509,6 +523,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     <input
                       type="radio"
                       name={`${options.id}selectValue3`}
+                      checked={options.selectValue3 === "1"}
                       value="1"
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue3", e.target.value)}
@@ -519,7 +534,8 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     <input
                       type="radio"
                       name={`${options.id}selectValue3`}
-                      value="0"
+                      checked={options.selectValue3 === null}
+                      value={null}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue1", e.target.value)}
                     />
