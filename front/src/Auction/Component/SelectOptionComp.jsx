@@ -3,6 +3,13 @@ import React, { useState, useCallback } from "react";
 const SelectOptionComp = ({ options, onOptionsChange }) => {
   const [currentOption, setCurrentOption] = useState({});
 
+  const updateOption = (key, value) => {
+    setCurrentOption((prevState) => ({
+      ...prevState,
+      [key]: value,
+    }));
+  };
+
   const handleCategoryCode = () => {
     if (options.categoryCode === 200000) {
       if (options.accName === "목걸이") {
@@ -12,10 +19,17 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
       } else {
         onOptionsChange("categoryCode", 200030);
       }
+      onOptionsChange("selectOption1", currentOption.selectOption1);
+      onOptionsChange("selectOption2", currentOption.selectOption2);
+      onOptionsChange("selectOption3", currentOption.selectOption3);
     } else {
       onOptionsChange("categoryCode", 200000);
+      updateOption("selectOption1", options.selectOption1);
+      updateOption("selectOption2", options.selectOption2);
+      updateOption("selectOption3", options.selectOption3);
       onOptionsChange("selectOption1", "");
       onOptionsChange("selectOption2", "");
+      onOptionsChange("selectOption3", "");
     }
   };
 
@@ -203,6 +217,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         type="radio"
                         name={`${options.id}selectOption1`}
                         value={options.optionValue.first}
+                        checked={options.selectOption1 === options.optionValue.first}
                         onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
                       />
                       {options.optionName.first}
@@ -212,19 +227,21 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         type="radio"
                         name={`${options.id}selectOption1`}
                         value={options.optionValue.second}
+                        checked={options.selectOption1 === options.optionValue.second}
                         onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
                       />
                       {options.optionName.second}
                     </label>
-                    <label>
+                    {/* <label>
                       <input
                         type="radio"
                         name={`${options.id}selectOption1`}
                         value={options.optionValue.third}
+                        checked={options.selectOption1 === options.optionValue.third}
                         onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
                       />
                       {options.optionName.third}
-                    </label>
+                    </label> */}
                   </form>
                 </div>
               </div>
@@ -300,6 +317,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         type="radio"
                         name={`${options.id}selectOption2`}
                         value={options.optionValue.first}
+                        checked={options.selectOption2 === options.optionValue.first}
                         onChange={(e) => onOptionsChange("selectOption2", e.target.value)}
                       />
                       {options.optionName.first}
@@ -309,20 +327,21 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         type="radio"
                         name={`${options.id}selectOption2`}
                         value={options.optionValue.second}
+                        checked={options.selectOption2 === options.optionValue.second}
                         onChange={(e) => onOptionsChange("selectOption2", e.target.value)}
                       />
                       {options.optionName.second}
                     </label>
-                    <label>
+                    {/* <label>
                       <input
                         type="radio"
                         name={`${options.id}selectOption2`}
                         value={options.optionValue.third}
-                        checked={options.selectOption2 === "아무 특옵"}
+                        checked={options.selectOption2 === options.optionValue.third}
                         onChange={(e) => onOptionsChange("selectOption2", e.target.value)}
                       />
                       {options.optionName.third}
-                    </label>
+                    </label> */}
                   </form>
                 </div>
               </div>
@@ -367,10 +386,10 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label className="flex items-center">
                     <input
                       type="radio"
-                      name={`${options.id}selectValue1`}
+                      name={`${options.id}selectValue2`}
                       value="0"
                       className="mr-1"
-                      onChange={(e) => onOptionsChange("selectValue1", e.target.value)}
+                      onChange={(e) => onOptionsChange("selectValue2", e.target.value)}
                     />
                     선택안함
                   </label>
@@ -395,6 +414,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         type="radio"
                         name={`${options.id}selectOption3`}
                         value={options.optionValue.first}
+                        checked={options.selectOption3 === options.optionValue.first}
                         onChange={(e) => onOptionsChange("selectOption3", e.target.value)}
                       />
                       {options.optionName.first}
@@ -404,20 +424,21 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         type="radio"
                         name={`${options.id}selectOption3`}
                         value={options.optionValue.second}
+                        checked={options.selectOption3 === options.optionValue.second}
                         onChange={(e) => onOptionsChange("selectOption3", e.target.value)}
                       />
                       {options.optionName.second}
                     </label>
-                    <label>
+                    {/* <label>
                       <input
                         type="radio"
                         name={`${options.id}selectOption3`}
                         value={options.optionValue.third}
-                        checked={options.selectOption3 === "아무 특옵"}
+                        checked={options.selectOption3 === options.optionValue.third}
                         onChange={(e) => onOptionsChange("selectOption3", e.target.value)}
                       />
                       {options.optionName.third}
-                    </label>
+                    </label> */}
                   </form>
                 </div>
               </div>
@@ -461,7 +482,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label className="flex items-center">
                     <input
                       type="radio"
-                      name={`${options.id}selectValue1`}
+                      name={`${options.id}selectValue3`}
                       value="0"
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue1", e.target.value)}
