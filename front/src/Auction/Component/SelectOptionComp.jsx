@@ -40,7 +40,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
         <div className="w-48 flex flex-col justify-center items-center bg-gray-200 border-r-2 border-black">
           <p>{options.accName}</p>
           <button className="normalBtm" onClick={handleCategoryCode}>
-            {options.categoryCode === 200000 ? "조합 리스트에서 제거" : "조합 리스트에 추가"}
+            {options.categoryCode === 200000 ? "탐색 리스트에서 제거" : "탐색 리스트에 추가"}
           </button>
         </div>
 
@@ -112,7 +112,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     value={null}
                     className="mr-1"
                     checked={options.upgradeLevel === null}
-                    onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
+                    onChange={() => onOptionsChange("upgradeLevel", null)}
                   />
                   상관 없음
                 </label>
@@ -160,7 +160,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     value={null}
                     className="mr-1"
                     checked={options.tradeAllowCount === null}
-                    onChange={(e) => onOptionsChange("tradeAllowCount", e.target.value)}
+                    onChange={() => onOptionsChange("tradeAllowCount", null)}
                   />
                   상관 없음
                 </label>
@@ -254,7 +254,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         name={`${options.id}selectOption1`}
                         value={null}
                         checked={options.selectOption1 === null}
-                        onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
+                        onChange={() => onOptionsChange("selectOption1", null)}
                       />
                       선택 안함
                     </label>
@@ -309,7 +309,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       checked={options.selectValue1 === null}
                       value={null}
                       className="mr-1"
-                      onChange={(e) => onOptionsChange("selectValue1", e.target.value)}
+                      onChange={() => onOptionsChange("selectValue1", null)}
                     />
                     선택안함
                   </label>
@@ -370,7 +370,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         name={`${options.id}selectOption2`}
                         value={null}
                         checked={options.selectOption2 === null}
-                        onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
+                        onChange={() => onOptionsChange("selectOption2", null)}
                       />
                       선택 안함
                     </label>
@@ -425,7 +425,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       value={null}
                       checked={options.selectValue2 === null}
                       className="mr-1"
-                      onChange={(e) => onOptionsChange("selectValue2", e.target.value)}
+                      onChange={() => onOptionsChange("selectValue2", null)}
                     />
                     선택안함
                   </label>
@@ -483,7 +483,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         name={`${options.id}selectOption3`}
                         value={null}
                         checked={options.selectOption3 === null}
-                        onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
+                        onChange={() => onOptionsChange("selectOption3", null)}
                       />
                       선택 안함
                     </label>
@@ -537,7 +537,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       checked={options.selectValue3 === null}
                       value={null}
                       className="mr-1"
-                      onChange={(e) => onOptionsChange("selectValue1", e.target.value)}
+                      onChange={() => onOptionsChange("selectValue3", null)}
                     />
                     선택안함
                   </label>

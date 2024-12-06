@@ -168,12 +168,17 @@ function AuctionTierFour(props) {
     { options: [] },
   ]);
 
+  const [count, setCount] = useState(5);
+
   const check = () => {
+    console.log("aa", count);
     console.log("ccc", selectOptionReq);
     console.log("hi", selectOption1);
   };
 
   const [total, setTotal] = useState(0);
+
+  const [resultList, setResultList] = useState([[], [], [], [], [], []]);
 
   const getTotal = (res) => {
     var tmp = res.reduce((sum, item) => {
@@ -187,16 +192,16 @@ function AuctionTierFour(props) {
   useEffect(() => {
     if (selectOptionReq.length > 0) {
       axios
-        .post(`${process.env.REACT_APP_URL}/action/test5`, selectOptionReq)
+        .post(`${process.env.REACT_APP_TEST_URL}/action/test5`, selectOptionReq)
         .then((res) => {
           console.log(res);
-          getTotal(res.data.data);
+          getTotal(res.data.data.searchResultRes);
+          setResultList(res.data.data.result);
+          console.log("result", res.data.data.result);
         })
         .catch((error) => {
           console.error(error);
         });
-
-      console.log("result", result);
     }
   }, [selectOptionReq]); // selectOptionReq가 변경될 때마다 실행
 
@@ -209,16 +214,16 @@ function AuctionTierFour(props) {
       itemGrade: option.itemGrade || "",
       etcOptionList: [
         {
-          option: option.selectOption1 || "",
-          value: option.selectValue1 || "",
+          option: option.selectOption1 || null,
+          value: option.selectValue1 || null,
         },
         {
-          option: option.selectOption2 || "",
-          value: option.selectValue2 || "",
+          option: option.selectOption2 || null,
+          value: option.selectValue2 || null,
         },
         {
-          option: option.selectOption3 || "",
-          value: option.selectValue3 || "",
+          option: option.selectOption3 || null,
+          value: option.selectValue3 || null,
         },
       ],
     }));
@@ -265,9 +270,19 @@ function AuctionTierFour(props) {
 
   return (
     <div>
-      {/* <button className="normalBtm" onClick={() => check()}>
+      <p>임시설명 - 연마 효과와 등급을 선택한 부위를 검색하여 하단에 결과가 나타납니다.</p>
+      <p>
+        임시설명 - 부위 이름 하단 '탐색 리스트 추가' 버튼을 클릭하면 선택한 부위들 에서 고른
+        등급들을 가지고 가장 싼 조합을 탐색해서 보여줍니다.
+      </p>
+      <p>
+        EX - 목걸이, 귀걸이1, 귀걸이2 선택 + 등급에서 [상], [상중], [중하] 선택시 어떤부위에서
+        어떤등급을 주는게 제일 싼지 탐색, 결과 - 목걸이[상중], 귀걸이1[상], 귀걸이2[중하]
+      </p>
+      <p>임시설명 - 일부는 고정, 일부는 탐색리스트도 가능합니다. 하단에 선택요약을 참고해보세요</p>
+      <button className="normalBtm" onClick={() => check()}>
         dfsfdsa
-      </button> */}
+      </button>
       <AllSelectPresetComp updateSet={updateSet}></AllSelectPresetComp>
       <SelectOptionComp options={selectOption1} onOptionsChange={updateOption1}></SelectOptionComp>
       <SelectOptionComp options={selectOption2} onOptionsChange={updateOption2}></SelectOptionComp>
@@ -275,15 +290,23 @@ function AuctionTierFour(props) {
       <SelectOptionComp options={selectOption4} onOptionsChange={updateOption4}></SelectOptionComp>
       <SelectOptionComp options={selectOption5} onOptionsChange={updateOption5}></SelectOptionComp>
       <SelectSummary selectOptions={options} search={updateSelect} total={total}></SelectSummary>
-      <div className="flex">
-        <div className="w-1/2">
+      <div className="grid grid-cols-2">
+        <div>
           {result.map((item, index) => (
-            <ResultBox key={index} result={item} option={options[index]} />
+            <ResultBox
+              key={index}
+              result={item}
+              option={options[index]}
+              onClick={() => setCount(index)}
+            />
           ))}
         </div>
         <div>
-          {" "}
-          <p> 옆에 누르면 여기에 추가 목록 뜨게 하면 될듯</p>
+          <div>
+            {resultList[count].map((item, index) => (
+              <ResultBox key={index} result={item} option={options[count]} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
