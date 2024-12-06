@@ -192,7 +192,7 @@ function AuctionTierFour(props) {
   useEffect(() => {
     if (selectOptionReq.length > 0) {
       axios
-        .post(`${process.env.REACT_APP_TEST_URL}/action/test5`, selectOptionReq)
+        .post(`${process.env.REACT_APP_URL}/action/test5`, selectOptionReq)
         .then((res) => {
           console.log(res);
           getTotal(res.data.data.searchResultRes);
