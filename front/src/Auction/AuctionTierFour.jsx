@@ -173,7 +173,11 @@ function AuctionTierFour(props) {
   const check = () => {
     console.log("aa", count);
     console.log("ccc", selectOptionReq);
-    console.log("hi", selectOption1);
+    console.log("hi1", selectOption1);
+    console.log("hi2", selectOption2);
+    console.log("hi3", selectOption3);
+    console.log("hi4", selectOption4);
+    console.log("hi5", selectOption5);
   };
 
   const [total, setTotal] = useState(0);
@@ -284,32 +288,51 @@ function AuctionTierFour(props) {
       {/* <button className="normalBtm" onClick={() => check()}>
         dfsfdsa
       </button> */}
-      <AllSelectPresetComp updateSet={updateSet}></AllSelectPresetComp>
-      <SelectOptionComp options={selectOption1} onOptionsChange={updateOption1}></SelectOptionComp>
-      <SelectOptionComp options={selectOption2} onOptionsChange={updateOption2}></SelectOptionComp>
-      <SelectOptionComp options={selectOption3} onOptionsChange={updateOption3}></SelectOptionComp>
-      <SelectOptionComp options={selectOption4} onOptionsChange={updateOption4}></SelectOptionComp>
-      <SelectOptionComp options={selectOption5} onOptionsChange={updateOption5}></SelectOptionComp>
-      <SelectSummary selectOptions={options} search={updateSelect} total={total}></SelectSummary>
-      <div className="grid grid-cols-2">
-        <div>
-          {result.map((item, index) => (
-            <ResultBox
-              key={index}
-              result={item}
-              option={options[index]}
-              onClick={() => setCount(index)}
-            />
-          ))}
-        </div>
-        <div>
-          {count < 5 && resultList[count]?.length > 0 && (
-            <div>
-              {resultList[count].map((item, index) => (
-                <ResultBox key={index} result={item} option={options[count]} />
-              ))}
-            </div>
-          )}
+
+      <div className="space-y-4">
+        <AllSelectPresetComp updateSet={updateSet}></AllSelectPresetComp>
+        <SelectOptionComp
+          options={selectOption1}
+          onOptionsChange={updateOption1}
+        ></SelectOptionComp>
+        <SelectOptionComp
+          options={selectOption2}
+          onOptionsChange={updateOption2}
+        ></SelectOptionComp>
+        <SelectOptionComp
+          options={selectOption3}
+          onOptionsChange={updateOption3}
+        ></SelectOptionComp>
+        <SelectOptionComp
+          options={selectOption4}
+          onOptionsChange={updateOption4}
+        ></SelectOptionComp>
+        <SelectOptionComp
+          options={selectOption5}
+          onOptionsChange={updateOption5}
+        ></SelectOptionComp>
+        <SelectSummary selectOptions={options} search={updateSelect} total={total}></SelectSummary>
+
+        <div className="grid grid-cols-2">
+          <div className="space-y-2">
+            {result.map((item, index) => (
+              <ResultBox
+                key={index}
+                result={item}
+                option={options[index]}
+                onClick={() => setCount(index)}
+              />
+            ))}
+          </div>
+          <div className="space-y-2">
+            {count < 5 && resultList[count]?.length > 0 && (
+              <div>
+                {resultList[count].map((item, index) => (
+                  <ResultBox key={index} result={item} option={options[count]} />
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

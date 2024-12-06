@@ -2,7 +2,7 @@ import React from "react";
 
 const ResultBox = ({ result, option, onClick }) => {
   return (
-    <div onClick={onClick}>
+    <div onClick={onClick} className="shadow-lg">
       <div className="grid grid-cols-4 border-2">
         <div className="flex justify-center items-center">{option.accName}</div>
         <div>

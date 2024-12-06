@@ -14,7 +14,7 @@ const SelectSummary = ({ selectOptions, search, total }) => {
 
   return (
     <div>
-      <div className="h-40 border-black border-2 flex justify-center items-center">
+      <div className="h-40 flex justify-center items-center shadow-lg">
         <div className="w-[30%] flex flex-col justify-center items-center">
           <h3>선택 사항 요약</h3>
           <button className="normalBtm" onClick={search}>
