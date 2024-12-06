@@ -192,7 +192,7 @@ function AuctionTierFour(props) {
   useEffect(() => {
     if (selectOptionReq.length > 0) {
       axios
-        .post(`${process.env.REACT_APP_TEST_URL}/action/test5`, selectOptionReq)
+        .post(`${process.env.REACT_APP_URL}/action/test5`, selectOptionReq)
         .then((res) => {
           console.log(res);
           getTotal(res.data.data.searchResultRes);
@@ -280,9 +280,9 @@ function AuctionTierFour(props) {
         어떤등급을 주는게 제일 싼지 탐색, 결과 - 목걸이[상중], 귀걸이1[상], 귀걸이2[중하]
       </p>
       <p>임시설명 - 일부는 고정, 일부는 탐색리스트도 가능합니다. 하단에 선택요약을 참고해보세요</p>
-      <button className="normalBtm" onClick={() => check()}>
+      {/*<button className="normalBtm" onClick={() => check()}>
         dfsfdsa
-      </button>
+      </button>*/}
       <AllSelectPresetComp updateSet={updateSet}></AllSelectPresetComp>
       <SelectOptionComp options={selectOption1} onOptionsChange={updateOption1}></SelectOptionComp>
       <SelectOptionComp options={selectOption2} onOptionsChange={updateOption2}></SelectOptionComp>
