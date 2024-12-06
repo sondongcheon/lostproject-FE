@@ -60,9 +60,9 @@ const AllSelectPresetComp = ({ updateSet }) => {
 
   return (
     <div>
-      <div className="h-28 border-black border-2 flex">
+      <div className="h-28 flex shadow-lg">
         <div className="w-48 flex justify-center items-center bg-gray-200">일괄선택 프리셋</div>
-        <div className="flex flex-1 grid grid-cols-5 border-2 border-gray-500">
+        <div className="flex flex-1 grid grid-cols-5 ">
           <div className="border border-gray-300 text-center flex justify-center items-center">
             <button className="normalBtm" onClick={setReset}>
               초기화

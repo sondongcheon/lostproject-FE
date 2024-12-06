@@ -35,9 +35,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
 
   return (
     <div>
-      <div className="h-60 border-black border-2 flex">
+      <div className="h-60 flex shadow-lg">
         {/* 왼쪽 고정 크기 영역 */}
-        <div className="w-48 flex flex-col justify-center items-center bg-gray-200 border-r-2 border-black">
+        <div className="w-48 flex flex-col justify-center items-center bg-gray-200 border-black">
           <p>{options.accName}</p>
           <button className="normalBtm" onClick={handleCategoryCode}>
             {options.categoryCode === 200000 ? "탐색 리스트에서 제거" : "탐색 리스트에 추가"}
@@ -47,7 +47,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
         {/* 오른쪽 비율 영역 */}
         <div className="flex flex-1">
           {/* 3 영역: 세로로 4칸, 각 칸을 3:7로 나누기 */}
-          <div className="flex-[3] border-2 border-gray-500 grid grid-rows-4">
+          <div className="flex-[3] grid grid-rows-4">
             <div className="grid grid-cols-10">
               <div className="col-span-3 border-b-2 border-gray-300 flex items-center justify-center">
                 등급
@@ -199,9 +199,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
           </div>
 
           {/* 6:4 비율로 나누기 */}
-          <div className="flex-[7] border-2 border-gray-500 grid grid-rows-3">
+          <div className="flex-[7] grid grid-rows-3">
             <div className="grid grid-cols-10">
-              <div className="col-span-6 border-2 border-gray-300 flex items-center">
+              <div className="col-span-6  flex items-center">
                 {/* 그룹명 "연마 효과"가 30% 영역에 정중앙 배치 */}
                 <div className="w-[30%] flex justify-center">
                   <p className="text-xl">연마 효과</p>
@@ -261,7 +261,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   </form>
                 </div>
               </div>
-              <div className="col-span-4 border-b-2 border-gray-300 flex items-center justify-center">
+              <div className="col-span-4  flex items-center justify-center">
                 {/* 그룹명 "연마 효과"가 30% 영역에 정중앙 배치 */}
                 <div className="w-[30%] flex justify-center">
                   <p className="text-xl">등급</p>
