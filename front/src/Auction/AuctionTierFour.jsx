@@ -192,7 +192,7 @@ function AuctionTierFour(props) {
   useEffect(() => {
     if (selectOptionReq.length > 0) {
       axios
-        .post(`${process.env.REACT_APP_URL}/action/test5`, selectOptionReq)
+        .post(`${process.env.REACT_APP_TEST_URL}/action/test5`, selectOptionReq)
         .then((res) => {
           console.log(res);
           getTotal(res.data.data.searchResultRes);
@@ -280,9 +280,10 @@ function AuctionTierFour(props) {
         어떤등급을 주는게 제일 싼지 탐색, 결과 - 목걸이[상중], 귀걸이1[상], 귀걸이2[중하]
       </p>
       <p>임시설명 - 일부는 고정, 일부는 탐색리스트도 가능합니다. 하단에 선택요약을 참고해보세요</p>
-      {/*<button className="normalBtm" onClick={() => check()}>
+      <p>임시설명 - 검색결과 좌측에 있는 부위를 누르면 추가 매물을 확인 할 수 있습니다.</p>
+      {/* <button className="normalBtm" onClick={() => check()}>
         dfsfdsa
-      </button>*/}
+      </button> */}
       <AllSelectPresetComp updateSet={updateSet}></AllSelectPresetComp>
       <SelectOptionComp options={selectOption1} onOptionsChange={updateOption1}></SelectOptionComp>
       <SelectOptionComp options={selectOption2} onOptionsChange={updateOption2}></SelectOptionComp>
@@ -302,11 +303,13 @@ function AuctionTierFour(props) {
           ))}
         </div>
         <div>
-          <div>
-            {resultList[count].map((item, index) => (
-              <ResultBox key={index} result={item} option={options[count]} />
-            ))}
-          </div>
+          {count < 5 && resultList[count]?.length > 0 && (
+            <div>
+              {resultList[count].map((item, index) => (
+                <ResultBox key={index} result={item} option={options[count]} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
