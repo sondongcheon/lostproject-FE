@@ -12,6 +12,13 @@ code {
     monospace;
 }
 
+@font-face {
+  font-family: 'Pretendard';
+  src: url('./fonts/Pretendard-Light.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* global.css */
 @tailwind base;
 @tailwind components;

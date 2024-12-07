@@ -2,8 +2,8 @@ import React from "react";
 
 const ResultBox = ({ result, option, onClick }) => {
   return (
-    <div onClick={onClick} className="shadow-lg">
-      <div className="grid grid-cols-4 border-2">
+    <div onClick={onClick} className="shadow-lg border-2 rounded-3xl">
+      <div className="grid grid-cols-4 ">
         <div className="flex justify-center items-center">{option.accName}</div>
         <div>
           <p>등급 - {result?.grade || "1212"}</p>
