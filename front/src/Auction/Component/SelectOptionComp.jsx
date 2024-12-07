@@ -35,9 +35,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
 
   return (
     <div>
-      <div className="h-44 flex shadow-lg">
+      <div className="h-44 flex shadow-lg border-2 rounded-3xl">
         {/* 왼쪽 고정 크기 영역 */}
-        <div className="w-48 flex flex-col justify-center items-center bg-gray-200 border-black">
+        <div className="w-48 flex flex-col justify-center items-center border-black">
           <p>{options.accName}</p>
           <button className="normalBtm" onClick={handleCategoryCode}>
             {options.categoryCode === 200000 ? "탐색 리스트에서 제거" : "탐색 리스트에 추가"}
@@ -53,28 +53,30 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                 등급
               </div>
               <div className="col-span-7 border-b-2 border-gray-300 flex items-center justify-center">
-                <label>
-                  <input
-                    type="radio"
-                    name={`${options.id}_itemGrade`}
-                    value="유물"
-                    checked={options.itemGrade === "유물"}
-                    className="mr-1"
-                    onChange={(e) => onOptionsChange("itemGrade", e.target.value)}
-                  />
-                  유물
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name={`${options.id}_itemGrade`}
-                    value="고대"
-                    checked={options.itemGrade === "고대"}
-                    className="mr-1"
-                    onChange={(e) => onOptionsChange("itemGrade", e.target.value)}
-                  />
-                  고대
-                </label>
+                <form className="grid grid-cols-2 gap-10">
+                  <label>
+                    <input
+                      type="radio"
+                      name={`${options.id}_itemGrade`}
+                      value="유물"
+                      checked={options.itemGrade === "유물"}
+                      className="mr-1"
+                      onChange={(e) => onOptionsChange("itemGrade", e.target.value)}
+                    />
+                    유물
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name={`${options.id}_itemGrade`}
+                      value="고대"
+                      checked={options.itemGrade === "고대"}
+                      className="mr-1"
+                      onChange={(e) => onOptionsChange("itemGrade", e.target.value)}
+                    />
+                    고대
+                  </label>
+                </form>
               </div>
             </div>
             <div className="grid grid-cols-10">
@@ -82,22 +84,21 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                 품질
               </div>
               <div className="col-span-7 border-b-2 border-gray-300 flex items-center justify-center">
-                <select
-                  className="mt-2 w-full border border-gray-300 rounded px-3 py-1"
-                  value={options.quality}
-                  onChange={(e) => onOptionsChange("quality", e.target.value)}
-                >
-                  <option value={null}>Select</option>
-                  <option value="10">10</option>
-                  <option value="20">20</option>
-                  <option value="30">30</option>
-                  <option value="40">40</option>
-                  <option value="50">50</option>
-                  <option value="60">60</option>
-                  <option value="70">70</option>
-                  <option value="80">80</option>
-                  <option value="90">90</option>
-                </select>
+                <div className="w-3/4">
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value={options.quality || 0}
+                    onChange={(e) =>
+                      onOptionsChange("quality", parseInt(e.target.value, 10) || null)
+                    }
+                    className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                  />
+                </div>
+                <div className="w-1/4 text-center text-sm text-gray-500">
+                  {options.quality === null ? "미지정" : options.quality}
+                </div>
               </div>
             </div>
             <div className="grid grid-cols-10">
@@ -105,95 +106,101 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                 연마 단계
               </div>
               <div className="col-span-7 border-b-2 border-gray-300 flex items-center justify-center">
-                <label>
-                  <input
-                    type="radio"
-                    name={`${options.id}_upgradeLevel`}
-                    value={null}
-                    className="mr-1"
-                    checked={options.upgradeLevel === null}
-                    onChange={() => onOptionsChange("upgradeLevel", null)}
-                  />
-                  상관 없음
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name={`${options.id}_upgradeLevel`}
-                    value="1"
-                    className="mr-1"
-                    onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
-                  />
-                  1단계
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name={`${options.id}_upgradeLevel`}
-                    value="2"
-                    className="mr-1"
-                    onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
-                  />
-                  2단계
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name={`${options.id}_upgradeLevel`}
-                    value="3"
-                    className="mr-1"
-                    onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
-                  />
-                  3단계
-                </label>
+                <form className="grid grid-cols-4 justify-items-center">
+                  <label>
+                    <input
+                      type="radio"
+                      name={`${options.id}_upgradeLevel`}
+                      value={null}
+                      className="mr-1"
+                      checked={options.upgradeLevel === null}
+                      onChange={() => onOptionsChange("upgradeLevel", null)}
+                    />
+                    상관 없음
+                  </label>
+
+                  <label>
+                    <input
+                      type="radio"
+                      name={`${options.id}_upgradeLevel`}
+                      value="1"
+                      className="mr-1"
+                      onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
+                    />
+                    1단계
+                  </label>
+
+                  <label>
+                    <input
+                      type="radio"
+                      name={`${options.id}_upgradeLevel`}
+                      value="2"
+                      className="mr-1"
+                      onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
+                    />
+                    2단계
+                  </label>
+
+                  <label>
+                    <input
+                      type="radio"
+                      name={`${options.id}_upgradeLevel`}
+                      value="3"
+                      className="mr-1"
+                      onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
+                    />
+                    3단계
+                  </label>
+                </form>
               </div>
             </div>
             <div className="grid grid-cols-10">
-              <div className="col-span-3 border-b-2 border-gray-300 flex items-center justify-center">
-                거래 횟수
-              </div>
-              <div className="col-span-7 border-b-2 border-gray-300 flex items-center justify-center">
-                <label>
-                  <input
-                    type="radio"
-                    name={`${options.id}tradeCount`}
-                    value={null}
-                    className="mr-1"
-                    checked={options.tradeAllowCount === null}
-                    onChange={() => onOptionsChange("tradeAllowCount", null)}
-                  />
-                  상관 없음
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name={`${options.id}tradeCount`}
-                    value="0"
-                    className="mr-1"
-                    onChange={(e) => onOptionsChange("tradeAllowCount", e.target.value)}
-                  />
-                  0회
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name={`${options.id}tradeCount`}
-                    value="1"
-                    className="mr-1"
-                    onChange={(e) => onOptionsChange("tradeAllowCount", e.target.value)}
-                  />
-                  1회
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name={`${options.id}tradeCount`}
-                    value="2"
-                    className="mr-1"
-                    onChange={(e) => onOptionsChange("tradeAllowCount", e.target.value)}
-                  />
-                  2회
-                </label>
+              <div className="col-span-3 flex items-center justify-center">거래 횟수</div>
+              <div className="col-span-7 flex items-center justify-center">
+                <form className="grid grid-cols-4 justify-items-center">
+                  <label>
+                    <input
+                      type="radio"
+                      name={`${options.id}tradeCount`}
+                      value={null}
+                      className="mr-1"
+                      checked={options.tradeAllowCount === null}
+                      onChange={() => onOptionsChange("tradeAllowCount", null)}
+                    />
+                    상관 없음
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name={`${options.id}tradeCount`}
+                      value="0"
+                      className="mr-1"
+                      onChange={(e) => onOptionsChange("tradeAllowCount", e.target.value)}
+                    />
+                    0회
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name={`${options.id}tradeCount`}
+                      value="1"
+                      className="mr-1"
+                      onChange={(e) => onOptionsChange("tradeAllowCount", e.target.value)}
+                    />
+                    1회
+                  </label>
+
+                  <label>
+                    <input
+                      type="radio"
+                      name={`${options.id}tradeCount`}
+                      value="2"
+                      className="mr-1"
+                      onChange={(e) => onOptionsChange("tradeAllowCount", e.target.value)}
+                    />
+                    2회
+                  </label>
+                </form>
               </div>
             </div>
           </div>
@@ -208,14 +215,14 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                 </div>
 
                 {/* 나머지 70% 영역에 라디오 버튼들 배치 */}
-                <div className="w-[70%] border-2 flex gap-4 justify-center items-center relative">
+                <div className="w-[70%] border-2 justify-center items-center relative">
                   {/* 옵션이 200000일 경우만 덮기 */}
                   {options.categoryCode === 200000 && (
                     <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center">
                       <p className="text-sm text-gray-500">조합 리스트 선택 시 등급만 선택합니다</p>
                     </div>
                   )}
-                  <form>
+                  <form className="grid grid-cols-3 justify-items-center">
                     <label>
                       <input
                         type="radio"
@@ -227,6 +234,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       />
                       {options.optionName.first}
                     </label>
+
                     <label>
                       <input
                         type="radio"
@@ -238,6 +246,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       />
                       {options.optionName.second}
                     </label>
+
                     {/* <label>
                       <input
                         type="radio"
@@ -248,6 +257,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       />
                       {options.optionName.third}
                     </label> */}
+
                     <label>
                       <input
                         type="radio"
@@ -317,21 +327,21 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
               </div>
             </div>
             <div className="grid grid-cols-10 ">
-              <div className="col-span-6 border-b-2 border-gray-300 flex items-center justify-center">
+              <div className="col-span-6  flex items-center justify-center">
                 {/* 그룹명 "연마 효과"가 30% 영역에 정중앙 배치 */}
                 <div className="w-[30%] flex justify-center">
                   <p className="text-xl">연마 효과</p>
                 </div>
 
                 {/* 나머지 70% 영역에 라디오 버튼들 배치 */}
-                <div className="w-[70%] border-2 flex gap-4 justify-center items-center relative">
+                <div className="w-[70%] border-2 justify-center items-center relative">
                   {/* 옵션이 200000일 경우만 덮기 */}
                   {options.categoryCode === 200000 && (
                     <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center">
                       <p className="text-sm text-gray-500">조합 리스트 선택 시 등급만 선택합니다</p>
                     </div>
                   )}
-                  <form>
+                  <form className="grid grid-cols-3 justify-items-center">
                     <label>
                       <input
                         type="radio"
@@ -377,12 +387,11 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   </form>
                 </div>
               </div>
-              <div className="col-span-4 border-b-2 border-gray-300 flex items-center justify-center">
+              <div className="col-span-4  flex items-center justify-center">
                 {/* 그룹명 "연마 효과"가 30% 영역에 정중앙 배치 */}
                 <div className="w-[30%] flex justify-center">
                   <p className="text-xl">등급</p>
                 </div>
-
                 {/* 나머지 70% 영역에 라디오 버튼들 배치 */}
                 <div className="w-[70%] border-2 flex gap-4 justify-center items-center">
                   <label className="flex items-center">
@@ -434,17 +443,17 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
             </div>
             <div className="grid grid-cols-10 relative">
               {/* 전체를 덮는 미구현 메시지 */}
-              <div className="absolute inset-0 bg-gray-200 bg-opacity-90 text-gray-500 text-sm flex justify-center items-center z-10">
+              <div className="absolute inset-0 bg-gray-200 bg-opacity-90 text-gray-500 text-sm flex justify-center items-center z-10 rounded-3xl">
                 현재 미구현, 특수 옵션 2개만 활용합니다. 공용 옵션 선택 추가 예정
               </div>
 
               {/* 왼쪽 "연마 효과" 그룹 */}
-              <div className="col-span-6 border-b-2 border-gray-300 flex items-center justify-center">
+              <div className="col-span-6  border-gray-300 flex items-center justify-center">
                 <div className="w-[30%] flex justify-center">
                   <p className="text-xl">연마 효과</p>
                 </div>
-                <div className="w-[70%] border-2 flex gap-4 justify-center items-center">
-                  <form>
+                <div className="w-[70%] border-2 justify-center items-center relative">
+                  <form className="grid grid-cols-3 justify-items-center">
                     <label>
                       <input
                         type="radio"
@@ -456,6 +465,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       />
                       {options.optionName.first}
                     </label>
+
                     <label>
                       <input
                         type="radio"
@@ -467,6 +477,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       />
                       {options.optionName.second}
                     </label>
+
                     {/* <label>
                       <input
                         type="radio"
@@ -477,6 +488,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       />
                       {options.optionName.third}
                     </label> */}
+
                     <label>
                       <input
                         type="radio"
@@ -492,7 +504,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
               </div>
 
               {/* 오른쪽 "등급" 그룹 */}
-              <div className="col-span-4 border-b-2 border-gray-300 flex items-center justify-center">
+              <div className="col-span-4  border-gray-300 flex items-center justify-center">
                 <div className="w-[30%] flex justify-center">
                   <p className="text-xl">등급</p>
                 </div>

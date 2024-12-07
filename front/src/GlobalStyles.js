@@ -163,6 +163,49 @@ const GlobalStyles = createGlobalStyle`
 //     color: inherit;
 //   }
 
+[type="radio"], span {
+  vertical-align: middle;
+}
+
+[type="radio"] {
+  appearance: none;
+  border: max(2px, 0.1em) solid gray;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  //transition: border 0.25s ease-in-out;/
+}
+
+[type="radio"]:checked {
+  border: 0.3em solid tomato;
+}
+
+[type="radio"]:focus-visible {
+  outline-offset: max(2px, 0.1em);
+  outline: max(2px, 0.1em) dotted tomato;
+}
+
+[type="radio"]:hover {
+  box-shadow: 0 0 0 max(2px, 0.1em) lightgray;
+  cursor: pointer;
+}
+
+[type="radio"]:hover + span {
+  cursor: pointer;
+}
+
+[type="radio"]:disabled {
+  background-color: lightgray;
+  box-shadow: none;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+[type="radio"]:disabled + span {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
   .optionBox {
     width: 20%;
     border: 1px solid black;
