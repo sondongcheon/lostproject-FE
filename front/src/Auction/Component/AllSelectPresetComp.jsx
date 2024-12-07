@@ -36,11 +36,10 @@ const AllSelectPresetComp = ({ updateSet }) => {
   };
 
   const setReset = () => {
+    setSliderValue(0);
+
     updateSet.forEach((updateOption) => {
       updateOption("itemGrade", "");
-    });
-    updateSet.forEach((updateOption) => {
-      updateOption("quality", null);
     });
     updateSet.forEach((updateOption) => {
       updateOption("quality", null);
@@ -79,8 +78,10 @@ const AllSelectPresetComp = ({ updateSet }) => {
 
   return (
     <div>
-      <div className="h-28 flex shadow-lg border-2 rounded-3xl">
-        <div className="w-48 flex justify-center items-center">일괄선택 프리셋</div>
+      <div className="h-44 flex shadow-lg border-2 rounded-3xl">
+        <div className="w-20 flex flex-col justify-center items-center">
+          일괄선택<p> 프리셋</p>
+        </div>
         <div className="flex flex-1 grid grid-cols-5 ">
           <div className=" text-center flex justify-center items-center">
             <button className="normalBtm" onClick={setReset}>
@@ -116,8 +117,11 @@ const AllSelectPresetComp = ({ updateSet }) => {
               하단일 일괄 선택
             </button>
           </div>
-          <div className="grid grid-cols-10 justify-center items-center">
-            <p className="col-span-2 text-sm text-center">전체품질</p>
+          <div className="grid grid-cols-4 justify-center items-center">
+            <span className="col-span-1 text-sm text-center">
+              전체 <br />
+              품질
+            </span>
             <input
               type="range"
               min="0"
@@ -128,9 +132,9 @@ const AllSelectPresetComp = ({ updateSet }) => {
                 setSliderValue(value); // 로컬 상태 업데이트
                 setGrade("quality", value === 0 ? null : value); // 부모에 값 전달
               }}
-              className="col-span-6 w-full  h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
+              className="col-span-2 w-full  h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
             />
-            <div className="col-span-2  text-center text-sm text-gray-500">
+            <div className="col-span-1  text-center text-sm text-gray-500">
               {sliderValue === 0 ? "미지정" : sliderValue}
             </div>
           </div>

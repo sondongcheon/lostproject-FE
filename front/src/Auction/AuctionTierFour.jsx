@@ -11,8 +11,8 @@ function AuctionTierFour(props) {
     id: 1,
     accName: "목걸이",
     optionName: {
-      first: "추가 피해",
-      second: "적에게 주는 피해",
+      first: "추피",
+      second: "적주피",
       third: "아무 특옵",
     },
     optionValue: {
@@ -36,8 +36,8 @@ function AuctionTierFour(props) {
     id: 2,
     accName: "귀걸이1",
     optionName: {
-      first: "공격력 %",
-      second: "무기 공격력 %",
+      first: "공%",
+      second: "무공%",
       third: "아무 특옵",
     },
     optionValue: {
@@ -61,8 +61,8 @@ function AuctionTierFour(props) {
     id: 3,
     accName: "귀걸이2",
     optionName: {
-      first: "공격력%",
-      second: "무기공격력%",
+      first: "공%",
+      second: "무공%",
       third: "아무 특옵",
     },
     optionValue: {
@@ -86,8 +86,8 @@ function AuctionTierFour(props) {
     id: 4,
     accName: "반지1",
     optionName: {
-      first: "치명타 적중률%",
-      second: "치명타 피해%",
+      first: "치적%",
+      second: "치피%",
       third: "아무 특옵",
     },
     optionValue: {
@@ -111,8 +111,8 @@ function AuctionTierFour(props) {
     id: 5,
     accName: "반지2",
     optionName: {
-      first: "치명타 적중률%",
-      second: "치명타 피해%",
+      first: "치적%",
+      second: "치피%",
       third: "아무 특옵",
     },
     optionValue: {
@@ -289,31 +289,46 @@ function AuctionTierFour(props) {
         dfsfdsa
       </button> */}
 
-      <div className="space-y-4">
-        <AllSelectPresetComp updateSet={updateSet}></AllSelectPresetComp>
-        <SelectOptionComp
-          options={selectOption1}
-          onOptionsChange={updateOption1}
-        ></SelectOptionComp>
-        <SelectOptionComp
-          options={selectOption2}
-          onOptionsChange={updateOption2}
-        ></SelectOptionComp>
-        <SelectOptionComp
-          options={selectOption3}
-          onOptionsChange={updateOption3}
-        ></SelectOptionComp>
-        <SelectOptionComp
-          options={selectOption4}
-          onOptionsChange={updateOption4}
-        ></SelectOptionComp>
-        <SelectOptionComp
-          options={selectOption5}
-          onOptionsChange={updateOption5}
-        ></SelectOptionComp>
+      <div className="grid grid-cols-2 gap-x-8 gap-y-8">
+        <div>
+          <AllSelectPresetComp updateSet={updateSet}></AllSelectPresetComp>
+        </div>
+        <div>
+          <SelectOptionComp
+            options={selectOption1}
+            onOptionsChange={updateOption1}
+          ></SelectOptionComp>
+        </div>
+        <div>
+          <SelectOptionComp
+            options={selectOption2}
+            onOptionsChange={updateOption2}
+          ></SelectOptionComp>
+        </div>
+        <div>
+          <SelectOptionComp
+            options={selectOption3}
+            onOptionsChange={updateOption3}
+          ></SelectOptionComp>
+        </div>
+        <div>
+          <SelectOptionComp
+            options={selectOption4}
+            onOptionsChange={updateOption4}
+          ></SelectOptionComp>
+        </div>
+        <div>
+          <SelectOptionComp
+            options={selectOption5}
+            onOptionsChange={updateOption5}
+          ></SelectOptionComp>
+        </div>
+      </div>
+
+      <div className="mt-6">
         <SelectSummary selectOptions={options} search={updateSelect} total={total}></SelectSummary>
 
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-2 gap-x-8 mt-6">
           <div className="space-y-2">
             {result.map((item, index) => (
               <ResultBox
@@ -321,12 +336,17 @@ function AuctionTierFour(props) {
                 result={item}
                 option={options[index]}
                 onClick={() => setCount(index)}
+                className={`${
+                  count === index
+                    ? "bg-blue-500 bg-opacity-25" // 선택된 인덱스에 배경색과 투명도
+                    : "bg-transparent" // 선택되지 않은 경우
+                }`}
               />
             ))}
           </div>
-          <div className="space-y-2">
+          <div>
             {count < 5 && resultList[count]?.length > 0 && (
-              <div>
+              <div className="space-y-2">
                 {resultList[count].map((item, index) => (
                   <ResultBox key={index} result={item} option={options[count]} />
                 ))}

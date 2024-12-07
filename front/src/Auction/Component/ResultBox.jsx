@@ -1,8 +1,56 @@
 import React from "react";
 
-const ResultBox = ({ result, option, onClick }) => {
+const ResultBox = ({ result, option, onClick, className }) => {
+  // 특정 이름 목록
+  const percentageOptions = [
+    "추가 피해",
+    "적에게 주는 피해 증가",
+    "공격력 ",
+    "무기 공격력 ",
+    "치명타 적중률",
+    "치명타 피해",
+  ];
+
+  // 상중하 판단 함수
+  const getLevel = (optionName, value) => {
+    if (optionName === "추가 피해") {
+      if (value === 0.7) return "하";
+      if (value === 1.6) return "중";
+      return "상";
+    }
+    if (optionName === "적에게 주는 피해 증가") {
+      if (value === 0.55) return "하";
+      if (value === 1.2) return "중";
+      return "상";
+    }
+    if (optionName === "공격력 ") {
+      if (value === 0.4) return "하";
+      if (value === 0.95) return "중";
+      if (value === 1.55) return "상";
+      return "";
+    }
+    if (optionName === "무기 공격력 ") {
+      if (value === 0.8) return "하";
+      if (value === 1.8) return "중";
+      if (value === 3) return "상";
+      return "";
+    }
+    if (optionName === "치명타 적중률") {
+      if (value === 0.4) return "하";
+      if (value === 0.95) return "중";
+      return "상";
+    }
+    if (optionName === "치명타 피해") {
+      if (value === 1.1) return "하";
+      if (value === 2.4) return "중";
+      return "상";
+    }
+    // 기타 옵션은 기본적으로 ""로 처리
+    return "";
+  };
+
   return (
-    <div onClick={onClick} className="shadow-lg border-2 rounded-3xl">
+    <div onClick={onClick} className={`shadow-lg border-2 rounded-3xl ${className}`}>
       <div className="grid grid-cols-4 ">
         <div className="flex justify-center items-center">{option.accName}</div>
         <div>
@@ -17,20 +65,43 @@ const ResultBox = ({ result, option, onClick }) => {
           </p>
         </div>
         <div>
-          <p>
-            {result?.options[1]?.optionName || "결과 없음"} -{" "}
-            {result?.options[1]?.value || "결과 없음"}
-          </p>
-          <p>
-            {result?.options[2]?.optionName || "결과 없음"} -{" "}
-            {result?.options[2]?.value || "결과 없음"}
-          </p>
-          <p>
-            {result?.options[3]?.optionName || "결과 없음"} -{" "}
-            {result?.options[3]?.value || "결과 없음"}
-          </p>
+          {result?.options.map((option, index) => {
+            console.log(option.optionName);
+            const valueWithPercentage =
+              percentageOptions.includes(option.optionName) && option.value < 10
+                ? `${option.value}%`
+                : option.value;
+
+            return (
+              <p key={index}>
+                {option.optionName || "결과 없음"} - {valueWithPercentage}
+                {/* {getLevel(option.optionName, option.value)} */}
+              </p>
+            );
+          })}
         </div>
-        <div>가격 - {result?.auctionInfo?.buyPrice || "0"}</div>
+        <div>
+          <div className="grid grid-rows-4">
+            <div>
+              <span>가격 - {result?.auctionInfo?.buyPrice || "0"}G</span>
+            </div>
+            <div>
+              {result?.options[1] && (
+                <span>{getLevel(result?.options[1]?.optionName, result?.options[1]?.value)}</span>
+              )}
+            </div>
+            <div>
+              {result?.options[2] && (
+                <span>{getLevel(result?.options[2]?.optionName, result?.options[2]?.value)}</span>
+              )}
+            </div>
+            <div>
+              {result?.options[3] && (
+                <span>{getLevel(result?.options[3]?.optionName, result?.options[3]?.value)}</span>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

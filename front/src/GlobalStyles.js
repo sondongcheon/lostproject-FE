@@ -119,6 +119,7 @@ const GlobalStyles = createGlobalStyle`
     width: 90%;
     margin: 0 auto;
     font-family: "Pretendard";
+    margin-top: 80px;
   }
 
 //   ol,
@@ -171,8 +172,8 @@ const GlobalStyles = createGlobalStyle`
   appearance: none;
   border: max(2px, 0.1em) solid gray;
   border-radius: 50%;
-  width: 1em;
-  height: 1em;
+  width: 0.75em;
+  height: 0.75em;
   //transition: border 0.25s ease-in-out;/
 }
 
@@ -216,12 +217,26 @@ const GlobalStyles = createGlobalStyle`
   border: 1px solid rgb(252, 165, 165); /* 배경색을 테두리 색으로 */
   border-radius: 8px; /* 외곽선을 약간 둥글게 */
   padding: 8px 16px; /* 버튼 크기 조절 */
-  font-size: 14px;
+
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
 }
 
 .normalBtm:hover {
+  background-color: rgb(252, 165, 165); /* 호버 시 배경색을 채움 */
+  color: white; /* 호버 시 텍스트 색상 변경 */
+}
+
+.normalSelBtm {
+  background-color: rgb(255, 221, 174);
+  border: 1px solid rgb(252, 165, 165); /* 배경색을 테두리 색으로 */
+  border-radius: 8px; /* 외곽선을 약간 둥글게 */
+  padding: 8px 16px; /* 버튼 크기 조절 */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
+}
+
+.normalSelBtm:hover {
   background-color: rgb(252, 165, 165); /* 호버 시 배경색을 채움 */
   color: white; /* 호버 시 텍스트 색상 변경 */
 }

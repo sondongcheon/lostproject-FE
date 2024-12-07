@@ -7,7 +7,12 @@ const SelectSummary = ({ selectOptions, search, total }) => {
   const category200000Text = category200000.map((option) => `${option.accName}`).join(", ");
 
   const category = category200000
-    .map((option) => `[${option.selectValue1}, ${option.selectValue2}]등급`)
+    .map(
+      (option) =>
+        `[${option.selectValue1 == null ? "미선택" : option.selectValue1}, ${
+          option.selectValue2 == null ? "미선택" : option.selectValue2
+        }]등급`
+    )
     .join(", ");
 
   const otherCategoryText = otherCategory.map((option) => option.accName).join(", ");
@@ -15,12 +20,14 @@ const SelectSummary = ({ selectOptions, search, total }) => {
   return (
     <div>
       <div className="h-28 flex justify-center items-center shadow-lg border-2 rounded-3xl">
-        <div className="w-[30%] flex flex-col justify-center items-center">
-          <h3>선택 사항 요약</h3>
-          <button className="normalBtm" onClick={search}>
+        <div className="w-[15%] flex flex-col justify-center items-center">
+          <button className="normalBtm mb-4" onClick={search}>
             검색하기
           </button>
-          <p>토탈 : {total}G</p>
+          <p>총 금액 : {total}G</p>
+        </div>
+        <div className="w-[15%] flex flex-col justify-center items-center">
+          <h3>선택 사항 요약</h3>
         </div>
         <div className="w-[70%] border-2 flex justify-center items-center text-center whitespace-pre-line">
           {category200000Text} 부위는 {category}을 조합하여 최저가 조합을 찾아봅니다. <br />
