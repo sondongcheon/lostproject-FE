@@ -116,9 +116,14 @@ const GlobalStyles = createGlobalStyle`
 //   }
 
   body {
+  background-color: #ECEBDE;
+    font-family: "Pretendard";
+  }
+
+  .mainbody {
+    
     width: 90%;
     margin: 0 auto;
-    font-family: "Pretendard";
     margin-top: 80px;
   }
 
