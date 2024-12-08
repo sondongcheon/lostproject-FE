@@ -35,7 +35,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
 
   return (
     <div>
-      <div className="h-44 flex shadow-lg border-2 rounded-3xl">
+      <div className="h-44 flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5]">
         {/* 왼쪽 고정 크기 영역 */}
         <div className="w-20 flex flex-col justify-center items-center border-black">
           <p>{options.accName}</p>

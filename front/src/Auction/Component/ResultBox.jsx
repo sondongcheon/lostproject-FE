@@ -50,10 +50,10 @@ const ResultBox = ({ result, option, onClick, className }) => {
   };
 
   return (
-    <div onClick={onClick} className={`shadow-lg border-2 rounded-3xl ${className}`}>
-      <div className="grid grid-cols-4 ">
-        <div className="flex justify-center items-center">{option.accName}</div>
-        <div>
+    <div onClick={onClick} className={`bg-[#F5F5F5] shadow-lg border-2 rounded-3xl ${className}`}>
+      <div className="grid grid-cols-12 mx-auto w-[90%]">
+        <div className="flex justify-center items-center col-span-2">{option.accName}</div>
+        <div className="col-span-3 ">
           <p>등급 - {result?.grade || "결과 없음"}</p>
           <p>이름 - {result?.name || "결과 없음"}</p>
           <p>품질 - {result?.gradeQuality || "결과 없음"}</p>
@@ -64,7 +64,7 @@ const ResultBox = ({ result, option, onClick, className }) => {
               : result?.auctionInfo?.tradeAllowCount || "결과 없음"}
           </p>
         </div>
-        <div>
+        <div className="col-span-5 ">
           {result?.options.map((option, index) => {
             console.log(option.optionName);
             const valueWithPercentage =
@@ -80,24 +80,30 @@ const ResultBox = ({ result, option, onClick, className }) => {
             );
           })}
         </div>
-        <div>
+        <div className="col-span-2 ">
           <div className="grid grid-rows-4">
             <div>
               <span>가격 - {result?.auctionInfo?.buyPrice || "0"}G</span>
             </div>
             <div>
               {result?.options[1] && (
-                <span>{getLevel(result?.options[1]?.optionName, result?.options[1]?.value)}</span>
+                <span className="bg-[#795757] rounded-full text-white">
+                  {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)}
+                </span>
               )}
             </div>
             <div>
               {result?.options[2] && (
-                <span>{getLevel(result?.options[2]?.optionName, result?.options[2]?.value)}</span>
+                <span className="bg-[#795757] rounded-full text-white">
+                  {getLevel(result?.options[2]?.optionName, result?.options[2]?.value)}
+                </span>
               )}
             </div>
             <div>
               {result?.options[3] && (
-                <span>{getLevel(result?.options[3]?.optionName, result?.options[3]?.value)}</span>
+                <span className="bg-[#795757] rounded-full text-white">
+                  {getLevel(result?.options[3]?.optionName, result?.options[3]?.value)}
+                </span>
               )}
             </div>
           </div>
@@ -106,5 +112,5 @@ const ResultBox = ({ result, option, onClick, className }) => {
     </div>
   );
 };
-
+//
 export default ResultBox;

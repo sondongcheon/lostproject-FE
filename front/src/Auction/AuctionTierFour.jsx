@@ -273,7 +273,7 @@ function AuctionTierFour(props) {
   const updateSet = [updateOption1, updateOption2, updateOption3, updateOption4, updateOption5];
 
   return (
-    <div>
+    <div className="mainbody">
       <p>임시설명 - 연마 효과와 등급을 선택한 부위를 검색하여 하단에 결과가 나타납니다.</p>
       <p>
         임시설명 - 부위 이름 하단 '탐색 리스트 추가' 버튼을 클릭하면 선택한 부위들 에서 고른
@@ -338,8 +338,8 @@ function AuctionTierFour(props) {
                 onClick={() => setCount(index)}
                 className={`${
                   count === index
-                    ? "bg-blue-500 bg-opacity-25" // 선택된 인덱스에 배경색과 투명도
-                    : "bg-transparent" // 선택되지 않은 경우
+                    ? "bg-[#FFF100] bg-opacity-25" // 선택된 인덱스에 배경색과 투명도
+                    : "bg-[#F5F5F5]" // 선택되지 않은 경우
                 }`}
               />
             ))}
