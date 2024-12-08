@@ -36,7 +36,7 @@ const AllSelectPresetComp = ({ updateSet }) => {
   };
 
   const setReset = () => {
-    setSliderValue(0);
+    setSliderValue(null);
 
     updateSet.forEach((updateOption) => {
       updateOption("itemGrade", "");
@@ -135,7 +135,20 @@ const AllSelectPresetComp = ({ updateSet }) => {
               className="col-span-2 w-full  h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
             />
             <div className="col-span-1  text-center text-sm text-gray-500">
-              {sliderValue === 0 ? "미지정" : sliderValue}
+              <input
+                className="w-full text-center rounded-3xl border border-gray-300"
+                placeholder="미지정"
+                type="number"
+                min="0"
+                max="100"
+                value={sliderValue === 0 ? "미지정" : sliderValue}
+                onChange={(e) => {
+                  const value = parseInt(e.target.value, 10);
+                  setSliderValue(value); // 로컬 상태 업데이트
+                  setGrade("quality", isNaN(value) ? null : Math.min(100, Math.max(0, value)));
+                }}
+              />
+              {/* {sliderValue === 0 ? "미지정" : sliderValue} */}
             </div>
           </div>
           <div className=" text-center flex justify-center items-center">

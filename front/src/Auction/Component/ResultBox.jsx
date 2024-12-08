@@ -50,7 +50,7 @@ const ResultBox = ({ result, option, onClick, className }) => {
   };
 
   return (
-    <div onClick={onClick} className={`bg-[#F5F5F5] shadow-lg border-2 rounded-3xl ${className}`}>
+    <div onClick={onClick} className={`shadow-lg border-2 rounded-3xl ${className}`}>
       <div className="grid grid-cols-12 mx-auto w-[90%]">
         <div className="flex justify-center items-center col-span-2">{option.accName}</div>
         <div className="col-span-3 ">
