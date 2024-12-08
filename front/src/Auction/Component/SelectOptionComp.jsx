@@ -102,7 +102,21 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   />
                 </div>
                 <div className="w-1/4 text-center text-sm text-gray-500">
-                  {options.quality === null ? "미지정" : options.quality}
+                  <input
+                    className="w-full text-center rounded-3xl border border-gray-300"
+                    placeholder="미지정"
+                    type="number"
+                    min="0"
+                    max="100"
+                    value={options.quality === null ? "미지정" : options.quality}
+                    onChange={(e) => {
+                      const value = parseInt(e.target.value, 10);
+                      onOptionsChange(
+                        "quality",
+                        isNaN(value) ? null : Math.min(100, Math.max(0, value))
+                      );
+                    }}
+                  />
                 </div>
               </div>
             </div>
