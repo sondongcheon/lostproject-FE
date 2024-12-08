@@ -3,10 +3,10 @@ import React from "react";
 function MainNav(props) {
   return (
     <div>
-      <div className="h-16 fixed top-0 left-0 w-full bg-gradient-to-r from-[#b6dcff] to-[#b9b6e5] shadow-md z-50">
-        <div className="container mx-auto px-4 py-1 flex justify-between items-center h-full text-[#2b2b2b] font-bold">
+      <div className="h-16 fixed top-0 left-0 w-full bg-gradient-to-r from-[#2384bc] to-[#b2ddad] shadow-md z-50">
+        <div className="container mx-auto px-2 py-1 flex justify-between items-center h-full text-[#2b2b2b] font-bold">
           {/* 왼쪽에 'test' 홈페이지 링크 */}
-          <h1 className="text-lg cursor-pointer">LostRoot</h1>
+          <h1 className="text-3xl cursor-pointer text-white">LostRoot</h1>
 
           {/* 오른쪽에 페이지 이동 공간 잡기 */}
           <div className="flex gap-4">

@@ -36,8 +36,8 @@ function AuctionTierFour(props) {
     id: 2,
     accName: "귀걸이1",
     optionName: {
-      first: "공%",
-      second: "무공%",
+      first: "공",
+      second: "무공",
       third: "아무 특옵",
     },
     optionValue: {
@@ -61,8 +61,8 @@ function AuctionTierFour(props) {
     id: 3,
     accName: "귀걸이2",
     optionName: {
-      first: "공%",
-      second: "무공%",
+      first: "공",
+      second: "무공",
       third: "아무 특옵",
     },
     optionValue: {
@@ -86,8 +86,8 @@ function AuctionTierFour(props) {
     id: 4,
     accName: "반지1",
     optionName: {
-      first: "치적%",
-      second: "치피%",
+      first: "치적",
+      second: "치피",
       third: "아무 특옵",
     },
     optionValue: {
@@ -111,8 +111,8 @@ function AuctionTierFour(props) {
     id: 5,
     accName: "반지2",
     optionName: {
-      first: "치적%",
-      second: "치피%",
+      first: "치적",
+      second: "치피",
       third: "아무 특옵",
     },
     optionValue: {
@@ -289,7 +289,7 @@ function AuctionTierFour(props) {
         dfsfdsa
       </button> */}
 
-      <div className="grid grid-cols-2 gap-x-8 gap-y-8">
+      <div className="grid grid-cols-2 gap-x-4 gap-y-4">
         <div>
           <AllSelectPresetComp updateSet={updateSet}></AllSelectPresetComp>
         </div>
@@ -328,11 +328,10 @@ function AuctionTierFour(props) {
       <div className="mt-6">
         <SelectSummary selectOptions={options} search={updateSelect} total={total}></SelectSummary>
 
-        <div className="grid grid-cols-2 gap-x-8 mt-6">
+        <div className="grid grid-cols-2 gap-x-4 mt-6">
           <div className="space-y-2">
             {result.map((item, index) => (
               <ResultBox
-                key={index}
                 result={item}
                 option={options[index]}
                 onClick={() => setCount(index)}
@@ -348,7 +347,7 @@ function AuctionTierFour(props) {
             {count < 5 && resultList[count]?.length > 0 && (
               <div className="space-y-2">
                 {resultList[count].map((item, index) => (
-                  <ResultBox key={index} result={item} option={options[count]} />
+                  <ResultBox key={index} result={item} option={options[count]} number={index} />
                 ))}
               </div>
             )}

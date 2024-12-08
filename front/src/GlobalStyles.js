@@ -122,7 +122,7 @@ const GlobalStyles = createGlobalStyle`
 
   .mainbody {
     
-    width: 92.5%;
+    width: 70%;
     margin: 0 auto;
     margin-top: 80px;
   }
@@ -219,7 +219,7 @@ const GlobalStyles = createGlobalStyle`
 
 .normalBtm {
   background-color: transparent;
-  border: 2px solid #40AC8D; /* 배경색을 테두리 색으로 */
+  border: 1px solid #40AC8D; /* 배경색을 테두리 색으로 */
   border-radius: 8px; /* 외곽선을 약간 둥글게 */
   padding: 8px 16px; /* 버튼 크기 조절 */
   cursor: pointer;
@@ -236,7 +236,7 @@ const GlobalStyles = createGlobalStyle`
 .resetBtm {
   background-color: #40AC8D;
   color: white;
-  border: 2px solid #40AC8D; /* 배경색을 테두리 색으로 */
+  border: 1px solid #40AC8D; /* 배경색을 테두리 색으로 */
   border-radius: 8px; /* 외곽선을 약간 둥글게 */
   padding: 8px 16px; /* 버튼 크기 조절 */
   cursor: pointer;
@@ -253,7 +253,7 @@ const GlobalStyles = createGlobalStyle`
 .normalSelBtm {
   background-color: #40AC8D;
   color: white;
-  border: 2px solid  #40AC8D; /* 배경색을 테두리 색으로 */
+  border: 1px solid  #40AC8D; /* 배경색을 테두리 색으로 */
   border-radius: 8px; /* 외곽선을 약간 둥글게 */
   padding: 8px 16px; /* 버튼 크기 조절 */
   cursor: pointer;
