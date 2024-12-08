@@ -52,7 +52,9 @@ const ResultBox = ({ result, option, onClick, className }) => {
   return (
     <div onClick={onClick} className={`bg-[#F5F5F5] shadow-lg border-2 rounded-3xl ${className}`}>
       <div className="grid grid-cols-12 mx-auto w-[90%]">
-        <div className="flex justify-center items-center col-span-2">{option.accName}</div>
+        <div className="font-bold flex justify-center items-center col-span-2">
+          {option.accName}
+        </div>
         <div className="col-span-3 ">
           <p>등급 - {result?.grade || "결과 없음"}</p>
           <p>이름 - {result?.name || "결과 없음"}</p>
@@ -83,25 +85,67 @@ const ResultBox = ({ result, option, onClick, className }) => {
         <div className="col-span-2 ">
           <div className="grid grid-rows-4">
             <div>
-              <span>가격 - {result?.auctionInfo?.buyPrice || "0"}G</span>
+              <span className="font-bold">가격 - {result?.auctionInfo?.buyPrice || "0"} G</span>
             </div>
             <div>
               {result?.options[1] && (
-                <span className="bg-[#795757] rounded-full text-white">
+                <span
+                  className={`rounded-full text-white`}
+                  style={{
+                    backgroundColor: (() => {
+                      const level = getLevel(
+                        result?.options[1]?.optionName,
+                        result?.options[1]?.value
+                      );
+                      if (level === "상") return "#E38E49";
+                      if (level === "중") return "#7E1891";
+                      if (level === "하") return "#0A3981";
+                      return "#ffffff"; // 기본값
+                    })(),
+                  }}
+                >
                   {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)}
                 </span>
               )}
             </div>
             <div>
               {result?.options[2] && (
-                <span className="bg-[#795757] rounded-full text-white">
+                <span
+                  className={`rounded-full text-white`}
+                  style={{
+                    backgroundColor: (() => {
+                      const level = getLevel(
+                        result?.options[2]?.optionName,
+                        result?.options[2]?.value
+                      );
+                      if (level === "상") return "#E38E49";
+                      if (level === "중") return "#7E1891";
+                      if (level === "하") return "#0A3981";
+                      return "#ffffff"; // 기본값
+                    })(),
+                  }}
+                >
                   {getLevel(result?.options[2]?.optionName, result?.options[2]?.value)}
                 </span>
               )}
             </div>
             <div>
               {result?.options[3] && (
-                <span className="bg-[#795757] rounded-full text-white">
+                <span
+                  className={`rounded-full text-white`}
+                  style={{
+                    backgroundColor: (() => {
+                      const level = getLevel(
+                        result?.options[3]?.optionName,
+                        result?.options[3]?.value
+                      );
+                      if (level === "상") return "#E38E49";
+                      if (level === "중") return "#7E1891";
+                      if (level === "하") return "#0A3981";
+                      return "#ffffff"; // 기본값
+                    })(),
+                  }}
+                >
                   {getLevel(result?.options[3]?.optionName, result?.options[3]?.value)}
                 </span>
               )}
