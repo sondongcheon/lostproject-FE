@@ -338,7 +338,7 @@ function AuctionTierFour(props) {
                 onClick={() => setCount(index)}
                 className={`${
                   count === index
-                    ? "bg-[#FFF100] bg-opacity-25" // 선택된 인덱스에 배경색과 투명도
+                    ? "bg-[#EDF1D6] " // 선택된 인덱스에 배경색과 투명도
                     : "bg-[#F5F5F5]" // 선택되지 않은 경우
                 }`}
               />

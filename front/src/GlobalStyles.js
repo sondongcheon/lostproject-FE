@@ -122,7 +122,7 @@ const GlobalStyles = createGlobalStyle`
 
   .mainbody {
     
-    width: 90%;
+    width: 92.5%;
     margin: 0 auto;
     margin-top: 80px;
   }
@@ -219,22 +219,41 @@ const GlobalStyles = createGlobalStyle`
 
 .normalBtm {
   background-color: transparent;
-  border: 1px solid rgb(252, 165, 165); /* 배경색을 테두리 색으로 */
+  border: 2px solid #40AC8D; /* 배경색을 테두리 색으로 */
   border-radius: 8px; /* 외곽선을 약간 둥글게 */
   padding: 8px 16px; /* 버튼 크기 조절 */
-
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
 }
 
 .normalBtm:hover {
-  background-color: rgb(252, 165, 165); /* 호버 시 배경색을 채움 */
+  background-color: #40AC8D; /* 호버 시 배경색을 채움 */
   color: white; /* 호버 시 텍스트 색상 변경 */
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.resetBtm {
+  background-color: #40AC8D;
+  color: white;
+  border: 2px solid #40AC8D; /* 배경색을 테두리 색으로 */
+  border-radius: 8px; /* 외곽선을 약간 둥글게 */
+  padding: 8px 16px; /* 버튼 크기 조절 */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
+}
+
+.resetBtm:hover {
+  background-color: white; /* 호버 시 배경색을 채움 */
+  color: #40AC8D; /* 호버 시 텍스트 색상 변경 */
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .normalSelBtm {
-  background-color: rgb(255, 221, 174);
-  border: 1px solid rgb(252, 165, 165); /* 배경색을 테두리 색으로 */
+  background-color: #40AC8D;
+  color: white;
+  border: 2px solid  #40AC8D; /* 배경색을 테두리 색으로 */
   border-radius: 8px; /* 외곽선을 약간 둥글게 */
   padding: 8px 16px; /* 버튼 크기 조절 */
   cursor: pointer;
@@ -242,8 +261,8 @@ const GlobalStyles = createGlobalStyle`
 }
 
 .normalSelBtm:hover {
-  background-color: rgb(252, 165, 165); /* 호버 시 배경색을 채움 */
-  color: white; /* 호버 시 텍스트 색상 변경 */
+  background-color: white; /* 호버 시 배경색을 채움 */
+  color: #40AC8D; /* 호버 시 텍스트 색상 변경 */
 }
 
     .boxContainer {
@@ -253,6 +272,36 @@ const GlobalStyles = createGlobalStyle`
     // border: 1px solid black; 
     box-sizing: border-box; /* 테두리 포함하여 크기 계산 */
   }
+
+/* 기본 스타일 */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* 손잡이 색상 */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background-color: tomato; /* 손잡이 색상 */
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background-color: tomato; /* 손잡이 색상 */
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.color-tomato {
+  color: #40AC8D;
+}
+
 `;
 
 export default GlobalStyles;
