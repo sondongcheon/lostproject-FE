@@ -1,6 +1,6 @@
 import React from "react";
 
-const ResultBox = ({ result, option, onClick, className }) => {
+const ResultBox = ({ number, result, option, onClick, className }) => {
   // 특정 이름 목록
   const percentageOptions = [
     "추가 피해",
@@ -50,12 +50,19 @@ const ResultBox = ({ result, option, onClick, className }) => {
   };
 
   return (
-    <div onClick={onClick} className={`bg-[#F5F5F5] shadow-lg border-2 rounded-3xl ${className}`}>
-      <div className="grid grid-cols-12 mx-auto w-[90%]">
-        <div className="font-bold flex justify-center items-center col-span-2">
-          {option.accName}
+    <div
+      onClick={onClick}
+      className={`pt-4 pb-4 bg-[#F5F5F5] shadow-lg border-2 rounded-3xl ${className}`}
+    >
+      <div className="grid grid-cols-10 mx-auto w-[95%] text-sm">
+        <div
+          className={`col-span-1 font-bold flex justify-center items-center  pr-4 ${
+            number !== undefined ? "text-3xl" : null
+          }`}
+        >
+          {number !== undefined ? `${number + 1}` : option.accName}
         </div>
-        <div className="col-span-3 ">
+        <div className="col-span-3">
           <p>등급 - {result?.grade || "결과 없음"}</p>
           <p>이름 - {result?.name || "결과 없음"}</p>
           <p>품질 - {result?.gradeQuality || "결과 없음"}</p>
@@ -66,7 +73,7 @@ const ResultBox = ({ result, option, onClick, className }) => {
               : result?.auctionInfo?.tradeAllowCount || "결과 없음"}
           </p>
         </div>
-        <div className="col-span-5 ">
+        <div className="col-span-4">
           {result?.options.map((option, index) => {
             console.log(option.optionName);
             const valueWithPercentage =
@@ -75,7 +82,14 @@ const ResultBox = ({ result, option, onClick, className }) => {
                 : option.value;
 
             return (
-              <p key={index}>
+              <p
+                key={index}
+                className={
+                  percentageOptions.includes(option.optionName) && option.value < 10
+                    ? "font-bold"
+                    : ""
+                }
+              >
                 {option.optionName || "결과 없음"} - {valueWithPercentage}
                 {/* {getLevel(option.optionName, option.value)} */}
               </p>
@@ -132,7 +146,7 @@ const ResultBox = ({ result, option, onClick, className }) => {
             <div>
               {result?.options[3] && (
                 <span
-                  className={`rounded-full text-white`}
+                  className={`rounded-full text-white `}
                   style={{
                     backgroundColor: (() => {
                       const level = getLevel(
