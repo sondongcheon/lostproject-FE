@@ -1,13 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const AllSelectPresetComp = ({ updateSet }) => {
+const AllSelectPresetComp = ({ updateSet, type }) => {
   const [sliderValue, setSliderValue] = useState(0);
+  const [options, setOptions] = useState({});
 
   const setGrade = (key, value) => {
     updateSet.forEach((updateOption) => {
       updateOption(key, value);
     });
   };
+
+  useEffect(() => {
+    if (type === 0) {
+      setOptions({
+        selectOption1: ["41", "45", "45", "49", "49"],
+        selectOption2: ["42", "46", "46", "50", "50"],
+      });
+    } else if (type === 1) {
+      setOptions({
+        selectOption1: ["43", "47", "47", "51", "51"],
+        selectOption2: ["44", "48", "48", "52", "52"],
+      });
+    }
+  }, type);
 
   const setOption = (key1, value1, key2, value2) => {
     updateSet.forEach((updateOption) => {
@@ -18,11 +33,6 @@ const AllSelectPresetComp = ({ updateSet }) => {
     });
 
     if (value2 !== null) {
-      const options = {
-        selectOption1: ["41", "45", "45", "49", "49"],
-        selectOption2: ["42", "46", "46", "50", "50"],
-      };
-
       Object.entries(options).forEach(([key, values]) => {
         values.forEach((value, index) => {
           updateSet[index]?.(key, value);

@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function MainNav(props) {
+  const navigate = useNavigate();
   return (
     <div>
       <div className="h-16 fixed top-0 left-0 w-full bg-gradient-to-r from-[#2384bc] to-[#b2ddad] shadow-md z-50">
@@ -10,15 +12,32 @@ function MainNav(props) {
 
           {/* 오른쪽에 페이지 이동 공간 잡기 */}
           <div className="flex gap-4">
-            <div className="cursor-pointer text-lg  hover:underline">딜러악세 검색기</div>
-            <div className="cursor-pointer text-lg hover:underline">
-              서폿악세 검색기(지금은 안됨)
+            <div
+              className="cursor-pointer text-lg  hover:underline"
+              onClick={() => navigate("/auctiontier4")}
+            >
+              딜러악세 검색기
             </div>
-            <div className="cursor-pointer text-lg  hover:underline">
-              사용방법 상세보기(지금은 안됨)
+            <div
+              className="cursor-pointer text-lg hover:underline"
+              onClick={() => navigate("/auctiontier4sup")}
+            >
+              서폿악세 검색기
             </div>
-            <div className="cursor-pointer text-lg hover:underline">
+            <div
+              className="cursor-pointer text-lg  hover:underline"
+              onClick={() => navigate("/usebasicinfo")}
+            >
+              사용방법 상세보기
+            </div>
+            {/* <div className="cursor-pointer text-lg hover:underline">
               시세 통계 확인하기(지금은 안됨)
+            </div> */}
+            <div
+              className="cursor-pointer text-lg hover:underline"
+              onClick={() => navigate("/notice")}
+            >
+              공지사항
             </div>
           </div>
         </div>
