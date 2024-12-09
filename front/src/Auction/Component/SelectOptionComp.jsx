@@ -27,9 +27,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
       updateOption("selectOption1", options.selectOption1);
       updateOption("selectOption2", options.selectOption2);
       updateOption("selectOption3", options.selectOption3);
-      onOptionsChange("selectOption1", "");
-      onOptionsChange("selectOption2", "");
-      onOptionsChange("selectOption3", "");
+      onOptionsChange("selectOption1", null);
+      onOptionsChange("selectOption2", null);
+      onOptionsChange("selectOption3", null);
     }
   };
 

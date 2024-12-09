@@ -6,18 +6,18 @@ import SelectOptionComp from "./Component/SelectOptionComp";
 import SelectSummary from "./Component/SelectSummary";
 import ResultBox from "./Component/ResultBox";
 
-function AuctionTierFour(props) {
+function AuctionTierFourSup(props) {
   const [selectOption1, setSelectOption1] = useState({
     id: 1,
     accName: "목걸이",
     optionName: {
-      first: "추피",
-      second: "적주피",
+      first: "아덴+",
+      second: "낙인+",
       third: "아무 특옵",
     },
     optionValue: {
-      first: "41",
-      second: "42",
+      first: "43",
+      second: "44",
       third: "아무 특옵",
     },
     itemGrade: "",
@@ -36,13 +36,13 @@ function AuctionTierFour(props) {
     id: 2,
     accName: "귀걸이1",
     optionName: {
-      first: "공",
-      second: "무공",
+      first: "회복+",
+      second: "실드+",
       third: "아무 특옵",
     },
     optionValue: {
-      first: "45",
-      second: "46",
+      first: "47",
+      second: "48",
       third: "아무 특옵",
     },
     itemGrade: "",
@@ -61,13 +61,13 @@ function AuctionTierFour(props) {
     id: 3,
     accName: "귀걸이2",
     optionName: {
-      first: "공",
-      second: "무공",
+      first: "회복+",
+      second: "실드+",
       third: "아무 특옵",
     },
     optionValue: {
-      first: "45",
-      second: "46",
+      first: "47",
+      second: "48",
       third: "아무 특옵",
     },
     itemGrade: "",
@@ -86,13 +86,13 @@ function AuctionTierFour(props) {
     id: 4,
     accName: "반지1",
     optionName: {
-      first: "치적",
-      second: "치피",
+      first: "아공강",
+      second: "아피강",
       third: "아무 특옵",
     },
     optionValue: {
-      first: "49",
-      second: "50",
+      first: "51",
+      second: "52",
       third: "아무 특옵",
     },
     itemGrade: "",
@@ -111,13 +111,13 @@ function AuctionTierFour(props) {
     id: 5,
     accName: "반지2",
     optionName: {
-      first: "치적",
-      second: "치피",
+      first: "아공강",
+      second: "아피강",
       third: "아무 특옵",
     },
     optionValue: {
-      first: "49",
-      second: "50",
+      first: "51",
+      second: "52",
       third: "아무 특옵",
     },
     itemGrade: "",
@@ -197,7 +197,7 @@ function AuctionTierFour(props) {
     if (selectOptionReq.length > 0) {
       axios
         .post(`${process.env.REACT_APP_URL}/auction/test5`, selectOptionReq, {
-          params: { type: 0 },
+          params: { type: 2 },
         })
         .then((res) => {
           console.log(res);
@@ -293,7 +293,7 @@ function AuctionTierFour(props) {
 
       <div className="grid grid-cols-2 gap-x-4 gap-y-4">
         <div>
-          <AllSelectPresetComp updateSet={updateSet} type={0}></AllSelectPresetComp>
+          <AllSelectPresetComp updateSet={updateSet} type={1}></AllSelectPresetComp>
         </div>
         <div>
           <SelectOptionComp
@@ -366,4 +366,4 @@ function AuctionTierFour(props) {
   );
 }
 
-export default AuctionTierFour;
+export default AuctionTierFourSup;
