@@ -6,6 +6,8 @@ import SelectOptionComp from "./Component/SelectOptionComp";
 import SelectSummary from "./Component/SelectSummary";
 import ResultBox from "./Component/ResultBox";
 
+import Test from "./Component/Test";
+
 function AuctionTierFour(props) {
   const [selectOption1, setSelectOption1] = useState({
     id: 1,
@@ -280,6 +282,7 @@ function AuctionTierFour(props) {
         dfsfdsa
       </button> */}
 
+      <Test></Test>
       <div className="grid grid-cols-2 gap-x-4 gap-y-4">
         <div>
           <AllSelectPresetComp updateSet={updateSet} type={0}></AllSelectPresetComp>

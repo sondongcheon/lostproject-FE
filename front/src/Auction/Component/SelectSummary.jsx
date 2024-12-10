@@ -21,7 +21,7 @@ const SelectSummary = ({ selectOptions, search, total }) => {
     <div>
       <div className="h-28 flex justify-center items-center shadow-lg border-2 rounded-3xl bg-gray-200">
         <div className="w-[27%] flex flex-col justify-center items-center">
-          <button className="resetBtm mb-4" onClick={search}>
+          <button className="bg-[#40AC8D] resetBtm mb-4 " onClick={search}>
             검색하기
           </button>
           <p className="font-bold text-xl">총 금액 : {total} G</p>

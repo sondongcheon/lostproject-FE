@@ -94,7 +94,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
         </div>
         <div className="w-52 pt-2 pb-2">
           <div className=" text-center flex justify-center items-center ">
-            <button className="resetBtm  bg-[#FF6E00]" onClick={setReset}>
+            <button className="resetBtm bg-[#b2ddad]" onClick={setReset}>
               초기화
             </button>
           </div>
