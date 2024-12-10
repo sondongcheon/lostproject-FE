@@ -252,9 +252,10 @@ const GlobalStyles = createGlobalStyle`
 
 .resetBtm {
   width: 10rem; // 160px
-  background-color: #40AC8D;
-  color: white;
-  border: 1px solid #40AC8D; /* 배경색을 테두리 색으로 */
+  //background-color: #40AC8D;
+  color: black;
+  font-style : bold;
+  //border: 1px solid #40AC8D; /* 배경색을 테두리 색으로 */
   border-radius: 8px; /* 외곽선을 약간 둥글게 */
   padding: 8px 16px; /* 버튼 크기 조절 */
   cursor: pointer;
@@ -263,7 +264,7 @@ const GlobalStyles = createGlobalStyle`
 
 .resetBtm:hover {
   background-color: white; /* 호버 시 배경색을 채움 */
-  color: #40AC8D; /* 호버 시 텍스트 색상 변경 */
+  color: rgb(156 163 175); /* 호버 시 텍스트 색상 변경 */
   transform: scale(1.1);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }

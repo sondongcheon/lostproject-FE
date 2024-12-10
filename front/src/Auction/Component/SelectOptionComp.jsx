@@ -45,8 +45,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
             }`}
             onClick={handleCategoryCode}
           >
-            탐색 <br />
-            리스트 <br />
+            검색 <br />
             {options.categoryCode === 200000 ? "제거" : "추가"}
           </button>
         </div>
