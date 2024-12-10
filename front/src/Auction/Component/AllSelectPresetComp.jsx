@@ -94,7 +94,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
         </div>
         <div className="w-52 pt-2 pb-2">
           <div className=" text-center flex justify-center items-center ">
-            <button className="resetBtm w-40 bg-[#FF6E00]" onClick={setReset}>
+            <button className="resetBtm  bg-[#FF6E00]" onClick={setReset}>
               초기화
             </button>
           </div>
@@ -132,10 +132,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
         </div>
         <div className="flex flex-1 grid grid-cols-4 text-sm font-bold pl-2 pr-4">
           <div className=" text-center flex justify-center items-center">
-            <button
-              className="normalBtm color-tomato w-20 text-xs"
-              onClick={() => setGrade("itemGrade", "유물")}
-            >
+            <button className="allBtm w-20 text-xs" onClick={() => setGrade("itemGrade", "유물")}>
               ALL 유물
             </button>
           </div>
@@ -168,10 +165,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
           </div>
 
           <div className=" text-center flex justify-center items-center">
-            <button
-              className="normalBtm color-tomato w-20 text-xs"
-              onClick={() => setGrade("itemGrade", "고대")}
-            >
+            <button className="allBtm w-20 text-xs" onClick={() => setGrade("itemGrade", "고대")}>
               ALL 고대
             </button>
           </div>

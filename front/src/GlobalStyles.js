@@ -233,7 +233,25 @@ const GlobalStyles = createGlobalStyle`
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+.allBtm {
+  height : 50px;
+  background-color: white;
+  border: 1px solid tomato; /* 배경색을 테두리 색으로 */
+  border-radius: 8px; /* 외곽선을 약간 둥글게 */
+  padding: 8px 16px; /* 버튼 크기 조절 */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
+}
+
+.allBtm:hover {
+  background-color: tomato; /* 호버 시 배경색을 채움 */
+  color: white; /* 호버 시 텍스트 색상 변경 */
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
 .resetBtm {
+  width: 10rem; // 160px
   background-color: #40AC8D;
   color: white;
   border: 1px solid #40AC8D; /* 배경색을 테두리 색으로 */

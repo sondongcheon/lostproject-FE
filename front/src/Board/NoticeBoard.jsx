@@ -1,7 +1,11 @@
 import React from "react";
 
 function NoticeBoard(props) {
-  return <div className="mainbody">게시판</div>;
+  return (
+    <div className="mainbody">
+      <div className="bg-white">ddd</div>
+    </div>
+  );
 }
 
 export default NoticeBoard;
