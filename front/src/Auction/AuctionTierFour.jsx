@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
+import Cookies from "js-cookie";
 
+import HeadKeyBox from "./Component/HeadKeyBox";
 import AllSelectPresetComp from "./Component/AllSelectPresetComp";
 import SelectOptionComp from "./Component/SelectOptionComp";
 import SelectSummary from "./Component/SelectSummary";
@@ -172,6 +175,11 @@ function AuctionTierFour(props) {
 
   const [count, setCount] = useState(5);
 
+  const [searchState, setSearchState] = useState(false);
+
+  const [apiKey, setApiKey] = useState("");
+  const [saveKey, setSaveKey] = useState(false);
+
   const check = () => {
     console.log("aa", count);
     console.log("ccc", selectOptionReq);
@@ -196,9 +204,21 @@ function AuctionTierFour(props) {
   };
 
   useEffect(() => {
+    const cookieValue = Cookies.get("apiKey" ?? "");
+    if (Cookies.get("apiKey") !== undefined) {
+      setSaveKey(true);
+    }
+    setApiKey(cookieValue);
+  }, []);
+
+  useEffect(() => {
     if (selectOptionReq.length > 0) {
+      setSearchState(true);
+      if (saveKey) Cookies.set("apiKey", apiKey, { expires: 89, secure: true, sameSite: "Strict" });
+      else Cookies.remove("apiKey");
       axios
-        .post(`${process.env.REACT_APP_URL}/auction/test5`, selectOptionReq, {
+        .post(`${process.env.REACT_APP_TEST_URL}/auction/test5`, selectOptionReq, {
+          headers: { apiKey: apiKey },
           params: { type: 0 },
         })
         .then((res) => {
@@ -208,7 +228,30 @@ function AuctionTierFour(props) {
           console.log("result", res.data.data.result);
         })
         .catch((error) => {
-          console.error(error);
+          const handleError = () => {
+            if (error.response.data.code === "API-001") {
+              return Swal.fire({
+                icon: "warning",
+                html: "API 분당 요청 횟수 100회를 초과하였습니다 <br /> 60초 뒤에 시도해주세요",
+                confirmButtonText: "확인",
+              });
+            } else {
+              return Swal.fire({
+                icon: "warning",
+                title: "예측되지 못한 오류입니다.",
+                text: error.response.data.message,
+                confirmButtonText: "확인",
+              });
+            }
+          };
+
+          return handleError().then(() => {
+            // 60초 대기
+            return new Promise((resolve) => setTimeout(resolve, 60000));
+          });
+        })
+        .finally(() => {
+          setSearchState(false);
         });
     }
   }, [selectOptionReq]); // selectOptionReq가 변경될 때마다 실행
@@ -282,7 +325,12 @@ function AuctionTierFour(props) {
         dfsfdsa
       </button> */}
 
-      <Test></Test>
+      <HeadKeyBox
+        apiKey={apiKey}
+        setApiKey={setApiKey}
+        saveKey={saveKey}
+        setSaveKey={setSaveKey}
+      ></HeadKeyBox>
       <div className="grid grid-cols-2 gap-x-4 gap-y-4">
         <div>
           <AllSelectPresetComp updateSet={updateSet} type={0}></AllSelectPresetComp>
@@ -320,7 +368,12 @@ function AuctionTierFour(props) {
       </div>
 
       <div className="mt-6">
-        <SelectSummary selectOptions={options} search={updateSelect} total={total}></SelectSummary>
+        <SelectSummary
+          selectOptions={options}
+          search={updateSelect}
+          total={total}
+          searchState={searchState}
+        ></SelectSummary>
 
         <div className="grid grid-cols-2 gap-x-4 mt-6">
           <div className="space-y-2">

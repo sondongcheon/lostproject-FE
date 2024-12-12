@@ -142,7 +142,6 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
         </div>
         <div className="col-span-4">
           {result?.options.map((option, index) => {
-            console.log(option.optionName);
             const valueWithPercentage =
               specialOptions.includes(option.optionName) && option.value < 10
                 ? `${option.value}%`
