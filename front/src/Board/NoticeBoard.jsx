@@ -18,7 +18,6 @@ function NoticeBoard(props) {
         params: { page: 0 },
       })
       .then((res) => {
-        console.log(res);
         setContents(res.data.data);
       })
       .catch((error) => {

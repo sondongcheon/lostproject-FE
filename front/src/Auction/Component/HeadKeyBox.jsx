@@ -61,7 +61,11 @@ const HeadKeyBox = ({ apiKey, setApiKey, saveKey, setSaveKey }) => {
                 API 키 삭제
               </button>
             </div>
-            <a className="hover:underline" href="https://developer-lostark.game.onstove.com/">
+            <a
+              className="hover:underline"
+              target="_blank"
+              href="https://developer-lostark.game.onstove.com/"
+            >
               {" "}
               API 키 발급 사이트{" "}
             </a>

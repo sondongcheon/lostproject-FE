@@ -180,23 +180,12 @@ function AuctionTierFour(props) {
   const [apiKey, setApiKey] = useState("");
   const [saveKey, setSaveKey] = useState(false);
 
-  const check = () => {
-    console.log("aa", count);
-    console.log("ccc", selectOptionReq);
-    console.log("hi1", selectOption1);
-    console.log("hi2", selectOption2);
-    console.log("hi3", selectOption3);
-    console.log("hi4", selectOption4);
-    console.log("hi5", selectOption5);
-  };
-
   const [total, setTotal] = useState(0);
 
   const [resultList, setResultList] = useState([[], [], [], [], [], []]);
 
   const getTotal = (res) => {
     var tmp = res.reduce((sum, item) => {
-      console.log("가격", item?.auctionInfo.buyPrice || 0);
       return sum + (item?.auctionInfo.buyPrice || 0);
     }, 0);
     setResult(res);
@@ -223,10 +212,8 @@ function AuctionTierFour(props) {
           params: { type: 0 },
         })
         .then((res) => {
-          console.log(res);
           getTotal(res.data.data.searchResultRes);
           setResultList(res.data.data.result);
-          console.log("result", res.data.data.result);
         })
         .catch((error) => {
           const handleError = () => {
@@ -297,17 +284,13 @@ function AuctionTierFour(props) {
     }));
 
     setSelectOptionReq(newSelectOptionReq);
-    console.log("check", { selectOptionReq });
   };
 
   const updateOption1 = (key, value) => {
-    console.log("key ", key);
-    console.log("value ", value);
     setSelectOption1((prevState) => ({
       ...prevState,
       [key]: value,
     }));
-    console.log("data", selectOption1);
   };
   const updateOption2 = (key, value) => {
     setSelectOption2((prevState) => ({
