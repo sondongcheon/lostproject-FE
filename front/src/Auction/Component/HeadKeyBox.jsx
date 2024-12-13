@@ -5,8 +5,8 @@ import Swal from "sweetalert2";
 const HeadKeyBox = ({ apiKey, setApiKey, saveKey, setSaveKey }) => {
   return (
     <div>
-      <div className="h-20 flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5] grid grid-cols-10">
-        <div className="col-span-1 flex flex-col justify-center items-center">
+      <div className="h-20 pl-14 flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5] grid grid-cols-10">
+        <div className="col-span-2 flex flex-col justify-center items-center">
           <div>
             <input
               type="checkbox"
@@ -18,7 +18,7 @@ const HeadKeyBox = ({ apiKey, setApiKey, saveKey, setSaveKey }) => {
           <div>
             {" "}
             <button
-              className="normalBtm"
+              className="resetBtm bg-[#b2ddad]"
               onClick={() => {
                 Cookies.remove("apiKey");
                 Swal.fire({
@@ -27,14 +27,14 @@ const HeadKeyBox = ({ apiKey, setApiKey, saveKey, setSaveKey }) => {
                 });
               }}
             >
-              저장값삭제하기
+              저장된 KEY 삭제
             </button>
           </div>
         </div>
         <div className="col-span-1 flex justify-center items-center">
           <span> {`API KEY ->`}</span>
         </div>
-        <div className="col-span-8 flex items-center">
+        <div className="col-span-4 flex items-center">
           <input
             className="border-2"
             value={apiKey}

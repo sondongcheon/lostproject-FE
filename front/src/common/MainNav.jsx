@@ -8,7 +8,9 @@ function MainNav(props) {
       <div className="h-16 fixed top-0 left-0 w-full bg-gradient-to-r from-[#2384bc] to-[#b2ddad] shadow-md z-50">
         <div className="container mx-auto px-2 py-1 flex justify-between items-center h-full text-[#2b2b2b] font-bold">
           {/* 왼쪽에 'test' 홈페이지 링크 */}
-          <h1 className="text-3xl cursor-pointer text-white">LostRoot</h1>
+          <h1 className="text-3xl cursor-pointer text-white" onClick={() => navigate("/")}>
+            LostRoot
+          </h1>
 
           {/* 오른쪽에 페이지 이동 공간 잡기 */}
           <div className="flex gap-10">
@@ -38,6 +40,12 @@ function MainNav(props) {
               onClick={() => navigate("/notice")}
             >
               공지사항
+            </div>
+            <div
+              className="cursor-pointer text-base hover:underline"
+              onClick={() => navigate("/mini")}
+            >
+              유저 코멘트
             </div>
           </div>
         </div>
