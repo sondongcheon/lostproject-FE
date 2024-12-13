@@ -13,7 +13,7 @@ function Router() {
     <BrowserRouter>
       <MainNav />
       <Routes>
-        <Route path="/" element={<Main />}></Route>
+        <Route path="/" element={<AuctionTierFour />}></Route>
 
         <Route path="/auctiontier4" element={<AuctionTierFour />}></Route>
         <Route path="/auctiontier4sup" element={<AuctionTierFourSup />}></Route>

@@ -26,12 +26,12 @@ function MainNav(props) {
             >
               서폿악세 검색기
             </div>
-            <div
+            {/* <div
               className="cursor-pointer text-base  hover:underline"
               onClick={() => navigate("/usebasicinfo")}
             >
               사용방법 상세보기
-            </div>
+            </div> */}
             {/* <div className="cursor-pointer text-base hover:underline">
               시세 통계 확인하기(지금은 안됨)
             </div> */}
