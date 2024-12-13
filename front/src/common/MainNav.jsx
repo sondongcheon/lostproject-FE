@@ -39,7 +39,7 @@ function MainNav(props) {
               className="cursor-pointer text-base hover:underline"
               onClick={() => navigate("/notice")}
             >
-              공지사항
+              개발일지
             </div>
             <div
               className="cursor-pointer text-base hover:underline"
