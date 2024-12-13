@@ -5,7 +5,7 @@ import { format } from "date-fns";
 
 function MiniBoard(props) {
   const [contents, setContents] = useState([]);
-  const [text, setText] = useState({});
+  const [text, setText] = useState({ content: "" });
 
   const updateText = (key, value) => {
     setText((prevState) => ({
@@ -39,6 +39,7 @@ function MiniBoard(props) {
       })
       .finally(() => {
         loadPage();
+        setText({ content: "" });
       });
   };
 
@@ -49,9 +50,13 @@ function MiniBoard(props) {
   return (
     <div>
       <div className="mainbody">
-        <div className="w-4/5 flex justify-center items-center">
-          <span>입력하기 : </span>
-          <input type="text" onChange={(e) => updateText("content", e.target.value)} />
+        <div className="w-4/5 mx-auto flex justify-center items-center">
+          <span>입력하기</span>
+          <input
+            type="text"
+            value={text.content}
+            onChange={(e) => updateText("content", e.target.value)}
+          />
           <button className="normalBtm" onClick={sendText}>
             {" "}
             전송하기
@@ -63,7 +68,7 @@ function MiniBoard(props) {
               <thead className="bg-gray-100">
                 <tr>
                   <th className="p-4 ">번호</th>
-                  <th className="p-4 w-1/2">내용</th>
+                  <th className="p-4 w-1/4">내용</th>
                   <th className="p-4 ">글쓴이</th>
                   <th className="p-4 ">등록일</th>
                 </tr>
@@ -72,7 +77,7 @@ function MiniBoard(props) {
                 {contents.map((content, index) => (
                   <tr key={index} className="hover:bg-gray-50">
                     <td className="p-4 ">{content.number}</td>
-                    <td className="p-4 ">{content.content}</td>
+                    <td className="p-4 text-left">{content.content}</td>
                     <td className="p-4 ">{content.unknown}</td>
                     <td className="p-4 ">{formatDate(content.createAt)}</td>
                   </tr>

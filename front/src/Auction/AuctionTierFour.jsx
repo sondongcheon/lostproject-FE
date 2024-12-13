@@ -213,12 +213,13 @@ function AuctionTierFour(props) {
 
   useEffect(() => {
     if (selectOptionReq.length > 0) {
+      const encodedApiKey = encodeURIComponent(apiKey);
       setSearchState(true);
       if (saveKey) Cookies.set("apiKey", apiKey, { expires: 89, secure: true, sameSite: "Strict" });
       else Cookies.remove("apiKey");
       axios
         .post(`${process.env.REACT_APP_URL}/auction/test5`, selectOptionReq, {
-          headers: { apiKey: apiKey },
+          headers: { apiKey: encodedApiKey },
           params: { type: 0 },
         })
         .then((res) => {
@@ -262,7 +263,7 @@ function AuctionTierFour(props) {
             if (error.response.data.code === "API-001") {
               return new Promise((resolve) => setTimeout(resolve, 60000));
             } else {
-              return new Promise((resolve) => setTimeout(resolve, 5000));
+              return new Promise((resolve) => setTimeout(resolve, 3000));
             }
           });
         })

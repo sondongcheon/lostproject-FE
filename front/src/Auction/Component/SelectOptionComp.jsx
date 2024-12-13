@@ -38,14 +38,14 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
       <div className="h-44 flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5]">
         {/* 왼쪽 고정 크기 영역 */}
         <div className="w-20 flex flex-col justify-center items-center border-black">
-          <p className="font-bold ">{options.accName}</p>
+          <p className="font-bold ">{options.categoryCode === 200000 ? "" : options.accName}</p>
           <button
             className={`text-xs font-bold ${
               options.categoryCode === 200000 ? "normalSelBtm" : "normalBtm color-tomato"
             }`}
             onClick={handleCategoryCode}
           >
-            검색 <br />
+            매물추적 <br />
             {options.categoryCode === 200000 ? "제거" : "추가"}
           </button>
         </div>
