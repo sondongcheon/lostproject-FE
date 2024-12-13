@@ -20,7 +20,7 @@ function MiniBoard(props) {
 
   const loadPage = () => {
     axios
-      .get(`${process.env.REACT_APP_TEST_URL}/board/mini`)
+      .get(`${process.env.REACT_APP_URL}/board/mini`)
       .then((res) => {
         console.log(res.data.data);
         setContents(res.data.data);

@@ -14,7 +14,7 @@ function NoticeBoard(props) {
 
   const loadPage = () => {
     axios
-      .get(`${process.env.REACT_APP_TEST_URL}/board/notice/main`, {
+      .get(`${process.env.REACT_APP_URL}/board/notice/main`, {
         params: { page: 0 },
       })
       .then((res) => {
