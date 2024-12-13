@@ -37,7 +37,7 @@ const SelectSummary = ({ selectOptions, search, total, searchState }) => {
               "검색하기"
             )}
           </button>
-          <p className="font-bold text-xl">총 금액 : {total} G</p>
+          <p className="font-bold text-xl">총 금액 : {total.toLocaleString()} G</p>
         </div>
         <div className="w-[15%] flex flex-col justify-center items-center">
           <h3>선택 사항 요약</h3>

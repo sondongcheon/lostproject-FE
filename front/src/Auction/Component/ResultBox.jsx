@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 const ResultBox = ({ number, result, option, onClick, className }) => {
   // 특정 이름 목록
   const [percentageOptions, setPercentageOptions] = useState([]);
+  const [price, setPrice] = useState(0);
 
   const specialOptions = [
     "추가 피해",
@@ -20,7 +21,10 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
   ];
 
   useEffect(() => {
-    console.log("dddmd", option.optionValue.first);
+    setPrice(result?.auctionInfo?.buyPrice || "0");
+  }, [result]);
+
+  useEffect(() => {
     if (["41", "45", "49"].includes(option.optionValue.first)) {
       setPercentageOptions([
         "추가 피해",
@@ -168,7 +172,7 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
         <div className="col-span-2 ">
           <div className="grid grid-rows-4">
             <div>
-              <span className="font-bold">가격 - {result?.auctionInfo?.buyPrice || "0"} G</span>
+              <span className="font-bold">가격 - {price.toLocaleString()} G</span>
             </div>
             <div>
               {result?.options[1] && (
