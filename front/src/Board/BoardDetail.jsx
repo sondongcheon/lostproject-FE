@@ -15,7 +15,7 @@ function BoardDetail(props) {
   const loadPage = () => {
     console.log("dd");
     axios
-      .get(`${process.env.REACT_APP_TEST_URL}/board/notice/content`, {
+      .get(`${process.env.REACT_APP_URL}/board/notice/content`, {
         params: { id },
       })
       .then((res) => {

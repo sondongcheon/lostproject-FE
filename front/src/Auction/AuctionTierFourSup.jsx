@@ -322,13 +322,14 @@ function AuctionTierFourSup(props) {
       {/* <button className="normalBtm" onClick={() => check()}>
         dfsfdsa
       </button> */}
-      <HeadKeyBox
-        apiKey={apiKey}
-        setApiKey={setApiKey}
-        saveKey={saveKey}
-        setSaveKey={setSaveKey}
-      ></HeadKeyBox>
-
+      <div className="mb-4">
+        <HeadKeyBox
+          apiKey={apiKey}
+          setApiKey={setApiKey}
+          saveKey={saveKey}
+          setSaveKey={setSaveKey}
+        ></HeadKeyBox>
+      </div>
       <div className="grid grid-cols-2 gap-x-4 gap-y-4">
         <div>
           <AllSelectPresetComp updateSet={updateSet} type={1}></AllSelectPresetComp>

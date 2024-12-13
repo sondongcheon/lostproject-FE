@@ -32,7 +32,7 @@ function MiniBoard(props) {
 
   const sendText = () => {
     axios
-      .post(`${process.env.REACT_APP_TEST_URL}/board/mini`, text)
+      .post(`${process.env.REACT_APP_URL}/board/mini`, text)
       .then(() => {})
       .catch((error) => {
         console.error(error);

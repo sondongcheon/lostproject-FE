@@ -9,7 +9,7 @@ function MainNav(props) {
         <div className="container mx-auto px-2 py-1 flex justify-between items-center h-full text-[#2b2b2b] font-bold">
           {/* 왼쪽에 'test' 홈페이지 링크 */}
           <h1 className="text-3xl cursor-pointer text-white" onClick={() => navigate("/")}>
-            LostRoot
+            LoaRoot
           </h1>
 
           {/* 오른쪽에 페이지 이동 공간 잡기 */}
