@@ -120,6 +120,10 @@ const GlobalStyles = createGlobalStyle`
     font-family: "Pretendard";
   }
 
+  .font-a {
+  font-family: "SF_HambakSnow";
+  }
+
   .mainbody {
     
     width: 70%;
