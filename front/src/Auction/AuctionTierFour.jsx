@@ -217,7 +217,7 @@ function AuctionTierFour(props) {
       if (saveKey) Cookies.set("apiKey", apiKey, { expires: 89, secure: true, sameSite: "Strict" });
       else Cookies.remove("apiKey");
       axios
-        .post(`${process.env.REACT_APP_TEST_URL}/auction/test5`, selectOptionReq, {
+        .post(`${process.env.REACT_APP_URL}/auction/test5`, selectOptionReq, {
           headers: { apiKey: apiKey },
           params: { type: 0 },
         })
