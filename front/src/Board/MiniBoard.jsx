@@ -15,7 +15,7 @@ function MiniBoard(props) {
   };
 
   const formatDate = (dateString) => {
-    return format(new Date(dateString), "yyyy-MM-dd HH:mm");
+    return format(new Date(dateString), "yy-MM-dd HH:mm");
   };
 
   const loadPage = () => {
@@ -68,18 +68,21 @@ function MiniBoard(props) {
         </div>
         <div className="flex justify-center items-center mt-4">
           <div className="w-4/5 overflow-x-auto">
-            <table className="border-collapse border border-gray-300 w-full text-center">
-              <thead className="bg-gray-100">
+            <table className="border-collapse border-t border-b border-gray-300 w-full text-center">
+              <thead className="bg-[#b2ddad]">
                 <tr>
-                  <th className="p-4 ">번호</th>
-                  <th className="p-4 w-1/4">내용</th>
-                  <th className="p-4 ">글쓴이</th>
-                  <th className="p-4 ">등록일</th>
+                  <th className="p-4 w-1/10">번호</th>
+                  <th className="p-4 w-1/2">내용</th>
+                  <th className="p-4 w-1/5">글쓴이</th>
+                  <th className="p-4 w-1/5">등록일</th>
                 </tr>
               </thead>
               <tbody>
                 {contents.map((content, index) => (
-                  <tr key={index} className="hover:bg-gray-50">
+                  <tr
+                    key={index}
+                    className={`hover:bg-gray-50 ${index % 2 === 0 ? "bg-gray-100" : null}`}
+                  >
                     <td className="p-4 ">{content.number}</td>
                     <td className="p-4 text-left">{content.content}</td>
                     <td className="p-4 ">{content.unknown}</td>
