@@ -217,7 +217,7 @@ function AuctionTierFour(props) {
       if (saveKey) Cookies.set("apiKey", apiKey, { expires: 89, secure: true, sameSite: "Strict" });
       else Cookies.remove("apiKey");
       axios
-        .post(`${process.env.REACT_APP_URL}/auction/test5`, selectOptionReq, {
+        .post(`${process.env.REACT_APP_TEST_URL}/auction/test5`, selectOptionReq, {
           headers: { apiKey: apiKey },
           params: { type: 0 },
         })
@@ -235,6 +235,18 @@ function AuctionTierFour(props) {
                 html: "API 분당 요청 횟수 100회를 초과하였습니다 <br /> 60초 뒤에 시도해주세요",
                 confirmButtonText: "확인",
               });
+            } else if (error.response.data.code === "API-002") {
+              return Swal.fire({
+                icon: "warning",
+                html: "API 키가 올바르지 않습니다. <br /> 다시 확인해주세요.",
+                confirmButtonText: "확인",
+              });
+            } else if (error.response.data.code === "API-003") {
+              return Swal.fire({
+                icon: "warning",
+                html: "검색 옵션 선택에 문제가 있습니다. <br /> 다시 확인하거나, 문제가 없을경우 관리자에게 전달해주세요.",
+                confirmButtonText: "확인",
+              });
             } else {
               return Swal.fire({
                 icon: "warning",
@@ -247,7 +259,11 @@ function AuctionTierFour(props) {
 
           return handleError().then(() => {
             // 60초 대기
-            return new Promise((resolve) => setTimeout(resolve, 60000));
+            if (error.response.data.code === "API-001") {
+              return new Promise((resolve) => setTimeout(resolve, 60000));
+            } else {
+              return new Promise((resolve) => setTimeout(resolve, 5000));
+            }
           });
         })
         .finally(() => {
@@ -324,13 +340,15 @@ function AuctionTierFour(props) {
       {/* <button className="normalBtm" onClick={() => check()}>
         dfsfdsa
       </button> */}
+      <div className="mb-4">
+        <HeadKeyBox
+          apiKey={apiKey}
+          setApiKey={setApiKey}
+          saveKey={saveKey}
+          setSaveKey={setSaveKey}
+        ></HeadKeyBox>
+      </div>
 
-      <HeadKeyBox
-        apiKey={apiKey}
-        setApiKey={setApiKey}
-        saveKey={saveKey}
-        setSaveKey={setSaveKey}
-      ></HeadKeyBox>
       <div className="grid grid-cols-2 gap-x-4 gap-y-4">
         <div>
           <AllSelectPresetComp updateSet={updateSet} type={0}></AllSelectPresetComp>
