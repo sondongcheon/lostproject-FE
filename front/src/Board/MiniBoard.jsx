@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { format } from "date-fns";
+import Swal from "sweetalert2";
 
 function MiniBoard(props) {
   const [contents, setContents] = useState([]);
@@ -22,7 +23,6 @@ function MiniBoard(props) {
     axios
       .get(`${process.env.REACT_APP_URL}/board/mini`)
       .then((res) => {
-        console.log(res.data.data);
         setContents(res.data.data);
       })
       .catch((error) => {
@@ -31,16 +31,24 @@ function MiniBoard(props) {
   };
 
   const sendText = () => {
-    axios
-      .post(`${process.env.REACT_APP_URL}/board/mini`, text)
-      .then(() => {})
-      .catch((error) => {
-        console.error(error);
-      })
-      .finally(() => {
-        loadPage();
-        setText({ content: "" });
+    if (text.content.length > 2) {
+      axios
+        .post(`${process.env.REACT_APP_URL}/board/mini`, text)
+        .then(() => {})
+        .catch((error) => {
+          console.error(error);
+        })
+        .finally(() => {
+          loadPage();
+          setText({ content: "" });
+        });
+    } else {
+      Swal.fire({
+        icon: "warning",
+        html: "내용을 입력해주세요.",
+        confirmButtonText: "확인",
       });
+    }
   };
 
   useEffect(() => {
@@ -81,7 +89,7 @@ function MiniBoard(props) {
                 {contents.map((content, index) => (
                   <tr
                     key={index}
-                    className={`hover:bg-gray-50 ${index % 2 === 0 ? "bg-gray-100" : null}`}
+                    className={`hover:bg-gray-50 ${index % 2 === 0 ? "bg-[#e3e2d5]" : null}`}
                   >
                     <td className="p-4 ">{content.number}</td>
                     <td className="p-4 text-left">{content.content}</td>
