@@ -50,19 +50,23 @@ function MiniBoard(props) {
   return (
     <div>
       <div className="mainbody">
-        <div className="w-4/5 mx-auto flex justify-center items-center">
-          <span>입력하기</span>
+        <div className="w-4/5 mx-auto pt-10 pb-10">
+          <span className="text-[52px] font-bold ">유저 코멘트</span>
+        </div>
+        <div className="w-4/5 mx-auto flex justify-center items-center gap-x-4">
           <input
             type="text"
+            className="w-[90%] h-8"
+            placeholder=" 버그나 신경 쓰이는 부분 혹은 원하는 추가기능을 코멘트를 남겨주세요"
             value={text.content}
             onChange={(e) => updateText("content", e.target.value)}
           />
-          <button className="normalBtm" onClick={sendText}>
+          <button className="h-10 bg-[#40AC8D] resetBtm" onClick={sendText}>
             {" "}
-            전송하기
+            글쓰기
           </button>
         </div>
-        <div className="flex justify-center items-center ">
+        <div className="flex justify-center items-center mt-4">
           <div className="w-4/5 overflow-x-auto">
             <table className="border-collapse border border-gray-300 w-full text-center">
               <thead className="bg-gray-100">

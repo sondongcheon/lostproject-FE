@@ -35,7 +35,11 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
 
   return (
     <div>
-      <div className="h-44 flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5]">
+      <div
+        className={`h-44 flex shadow-lg bg-[#F5F5F5] border-2 rounded-3xl ${
+          options.categoryCode === 200000 ? "border-red-500" : null
+        }`}
+      >
         {/* 왼쪽 고정 크기 영역 */}
         <div className="w-20 flex flex-col justify-center items-center border-black">
           <p className="font-bold ">{options.categoryCode === 200000 ? "" : options.accName}</p>
@@ -45,7 +49,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
             }`}
             onClick={handleCategoryCode}
           >
-            매물추적 <br />
+            특수추적 <br />
             {options.categoryCode === 200000 ? "제거" : "추가"}
           </button>
         </div>
@@ -241,7 +245,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   {/* 옵션이 200000일 경우만 덮기 */}
                   {options.categoryCode === 200000 && (
                     <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center m-1">
-                      <p className="text-sm text-gray-500">등급만 선택 합니다</p>
+                      <p className="text-sm text-red-500 font-bold">등급만 선택 합니다</p>
                     </div>
                   )}
                   <form className="grid grid-cols-3 justify-items-center pr-2">
@@ -360,7 +364,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   {/* 옵션이 200000일 경우만 덮기 */}
                   {options.categoryCode === 200000 && (
                     <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center  m-1">
-                      <p className="text-sm text-gray-500">등급만 선택합니다</p>
+                      <p className="text-sm text-red-500 font-bold">등급만 선택 합니다</p>
                     </div>
                   )}
                   <form className="grid grid-cols-3 justify-items-center pr-2">
