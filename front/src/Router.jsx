@@ -8,19 +8,37 @@ import NoticeBoard from "./Board/NoticeBoard.jsx";
 import BoardDetail from "./Board/BoardDetail.jsx";
 import MiniBoard from "./Board/MiniBoard.jsx";
 
+import TestFour from "./Main/TestFour.jsx";
+import { useState } from "react";
+import axios from "axios";
+
 function Router() {
+  const [logSearch, setLogSearch] = useState([]);
+
+  const getCountLog = () => {
+    axios
+      .get(`${process.env.REACT_APP_URL}/log/search`)
+      .then((res) => {
+        setLogSearch(res.data.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <BrowserRouter>
-      <MainNav />
+      <MainNav logSearch={logSearch} getCountLog={getCountLog} />
       <Routes>
-        <Route path="/" element={<AuctionTierFour />}></Route>
+        <Route path="/" element={<AuctionTierFour getCountLog={getCountLog} />} />
+        <Route path="/auctiontier4" element={<AuctionTierFour getCountLog={getCountLog} />} />
+        <Route path="/auctiontier4sup" element={<AuctionTierFourSup getCountLog={getCountLog} />} />
+        <Route path="/usebasicinfo" element={<UseBasicInfo />} />
+        <Route path="/notice" element={<NoticeBoard />} />
+        <Route path="/notice/:id" element={<BoardDetail />} />
+        <Route path="/mini" element={<MiniBoard />} />
 
-        <Route path="/auctiontier4" element={<AuctionTierFour />}></Route>
-        <Route path="/auctiontier4sup" element={<AuctionTierFourSup />}></Route>
-        <Route path="/usebasicinfo" element={<UseBasicInfo />}></Route>
-        <Route path="/notice" element={<NoticeBoard />}></Route>
-        <Route path="/notice/:id" element={<BoardDetail />}></Route>
-        <Route path="/mini" element={<MiniBoard />}></Route>
+        <Route path="/test4" element={<TestFour />} />
       </Routes>
     </BrowserRouter>
   );

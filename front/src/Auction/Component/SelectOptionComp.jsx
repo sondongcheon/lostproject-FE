@@ -1,7 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import SelectBox from "../../common/Component/SelectBox";
 
 const SelectOptionComp = ({ options, onOptionsChange }) => {
   const [currentOption, setCurrentOption] = useState({});
+
+  const [optionProps, setOptionProps] = useState([]);
+
+  useEffect(() => {
+    if (["41", "45", "49"].includes(options.optionValue.first)) {
+      setOptionProps([
+        { value: "53", content: "공격력+" },
+        { value: "54", content: "무기공격력+" },
+        { value: "55", content: "최대생명력+" },
+        { value: "56", content: "최대마나+" },
+      ]);
+    } else if (["43", "47", "51"].includes(options.optionValue.first)) {
+      setOptionProps([
+        { value: "53", content: "공격력+" },
+        { value: "46", content: "무기공격력%" },
+        { value: "54", content: "무기공격력+" },
+        { value: "55", content: "최대생명력+" },
+        { value: "56", content: "최대마나+" },
+      ]);
+    }
+  }, [options.optionValue.first]);
 
   const updateOption = (key, value) => {
     setCurrentOption((prevState) => ({
@@ -468,71 +491,40 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
               </div>
             </div>
             <div className="grid grid-cols-2 relative">
-              {/* 전체를 덮는 미구현 메시지 */}
+              {/* 전체를 덮는 미구현 메시지
               <div className="absolute inset-0 bg-gray-200 bg-opacity-90 text-gray-500 text-sm flex justify-center items-center z-10 rounded-3xl">
                 현재 미구현, 특수 옵션 2개만 활용합니다. 공용 옵션 선택 추가 예정
-              </div>
+              </div> */}
+
+              {/* 옵션이 200000일 경우만 덮기 */}
+              {options.categoryCode === 200000 && (
+                <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center rounded-3xl m-1">
+                  <p className="text-sm text-red-500 font-bold">특옵만 선택합니다</p>
+                </div>
+              )}
 
               {/* 왼쪽 "연마효과" 그룹 */}
               <div className="border-gray-300 flex items-center justify-center ">
                 <div className="w-[25%] flex justify-center">
-                  <p className="text-sm pl-2">연마</p>
+                  <p className="text-sm pl-2 font-bold">공용옵</p>
                 </div>
                 <div className="w-[75%]  justify-center items-center relative">
-                  <form className="grid grid-cols-3 justify-items-center pr-2">
-                    <label>
-                      <input
-                        type="radio"
-                        name={`${options.id}selectOption3`}
-                        value={options.optionValue.first}
-                        checked={options.selectOption3 === options.optionValue.first}
-                        disabled={options.selectOption3 === options.optionValue.first}
-                        onChange={(e) => onOptionsChange("selectOption3", e.target.value)}
-                      />
-                      <span className="text-xs">{options.optionName.first}</span>
-                    </label>
-
-                    <label>
-                      <input
-                        type="radio"
-                        name={`${options.id}selectOption3`}
-                        value={options.optionValue.second}
-                        checked={options.selectOption3 === options.optionValue.second}
-                        disabled={options.selectOption3 === options.optionValue.second}
-                        onChange={(e) => onOptionsChange("selectOption3", e.target.value)}
-                      />
-                      <span className="text-xs">{options.optionName.second}</span>
-                    </label>
-
-                    {/* <label>
-                      <input
-                        type="radio"
-                        name={`${options.id}selectOption3`}
-                        value={options.optionValue.third}
-                        checked={options.selectOption3 === options.optionValue.third}
-                        onChange={(e) => onOptionsChange("selectOption3", e.target.value)}
-                      />
-                      {options.optionName.third}
-                    </label> */}
-
-                    <label>
-                      <input
-                        type="radio"
-                        name={`${options.id}selectOption3`}
-                        value={null}
-                        checked={options.selectOption3 === null}
-                        onChange={() => onOptionsChange("selectOption3", null)}
-                      />
-                      <span className="text-xs">미선택</span>
-                    </label>
-                  </form>
+                  <div className="flex justify-center items-center">
+                    <SelectBox
+                      props={optionProps}
+                      value={options.selectOption3}
+                      name="selectOption3"
+                      onOptionsChange={onOptionsChange}
+                      css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5]"
+                    />
+                  </div>
                 </div>
               </div>
 
               {/* 오른쪽 "등급" 그룹 */}
               <div className="border-gray-300 flex items-center justify-center border-l-2">
                 <div className="w-[20%] flex justify-center">
-                  <p className="text-sm">등급</p>
+                  <p className="text-sm font-bold">등급</p>
                 </div>
                 <div className="w-[80%]  flex gap-2 justify-center items-center pr-4">
                   <label className="flex items-center">

@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function MainNav(props) {
+function MainNav({ logSearch, getCountLog }) {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getCountLog();
+  }, []);
+
   return (
     <div>
       <div className="h-16 fixed top-0 left-0 w-full bg-gradient-to-r from-[#2384bc] to-[#b2ddad] shadow-md z-50">
-        <div className="container mx-auto px-2 py-1 flex justify-between items-center h-full text-[#2b2b2b] font-bold">
+        <div className="container mx-auto px-2 py-1 flex justify-between items-center h-full text-[#2b2b2b] font-bold ">
           {/* 왼쪽에 'test' 홈페이지 링크 */}
-          <h1 className="text-3xl cursor-pointer text-white font-a" onClick={() => navigate("/")}>
-            LoaRoot
-          </h1>
+          <span className="text-3xl cursor-pointer text-white font-a" onClick={() => navigate("/")}>
+            LoaRoot <span className="text-xs">[beta 1.1]</span>
+          </span>
 
           {/* 오른쪽에 페이지 이동 공간 잡기 */}
           <div className="flex gap-10">
@@ -48,6 +53,10 @@ function MainNav(props) {
               유저 코멘트
             </div>
           </div>
+        </div>
+        <div className="container mx-auto px-28 py-4 flex justify-end h-full text-[#6b6b6b] text-sm font-a gap-x-10">
+          <span>TodaySearch : {logSearch[1]} </span>
+          <span>TotalSearch : {logSearch[0]}</span>
         </div>
       </div>
     </div>

@@ -128,7 +128,7 @@ const GlobalStyles = createGlobalStyle`
     
     width: 70%;
     margin: 0 auto;
-    margin-top: 80px;
+    margin-top: 110px;
   }
 
 //   ol,

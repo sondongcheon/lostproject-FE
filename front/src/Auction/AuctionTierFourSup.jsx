@@ -9,7 +9,7 @@ import SelectOptionComp from "./Component/SelectOptionComp";
 import SelectSummary from "./Component/SelectSummary";
 import ResultBox from "./Component/ResultBox";
 
-function AuctionTierFourSup(props) {
+function AuctionTierFourSup({ getCountLog }) {
   const [selectOption1, setSelectOption1] = useState({
     id: 1,
     accName: "목걸이",
@@ -214,29 +214,17 @@ function AuctionTierFourSup(props) {
         })
         .catch((error) => {
           const handleError = () => {
-            if (error.response.data.code === "API-001") {
+            if (error.response.data.code.includes("API-")) {
               return Swal.fire({
                 icon: "warning",
-                html: "API 분당 요청 횟수 100회를 초과하였습니다 <br /> 60초 뒤에 시도해주세요",
-                confirmButtonText: "확인",
-              });
-            } else if (error.response.data.code === "API-002") {
-              return Swal.fire({
-                icon: "warning",
-                html: "API 키가 올바르지 않습니다. <br /> 다시 확인해주세요.",
-                confirmButtonText: "확인",
-              });
-            } else if (error.response.data.code === "API-003") {
-              return Swal.fire({
-                icon: "warning",
-                html: "검색 옵션 선택에 문제가 있습니다. <br /> 다시 확인하거나, 문제가 없을경우 관리자에게 전달해주세요.",
+                html: error.response.data.message,
                 confirmButtonText: "확인",
               });
             } else {
               return Swal.fire({
                 icon: "warning",
                 title: "예측되지 못한 오류입니다.",
-                text: error.response.data.message,
+                html: error.response.data.message,
                 confirmButtonText: "확인",
               });
             }
@@ -253,6 +241,7 @@ function AuctionTierFourSup(props) {
         })
         .finally(() => {
           setSearchState(false);
+          getCountLog();
         });
     }
   }, [selectOptionReq]); // selectOptionReq가 변경될 때마다 실행
