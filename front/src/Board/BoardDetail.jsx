@@ -3,8 +3,11 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 
+import BoardContent from "./Component/BoardContent";
+
 function BoardDetail(props) {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const formatDate = (dateString) => {
     return format(new Date(dateString), "yyyy-MM-dd HH:mm");
@@ -45,7 +48,14 @@ function BoardDetail(props) {
                 </tr>
               </thead>
             </table>
-            <div className="h-full flex justify-center items-center">{contents?.content || ""}</div>
+            <div className="mt-4">
+              <BoardContent content={contents?.content}></BoardContent>
+            </div>
+            <div className="mt-4">
+              <button className="normalBtm" onClick={() => navigate("/notice")}>
+                목록으로
+              </button>
+            </div>
           </div>
         </div>
       </div>

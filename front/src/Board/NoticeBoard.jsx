@@ -38,7 +38,7 @@ function NoticeBoard(props) {
               <tr>
                 <th className="p-4 ">번호</th>
                 <th className="p-4 ">카테고리</th>
-                <th className="p-4 ">제목</th>
+                <th className="p-4 w-1/2 ">제목</th>
                 <th className="p-4 ">글쓴이</th>
                 <th className="p-4 ">등록일</th>
               </tr>
@@ -52,7 +52,7 @@ function NoticeBoard(props) {
                 >
                   <td className="p-4 ">{content.number}</td>
                   <td className="p-4 ">{content.category || "미분류"}</td>
-                  <td className="p-4 ">{content.title}</td>
+                  <td className="p-4 text-left">{content.title}</td>
                   <td className="p-4 ">{content.writer}</td>
                   <td className="p-4 ">{formatDate(content.createAt)}</td>
                 </tr>

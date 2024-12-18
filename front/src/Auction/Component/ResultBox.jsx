@@ -38,6 +38,7 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
       setPercentageOptions([
         "세레나데, 신성, 조화 게이지 획득량 증가",
         "낙인력",
+        "무기 공격력 ",
         "파티원 회복 효과",
         "파티원 보호막 효과",
         "아군 공격력 강화 효과",
@@ -92,6 +93,12 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
         if (value === 2.15) return "하";
         if (value === 4.8) return "중";
         if (value === 8) return "상";
+        return "";
+      }
+      if (optionName === "무기 공격력 ") {
+        if (value === 0.8) return "하";
+        if (value === 1.8) return "중";
+        if (value === 3) return "상";
         return "";
       }
       if (optionName === "파티원 회복 효과") {
