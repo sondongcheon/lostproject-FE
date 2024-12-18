@@ -54,7 +54,7 @@ function MainNav({ logSearch, getCountLog }) {
             </div>
           </div>
         </div>
-        <div className="container mx-auto px-28 py-4 flex justify-end h-full text-[#6b6b6b] text-sm font-a gap-x-10">
+        <div className="container mx-auto px-28 py-4 flex justify-end h-full text-[#191919] text-sm font-a gap-x-10">
           <span>TodaySearch : {logSearch[1]} </span>
           <span>TotalSearch : {logSearch[0]}</span>
         </div>
