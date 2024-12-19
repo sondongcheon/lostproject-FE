@@ -8,7 +8,7 @@ const SelectBox = ({ props, value, name, onOptionsChange, css }) => {
         onChange={(e) => onOptionsChange(name, e.target.value)}
         className={css}
       >
-        <option value={null}>옵션선택</option>
+        <option value="">옵션선택</option>
         {props.map((option) => (
           <option value={option.value}>{option.content}</option>
         ))}
