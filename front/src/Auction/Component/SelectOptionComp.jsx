@@ -497,11 +497,11 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
               </div> */}
 
               {/* 옵션이 200000일 경우만 덮기 */}
-              {options.categoryCode === 200000 && (
+              {/* {options.categoryCode === 200000 && (
                 <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center rounded-3xl m-1">
                   <p className="text-sm text-red-500 font-bold">특옵만 선택합니다</p>
                 </div>
-              )}
+              )} */}
 
               {/* 왼쪽 "연마효과" 그룹 */}
               <div className="border-gray-300 flex items-center justify-center ">

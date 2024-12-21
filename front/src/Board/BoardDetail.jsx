@@ -16,13 +16,11 @@ function BoardDetail(props) {
   const [contents, setContents] = useState(null);
 
   const loadPage = () => {
-    console.log("dd");
     axios
       .get(`${process.env.REACT_APP_URL}/board/notice/content`, {
         params: { id },
       })
       .then((res) => {
-        console.log(res.data.data);
         setContents(res.data.data);
       })
       .catch((error) => {
