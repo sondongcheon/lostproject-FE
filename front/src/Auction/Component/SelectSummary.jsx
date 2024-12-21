@@ -6,11 +6,22 @@ const SelectSummary = ({ selectOptions, search, total, searchState }) => {
 
   const category200000Text = category200000.map((option) => `${option.accName}`).join(", ");
 
+  const valueFilter = (value) => {
+    if( value === "3") {
+      return "상";
+    } else if (value === "2") {
+      return "중"
+    } else if (value === "1") {
+      return "하"
+    } else {
+      return "미선택"
+    }
+  }
   const category = category200000
     .map(
       (option) =>
-        `[${option.selectValue1 == null ? "미선택" : option.selectValue1}, ${
-          option.selectValue2 == null ? "미선택" : option.selectValue2
+        `[${option.selectValue1 == null ? "미선택" : valueFilter(option.selectValue1)}, ${
+          option.selectValue2 == null ? "미선택" : valueFilter(option.selectValue2)
         }]등급`
     )
     .join(", ");
