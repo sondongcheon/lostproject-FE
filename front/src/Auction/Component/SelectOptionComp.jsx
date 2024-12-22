@@ -82,11 +82,36 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
           {/* 3 영역: 세로로 4칸, 각 칸을 3:7로 나누기 */}
           <div className="flex-[7] grid grid-rows-4">
             <div className="grid grid-cols-4">
-              <div className="font-bold col-span-1 border-b-2 border-gray-300 flex items-center justify-center">
-                등급
+              <div
+                className="font-bold col-span-1 border-b-2 border-gray-300 flex items-center justify-center text-center text-xs"
+                onClick={() => {
+                  onOptionsChange("tier", `${options.tier}` === "3" ? "4" : "3");
+                  if (options.itemGrade === "전설") {
+                    onOptionsChange("itemGrade", "");
+                  }
+                }}
+              >
+                {options.tier}T
+                <br />
+                (click!)
               </div>
               <div className="col-span-3 border-b-2 border-gray-300 flex items-center justify-center">
-                <form className="grid grid-cols-2 gap-10">
+                <form
+                  className={`grid ${
+                    options.tier === "3" ? "grid-cols-3 gap-2" : "grid-cols-2 gap-4"
+                  }`}
+                >
+                  <label className={`${options.tier === "4" ? "hidden" : ""}`}>
+                    <input
+                      type="radio"
+                      name={`${options.id}_itemGrade`}
+                      value="전설"
+                      checked={options.itemGrade === "전설"}
+                      className="mr-1"
+                      onChange={(e) => onOptionsChange("itemGrade", e.target.value)}
+                    />
+                    전설
+                  </label>
                   <label>
                     <input
                       type="radio"

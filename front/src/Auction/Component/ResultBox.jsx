@@ -1,143 +1,21 @@
 import React, { useState, useEffect } from "react";
 
 const ResultBox = ({ number, result, option, onClick, className }) => {
-  // 특정 이름 목록
-  const [percentageOptions, setPercentageOptions] = useState([]);
   const [price, setPrice] = useState(0);
-
-  const specialOptions = [
-    "추가 피해",
-    "적에게 주는 피해 증가",
-    "공격력 ",
-    "무기 공격력 ",
-    "치명타 적중률",
-    "치명타 피해",
-    "세레나데, 신성, 조화 게이지 획득량 증가",
-    "낙인력",
-    "파티원 회복 효과",
-    "파티원 보호막 효과",
-    "아군 공격력 강화 효과",
-    "아군 피해량 강화 효과",
-  ];
 
   useEffect(() => {
     setPrice(result?.auctionInfo?.buyPrice || "0");
   }, [result]);
 
-  useEffect(() => {
-    if (["41", "45", "49"].includes(option.optionValue.first)) {
-      setPercentageOptions([
-        "추가 피해",
-        "적에게 주는 피해 증가",
-        "공격력 ",
-        "무기 공격력 ",
-        "치명타 적중률",
-        "치명타 피해",
-      ]);
-    } else if (["43", "47", "51"].includes(option.optionValue.first)) {
-      setPercentageOptions([
-        "세레나데, 신성, 조화 게이지 획득량 증가",
-        "낙인력",
-        "무기 공격력 ",
-        "파티원 회복 효과",
-        "파티원 보호막 효과",
-        "아군 공격력 강화 효과",
-        "아군 피해량 강화 효과",
-      ]);
-    }
-  }, [option.optionValue.first]);
-
-  // 상중하 판단 함수
-  const getLevel = (optionName, value) => {
-    if (["41", "45", "49"].includes(option.optionValue.first)) {
-      if (optionName === "추가 피해") {
-        if (value === 0.7) return "하";
-        if (value === 1.6) return "중";
-        return "상";
-      }
-      if (optionName === "적에게 주는 피해 증가") {
-        if (value === 0.55) return "하";
-        if (value === 1.2) return "중";
-        return "상";
-      }
-      if (optionName === "공격력 ") {
-        if (value === 0.4) return "하";
-        if (value === 0.95) return "중";
-        if (value === 1.55) return "상";
-        return "";
-      }
-      if (optionName === "무기 공격력 ") {
-        if (value === 0.8) return "하";
-        if (value === 1.8) return "중";
-        if (value === 3) return "상";
-        return "";
-      }
-      if (optionName === "치명타 적중률") {
-        if (value === 0.4) return "하";
-        if (value === 0.95) return "중";
-        return "상";
-      }
-      if (optionName === "치명타 피해") {
-        if (value === 1.1) return "하";
-        if (value === 2.4) return "중";
-        return "상";
-      }
-    } else if (["43", "47", "51"].includes(option.optionValue.first)) {
-      if (optionName === "세레나데, 신성, 조화 게이지 획득량 증가") {
-        if (value === 1.6) return "하";
-        if (value === 3.6) return "중";
-        if (value === 6) return "상";
-        return "";
-      }
-      if (optionName === "낙인력") {
-        if (value === 2.15) return "하";
-        if (value === 4.8) return "중";
-        if (value === 8) return "상";
-        return "";
-      }
-      if (optionName === "무기 공격력 ") {
-        if (value === 0.8) return "하";
-        if (value === 1.8) return "중";
-        if (value === 3) return "상";
-        return "";
-      }
-      if (optionName === "파티원 회복 효과") {
-        if (value === 0.95) return "하";
-        if (value === 2.1) return "중";
-        if (value === 3.5) return "상";
-        return "";
-      }
-      if (optionName === "파티원 보호막 효과") {
-        if (value === 0.95) return "하";
-        if (value === 2.1) return "중";
-        if (value === 3.5) return "상";
-        return "";
-      }
-      if (optionName === "아군 공격력 강화 효과") {
-        if (value === 1.35) return "하";
-        if (value === 3) return "중";
-        if (value === 5) return "상";
-        return "";
-      }
-      if (optionName === "아군 피해량 강화 효과") {
-        if (value === 2) return "하";
-        if (value === 4.5) return "중";
-        if (value === 7.5) return "상";
-        return "";
-      }
-    }
-    // 기타 옵션은 기본적으로 ""로 처리
-    return "";
-  };
-
   return (
     <div onClick={onClick} className={`pt-4 pb-4 shadow-lg border-2 rounded-3xl ${className}`}>
       <div className="grid grid-cols-10 mx-auto w-[95%] text-sm">
         <div
-          className={`col-span-1 font-bold flex justify-center items-center  pr-4 ${
+          className={`col-span-1 font-bold flex flex-col justify-center items-center  pr-4 ${
             number !== undefined ? "text-3xl" : null
           }`}
         >
+          <img className="" src={result?.icon || ""} />
           {number !== undefined ? `${number + 1}` : option.accName}
         </div>
         <div className="col-span-3">
@@ -153,26 +31,14 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
         </div>
         <div className="col-span-4">
           {result?.options.map((option, index) => {
-            const valueWithPercentage =
-              specialOptions.includes(option.optionName) && option.value < 10
-                ? `${option.value}%`
-                : option.value;
-
             return (
-              <p
-                key={index}
-                className={
-                  percentageOptions.includes(option.optionName) && option.value < 10
-                    ? "font-bold"
-                    : ""
-                }
-              >
+              <span className={`${option.valueGrade === "" ? "" : "font-bold"}`}>
+                {" "}
                 {option.optionName === "세레나데, 신성, 조화 게이지 획득량 증가"
-                  ? "서포터 아덴 게이지 획득량 증가"
-                  : option.optionName || "결과 없음"}{" "}
-                - {valueWithPercentage}
-                {/* {getLevel(option.optionName, option.value)} */}
-              </p>
+                  ? "서포터 아이덴티티 획득량 증가"
+                  : option.optionName}{" "}
+                - {option.value} <br />
+              </span>
             );
           })}
         </div>
@@ -182,65 +48,56 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
               <span className="font-bold">가격 - {price.toLocaleString()} G</span>
             </div>
             <div>
-              {result?.options[1] && (
+              {result?.options[1]?.valueGrade && (
                 <span
-                  className={`rounded-full text-white`}
+                  className={`rounded-full text-white pl-2 pr-2`}
                   style={{
                     backgroundColor: (() => {
-                      const level = getLevel(
-                        result?.options[1]?.optionName,
-                        result?.options[1]?.value
-                      );
-                      if (level === "상") return "#E38E49";
-                      if (level === "중") return "#7E1891";
-                      if (level === "하") return "#0A3981";
+                      if (result?.options[1]?.valueGrade.includes("상")) return "#E38E49";
+                      if (result?.options[1]?.valueGrade.includes("중")) return "#7E1891";
+                      if (result?.options[1]?.valueGrade.includes("하")) return "#0A3981";
                       return "#ffffff"; // 기본값
                     })(),
                   }}
                 >
-                  {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)}
+                  {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
+                  {result?.options[1]?.valueGrade}
                 </span>
               )}
             </div>
             <div>
-              {result?.options[2] && (
+              {result?.options[2]?.valueGrade && (
                 <span
-                  className={`rounded-full text-white`}
+                  className={`rounded-full text-white pl-2 pr-2`}
                   style={{
                     backgroundColor: (() => {
-                      const level = getLevel(
-                        result?.options[2]?.optionName,
-                        result?.options[2]?.value
-                      );
-                      if (level === "상") return "#E38E49";
-                      if (level === "중") return "#7E1891";
-                      if (level === "하") return "#0A3981";
+                      if (result?.options[2]?.valueGrade.includes("상")) return "#E38E49";
+                      if (result?.options[2]?.valueGrade.includes("중")) return "#7E1891";
+                      if (result?.options[2]?.valueGrade.includes("하")) return "#0A3981";
                       return "#ffffff"; // 기본값
                     })(),
                   }}
                 >
-                  {getLevel(result?.options[2]?.optionName, result?.options[2]?.value)}
+                  {/* {getLevel(result?.options[2]?.optionName, result?.options[2]?.value)} */}
+                  {result?.options[2]?.valueGrade}
                 </span>
               )}
             </div>
             <div>
-              {result?.options[3] && (
+              {result?.options[3]?.valueGrade && (
                 <span
-                  className={`rounded-full text-white `}
+                  className={`rounded-full text-white pl-2 pr-2`}
                   style={{
                     backgroundColor: (() => {
-                      const level = getLevel(
-                        result?.options[3]?.optionName,
-                        result?.options[3]?.value
-                      );
-                      if (level === "상") return "#E38E49";
-                      if (level === "중") return "#7E1891";
-                      if (level === "하") return "#0A3981";
+                      if (result?.options[3]?.valueGrade.includes("상")) return "#E38E49";
+                      if (result?.options[3]?.valueGrade.includes("중")) return "#7E1891";
+                      if (result?.options[3]?.valueGrade.includes("하")) return "#0A3981";
                       return "#ffffff"; // 기본값
                     })(),
                   }}
                 >
-                  {getLevel(result?.options[3]?.optionName, result?.options[3]?.value)}
+                  {/* {getLevel(result?.options[3]?.optionName, result?.options[3]?.value)} */}
+                  {result?.options[3]?.valueGrade || null}
                 </span>
               )}
             </div>
