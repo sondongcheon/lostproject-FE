@@ -49,6 +49,9 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
     setSliderValue(0);
 
     updateSet.forEach((updateOption) => {
+      updateOption("tier", "4");
+    });
+    updateSet.forEach((updateOption) => {
       updateOption("itemGrade", "");
     });
     updateSet.forEach((updateOption) => {

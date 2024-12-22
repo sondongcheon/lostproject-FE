@@ -23,6 +23,7 @@ function AuctionTierFourSup({ getCountLog }) {
       second: "44",
       third: "아무 특옵",
     },
+    tier: "4",
     itemGrade: "",
     quality: null,
     categoryCode: 200010,
@@ -48,6 +49,7 @@ function AuctionTierFourSup({ getCountLog }) {
       second: "48",
       third: "아무 특옵",
     },
+    tier: "4",
     itemGrade: "",
     quality: null,
     categoryCode: 200020,
@@ -73,6 +75,7 @@ function AuctionTierFourSup({ getCountLog }) {
       second: "48",
       third: "아무 특옵",
     },
+    tier: "4",
     itemGrade: "",
     quality: null,
     categoryCode: 200020,
@@ -98,6 +101,7 @@ function AuctionTierFourSup({ getCountLog }) {
       second: "52",
       third: "아무 특옵",
     },
+    tier: "4",
     itemGrade: "",
     quality: null,
     categoryCode: 200030,
@@ -123,6 +127,7 @@ function AuctionTierFourSup({ getCountLog }) {
       second: "52",
       third: "아무 특옵",
     },
+    tier: "4",
     itemGrade: "",
     quality: null,
     categoryCode: 200030,
@@ -248,6 +253,7 @@ function AuctionTierFourSup({ getCountLog }) {
 
   const updateSelect = () => {
     const newSelectOptionReq = options.map((option) => ({
+      tier: option.tier || "",
       quality: option.quality || "",
       upgradeLevel: option.upgradeLevel || "",
       tradeAllowCount: option.tradeAllowCount || "",
