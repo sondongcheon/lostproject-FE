@@ -7,6 +7,7 @@ import UseBasicInfo from "./Information/UseBasicInfo.jsx";
 import NoticeBoard from "./Board/NoticeBoard.jsx";
 import BoardDetail from "./Board/BoardDetail.jsx";
 import MiniBoard from "./Board/MiniBoard.jsx";
+import ChartMain from "./Chart/ChartMain.jsx";
 
 import TestFour from "./Main/TestFour.jsx";
 import { useState } from "react";
@@ -37,6 +38,7 @@ function Router() {
         <Route path="/notice" element={<NoticeBoard />} />
         <Route path="/notice/:id" element={<BoardDetail />} />
         <Route path="/mini" element={<MiniBoard />} />
+        <Route path="/chart" element={<ChartMain />} />
 
         <Route path="/test4" element={<TestFour />} />
       </Routes>
