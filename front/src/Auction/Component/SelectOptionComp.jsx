@@ -536,7 +536,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                 <div className="w-[75%]  justify-center items-center relative">
                   <div className="flex justify-center items-center">
                     <SelectBox
-                      props={optionProps}
+                      options={optionProps}
                       value={options.selectOption3}
                       name="selectOption3"
                       onOptionsChange={onOptionsChange}

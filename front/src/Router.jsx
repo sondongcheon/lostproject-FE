@@ -18,7 +18,7 @@ function Router() {
 
   const getCountLog = () => {
     axios
-      .get(`${process.env.REACT_APP_URL}/log/search`)
+      .get(`${process.env.REACT_APP_URL}/log/1`)
       .then((res) => {
         setLogSearch(res.data.data);
       })
