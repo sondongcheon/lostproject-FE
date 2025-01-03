@@ -1,6 +1,6 @@
 import React from "react";
 
-const SelectBox = ({ props, value, name, onOptionsChange, css }) => {
+const SelectBox = ({ options, value, name, onOptionsChange, css }) => {
   return (
     <div>
       <select
@@ -9,7 +9,7 @@ const SelectBox = ({ props, value, name, onOptionsChange, css }) => {
         className={css}
       >
         <option value="">옵션선택</option>
-        {props.map((option) => (
+        {options.map((option) => (
           <option value={option.value}>{option.content}</option>
         ))}
       </select>

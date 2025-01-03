@@ -133,6 +133,11 @@ const GlobalStyles = createGlobalStyle`
     margin: 0 auto;
     margin-top: 110px;
   }
+    
+  .mainMobileBody {
+    margin: 0 auto;
+    margin-top: 110px;
+  }
 
 //   ol,
 //   ul {
