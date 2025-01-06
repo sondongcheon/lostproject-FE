@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const SelectSideBar = ({ setSelectCategory, setSelectGrade, setSelectCustom }) => {
+const SelectSideBar = ({
+  setSelectCategory,
+  setSelectGrade,
+  setSelectCustom,
+}) => {
   const [logSearch, setLogSearch] = useState([]);
 
   const getCountLog = () => {
@@ -20,12 +24,19 @@ const SelectSideBar = ({ setSelectCategory, setSelectGrade, setSelectCustom }) =
   }, []);
 
   return (
-    <div>
-      <div className="bg-white">
-        <p className="text-center"> 오늘의 차트 방문자 - {logSearch[0]}</p>
-        <p className="text-center"> 누적 차트 방문자 - {logSearch[1]}</p>
+    <div className="h-full">
+      <div className="border-2 border-gray-500 rounded-xl p-8 sticky top-32">
+        <p className="text-center text-xs">
+          {" "}
+          오늘의 차트 방문자 - {logSearch[0]}
+        </p>
+        <p className="text-center text-xs">
+          {" "}
+          누적 차트 방문자 - {logSearch[1]}
+        </p>
         <br />
         <li
+          className="commonHover"
           onClick={() => {
             setSelectCategory("neck");
             setSelectGrade("godae");
@@ -35,6 +46,7 @@ const SelectSideBar = ({ setSelectCategory, setSelectGrade, setSelectCustom }) =
           고대 목걸이
         </li>
         <li
+          className="commonHover"
           onClick={() => {
             setSelectCategory("earing");
             setSelectGrade("godae");
@@ -44,6 +56,7 @@ const SelectSideBar = ({ setSelectCategory, setSelectGrade, setSelectCustom }) =
           고대 귀걸이
         </li>
         <li
+          className="commonHover"
           onClick={() => {
             setSelectCategory("ring");
             setSelectGrade("godae");
@@ -54,6 +67,7 @@ const SelectSideBar = ({ setSelectCategory, setSelectGrade, setSelectCustom }) =
         </li>
         <br />
         <li
+          className="commonHover"
           onClick={() => {
             setSelectCategory("neck");
             setSelectGrade("umuoel");
@@ -63,6 +77,7 @@ const SelectSideBar = ({ setSelectCategory, setSelectGrade, setSelectCustom }) =
           유물 목걸이
         </li>
         <li
+          className="commonHover"
           onClick={() => {
             setSelectCategory("earing");
             setSelectGrade("umuoel");
@@ -72,6 +87,7 @@ const SelectSideBar = ({ setSelectCategory, setSelectGrade, setSelectCustom }) =
           유물 귀걸이
         </li>
         <li
+          className="commonHover"
           onClick={() => {
             setSelectCategory("ring");
             setSelectGrade("umuoel");
@@ -83,6 +99,7 @@ const SelectSideBar = ({ setSelectCategory, setSelectGrade, setSelectCustom }) =
 
         <br />
         <li
+          className="commonHover"
           onClick={() => {
             // setSelectCategory("ring");
             //   setSelectGrade("umuoel");
