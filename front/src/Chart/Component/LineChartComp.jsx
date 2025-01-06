@@ -65,32 +65,47 @@ const LineChartComp = ({ category, grade, value, value2, name }) => {
 
   return (
     <div>
-      <div className="border-b-2 border-red-200">
-        <h2 className="text-center">{info}</h2>
-        <ResponsiveContainer width="100%" height={200}>
-          <LineChart
-            data={data}
-            margin={{
-              top: 5,
-              right: 50,
-              left: 40,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="time" className="text-xs" />
-            <YAxis />
-            <Tooltip formatter={(name) => [`${name.toLocaleString()} Gold`]} />
-            <Line
-              type="monotone"
-              dataKey="buyPrice"
-              stroke="#8884d8"
-              strokeWidth={2}
-              dot={{ r: 5 }}
-              activeDot={{ r: 8 }}
-            />
-          </LineChart>
-        </ResponsiveContainer>
+      <div className="flex border-b-2 border-red-200">
+        <div className=" w-[80%]">
+          <h2 className="text-center">{info}</h2>
+          <ResponsiveContainer width="100%" height={200}>
+            <LineChart
+              data={data}
+              margin={{
+                top: 5,
+                right: 50,
+                left: 40,
+                bottom: 5,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="time" className="text-xs" />
+              <YAxis tickFormatter={(value) => value.toLocaleString() + "G"} />
+              <Tooltip
+                formatter={(name) => [`${name.toLocaleString()} Gold`]}
+              />
+              <Line
+                type="monotone"
+                dataKey="buyPrice"
+                stroke="#8884d8"
+                strokeWidth={2}
+                dot={{ r: 5 }}
+                activeDot={{ r: 8 }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+        <div className="w-[20%] m-2 p-4 border-2 border-gray-500 rounded-xl h-[200px] text-sm">
+          <p className="text-center">데이터 수집중입니다.</p>
+          <br />
+          <p className="text-right"> 변동 비율</p>
+          <p>월간 평균가 - </p>
+          <p>월간 최저가 - </p>
+          <br />
+          <p>주간 평균가 - </p>
+          <p>주간 최저가 - </p>
+          <br />
+        </div>
       </div>
     </div>
   );

@@ -8,7 +8,9 @@ import CustomChartPage from "./Component/CustomChartPage";
 function ChartMain() {
   const getCountLog = () => {
     axios
-      .get(`${process.env.REACT_APP_URL}/chart/uplog`, { withCredentials: true })
+      .get(`${process.env.REACT_APP_URL}/chart/uplog`, {
+        withCredentials: true,
+      })
       .then(() => {})
       .catch((error) => {
         console.error(error);
@@ -16,7 +18,7 @@ function ChartMain() {
   };
 
   useEffect(() => {
-    getCountLog();
+    // getCountLog();
   }, []);
 
   const [selectCustom, setSelectCustom] = useState(false);
