@@ -18,7 +18,7 @@ function ChartMain() {
   };
 
   useEffect(() => {
-    // getCountLog();
+    getCountLog();
   }, []);
 
   const [selectCustom, setSelectCustom] = useState(false);
