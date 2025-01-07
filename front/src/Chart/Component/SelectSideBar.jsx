@@ -36,64 +36,94 @@ const SelectSideBar = ({
         </p>
         <br />
         <li
-          className="commonHover"
+          className="commonHover flex"
           onClick={() => {
             setSelectCategory("neck");
             setSelectGrade("godae");
             setSelectCustom(false);
           }}
         >
+          <img
+            className="w-8"
+            src="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_215.png"
+            alt=""
+          />
           고대 목걸이
         </li>
         <li
-          className="commonHover"
+          className="commonHover flex"
           onClick={() => {
             setSelectCategory("earing");
             setSelectGrade("godae");
             setSelectCustom(false);
           }}
         >
+          <img
+            className="w-8"
+            src="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_115.png"
+            alt=""
+          />
           고대 귀걸이
         </li>
         <li
-          className="commonHover"
+          className="commonHover flex"
           onClick={() => {
             setSelectCategory("ring");
             setSelectGrade("godae");
             setSelectCustom(false);
           }}
         >
+          <img
+            className="w-8"
+            src="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_22.png"
+            alt=""
+          />
           고대 반지
         </li>
         <br />
         <li
-          className="commonHover"
+          className="commonHover flex"
           onClick={() => {
             setSelectCategory("neck");
             setSelectGrade("umuoel");
             setSelectCustom(false);
           }}
         >
+          <img
+            className="w-8"
+            src="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_217.png"
+            alt=""
+          />
           유물 목걸이
         </li>
         <li
-          className="commonHover"
+          className="commonHover flex"
           onClick={() => {
             setSelectCategory("earing");
             setSelectGrade("umuoel");
             setSelectCustom(false);
           }}
         >
+          <img
+            className="w-8"
+            src="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_117.png"
+            alt=""
+          />
           유물 귀걸이
         </li>
         <li
-          className="commonHover"
+          className="commonHover flex"
           onClick={() => {
             setSelectCategory("ring");
             setSelectGrade("umuoel");
             setSelectCustom(false);
           }}
         >
+          <img
+            className="w-8"
+            src="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_24.png"
+            alt=""
+          />
           유물 반지
         </li>
 
