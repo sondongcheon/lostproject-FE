@@ -220,6 +220,7 @@ const CustomChartPage = () => {
               value={request.box1}
               name="box1"
               onOptionsChange={updateOption}
+              css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5]"
             />
           </div>
           <div>
@@ -229,6 +230,7 @@ const CustomChartPage = () => {
               value={request.box2}
               name="box2"
               onOptionsChange={updateOption}
+              css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5]"
             />
           </div>
           <div>
@@ -238,6 +240,7 @@ const CustomChartPage = () => {
               value={request.box3}
               name="box3"
               onOptionsChange={updateOption}
+              css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5]"
             />
           </div>
           <div>
@@ -247,6 +250,7 @@ const CustomChartPage = () => {
               value={request.box4}
               name="box4"
               onOptionsChange={updateOption}
+              css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5]"
             />
           </div>
           <div>
@@ -256,6 +260,7 @@ const CustomChartPage = () => {
               value={request.box5}
               name="box5"
               onOptionsChange={updateOption}
+              css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5]"
             />
           </div>
           <button className="normalBtm" onClick={search}>
@@ -266,7 +271,7 @@ const CustomChartPage = () => {
         <div className="pt-10">
           <ResponsiveContainer width="100%" height={400}>
             <LineChart
-              data={data}
+              data={data.chartInfoList}
               margin={{
                 top: 5,
                 right: 50,
@@ -276,7 +281,7 @@ const CustomChartPage = () => {
             >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="time" className="text-xs" />
-              <YAxis />
+              <YAxis tickFormatter={(value) => value.toLocaleString() + "G"} />
               <Tooltip formatter={(name) => [`${name.toLocaleString()} Gold`]} />
               <Line
                 type="monotone"
@@ -288,6 +293,13 @@ const CustomChartPage = () => {
               />
             </LineChart>
           </ResponsiveContainer>
+        </div>
+        <div>
+          <p>주간 평균가 : {data?.weeklyAvg?.toLocaleString()} G</p>
+          <p> 변동 비율 : {data?.weeklyAvgP}%</p>
+          <br />
+          <p>주간 최저가 : {data?.weeklyMin?.toLocaleString()} G</p>
+          <p> 변동 비율 : {data?.weeklyMinP}%</p>
         </div>
       </div>
     </div>

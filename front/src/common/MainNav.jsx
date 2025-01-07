@@ -6,7 +6,7 @@ import MenuDropdown from "./Component/MenuDropdown";
 
 function MainNav({ logSearch, getCountLog }) {
   const isMobile = useMediaQuery({
-    query: "(max-width:768px)",
+    query: "(max-width:468px)",
   });
 
   const [isMenuClick, setIsMenuClick] = useState(false);
@@ -53,11 +53,8 @@ function MainNav({ logSearch, getCountLog }) {
       <div className="h-16 fixed top-0 left-0 w-full bg-gradient-to-r from-[#2384bc] to-[#b2ddad] shadow-md z-50">
         <div className="container mx-auto px-2 py-1 flex justify-between items-center h-full text-[#2b2b2b] font-bold ">
           {/* 왼쪽에 'test' 홈페이지 링크 */}
-          <span
-            className="text-3xl cursor-pointer text-white font-a"
-            onClick={() => navigate("/")}
-          >
-            LoaRoot <span className="text-xs">[beta 1.41]</span>
+          <span className="text-3xl cursor-pointer text-white font-a" onClick={() => navigate("/")}>
+            LoaRoot <span className="text-xs">[beta 1.5]</span>
           </span>
 
           {/* 오른쪽에 페이지 이동 공간 잡기 */}
