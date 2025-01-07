@@ -31,9 +31,15 @@ function Router() {
     <BrowserRouter>
       <MainNav logSearch={logSearch} getCountLog={getCountLog} />
       <Routes>
-        <Route path="/" element={<AuctionTierFour getCountLog={getCountLog} />} />
-        <Route path="/auctiontier4" element={<AuctionTierFour getCountLog={getCountLog} />} />
-        <Route path="/auctiontier4sup" element={<AuctionTierFourSup getCountLog={getCountLog} />} />
+        <Route path="/" element={<Main />} />
+        <Route
+          path="/auctiontier4"
+          element={<AuctionTierFour getCountLog={getCountLog} />}
+        />
+        <Route
+          path="/auctiontier4sup"
+          element={<AuctionTierFourSup getCountLog={getCountLog} />}
+        />
         <Route path="/usebasicinfo" element={<UseBasicInfo />} />
         <Route path="/notice" element={<NoticeBoard />} />
         <Route path="/notice/:id" element={<BoardDetail />} />
