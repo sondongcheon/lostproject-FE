@@ -61,7 +61,7 @@ const LineChartComp = ({ category, grade, value, value2, name }) => {
     loadData();
   }, [category, grade]);
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
 
   return (
     <div>
@@ -70,7 +70,7 @@ const LineChartComp = ({ category, grade, value, value2, name }) => {
           <h2 className="text-center">{info}</h2>
           <ResponsiveContainer width="100%" height={200}>
             <LineChart
-              data={data}
+              data={data?.chartInfoList}
               margin={{
                 top: 5,
                 right: 50,
@@ -81,9 +81,7 @@ const LineChartComp = ({ category, grade, value, value2, name }) => {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="time" className="text-xs" />
               <YAxis tickFormatter={(value) => value.toLocaleString() + "G"} />
-              <Tooltip
-                formatter={(name) => [`${name.toLocaleString()} Gold`]}
-              />
+              <Tooltip formatter={(name) => [`${name.toLocaleString()} Gold`]} />
               <Line
                 type="monotone"
                 dataKey="buyPrice"
@@ -95,16 +93,18 @@ const LineChartComp = ({ category, grade, value, value2, name }) => {
             </LineChart>
           </ResponsiveContainer>
         </div>
-        <div className="w-[20%] m-2 p-4 border-2 border-gray-500 rounded-xl h-[200px] text-sm">
-          <p className="text-center">데이터 수집중입니다.</p>
+        <div className="w-[20%] m-2 p-2 border-2 border-gray-500 rounded-xl h-[200px] text-xs">
+          <p>월간 평균가 : {data?.monthAvg?.toLocaleString()} G</p>
+          <p> 변동 비율 : {data?.monthAvgP}%</p>
           <br />
-          <p className="text-right"> 변동 비율</p>
-          <p>월간 평균가 - </p>
-          <p>월간 최저가 - </p>
+          <p>월간 최저가 : {data?.monthMin?.toLocaleString()} G</p>
+          <p> 변동 비율 : {data?.monthMinP}%</p>
           <br />
-          <p>주간 평균가 - </p>
-          <p>주간 최저가 - </p>
+          <p>주간 평균가 : {data?.weeklyAvg?.toLocaleString()} G</p>
+          <p> 변동 비율 : {data?.weeklyAvgP}%</p>
           <br />
+          <p>주간 최저가 : {data?.weeklyMin?.toLocaleString()} G</p>
+          <p> 변동 비율 : {data?.weeklyMinP}%</p>
         </div>
       </div>
     </div>
