@@ -29,38 +29,50 @@ function Main(props) {
       clicklink: "/auctiontier4sup",
     },
     {
-      imgUrl: require("../Assets/chartIncon.png"),
+      imgUrl: require("../Assets/chartIcon.png"),
       title: "시세 차트",
-      info: "",
+      info: (
+        <>
+          주요 옵션의 가격 변화를 확인할 수 있습니다.
+          <br />
+          기준은 품질 80입니다.
+        </>
+      ),
       clicklink: "/chart",
     },
-    {
-      imgUrl: "",
-      title: "개발 일지",
-      info: "",
-      clicklink: "/notice",
-    },
-    {
-      imgUrl: "",
-      title: "유저 코멘트",
-      info: "",
-      clicklink: "/mini",
-    },
-    {
-      imgUrl: "",
-      title: "",
-      info: "",
-    },
+    // {
+    //   imgUrl: require("../Assets/noticeIcon.png"),
+    //   title: "개발 일지",
+    //   info: "",
+    //   clicklink: "/notice",
+    // },
+    // {
+    //   imgUrl: "",
+    //   title: "유저 코멘트",
+    //   info: "",
+    //   clicklink: "/mini",
+    // },
+    // {
+    //   imgUrl: "",
+    //   title: "",
+    //   info: "",
+    // },
   ];
 
   return (
-    <div className="mainbody ">
+    <div className="mainbody">
       <div>
-        <h1 className="text-center text-3xl">주요 서비스</h1>
+        <br />
+        <h1 className="mt-24 text-center text-3xl">주요 서비스</h1>
       </div>
       <div className="flex grid grid-cols-3">
         {boxInfo.map((box, index) => (
-          <ServiceBox imgUrl={box.imgUrl} title={box.title} info={box.info} />
+          <ServiceBox
+            imgUrl={box.imgUrl}
+            title={box.title}
+            info={box.info}
+            clicklink={box.clicklink}
+          />
         ))}
       </div>
     </div>
