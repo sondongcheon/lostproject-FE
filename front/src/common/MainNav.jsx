@@ -56,6 +56,10 @@ function MainNav({ logSearch, getCountLog }) {
           <span className="text-3xl cursor-pointer text-white font-a" onClick={() => navigate("/")}>
             LoaRoot <span className="text-xs">[beta 1.5]</span>
           </span>
+          <span className="text-center">
+            🔥[긴급]1/8 패치 이후 로아 API 오류로 등급선택이 적용이 안되는 오류 발생🔥 <br /> 🔥가장
+            저렴한 하옵으로 모두 보입니다. 빨리 고쳐주세요 스마게!!!🔥
+          </span>
 
           {/* 오른쪽에 페이지 이동 공간 잡기 */}
           {isMobile ? (
