@@ -53,12 +53,15 @@ function MainNav({ logSearch, getCountLog }) {
       <div className="h-16 fixed top-0 left-0 w-full bg-gradient-to-r from-[#2384bc] to-[#b2ddad] shadow-md z-50">
         <div className="container mx-auto px-2 py-1 flex justify-between items-center h-full text-[#2b2b2b] font-bold ">
           {/* 왼쪽에 'test' 홈페이지 링크 */}
-          <span className="text-3xl cursor-pointer text-white font-a" onClick={() => navigate("/")}>
+          <span
+            className="text-3xl cursor-pointer text-white font-a"
+            onClick={() => navigate("/")}
+          >
             LoaRoot <span className="text-xs">[beta 1.5]</span>
           </span>
           <span className="text-center">
-            🔥[긴급]1/8 패치 이후 로아 API 오류로 등급선택이 적용이 안되는 오류 발생🔥 <br /> 🔥가장
-            저렴한 하옵으로 모두 보입니다. 빨리 고쳐주세요 스마게!!!🔥
+            🔥[긴급]1/8 패치 이후 로아 API 오류로 등급선택이 적용이 안되는 오류
+            발생🔥 <br /> 🔥 다음 정기점검 시 수정된다고 합니다. (1/15 예상) 🔥
           </span>
 
           {/* 오른쪽에 페이지 이동 공간 잡기 */}
