@@ -204,8 +204,23 @@ const GlobalStyles = createGlobalStyle`
   //transition: border 0.25s ease-in-out;/
 }
 
+@media (max-width: 468px) {
+[type="radio"] {
+  appearance: none;
+  border: max(1px, 0.05em) solid gray;
+  border-radius: 50%;
+  width: 0.5em;
+  height: 0.5em;
+  //transition: border 0.25s ease-in-out;/
+}
+
 [type="radio"]:checked {
   border: 0.3em solid tomato;
+}
+
+@media (max-width: 468px) {
+[type="radio"]:checked {
+  border: 0.15em solid tomato;
 }
 
 [type="radio"]:focus-visible {
@@ -213,8 +228,20 @@ const GlobalStyles = createGlobalStyle`
   outline: max(2px, 0.1em) dotted tomato;
 }
 
+@media (max-width: 468px) {
+[type="radio"]:focus-visible {
+  outline-offset: max(1px, 0.05em);
+  outline: max(1px, 0.05em) dotted tomato;
+}
+
 [type="radio"]:hover {
   box-shadow: 0 0 0 max(2px, 0.1em) lightgray;
+  cursor: pointer;
+}
+
+@media (max-width: 468px) {
+[type="radio"]:hover {
+  box-shadow: 0 0 0 max(1px, 0.05em) lightgray;
   cursor: pointer;
 }
 
@@ -366,6 +393,7 @@ const GlobalStyles = createGlobalStyle`
   -webkit-appearance: none;
   appearance: none;
 }
+
 
 /* 손잡이 색상 */
 .slider::-webkit-slider-thumb {

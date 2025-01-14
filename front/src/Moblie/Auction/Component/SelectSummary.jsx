@@ -50,7 +50,7 @@ const SelectSummary = ({ selectOptions, search, total, searchState }) => {
       <div className="h-28 flex justify-center items-center shadow-lg border-2 rounded-3xl bg-gray-200">
         <div className="flex flex-col justify-center items-center">
           <button
-            className="bg-[#40AC8D] resetBtm h-10 mb-4"
+            className="bg-[#40AC8D] resetBtm text-xs h-10 mb-4"
             onClick={search}
             disabled={searchState}
           >

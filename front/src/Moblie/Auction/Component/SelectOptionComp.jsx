@@ -64,12 +64,12 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
         }`}
       >
         {/* 왼쪽 고정 크기 영역 */}
-        <div className="w-20 flex flex-col justify-center items-center border-black">
-          <p className="font-bold ">
+        <div className="w-14 flex flex-col justify-center items-center border-black">
+          <p className="font-bold text-xs ">
             {options.categoryCode === 200000 ? "" : options.accName}
           </p>
           <button
-            className={`text-xs font-bold ${
+            className={`text-[8px] font-bold ${
               options.categoryCode === 200000
                 ? "normalSelBtm"
                 : "normalBtm color-tomato"
@@ -87,7 +87,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
           <div className="flex-[7] grid grid-rows-4">
             <div className="grid grid-cols-4">
               <div
-                className="font-bold col-span-1 border-b-2 border-gray-300 flex items-center justify-center text-center text-xs"
+                className="font-bold col-span-1 border-b-2 border-gray-300 flex items-center justify-center text-center text-[8px]"
                 onClick={() => {
                   onOptionsChange(
                     "tier",
@@ -153,7 +153,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
               </div>
             </div>
             <div className="grid grid-cols-4">
-              <div className=" font-bold col-span-1 border-b-2 border-gray-300 flex items-center justify-center">
+              <div className="text-xs font-bold col-span-1 border-b-2 border-gray-300 flex items-center justify-center">
                 품질
               </div>
               <div className="col-span-3 border-b-2 border-gray-300 flex items-center justify-center">
@@ -172,7 +172,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     className="slider w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
                   />
                 </div>
-                <div className="w-1/4 text-center text-sm text-gray-500">
+                <div className="w-1/4 text-center text-xs text-gray-500">
                   <input
                     className="w-full text-center rounded-3xl border border-gray-300"
                     placeholder="0"
@@ -192,7 +192,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
               </div>
             </div>
             <div className="grid grid-cols-4">
-              <div className="font-bold col-span-1 border-b-2 border-gray-300 flex items-center justify-center text-xs">
+              <div className="font-bold col-span-1 border-b-2 border-gray-300 flex items-center justify-center text-[8px]">
                 연마 단계
               </div>
               <div className="col-span-3 border-b-2 border-gray-300 flex items-center justify-center">
@@ -206,7 +206,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       checked={options.upgradeLevel === null}
                       onChange={() => onOptionsChange("upgradeLevel", null)}
                     />
-                    <span className="text-xs">All</span>
+                    <span className="text-[8px]">All</span>
                   </label>
 
                   <label>
@@ -219,7 +219,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         onOptionsChange("upgradeLevel", e.target.value)
                       }
                     />
-                    <span className="text-sm">1</span>
+                    <span className="text-xs">1</span>
                   </label>
 
                   <label>
@@ -232,7 +232,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         onOptionsChange("upgradeLevel", e.target.value)
                       }
                     />
-                    <span className="text-sm">2</span>
+                    <span className="text-xs">2</span>
                   </label>
 
                   <label>
@@ -245,13 +245,13 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         onOptionsChange("upgradeLevel", e.target.value)
                       }
                     />
-                    <span className="text-sm">3</span>
+                    <span className="text-xs">3</span>
                   </label>
                 </form>
               </div>
             </div>
             <div className="grid grid-cols-4">
-              <div className="col-span-1 flex items-center justify-center font-bold text-xs">
+              <div className="col-span-1 flex items-center justify-center font-bold text-[8px]">
                 거래 횟수
               </div>
               <div className="col-span-3 flex items-center justify-center">
@@ -265,7 +265,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       checked={options.tradeAllowCount === null}
                       onChange={() => onOptionsChange("tradeAllowCount", null)}
                     />
-                    <span className="text-xs">All</span>
+                    <span className="text-[8px]">All</span>
                   </label>
                   <label>
                     <input
@@ -277,7 +277,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         onOptionsChange("tradeAllowCount", e.target.value)
                       }
                     />
-                    <span className="text-sm">0</span>
+                    <span className="text-xs">0</span>
                   </label>
                   <label>
                     <input
@@ -289,7 +289,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         onOptionsChange("tradeAllowCount", e.target.value)
                       }
                     />
-                    <span className="text-sm">1</span>
+                    <span className="text-xs">1</span>
                   </label>
 
                   <label>
@@ -302,7 +302,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         onOptionsChange("tradeAllowCount", e.target.value)
                       }
                     />
-                    <span className="text-sm">2</span>
+                    <span className="text-xs">2</span>
                   </label>
                 </form>
               </div>
@@ -315,7 +315,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
               <div className="flex items-center">
                 {/* 그룹명 "연마효과"가 25% 영역에 정중앙 배치 */}
                 <div className="w-[25%] flex justify-center">
-                  <p className="text-sm font-bold pl-2">연마</p>
+                  <p className="text-xs font-bold pl-2">연마</p>
                 </div>
 
                 {/* 나머지 75% 영역에 라디오 버튼들 배치 */}
@@ -323,7 +323,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   {/* 옵션이 200000일 경우만 덮기 */}
                   {options.categoryCode === 200000 && (
                     <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center m-1">
-                      <p className="text-sm text-red-500 font-bold">
+                      <p className="text-xs text-red-500 font-bold">
                         등급만 선택 합니다
                       </p>
                     </div>
@@ -344,7 +344,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                           onOptionsChange("selectOption1", e.target.value)
                         }
                       />
-                      <span className="text-xs">
+                      <span className="text-[8px]">
                         {options.optionName.first}
                       </span>
                     </label>
@@ -364,7 +364,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                           onOptionsChange("selectOption1", e.target.value)
                         }
                       />
-                      <span className="text-xs">
+                      <span className="text-[8px]">
                         {options.optionName.second}
                       </span>
                     </label>
@@ -388,19 +388,13 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         checked={options.selectOption1 === null}
                         onChange={() => onOptionsChange("selectOption1", null)}
                       />
-                      <span className="text-xs">미선택</span>
+                      <span className="text-[8px]">미선택</span>
                     </label>
                   </form>
                 </div>
               </div>
               <div className="flex items-center justify-center border-l-2">
-                {/* 그룹명 "연마효과"가 20% 영역에 정중앙 배치 */}
-                <div className="w-[20%] flex justify-center">
-                  <p className="text-sm font-bold">등급</p>
-                </div>
-
-                {/* 나머지 80% 영역에 라디오 버튼들 배치 */}
-                <div className="w-[80%] flex gap-2 justify-center items-center pr-4">
+                <div className="w-[80%] flex gap-2 justify-center items-center">
                   <label className="flex items-center">
                     <input
                       type="radio"
@@ -412,7 +406,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         onOptionsChange("selectValue1", e.target.value)
                       }
                     />
-                    <span className="text-sm">상</span>
+                    <span className="text-xs">상</span>
                   </label>
                   <label className="flex items-center">
                     <input
@@ -425,7 +419,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         onOptionsChange("selectValue1", e.target.value)
                       }
                     />
-                    <span className="text-sm">중</span>
+                    <span className="text-xs">중</span>
                   </label>
                   <label className="flex items-center">
                     <input
@@ -438,7 +432,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         onOptionsChange("selectValue1", e.target.value)
                       }
                     />
-                    <span className="text-sm">하</span>
+                    <span className="text-xs">하</span>
                   </label>
                   <label className="flex items-center">
                     <input
@@ -449,7 +443,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       className="mr-1"
                       onChange={() => onOptionsChange("selectValue1", null)}
                     />
-                    <span className="text-sm">X</span>
+                    <span className="text-xs">X</span>
                   </label>
                 </div>
               </div>
@@ -458,7 +452,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
               <div className="flex items-center justify-center  ">
                 {/* 그룹명 "연마효과"가 25% 영역에 정중앙 배치 */}
                 <div className="w-[25%] flex justify-center">
-                  <p className="text-sm font-bold pl-2">연마</p>
+                  <p className="text-xs font-bold pl-2">연마</p>
                 </div>
 
                 {/* 나머지 75% 영역에 라디오 버튼들 배치 */}
@@ -466,7 +460,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   {/* 옵션이 200000일 경우만 덮기 */}
                   {options.categoryCode === 200000 && (
                     <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center  m-1">
-                      <p className="text-sm text-red-500 font-bold">
+                      <p className="text-xs text-red-500 font-bold">
                         등급만 선택 합니다
                       </p>
                     </div>
@@ -487,7 +481,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                           onOptionsChange("selectOption2", e.target.value)
                         }
                       />
-                      <span className="text-xs">
+                      <span className="text-[8px]">
                         {options.optionName.first}
                       </span>
                     </label>
@@ -506,7 +500,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                           onOptionsChange("selectOption2", e.target.value)
                         }
                       />
-                      <span className="text-xs">
+                      <span className="text-[8px]">
                         {options.optionName.second}
                       </span>
                     </label>
@@ -528,18 +522,13 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         checked={options.selectOption2 === null}
                         onChange={() => onOptionsChange("selectOption2", null)}
                       />
-                      <span className="text-xs">미선택</span>
+                      <span className="text-[8px]">미선택</span>
                     </label>
                   </form>
                 </div>
               </div>
               <div className="flex items-center justify-center border-l-2">
-                {/* 그룹명 "연마효과"가 20% 영역에 정중앙 배치 */}
-                <div className="w-[20%] flex justify-center">
-                  <p className="text-sm font-bold">등급</p>
-                </div>
-                {/* 나머지 80% 영역에 라디오 버튼들 배치 */}
-                <div className="w-[80%] flex gap-2 justify-center items-center pr-4">
+                <div className="flex gap-2 justify-center items-center">
                   <label className="flex items-center">
                     <input
                       type="radio"
@@ -551,7 +540,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         onOptionsChange("selectValue2", e.target.value)
                       }
                     />
-                    <span className="text-sm">상</span>
+                    <span className="text-xs">상</span>
                   </label>
                   <label className="flex items-center">
                     <input
@@ -564,7 +553,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         onOptionsChange("selectValue2", e.target.value)
                       }
                     />
-                    <span className="text-sm">중</span>
+                    <span className="text-xs">중</span>
                   </label>
                   <label className="flex items-center">
                     <input
@@ -577,7 +566,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         onOptionsChange("selectValue2", e.target.value)
                       }
                     />
-                    <span className="text-sm">하</span>
+                    <span className="text-xs">하</span>
                   </label>
                   <label className="flex items-center">
                     <input
@@ -588,48 +577,45 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       className="mr-1"
                       onChange={() => onOptionsChange("selectValue2", null)}
                     />
-                    <span className="text-sm">X</span>
+                    <span className="text-xs">X</span>
                   </label>
                 </div>
               </div>
             </div>
             <div className="grid grid-cols-2 relative">
               {/* 전체를 덮는 미구현 메시지
-              <div className="absolute inset-0 bg-gray-200 bg-opacity-90 text-gray-500 text-sm flex justify-center items-center z-10 rounded-3xl">
+              <div className="absolute inset-0 bg-gray-200 bg-opacity-90 text-gray-500 text-xs flex justify-center items-center z-10 rounded-3xl">
                 현재 미구현, 특수 옵션 2개만 활용합니다. 공용 옵션 선택 추가 예정
               </div> */}
 
               {/* 옵션이 200000일 경우만 덮기 */}
               {/* {options.categoryCode === 200000 && (
                 <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center rounded-3xl m-1">
-                  <p className="text-sm text-red-500 font-bold">특옵만 선택합니다</p>
+                  <p className="text-xs text-red-500 font-bold">특옵만 선택합니다</p>
                 </div>
               )} */}
 
               {/* 왼쪽 "연마효과" 그룹 */}
-              <div className="border-gray-300 flex items-center justify-center ">
-                <div className="w-[25%] flex justify-center">
-                  <p className="text-sm pl-2 font-bold">공용옵</p>
+              <div className="grid grid-cols-4 flex items-center justify-center ">
+                <div className="col-span-1 flex justify-center">
+                  <p className="text-[9px] pl-2 font-bold">공용옵</p>
                 </div>
-                <div className="w-[75%]  justify-center items-center relative">
+                <div className="col-span-3 justify-center items-center">
                   <div className="flex justify-center items-center">
                     <SelectBox
                       options={optionProps}
                       value={options.selectOption3}
                       name="selectOption3"
                       onOptionsChange={onOptionsChange}
-                      css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5]"
+                      css="text-xs text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5]"
                     />
                   </div>
                 </div>
               </div>
 
               {/* 오른쪽 "등급" 그룹 */}
-              <div className="border-gray-300 flex items-center justify-center border-l-2">
-                <div className="w-[20%] flex justify-center">
-                  <p className="text-sm font-bold">등급</p>
-                </div>
-                <div className="w-[80%]  flex gap-2 justify-center items-center pr-4">
+              <div className="border-gray-200 flex items-center justify-center border-l-2">
+                <div className="flex gap-2 justify-center items-center">
                   <label className="flex items-center">
                     <input
                       type="radio"
@@ -641,7 +627,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         onOptionsChange("selectValue3", e.target.value)
                       }
                     />
-                    <span className="text-sm">상</span>
+                    <span className="text-xs">상</span>
                   </label>
                   <label className="flex items-center">
                     <input
@@ -654,7 +640,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         onOptionsChange("selectValue3", e.target.value)
                       }
                     />
-                    <span className="text-sm">중</span>
+                    <span className="text-xs">중</span>
                   </label>
                   <label className="flex items-center">
                     <input
@@ -667,7 +653,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         onOptionsChange("selectValue3", e.target.value)
                       }
                     />
-                    <span className="text-sm">하</span>
+                    <span className="text-xs">하</span>
                   </label>
                   <label className="flex items-center">
                     <input
@@ -678,7 +664,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       className="mr-1"
                       onChange={() => onOptionsChange("selectValue3", null)}
                     />
-                    <span className="text-sm">X</span>
+                    <span className="text-xs">X</span>
                   </label>
                 </div>
               </div>

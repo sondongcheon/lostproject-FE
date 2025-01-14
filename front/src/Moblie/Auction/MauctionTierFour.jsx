@@ -226,7 +226,6 @@ function MauctionTierFour({ getCountLog }) {
           params: { type: 0 },
         })
         .then((res) => {
-          console.log(res.data.data.result);
           getTotal(res.data.data.searchResultRes);
           setResultList(res.data.data.result);
         })
@@ -258,7 +257,6 @@ function MauctionTierFour({ getCountLog }) {
           });
         })
         .finally(() => {
-          console.log(selectOptionReq);
           setSearchState(false);
           getCountLog();
         });

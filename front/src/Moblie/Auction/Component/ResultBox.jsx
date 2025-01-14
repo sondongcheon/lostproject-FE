@@ -8,11 +8,14 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
   }, [result]);
 
   return (
-    <div onClick={onClick} className={`pt-4 pb-4 shadow-lg border-2 rounded-3xl ${className}`}>
-      <div className="grid grid-cols-10 mx-auto w-[95%] text-sm">
+    <div
+      onClick={onClick}
+      className={`pt-4 pb-4 shadow-lg border-2 rounded-3xl ${className}`}
+    >
+      <div className="grid grid-cols-10 mx-auto w-[95%] text-xs">
         <div
           className={`col-span-1 font-bold flex flex-col justify-center items-center  pr-4 ${
-            number !== undefined ? "text-3xl" : null
+            number !== undefined ? "text-3xl" : "text-[8px]"
           }`}
         >
           <img className="" src={result?.icon || ""} />
@@ -32,7 +35,9 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
         <div className="col-span-4">
           {result?.options.map((option, index) => {
             return (
-              <span className={`${option.valueGrade === "" ? "" : "font-bold"}`}>
+              <span
+                className={`${option.valueGrade === "" ? "" : "font-bold"}`}
+              >
                 {" "}
                 {option.optionName === "세레나데, 신성, 조화 게이지 획득량 증가"
                   ? "서포터 아이덴티티 획득량 증가"
@@ -45,7 +50,9 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
         <div className="col-span-2 ">
           <div className="grid grid-rows-4">
             <div>
-              <span className="font-bold">가격 - {price.toLocaleString()} G</span>
+              <span className="font-bold">
+                가격 - {price.toLocaleString()} G
+              </span>
             </div>
             <div>
               {result?.options[1]?.valueGrade && (
@@ -53,9 +60,12 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
                   className={`rounded-full text-white pl-2 pr-2`}
                   style={{
                     backgroundColor: (() => {
-                      if (result?.options[1]?.valueGrade.includes("상")) return "#E38E49";
-                      if (result?.options[1]?.valueGrade.includes("중")) return "#7E1891";
-                      if (result?.options[1]?.valueGrade.includes("하")) return "#0A3981";
+                      if (result?.options[1]?.valueGrade.includes("상"))
+                        return "#E38E49";
+                      if (result?.options[1]?.valueGrade.includes("중"))
+                        return "#7E1891";
+                      if (result?.options[1]?.valueGrade.includes("하"))
+                        return "#0A3981";
                       return "#ffffff"; // 기본값
                     })(),
                   }}
@@ -71,9 +81,12 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
                   className={`rounded-full text-white pl-2 pr-2`}
                   style={{
                     backgroundColor: (() => {
-                      if (result?.options[2]?.valueGrade.includes("상")) return "#E38E49";
-                      if (result?.options[2]?.valueGrade.includes("중")) return "#7E1891";
-                      if (result?.options[2]?.valueGrade.includes("하")) return "#0A3981";
+                      if (result?.options[2]?.valueGrade.includes("상"))
+                        return "#E38E49";
+                      if (result?.options[2]?.valueGrade.includes("중"))
+                        return "#7E1891";
+                      if (result?.options[2]?.valueGrade.includes("하"))
+                        return "#0A3981";
                       return "#ffffff"; // 기본값
                     })(),
                   }}
@@ -89,9 +102,12 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
                   className={`rounded-full text-white pl-2 pr-2`}
                   style={{
                     backgroundColor: (() => {
-                      if (result?.options[3]?.valueGrade.includes("상")) return "#E38E49";
-                      if (result?.options[3]?.valueGrade.includes("중")) return "#7E1891";
-                      if (result?.options[3]?.valueGrade.includes("하")) return "#0A3981";
+                      if (result?.options[3]?.valueGrade.includes("상"))
+                        return "#E38E49";
+                      if (result?.options[3]?.valueGrade.includes("중"))
+                        return "#7E1891";
+                      if (result?.options[3]?.valueGrade.includes("하"))
+                        return "#0A3981";
                       return "#ffffff"; // 기본값
                     })(),
                   }}
