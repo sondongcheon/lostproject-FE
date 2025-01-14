@@ -40,23 +40,6 @@ function Main(props) {
       ),
       clicklink: "/chart",
     },
-    // {
-    //   imgUrl: require("../Assets/noticeIcon.png"),
-    //   title: "개발 일지",
-    //   info: "",
-    //   clicklink: "/notice",
-    // },
-    // {
-    //   imgUrl: "",
-    //   title: "유저 코멘트",
-    //   info: "",
-    //   clicklink: "/mini",
-    // },
-    // {
-    //   imgUrl: "",
-    //   title: "",
-    //   info: "",
-    // },
   ];
 
   return (
