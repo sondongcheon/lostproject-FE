@@ -116,11 +116,21 @@ const GlobalStyles = createGlobalStyle`
 //   }
 
   body {
-    width: 1900px; /* 고정된 너비 */
+  width: 1900px; /* 고정된 너비 */
   height: 800px; /* 고정된 높이 */
   overflow: auto; /* 넘치는 콘텐츠는 스크롤로 처리 */
   background-color: #ECEBDE;
     font-family: "Pretendard";
+  }
+
+  @media (max-width: 468px) { /* 모바일 화면 크기 조건 */
+  body {
+    width: 468px; /* 고정된 너비 */
+    height: 800px; /* 고정된 높이 */
+    overflow: auto; /* 넘치는 콘텐츠는 스크롤로 처리 */
+    background-color: #ECEBDE;
+    font-family: "Pretendard";
+    overflow: visible; /* 모바일에서는 스크롤 해제 */
   }
 
   .font-a {
@@ -135,7 +145,7 @@ const GlobalStyles = createGlobalStyle`
   }
     
   .mainMobileBody {
-    margin: 0 auto;
+
     margin-top: 110px;
   }
 
@@ -194,8 +204,23 @@ const GlobalStyles = createGlobalStyle`
   //transition: border 0.25s ease-in-out;/
 }
 
+@media (max-width: 468px) {
+[type="radio"] {
+  appearance: none;
+  border: max(1px, 0.05em) solid gray;
+  border-radius: 50%;
+  width: 0.5em;
+  height: 0.5em;
+  //transition: border 0.25s ease-in-out;/
+}
+
 [type="radio"]:checked {
   border: 0.3em solid tomato;
+}
+
+@media (max-width: 468px) {
+[type="radio"]:checked {
+  border: 0.15em solid tomato;
 }
 
 [type="radio"]:focus-visible {
@@ -203,8 +228,20 @@ const GlobalStyles = createGlobalStyle`
   outline: max(2px, 0.1em) dotted tomato;
 }
 
+@media (max-width: 468px) {
+[type="radio"]:focus-visible {
+  outline-offset: max(1px, 0.05em);
+  outline: max(1px, 0.05em) dotted tomato;
+}
+
 [type="radio"]:hover {
   box-shadow: 0 0 0 max(2px, 0.1em) lightgray;
+  cursor: pointer;
+}
+
+@media (max-width: 468px) {
+[type="radio"]:hover {
+  box-shadow: 0 0 0 max(1px, 0.05em) lightgray;
   cursor: pointer;
 }
 
@@ -237,6 +274,15 @@ const GlobalStyles = createGlobalStyle`
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
 }
+@media (max-width: 468px) {
+.normalBtm {
+  background-color: transparent;
+  border: 0.5px solid #40AC8D; /* 배경색을 테두리 색으로 */
+  border-radius: 4px; /* 외곽선을 약간 둥글게 */
+  padding: 4px 8px; /* 버튼 크기 조절 */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
+}
 
 .normalBtm:hover {
   background-color: #40AC8D; /* 호버 시 배경색을 채움 */
@@ -251,6 +297,17 @@ const GlobalStyles = createGlobalStyle`
   border: 1px solid tomato; /* 배경색을 테두리 색으로 */
   border-radius: 8px; /* 외곽선을 약간 둥글게 */
   padding: 8px 16px; /* 버튼 크기 조절 */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
+}
+
+@media (max-width: 468px) {
+.allBtm {
+  height : 25px;
+  background-color: white;
+  border: 0.5px solid tomato; /* 배경색을 테두리 색으로 */
+  border-radius: 4px; /* 외곽선을 약간 둥글게 */
+  padding: 4px 8px; /* 버튼 크기 조절 */
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
 }
@@ -274,6 +331,21 @@ const GlobalStyles = createGlobalStyle`
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
 }
+
+@media (max-width: 468px) {
+.resetBtm {
+  width: 5rem; // 160px
+  //background-color: #40AC8D;
+  color: black;
+  font-style : bold;
+  //border: 1px solid #40AC8D; /* 배경색을 테두리 색으로 */
+  border-radius: 8px; /* 외곽선을 약간 둥글게 */
+  padding: 8px 16px; /* 버튼 크기 조절 */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
+}
+
+
 
 .resetBtm:hover {
   background-color: white; /* 호버 시 배경색을 채움 */
@@ -321,6 +393,7 @@ const GlobalStyles = createGlobalStyle`
   -webkit-appearance: none;
   appearance: none;
 }
+
 
 /* 손잡이 색상 */
 .slider::-webkit-slider-thumb {
