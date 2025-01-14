@@ -1,136 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
-
-// html,
-//   body,
-//   div,
-//   span,
-//   applet,
-//   object,
-//   iframe,
-//   h1,
-//   h2,
-//   h3,
-//   h4,
-//   h5,
-//   h6,
-//   p,
-//   blockquote,
-//   pre,
-//   a,
-//   abbr,
-//   acronym,
-//   address,
-//   big,
-//   cite,
-//   code,
-//   del,
-//   dfn,
-//   em,
-//   img,
-//   ins,
-//   kbd,
-//   q,
-//   s,
-//   samp,
-//   small,
-//   strike,
-//   strong,
-//   sub,
-//   sup,
-//   tt,
-//   var,
-//   b,
-//   u,
-//   i,
-//   center,
-//   dl,
-//   dt,
-//   dd,
-//   ol,
-//   ul,
-//   li,
-//   fieldset,
-//   form,
-//   label,
-//   legend,
-//   table,
-//   caption,
-//   tbody,
-//   tfoot,
-//   thead,
-//   tr,
-//   th,
-//   td,
-//   article,
-//   aside,
-//   canvas,
-//   details,
-//   embed,
-//   figure,
-//   figcaption,
-//   footer,
-//   header,
-//   hgroup,
-//   menu,
-//   nav,
-//   output,
-//   ruby,
-//   section,
-//   summary,
-//   time,
-//   mark,
-//   audio,
-//   video {
-//     margin: 0;
-//     padding: 0;
-//     border: 0;
-//     font-size: 100%;
-//     font: inherit;
-//     vertical-align: baseline;
-//   }
-//   article,
-//   aside,
-//   details,
-//   figcaption,
-//   figure,
-//   footer,
-//   header,
-//   hgroup,
-//   menu,
-//   nav,
-//   section {
-//     display: block;
-//   }
-
-//   html,
-//   body {
-//     padding: 0;
-//     margin: 0;
-//   }
-
-//   html {
-//     width: 100%;
-//     height: 100vh;
-//   }
-
   body {
   width: 1900px; /* 고정된 너비 */
   height: 800px; /* 고정된 높이 */
   overflow: auto; /* 넘치는 콘텐츠는 스크롤로 처리 */
   background-color: #ECEBDE;
     font-family: "Pretendard";
-  }
-
-  @media (max-width: 468px) { /* 모바일 화면 크기 조건 */
-  body {
-    width: 468px; /* 고정된 너비 */
-    height: 800px; /* 고정된 높이 */
-    overflow: auto; /* 넘치는 콘텐츠는 스크롤로 처리 */
-    background-color: #ECEBDE;
-    font-family: "Pretendard";
-    overflow: visible; /* 모바일에서는 스크롤 해제 */
   }
 
   .font-a {
@@ -149,48 +25,6 @@ const GlobalStyles = createGlobalStyle`
     margin-top: 110px;
   }
 
-//   ol,
-//   ul {
-//     list-style: none;
-//   }
-
-//   blockquote,
-//   q {
-//     quotes: none;
-//   }
-
-//   blockquote:before,
-//   blockquote:after,
-//   q:before,
-//   q:after {
-//     content: "";
-//     content: none;
-//   }
-
-//   table {
-//     border-collapse: collapse;
-//     border-spacing: 0;
-//   }
-
-  // button {
-  //   background: inherit;
-  //   border: none;
-  //   border-radius: 0;
-  //   padding: 0;
-  //   cursor: pointer;
-  // }
-
-//   a {
-//     color: inherit;
-//     text-decoration: none;
-//     outline: none;
-//   }
-
-//   a:visited {
-//     text-decoration: none;
-//     color: inherit;
-//   }
-
 [type="radio"], span {
   vertical-align: middle;
 }
@@ -204,46 +38,24 @@ const GlobalStyles = createGlobalStyle`
   //transition: border 0.25s ease-in-out;/
 }
 
-@media (max-width: 468px) {
-[type="radio"] {
-  appearance: none;
-  border: max(1px, 0.05em) solid gray;
-  border-radius: 50%;
-  width: 0.5em;
-  height: 0.5em;
-  //transition: border 0.25s ease-in-out;/
-}
-
 [type="radio"]:checked {
   border: 0.3em solid tomato;
 }
 
-@media (max-width: 468px) {
-[type="radio"]:checked {
-  border: 0.15em solid tomato;
-}
 
 [type="radio"]:focus-visible {
   outline-offset: max(2px, 0.1em);
   outline: max(2px, 0.1em) dotted tomato;
 }
 
-@media (max-width: 468px) {
-[type="radio"]:focus-visible {
-  outline-offset: max(1px, 0.05em);
-  outline: max(1px, 0.05em) dotted tomato;
-}
+
 
 [type="radio"]:hover {
   box-shadow: 0 0 0 max(2px, 0.1em) lightgray;
   cursor: pointer;
 }
 
-@media (max-width: 468px) {
-[type="radio"]:hover {
-  box-shadow: 0 0 0 max(1px, 0.05em) lightgray;
-  cursor: pointer;
-}
+
 
 [type="radio"]:hover + span {
   cursor: pointer;
@@ -274,15 +86,8 @@ const GlobalStyles = createGlobalStyle`
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
 }
-@media (max-width: 468px) {
-.normalBtm {
-  background-color: transparent;
-  border: 0.5px solid #40AC8D; /* 배경색을 테두리 색으로 */
-  border-radius: 4px; /* 외곽선을 약간 둥글게 */
-  padding: 4px 8px; /* 버튼 크기 조절 */
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
-}
+
+
 
 .normalBtm:hover {
   background-color: #40AC8D; /* 호버 시 배경색을 채움 */
@@ -301,16 +106,10 @@ const GlobalStyles = createGlobalStyle`
   transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
 }
 
-@media (max-width: 468px) {
-.allBtm {
-  height : 25px;
-  background-color: white;
-  border: 0.5px solid tomato; /* 배경색을 테두리 색으로 */
-  border-radius: 4px; /* 외곽선을 약간 둥글게 */
-  padding: 4px 8px; /* 버튼 크기 조절 */
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
-}
+
+
+
+
 
 .allBtm:hover {
   background-color: tomato; /* 호버 시 배경색을 채움 */
@@ -332,18 +131,9 @@ const GlobalStyles = createGlobalStyle`
   transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
 }
 
-@media (max-width: 468px) {
-.resetBtm {
-  width: 5rem; // 160px
-  //background-color: #40AC8D;
-  color: black;
-  font-style : bold;
-  //border: 1px solid #40AC8D; /* 배경색을 테두리 색으로 */
-  border-radius: 8px; /* 외곽선을 약간 둥글게 */
-  padding: 8px 16px; /* 버튼 크기 조절 */
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
-}
+
+
+
 
 
 
@@ -417,6 +207,76 @@ const GlobalStyles = createGlobalStyle`
 .color-tomato {
   color: #40AC8D;
 }
+
+  @media (max-width: 468px) { /* 모바일 화면 크기 조건 */
+    body {
+      width: 468px; /* 고정된 너비 */
+      height: 800px; /* 고정된 높이 */
+      overflow: auto; /* 넘치는 콘텐츠는 스크롤로 처리 */
+      background-color: #ECEBDE;
+      font-family: "Pretendard";
+      overflow: visible; /* 모바일에서는 스크롤 해제 */
+    }
+
+    [type="radio"] {
+      appearance: none;
+      border: max(1px, 0.05em) solid gray;
+      border-radius: 50%;
+      width: 0.5em;
+      height: 0.5em;
+      //transition: border 0.25s ease-in-out;/
+    }
+
+
+    [type="radio"]:focus-visible {
+      outline-offset: max(1px, 0.05em);
+      outline: max(1px, 0.05em) dotted tomato;
+    }
+
+
+    [type="radio"]:checked {
+      border: 0.15em solid tomato;
+    }
+
+
+    [type="radio"]:hover {
+      box-shadow: 0 0 0 max(1px, 0.05em) lightgray;
+      cursor: pointer;
+    }
+
+    .normalBtm {
+      background-color: transparent;
+      border: 0.5px solid #40AC8D; /* 배경색을 테두리 색으로 */
+      border-radius: 4px; /* 외곽선을 약간 둥글게 */
+      padding: 4px 8px; /* 버튼 크기 조절 */
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
+    }
+
+    .allBtm {
+      height : 25px;
+      background-color: white;
+      border: 0.5px solid tomato; /* 배경색을 테두리 색으로 */
+      border-radius: 4px; /* 외곽선을 약간 둥글게 */
+      padding: 4px 8px; /* 버튼 크기 조절 */
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
+    }
+
+    .resetBtm {
+      width: 5rem; // 160px
+      //background-color: #40AC8D;
+      color: black;
+      font-style : bold;
+      //border: 1px solid #40AC8D; /* 배경색을 테두리 색으로 */
+      border-radius: 8px; /* 외곽선을 약간 둥글게 */
+      padding: 8px 16px; /* 버튼 크기 조절 */
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
+    }
+
+
+  }
 
 `;
 
