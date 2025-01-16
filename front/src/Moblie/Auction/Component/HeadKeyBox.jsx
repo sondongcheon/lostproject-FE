@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 const HeadKeyBox = ({ apiKey, setApiKey, saveKey, setSaveKey }) => {
   return (
     <div>
-      <div className="gap-x-4 gap-y-4">
+      <div className="">
         <div className="h-30  flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5]">
           {/* <div className="col-span-2 flex flex-col justify-center items-center">
             
@@ -22,54 +22,57 @@ const HeadKeyBox = ({ apiKey, setApiKey, saveKey, setSaveKey }) => {
             등급만 선택한 후 모든 경우의 수를 비교합니다.
           </span>
         </div>
-        <div className="h-30 flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5] grid ">
+        <div className="h-30 shadow-lg border-2 rounded-3xl bg-[#F5F5F5]">
           <div className=" flex justify-center items-center gap-x-4">
-            <div className=" flex items-center">
+            <div className=" flex items-center w-1/2">
               {/* <span className="font-bold"> {`API 키`}</span> */}
               <input
-                className="border-2 "
+                className="border-2 w-full"
                 placeholder="API KEY"
                 value={apiKey}
                 type="text"
                 onChange={(e) => setApiKey(e.target.value)}
               />
             </div>
+            <div className="flex items-center gap-x-2">
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <span className="text-xs font-bold pr-1">저장</span>
+                <input
+                  className="h-16"
+                  type="checkbox"
+                  checked={saveKey}
+                  onChange={(e) => setSaveKey(e.target.checked)}
+                />
+              </div>
 
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <span className="text-xs font-bold pr-1 ">저장</span>
-              <input
-                className="h-16"
-                type="checkbox"
-                checked={saveKey}
-                onChange={(e) => setSaveKey(e.target.checked)}
-              />
+              <div>
+                {" "}
+                <button
+                  className="text-xs hover:underline"
+                  onClick={() => {
+                    Cookies.remove("apiKey");
+                    setApiKey("");
+                    Swal.fire({
+                      icon: "warning",
+                      html: "저장한 API키를 삭제하였습니다.",
+                      confirmButtonText: "확인",
+                    });
+                  }}
+                >
+                  API 키 삭제
+                </button>
+              </div>
+              <div>
+                <a
+                  className="text-xs hover:underline"
+                  target="_blank"
+                  href="https://developer-lostark.game.onstove.com/"
+                >
+                  {" "}
+                  API 키 발급 사이트{" "}
+                </a>
+              </div>
             </div>
-
-            <div>
-              {" "}
-              <button
-                className="text-xs hover:underline"
-                onClick={() => {
-                  Cookies.remove("apiKey");
-                  setApiKey("");
-                  Swal.fire({
-                    icon: "warning",
-                    html: "저장한 API키를 삭제하였습니다.",
-                    confirmButtonText: "확인",
-                  });
-                }}
-              >
-                API 키 삭제
-              </button>
-            </div>
-            <a
-              className="text-xs hover:underline"
-              target="_blank"
-              href="https://developer-lostark.game.onstove.com/"
-            >
-              {" "}
-              API 키 발급 사이트{" "}
-            </a>
           </div>
         </div>
       </div>
