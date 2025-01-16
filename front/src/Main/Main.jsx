@@ -14,7 +14,7 @@ function Main(props) {
           편리하게 여러 부위를 검색할 수 있습니다.
         </>
       ),
-      clicklink: "/auctiontier4",
+      clicklink: "/auction",
     },
     {
       imgUrl: require("../Assets/jobIcon/bard.png"),
@@ -26,7 +26,7 @@ function Main(props) {
           편리하게 여러 부위를 검색할 수 있습니다.
         </>
       ),
-      clicklink: "/auctiontier4sup",
+      clicklink: "/auctionsup",
     },
     {
       imgUrl: require("../Assets/chartIcon.png"),

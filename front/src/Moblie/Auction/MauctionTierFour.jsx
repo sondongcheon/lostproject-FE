@@ -348,37 +348,37 @@ function MauctionTierFour({ getCountLog }) {
       </div>
 
       <div className="gap-x-4 gap-y-4">
-        <div>
+        <div className="pb-4">
           <AllSelectPresetComp
             updateSet={updateSet}
             type={0}
           ></AllSelectPresetComp>
         </div>
-        <div>
+        <div className="pb-4">
           <SelectOptionComp
             options={selectOption1}
             onOptionsChange={updateOption1}
           ></SelectOptionComp>
         </div>
-        <div>
+        <div className="pb-4">
           <SelectOptionComp
             options={selectOption2}
             onOptionsChange={updateOption2}
           ></SelectOptionComp>
         </div>
-        <div>
+        <div className="pb-4">
           <SelectOptionComp
             options={selectOption3}
             onOptionsChange={updateOption3}
           ></SelectOptionComp>
         </div>
-        <div>
+        <div className="pb-4">
           <SelectOptionComp
             options={selectOption4}
             onOptionsChange={updateOption4}
           ></SelectOptionComp>
         </div>
-        <div>
+        <div className="pb-4">
           <SelectOptionComp
             options={selectOption5}
             onOptionsChange={updateOption5}

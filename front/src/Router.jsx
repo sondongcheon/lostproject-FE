@@ -1,6 +1,8 @@
 import { BrowserRouter, React, Route, Routes } from "react-router-dom";
-import Main from "./Main/Main.jsx";
+import Main from "./Pages/Main.jsx";
 import MainNav from "./common/MainNav";
+import Auction from "./Pages/Auction.jsx";
+import AuctionSup from "./Pages/AuctionSup.jsx";
 import AuctionTierFour from "./Auction/AuctionTierFour.jsx";
 import MauctionTierFour from "./Moblie/Auction/MauctionTierFour.jsx";
 import AuctionTierFourSup from "./Auction/AuctionTierFourSup.jsx";
@@ -33,6 +35,14 @@ function Router() {
       <MainNav logSearch={logSearch} getCountLog={getCountLog} />
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route
+          path="/auction"
+          element={<Auction getCountLog={getCountLog} />}
+        />
+        <Route
+          path="/auctionsup"
+          element={<AuctionSup getCountLog={getCountLog} />}
+        />
         <Route
           path="/auctiontier4"
           element={<AuctionTierFour getCountLog={getCountLog} />}

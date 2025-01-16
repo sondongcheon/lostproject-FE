@@ -6,7 +6,7 @@ import MenuDropdown from "./Component/MenuDropdown";
 
 function MainNav({ logSearch, getCountLog }) {
   const isMobile = useMediaQuery({
-    query: "(max-width:1px)",
+    query: "(max-width:468px)",
   });
 
   const [isMenuClick, setIsMenuClick] = useState(false);
@@ -53,7 +53,10 @@ function MainNav({ logSearch, getCountLog }) {
       <div className="h-16 fixed top-0 left-0 w-full bg-gradient-to-r from-[#2384bc] to-[#b2ddad] shadow-md z-50">
         <div className="container mx-auto px-2 py-1 flex justify-between items-center h-full text-[#2b2b2b] font-bold ">
           {/* 왼쪽에 'test' 홈페이지 링크 */}
-          <span className="text-3xl cursor-pointer text-white font-a" onClick={() => navigate("/")}>
+          <span
+            className="text-3xl cursor-pointer text-white font-a"
+            onClick={() => navigate("/")}
+          >
             LoaRoot <span className="text-xs">[beta 1.51]</span>
           </span>
 
@@ -121,7 +124,7 @@ function MainNav({ logSearch, getCountLog }) {
               <MenuDropdown />
             </div>
           )}
-          <div className="container mx-auto px-28 py-4 flex justify-end h-full text-[#191919] md:text-sm text-xs font-a gap-x-10 z-49">
+          <div className="container mx-auto sm:px-28 px-8 py-4 flex justify-end h-full text-[#191919] sm:text-sm text-[12px] font-a gap-x-10 z-49">
             <span>TodaySearch : {logSearch[1]} </span>
             <span>TotalSearch : {logSearch[0]}</span>
           </div>

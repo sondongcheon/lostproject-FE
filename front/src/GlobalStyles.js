@@ -210,7 +210,7 @@ const GlobalStyles = createGlobalStyle`
 
   @media (max-width: 468px) { /* 모바일 화면 크기 조건 */
     body {
-      width: 1900px; /* 고정된 너비 */
+      width: 468px; /* 고정된 너비 */
       height: 800px; /* 고정된 높이 */
       overflow: auto; /* 넘치는 콘텐츠는 스크롤로 처리 */
       background-color: #ECEBDE;
