@@ -76,13 +76,13 @@ function MainNav({ logSearch, getCountLog }) {
             <div className="flex gap-10">
               <div
                 className="cursor-pointer text-base  hover:underline"
-                onClick={() => navigate("/auctiontier4")}
+                onClick={() => navigate("/auction")}
               >
                 딜러악세 검색기
               </div>
               <div
                 className="cursor-pointer text-base hover:underline"
-                onClick={() => navigate("/auctiontier4sup")}
+                onClick={() => navigate("/auctionsup")}
               >
                 서폿악세 검색기
               </div>
