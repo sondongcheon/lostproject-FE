@@ -56,7 +56,7 @@ function MiniBoard(props) {
   }, []);
 
   return (
-    <div>
+    <div className="w-[1900px]">
       <div className="mainbody">
         <div className="w-4/5 mx-auto pt-10 pb-10">
           <span className="text-[52px] font-bold ">유저 코멘트</span>
@@ -89,7 +89,9 @@ function MiniBoard(props) {
                 {contents.map((content, index) => (
                   <tr
                     key={index}
-                    className={`hover:bg-gray-50 ${index % 2 === 0 ? "bg-[#e3e2d5]" : null}`}
+                    className={`hover:bg-gray-50 ${
+                      index % 2 === 0 ? "bg-[#e3e2d5]" : null
+                    }`}
                   >
                     <td className="p-4 ">{content.number}</td>
                     <td className="p-4 text-left">{content.content}</td>

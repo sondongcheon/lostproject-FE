@@ -32,7 +32,7 @@ function BoardDetail(props) {
     loadPage();
   }, []);
   return (
-    <div>
+    <div className="w-[1900px]">
       <div className="mainbody">
         <div className="flex justify-center items-center ">
           <div className="w-4/5">
@@ -42,7 +42,9 @@ function BoardDetail(props) {
                   <th className="p-4 ">{contents?.number || ""}</th>
                   <th className="p-4 ">{contents?.title || ""}</th>
                   <th className="p-4 ">{contents?.nickname || ""}</th>
-                  <th className="p-4 ">{formatDate(contents?.createAt || null)}</th>
+                  <th className="p-4 ">
+                    {formatDate(contents?.createAt || null)}
+                  </th>
                 </tr>
               </thead>
             </table>

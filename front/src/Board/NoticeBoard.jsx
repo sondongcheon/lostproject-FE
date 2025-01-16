@@ -30,36 +30,38 @@ function NoticeBoard(props) {
   }, []);
 
   return (
-    <div className="mainbody">
-      <div className="flex justify-center items-center ">
-        <div className="w-4/5">
-          <table className="border-collapse border border-gray-300 w-full text-center">
-            <thead className="bg-gray-100">
-              <tr>
-                <th className="p-4 ">번호</th>
-                <th className="p-4 ">카테고리</th>
-                <th className="p-4 w-1/2 ">제목</th>
-                <th className="p-4 ">글쓴이</th>
-                <th className="p-4 ">등록일</th>
-              </tr>
-            </thead>
-            <tbody>
-              {contents?.contentList.map((content, index) => (
-                <tr
-                  key={index}
-                  className="hover:bg-gray-50"
-                  onClick={() => navigate(`/notice/${content.number}`)}
-                >
-                  <td className="p-4 ">{content.number}</td>
-                  <td className="p-4 ">{content.category || "미분류"}</td>
-                  <td className="p-4 text-left">{content.title}</td>
-                  <td className="p-4 ">{content.writer}</td>
-                  <td className="p-4 ">{formatDate(content.createAt)}</td>
+    <div className="w-[1900px]">
+      <div className="mainbody">
+        <div className="flex justify-center items-center ">
+          <div className="w-4/5">
+            <table className="border-collapse border border-gray-300 w-full text-center">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="p-4 ">번호</th>
+                  <th className="p-4 ">카테고리</th>
+                  <th className="p-4 w-1/2 ">제목</th>
+                  <th className="p-4 ">글쓴이</th>
+                  <th className="p-4 ">등록일</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className=""></div>
+              </thead>
+              <tbody>
+                {contents?.contentList.map((content, index) => (
+                  <tr
+                    key={index}
+                    className="hover:bg-gray-50"
+                    onClick={() => navigate(`/notice/${content.number}`)}
+                  >
+                    <td className="p-4 ">{content.number}</td>
+                    <td className="p-4 ">{content.category || "미분류"}</td>
+                    <td className="p-4 text-left">{content.title}</td>
+                    <td className="p-4 ">{content.writer}</td>
+                    <td className="p-4 ">{formatDate(content.createAt)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className=""></div>
+          </div>
         </div>
       </div>
     </div>

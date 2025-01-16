@@ -26,7 +26,7 @@ function ChartMain() {
   const [selectGrade, setSelectGrade] = useState("godae");
 
   return (
-    <div>
+    <div className="w-[1900px]">
       <div className="mainbody flex">
         <div className="w-[15%]">
           <SelectSideBar
