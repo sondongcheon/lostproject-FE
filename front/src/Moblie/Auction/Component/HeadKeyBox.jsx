@@ -6,7 +6,7 @@ const HeadKeyBox = ({ apiKey, setApiKey, saveKey, setSaveKey }) => {
   return (
     <div>
       <div className="">
-        <div className="h-30  flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5]">
+        <div className="h-30  flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5] mb-4">
           {/* <div className="col-span-2 flex flex-col justify-center items-center">
             
           </div>
@@ -24,7 +24,7 @@ const HeadKeyBox = ({ apiKey, setApiKey, saveKey, setSaveKey }) => {
         </div>
         <div className="h-30 shadow-lg border-2 rounded-3xl bg-[#F5F5F5]">
           <div className=" flex justify-center items-center gap-x-4">
-            <div className=" flex items-center w-1/2">
+            <div className=" flex items-center w-1/3">
               {/* <span className="font-bold"> {`API 키`}</span> */}
               <input
                 className="border-2 w-full"
