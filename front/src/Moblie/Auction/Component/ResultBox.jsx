@@ -12,10 +12,10 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
       onClick={onClick}
       className={`pt-4 pb-4 shadow-lg border-2 rounded-3xl ${className}`}
     >
-      <div className="grid grid-cols-10 mx-auto w-[95%] text-xs">
+      <div className="grid grid-cols-10 mx-auto w-[95%] text-[8px]">
         <div
           className={`col-span-1 font-bold flex flex-col justify-center items-center  pr-4 ${
-            number !== undefined ? "text-3xl" : "text-[8px]"
+            number !== undefined ? "text-3xl" : "size-font-xxxs"
           }`}
         >
           <img className="" src={result?.icon || ""} />

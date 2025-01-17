@@ -409,7 +409,7 @@ function MauctionTierFour({ getCountLog }) {
               />
             ))}
           </div>
-          <div>
+          <div className="pt-10">
             {count < 5 && resultList[count]?.length > 0 && (
               <div className="space-y-2">
                 {resultList[count].map((item, index) => (

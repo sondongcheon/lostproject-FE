@@ -21,7 +21,7 @@ const GlobalStyles = createGlobalStyle`
   }
     
   .mainMobileBody {
-    width: 468px; /* 고정된 너비 */
+    // width: 468px; /* 고정된 너비 */
     margin-top: 110px;
   }
 
@@ -210,7 +210,7 @@ const GlobalStyles = createGlobalStyle`
 
   @media (max-width: 468px) { /* 모바일 화면 크기 조건 */
     body {
-      width: 468px; /* 고정된 너비 */
+      width: 100vw; /* 고정된 너비 */
       height: 800px; /* 고정된 높이 */
       overflow: auto; /* 넘치는 콘텐츠는 스크롤로 처리 */
       background-color: #ECEBDE;
@@ -275,6 +275,44 @@ const GlobalStyles = createGlobalStyle`
       transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
     }
 
+    .mobile-grid-3 {
+    grid-template-columns: repeat(3, 1fr); /* 2열 그리드 */
+    }
+
+    .size-font-xs{
+      font-size : 12px;
+    }
+
+    .size-font-xxs{
+      font-size : 10px;
+    }
+
+    .size-font-xxxs{
+      font-size : 8px;
+    }
+
+  }
+
+  @media (max-width: 400px) {
+    
+    .size-font-xs{
+      font-size : 10px;
+    }
+
+    .size-font-xxs{
+      font-size : 7px;
+    }
+
+    .size-font-xxxs{
+      font-size : 5px;
+    }
+
+    .mobile-grid-3 {
+    grid-template-columns: repeat(2, 1fr); /* 2열 그리드 */
+    }
+    .mobile-grid-3 > :last-child {
+    grid-column: span 2; /* 마지막 요소 2열 차지 */
+    }
 
   }
 
