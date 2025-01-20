@@ -4,6 +4,7 @@ import axios from "axios";
 import SelectSideBar from "./Component/SelectSideBar";
 import FixChartPage from "./Component/FixChartPage";
 import CustomChartPage from "./Component/CustomChartPage";
+import { type } from "@testing-library/user-event/dist/type";
 
 function ChartMain() {
   const getCountLog = () => {
@@ -24,6 +25,7 @@ function ChartMain() {
   const [selectCustom, setSelectCustom] = useState(false);
   const [selectCategory, setSelectCategory] = useState("neck");
   const [selectGrade, setSelectGrade] = useState("godae");
+  const [selectType, setSelectType] = useState("");
 
   return (
     <div className="w-[1900px]">
@@ -33,13 +35,14 @@ function ChartMain() {
             setSelectCategory={setSelectCategory}
             setSelectGrade={setSelectGrade}
             setSelectCustom={setSelectCustom}
+            setSelectType={setSelectType}
           />
         </div>
         <div className="w-[85%]">
           {selectCustom ? (
             <CustomChartPage />
           ) : (
-            <FixChartPage category={selectCategory} grade={selectGrade} />
+            <FixChartPage category={selectCategory} grade={selectGrade} type={selectType} />
           )}
         </div>
       </div>

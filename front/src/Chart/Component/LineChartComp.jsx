@@ -10,13 +10,11 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const LineChartComp = ({ category, grade, value, value2, name }) => {
-  const [info, setInfo] = useState("");
-
+const LineChartComp = ({ category, grade, value, value2, type }) => {
   const loadData = () => {
     axios
       .get(`${process.env.REACT_APP_URL}/chart/info`, {
-        params: { tier: 4, category, grade, value, value2 },
+        params: { tier: 4, category, grade, value, value2, type },
       })
       .then((res) => {
         setData(res.data.data);
@@ -27,37 +25,6 @@ const LineChartComp = ({ category, grade, value, value2, name }) => {
   };
 
   useEffect(() => {
-    var str = "4T";
-    if (grade === "godae") str = str + " 고대";
-    else if (grade === "umuoel") str = str + " 유물";
-
-    if (category === "neck") str = str + " 목걸이";
-    else if (category === "earing") str = str + " 귀걸이";
-    else if (category === "ring") str = str + " 반지";
-
-    // 단일옵션
-    if (value === "x" || value2 === "x") {
-      //부위선택
-      if (category === "neck") {
-        //옵션선택
-        if (value === "x") str = str + " 적주피";
-        else if (value2 === "x") str = str + " 추피";
-      } else if (category === "earing") {
-        if (value === "x") str = str + " 무공%";
-        else if (value2 === "x") str = str + " 공%";
-      } else if (category === "ring") {
-        if (value === "x") str = str + " 치피%";
-        else if (value2 === "x") str = str + " 치적%";
-      }
-
-      if (value === "h" || value2 === "h") str = str + " 상";
-      else if (value === "m" || value2 === "m") str = str + " 중";
-    } else {
-      str = str + " " + name;
-    }
-
-    setInfo(str);
-
     loadData();
   }, [category, grade]);
 
@@ -67,7 +34,7 @@ const LineChartComp = ({ category, grade, value, value2, name }) => {
     <div>
       <div className="flex border-b-2 border-red-200">
         <div className=" w-[80%]">
-          <h2 className="text-center">{info}</h2>
+          <h2 className="text-center">{data?.name}</h2>
           <ResponsiveContainer width="100%" height={200}>
             <LineChart
               data={data?.chartInfoList}
