@@ -141,7 +141,13 @@ function AuctionTierFourSup({ getCountLog }) {
     selectValue3: null,
   });
 
-  const options = [selectOption1, selectOption2, selectOption3, selectOption4, selectOption5];
+  const options = [
+    selectOption1,
+    selectOption2,
+    selectOption3,
+    selectOption4,
+    selectOption5,
+  ];
 
   const [selectOptionReq, setSelectOptionReq] = useState([
     // {
@@ -309,7 +315,13 @@ function AuctionTierFourSup({ getCountLog }) {
     }));
   };
 
-  const updateSet = [updateOption1, updateOption2, updateOption3, updateOption4, updateOption5];
+  const updateSet = [
+    updateOption1,
+    updateOption2,
+    updateOption3,
+    updateOption4,
+    updateOption5,
+  ];
 
   return (
     <div className="mainbody">
@@ -326,7 +338,10 @@ function AuctionTierFourSup({ getCountLog }) {
       </div>
       <div className="grid grid-cols-2 gap-x-4 gap-y-4">
         <div>
-          <AllSelectPresetComp updateSet={updateSet} type={1}></AllSelectPresetComp>
+          <AllSelectPresetComp
+            updateSet={updateSet}
+            type={1}
+          ></AllSelectPresetComp>
         </div>
         <div>
           <SelectOptionComp
@@ -366,6 +381,7 @@ function AuctionTierFourSup({ getCountLog }) {
           search={updateSelect}
           total={total}
           searchState={searchState}
+          apiKey={apiKey}
         ></SelectSummary>
 
         <div className="grid grid-cols-2 gap-x-4 mt-6">

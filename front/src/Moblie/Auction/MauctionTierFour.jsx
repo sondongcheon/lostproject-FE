@@ -388,10 +388,10 @@ function MauctionTierFour({ getCountLog }) {
 
       <div className="mt-6">
         <SelectSummary
-          selectOptions={options}
           search={updateSelect}
           total={total}
           searchState={searchState}
+          apiKey={apiKey}
         ></SelectSummary>
 
         <div className="gap-x-4 mt-6">

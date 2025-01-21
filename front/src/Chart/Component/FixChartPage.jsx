@@ -5,7 +5,7 @@ import LineChartComp from "./LineChartComp";
 const FixChartPage = ({ category, grade, type }) => {
   return (
     <div>
-      <div className="mb-10">
+      <div className="mb-10 space-y-10">
         <LineChartComp
           category={category}
           grade={grade}
@@ -20,13 +20,13 @@ const FixChartPage = ({ category, grade, type }) => {
           value="m"
           value2="m"
         />
-        <LineChartComp
+        {/* <LineChartComp
           category={category}
           grade={grade}
           type={type}
           value="l"
           value2="l"
-        />
+        /> */}
         <LineChartComp
           category={category}
           grade={grade}

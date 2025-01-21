@@ -32,7 +32,7 @@ const LineChartComp = ({ category, grade, value, value2, type }) => {
 
   return (
     <div>
-      <div className="flex border-b-2 border-red-200">
+      <div className="flex m-10 border-b-2 border-red-200 bg-opacity-75 bg-white rounded-3xl">
         <div className=" w-[80%]">
           <h2 className="text-center">{data?.name}</h2>
           <ResponsiveContainer width="100%" height={200}>
@@ -48,7 +48,9 @@ const LineChartComp = ({ category, grade, value, value2, type }) => {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="time" className="text-xs" />
               <YAxis tickFormatter={(value) => value.toLocaleString() + "G"} />
-              <Tooltip formatter={(name) => [`${name.toLocaleString()} Gold`]} />
+              <Tooltip
+                formatter={(name) => [`${name.toLocaleString()} Gold`]}
+              />
               <Line
                 type="monotone"
                 dataKey="buyPrice"
