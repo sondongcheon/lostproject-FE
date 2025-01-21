@@ -547,7 +547,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
               </div>
 
               {/* 오른쪽 "등급" 그룹 */}
-              <div className="border-gray-300 flex items-center justify-center border-l-2">
+              <div className="flex items-center justify-center border-l-2">
                 <div className="w-[20%] flex justify-center">
                   <p className="text-sm font-bold">등급</p>
                 </div>
