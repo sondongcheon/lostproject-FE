@@ -12,9 +12,7 @@ const SelectSideBar = ({ setSelectCategory, setSelectGrade, setSelectCustom, set
       .then((res) => {
         setLogSearch(res.data.data);
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch((error) => {});
   };
 
   const listclick = (category, grade, custom, type) => {

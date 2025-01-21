@@ -21,54 +21,67 @@ const HeadKeyBox = ({ apiKey, setApiKey, saveKey, setSaveKey }) => {
             수를 비교합니다.
           </span>
         </div>
-        <div className="h-30 flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5] grid ">
-          <div className=" flex justify-center items-center gap-x-4">
-            <div className=" flex items-center">
-              {/* <span className="font-bold"> {`API 키`}</span> */}
-              <input
-                className="border-2 "
-                placeholder="API KEY"
-                value={apiKey}
-                type="text"
-                onChange={(e) => setApiKey(e.target.value)}
-              />
-            </div>
+        <div className="h-30 flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5] grid">
+          <div className="grid grid-rows-2 ">
+            <div className="flex justify-center items-center gap-x-4">
+              <div className=" flex items-center">
+                {/* <span className="font-bold"> {`API 키`}</span> */}
+                <input
+                  className="border-2 "
+                  placeholder="API KEY"
+                  value={apiKey}
+                  type="text"
+                  onChange={(e) => setApiKey(e.target.value)}
+                />
+              </div>
 
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <span className="font-bold pr-1 ">저장</span>
-              <input
-                className="h-16"
-                type="checkbox"
-                checked={saveKey}
-                onChange={(e) => setSaveKey(e.target.checked)}
-              />
-            </div>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <span className="font-bold pr-1 ">저장</span>
+                <input
+                  className="h-16"
+                  type="checkbox"
+                  checked={saveKey}
+                  onChange={(e) => setSaveKey(e.target.checked)}
+                />
+              </div>
 
-            <div>
-              {" "}
-              <button
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <span className="font-bold pr-1 ">공용키 사용</span>
+                <input
+                  className="h-16"
+                  type="checkbox"
+                  // checked={saveKey}
+                  // onChange={(e) => setSaveKey(e.target.checked)}
+                />
+              </div>
+            </div>
+            <div className="flex justify-center items-center gap-x-14">
+              <div>
+                {" "}
+                <button
+                  className="hover:underline"
+                  onClick={() => {
+                    Cookies.remove("apiKey");
+                    setApiKey("");
+                    Swal.fire({
+                      icon: "warning",
+                      html: "저장한 API키를 삭제하였습니다.",
+                      confirmButtonText: "확인",
+                    });
+                  }}
+                >
+                  API 키 삭제
+                </button>
+              </div>
+              <a
                 className="hover:underline"
-                onClick={() => {
-                  Cookies.remove("apiKey");
-                  setApiKey("");
-                  Swal.fire({
-                    icon: "warning",
-                    html: "저장한 API키를 삭제하였습니다.",
-                    confirmButtonText: "확인",
-                  });
-                }}
+                target="_blank"
+                href="https://developer-lostark.game.onstove.com/"
               >
-                API 키 삭제
-              </button>
+                {" "}
+                API 키 발급 사이트{" "}
+              </a>
             </div>
-            <a
-              className="hover:underline"
-              target="_blank"
-              href="https://developer-lostark.game.onstove.com/"
-            >
-              {" "}
-              API 키 발급 사이트{" "}
-            </a>
           </div>
         </div>
       </div>

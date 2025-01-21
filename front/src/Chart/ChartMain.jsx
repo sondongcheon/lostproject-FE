@@ -13,9 +13,7 @@ function ChartMain() {
         withCredentials: true,
       })
       .then(() => {})
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch((error) => {});
   };
 
   useEffect(() => {
