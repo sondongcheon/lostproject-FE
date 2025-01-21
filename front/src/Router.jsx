@@ -3,14 +3,11 @@ import Main from "./Pages/Main.jsx";
 import MainNav from "./common/MainNav";
 import Auction from "./Pages/Auction.jsx";
 import AuctionSup from "./Pages/AuctionSup.jsx";
-import AuctionTierFour from "./Auction/AuctionTierFour.jsx";
-import MauctionTierFour from "./Moblie/Auction/MauctionTierFour.jsx";
-import AuctionTierFourSup from "./Auction/AuctionTierFourSup.jsx";
 import UseBasicInfo from "./Information/UseBasicInfo.jsx";
 import NoticeBoard from "./Board/NoticeBoard.jsx";
 import BoardDetail from "./Board/BoardDetail.jsx";
 import MiniBoard from "./Board/MiniBoard.jsx";
-import ChartMain from "./Chart/ChartMain.jsx";
+import Chart from "./Pages/Chart.jsx";
 
 import TestFour from "./Main/TestFour.jsx";
 import { useState } from "react";
@@ -43,23 +40,11 @@ function Router() {
           path="/auctionsup"
           element={<AuctionSup getCountLog={getCountLog} />}
         />
-        <Route
-          path="/auctiontier4"
-          element={<AuctionTierFour getCountLog={getCountLog} />}
-        />
-        <Route
-          path="/mauctiontier4"
-          element={<MauctionTierFour getCountLog={getCountLog} />}
-        />
-        <Route
-          path="/auctiontier4sup"
-          element={<AuctionTierFourSup getCountLog={getCountLog} />}
-        />
         <Route path="/usebasicinfo" element={<UseBasicInfo />} />
         <Route path="/notice" element={<NoticeBoard />} />
         <Route path="/notice/:id" element={<BoardDetail />} />
         <Route path="/mini" element={<MiniBoard />} />
-        <Route path="/chart" element={<ChartMain />} />
+        <Route path="/chart" element={<Chart />} />
 
         <Route path="/test4" element={<TestFour />} />
       </Routes>

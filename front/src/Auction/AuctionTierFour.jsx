@@ -226,7 +226,6 @@ function AuctionTierFour({ getCountLog }) {
           params: { type: 0 },
         })
         .then((res) => {
-          console.log(res.data.data.result);
           getTotal(res.data.data.searchResultRes);
           setResultList(res.data.data.result);
         })
@@ -258,7 +257,6 @@ function AuctionTierFour({ getCountLog }) {
           });
         })
         .finally(() => {
-          console.log(selectOptionReq);
           setSearchState(false);
           getCountLog();
         });
@@ -394,6 +392,7 @@ function AuctionTierFour({ getCountLog }) {
           search={updateSelect}
           total={total}
           searchState={searchState}
+          apiKey={apiKey}
         ></SelectSummary>
 
         <div className="grid grid-cols-2 gap-x-4 mt-6">

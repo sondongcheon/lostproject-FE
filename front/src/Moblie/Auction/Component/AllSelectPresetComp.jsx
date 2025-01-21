@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const AllSelectPresetComp = ({ updateSet, type }) => {
-  const [sliderValue, setSliderValue] = useState(0);
+  const [sliderValue, setSliderValue] = useState(67);
   const [options, setOptions] = useState({});
 
   const setGrade = (key, value) => {
@@ -22,6 +22,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
         selectOption2: ["44", "48", "48", "52", "52"],
       });
     }
+    setGrade("quality", 67);
   }, type);
 
   const setOption = (key1, value1, key2, value2) => {
@@ -140,10 +141,10 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
             </div>
           </div>
         </div>
-        <div className="text-[8px] flex flex-1 grid grid-cols-4 font-bold pl-2 pr-4">
-          <div className="text-center flex justify-center items-center">
+        <div className="flex flex-1 grid grid-cols-4 text-[8px] gap-y-4 font-bold pl-2 pr-4">
+          <div className=" text-center flex justify-center items-center">
             <button
-              className="allBtm w-20"
+              className="allBtm w-20 text-xs"
               onClick={() => setGrade("itemGrade", "유물")}
             >
               ALL 유물
@@ -151,7 +152,15 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
           </div>
           <div className=" text-center flex justify-center items-center">
             <button
-              className="normalBtm color-tomato w-20"
+              className="allBtm w-20 text-xs"
+              onClick={() => setGrade("itemGrade", "고대")}
+            >
+              ALL 고대
+            </button>
+          </div>
+          <div className=" text-center flex justify-center items-center">
+            <button
+              className="normalBtm color-tomato w-20 text-xs"
               onClick={() =>
                 setOption("selectValue1", "3", "selectValue2", null)
               }
@@ -162,7 +171,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
           </div>
           <div className="text-center flex justify-center items-center">
             <button
-              className="normalBtm color-tomato w-20"
+              className="normalBtm color-tomato w-20 text-xs"
               onClick={() =>
                 setOption("selectValue1", "2", "selectValue2", null)
               }
@@ -171,29 +180,10 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
               일괄 선택
             </button>
           </div>
-          <div className=" text-center flex justify-center items-center">
-            <button
-              className="normalBtm color-tomato w-20 "
-              onClick={() =>
-                setOption("selectValue1", "1", "selectValue2", null)
-              }
-            >
-              하단일 <br />
-              일괄 선택
-            </button>
-          </div>
 
           <div className=" text-center flex justify-center items-center">
             <button
-              className="allBtm w-20"
-              onClick={() => setGrade("itemGrade", "고대")}
-            >
-              ALL 고대
-            </button>
-          </div>
-          <div className=" text-center flex justify-center items-center">
-            <button
-              className="normalBtm color-tomato w-20"
+              className="normalBtm color-tomato w-20 text-xs"
               onClick={() =>
                 setOption("selectValue1", "3", "selectValue2", "3")
               }
@@ -204,7 +194,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
           </div>
           <div className=" text-center flex justify-center items-center">
             <button
-              className="normalBtm color-tomato w-20"
+              className="normalBtm color-tomato w-20 text-xs"
               onClick={() =>
                 setOption("selectValue1", "2", "selectValue2", "2")
               }
@@ -215,12 +205,68 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
           </div>
           <div className=" text-center flex justify-center items-center">
             <button
-              className="normalBtm color-tomato w-20"
+              className="normalBtm color-tomato w-20 text-xs"
               onClick={() =>
-                setOption("selectValue1", "1", "selectValue2", "1")
+                setOption("selectValue1", "3", "selectValue2", "2")
               }
             >
-              하하 <br />
+              상중 <br />
+              일괄 선택
+            </button>
+          </div>
+          <div className=" text-center flex justify-center items-center">
+            <button
+              className="normalBtm color-tomato w-20 text-xs"
+              onClick={() =>
+                setOption("selectValue1", "2", "selectValue2", "3")
+              }
+            >
+              중상 <br />
+              일괄 선택
+            </button>
+          </div>
+
+          <div className=" text-center flex justify-center items-center">
+            <button
+              className="normalBtm color-tomato w-20 text-xs"
+              onClick={() =>
+                setOption("selectValue1", "2", "selectValue2", "1")
+              }
+            >
+              중하 <br />
+              일괄 선택
+            </button>
+          </div>
+          <div className=" text-center flex justify-center items-center">
+            <button
+              className="normalBtm color-tomato w-20 text-xs"
+              onClick={() =>
+                setOption("selectValue1", "1", "selectValue2", "2")
+              }
+            >
+              하중 <br />
+              일괄 선택
+            </button>
+          </div>
+          <div className=" text-center flex justify-center items-center">
+            <button
+              className="normalBtm color-tomato w-20 text-xs"
+              onClick={() =>
+                setOption("selectValue1", "3", "selectValue2", "1")
+              }
+            >
+              상하 <br />
+              일괄 선택
+            </button>
+          </div>
+          <div className=" text-center flex justify-center items-center">
+            <button
+              className="normalBtm color-tomato w-20 text-xs"
+              onClick={() =>
+                setOption("selectValue1", "1", "selectValue2", "3")
+              }
+            >
+              하상 <br />
               일괄 선택
             </button>
           </div>

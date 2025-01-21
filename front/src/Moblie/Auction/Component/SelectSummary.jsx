@@ -1,54 +1,20 @@
 import React from "react";
 
-const SelectSummary = ({ selectOptions, search, total, searchState }) => {
-  const category200000 = selectOptions.filter(
-    (option) => option.categoryCode === 200000
-  );
-  const otherCategory = selectOptions.filter(
-    (option) => option.categoryCode !== 200000
-  );
-
-  const category200000Text = category200000
-    .map((option) => `${option.accName}`)
-    .join(", ");
-
-  const valueFilter = (value) => {
-    if (value === "3") {
-      return "상";
-    } else if (value === "2") {
-      return "중";
-    } else if (value === "1") {
-      return "하";
-    } else {
-      return "미선택";
-    }
-  };
-  const category = category200000
-    .map(
-      (option) =>
-        `[${
-          option.selectValue1 == null
-            ? "미선택"
-            : valueFilter(option.selectValue1)
-        }, ${
-          option.selectValue2 == null
-            ? "미선택"
-            : valueFilter(option.selectValue2)
-        }]등급`
-    )
-    .join(", ");
-
-  const otherCategoryText = otherCategory
-    .filter(
-      (option) => option.selectOption1 !== null || option.selectOption2 !== null
-    ) // 유효한 항목만 필터링
-    .map((option) => option.accName) // accName만 추출
-    .join(", ");
-
+const SelectSummary = ({ search, total, searchState, apiKey }) => {
   return (
     <div>
       <div className="h-28 flex justify-center items-center shadow-lg border-2 rounded-3xl bg-gray-200">
         <div className="flex flex-col justify-center items-center">
+          <h1
+            className={`${
+              apiKey === "" || !apiKey
+                ? "font-bold text-center size-font-xxs text-red-500"
+                : "hidden"
+            } `}
+          >
+            🚨 API Key가 입력되지 않았습니다.🚨 <br /> 공용키가 사용되어
+            검색되므로 분당 횟수 초과가 일어날 확률이 높습니다.
+          </h1>
           <button
             className="bg-[#40AC8D] resetBtm text-xs h-10 mb-4"
             onClick={search}

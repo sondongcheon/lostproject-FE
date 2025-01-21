@@ -75,6 +75,16 @@ const HeadKeyBox = ({ apiKey, setApiKey, saveKey, setSaveKey }) => {
             </div>
           </div>
         </div>
+        <div
+          className={`${
+            apiKey === "" || !apiKey
+              ? "font-bold text-center size-font-xs text-red-500"
+              : "opacity-0 invisible size-font-xs"
+          } `}
+        >
+          🚨 API Key가 입력되지 않았습니다.🚨 <br /> 공용키가 사용되어 검색은
+          가능합니다. 분당 횟수 초과가 일어날 확률이 높습니다.
+        </div>
       </div>
     </div>
   );

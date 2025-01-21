@@ -57,7 +57,7 @@ function MainNav({ logSearch, getCountLog }) {
             className="text-3xl cursor-pointer text-white font-a"
             onClick={() => navigate("/")}
           >
-            LoaRoot <span className="text-xs">[beta 1.51]</span>
+            LoaRoot <span className="text-xs">[beta 1.6]</span>
           </span>
 
           {/* 오른쪽에 페이지 이동 공간 잡기 */}
@@ -117,7 +117,7 @@ function MainNav({ logSearch, getCountLog }) {
           {isMobile && (
             <div
               ref={sidebarRef}
-              className={`fixed top-16 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-500 ease-out ${
+              className={`fixed top-16 right-0 w-64 bg-white shadow-lg transform transition-transform duration-500 ease-out ${
                 isMenuClick ? "translate-x-0" : "translate-x-full"
               }`}
             >

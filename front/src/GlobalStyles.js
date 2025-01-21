@@ -23,6 +23,8 @@ const GlobalStyles = createGlobalStyle`
   .mainMobileBody {
     // width: 468px; /* 고정된 너비 */
     margin-top: 110px;
+    margin-bottom: 110px;
+    padding-bottom: 1px; /* 마진 상쇄 방지 */
   }
 
 [type="radio"], span {
@@ -212,10 +214,8 @@ const GlobalStyles = createGlobalStyle`
     body {
       width: 100vw; /* 고정된 너비 */
       height: 800px; /* 고정된 높이 */
-      overflow: auto; /* 넘치는 콘텐츠는 스크롤로 처리 */
       background-color: #ECEBDE;
       font-family: "Pretendard";
-      overflow: visible; /* 모바일에서는 스크롤 해제 */
     }
 
     [type="radio"] {
@@ -279,6 +279,10 @@ const GlobalStyles = createGlobalStyle`
     grid-template-columns: repeat(3, 1fr); /* 2열 그리드 */
     }
 
+    .size-font-sm{
+      font-size : 14px;
+    }
+
     .size-font-xs{
       font-size : 12px;
     }
@@ -295,6 +299,10 @@ const GlobalStyles = createGlobalStyle`
 
   @media (max-width: 400px) {
     
+    .size-font-sm{
+      font-size : 12px;
+    }
+
     .size-font-xs{
       font-size : 10px;
     }

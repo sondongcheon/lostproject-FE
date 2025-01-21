@@ -16,175 +16,319 @@ const CustomChartPage = () => {
   const neck = [
     {
       value: 1,
-      content: "4T 고대 - 상상",
+      content: "고대 - 상상",
     },
     {
       value: 2,
-      content: "4T 고대 - 중중",
+      content: "고대 - 중중",
     },
     {
       value: 3,
-      content: "4T 고대 - 하하",
+      content: "고대 - 하하",
     },
     {
       value: 4,
-      content: "4T 고대 - 추피 상",
+      content: "고대 - 추피 상/ 적주피 중",
     },
     {
       value: 5,
-      content: "4T 고대 - 적주피 상",
+      content: "고대 - 추피 중/ 적주피 상",
     },
     {
       value: 6,
-      content: "4T 고대 - 추피 중",
+      content: "고대 - 추피 상/ 적주피 하",
     },
     {
       value: 7,
-      content: "4T 고대 - 적주피 중",
+      content: "고대 - 추피 하/ 적주피 상",
     },
     {
       value: 8,
-      content: "4T 유물 - 상상",
+      content: "고대 - 추피 중/ 적주피 하",
     },
     {
       value: 9,
-      content: "4T 유물 - 중중",
+      content: "고대 - 추피 하/ 적주피 중",
     },
     {
       value: 10,
-      content: "4T 유물 - 하하",
+      content: "고대 - 추피 상",
     },
     {
       value: 11,
-      content: "4T 유물 - 추피 상",
+      content: "고대 - 적주피 상",
     },
     {
       value: 12,
-      content: "4T 유물 - 적주피 상",
+      content: "고대 - 추피 중",
     },
     {
       value: 13,
-      content: "4T 유물 - 추피 중",
+      content: "고대 - 적주피 중",
     },
     {
       value: 14,
-      content: "4T 유물 - 적주피 중",
+      content: "유물 - 상상",
+    },
+    {
+      value: 15,
+      content: "유물 - 중중",
+    },
+    {
+      value: 16,
+      content: "유물 - 하하",
+    },
+    {
+      value: 17,
+      content: "유물 - 추피 상/ 적주피 중",
+    },
+    {
+      value: 18,
+      content: "유물 - 추피 중/ 적주피 상",
+    },
+    {
+      value: 19,
+      content: "유물 - 추피 상/ 적주피 하",
+    },
+    {
+      value: 20,
+      content: "유물 - 추피 하/ 적주피 상",
+    },
+    {
+      value: 21,
+      content: "유물 - 추피 중/ 적주피 하",
+    },
+    {
+      value: 22,
+      content: "유물 - 추피 하/ 적주피 중",
+    },
+    {
+      value: 23,
+      content: "유물 - 추피 상",
+    },
+    {
+      value: 24,
+      content: "유물 - 적주피 상",
+    },
+    {
+      value: 25,
+      content: "유물 - 추피 중",
+    },
+    {
+      value: 26,
+      content: "유물 - 적주피 중",
     },
   ];
   const earing = [
     {
       value: 101,
-      content: "4T 고대 - 상상",
+      content: "고대 - 상상",
     },
     {
       value: 102,
-      content: "4T 고대 - 중중",
+      content: "고대 - 중중",
     },
     {
       value: 103,
-      content: "4T 고대 - 하하",
+      content: "고대 - 하하",
     },
     {
       value: 104,
-      content: "4T 고대 - 공% 상",
+      content: "고대 - 공% 상/ 무공% 중",
     },
     {
       value: 105,
-      content: "4T 고대 - 무공% 상",
+      content: "고대 - 공% 중/ 무공% 상",
     },
     {
       value: 106,
-      content: "4T 고대 - 공% 중",
+      content: "고대 - 공% 상/ 무공% 하",
     },
     {
       value: 107,
-      content: "4T 고대 - 무공% 중",
+      content: "고대 - 공% 하/ 무공% 상",
     },
     {
       value: 108,
-      content: "4T 유물 - 상상",
+      content: "고대 - 공% 중/ 무공% 하",
     },
     {
       value: 109,
-      content: "4T 유물 - 중중",
+      content: "고대 - 공% 하/ 무공% 중",
     },
     {
       value: 110,
-      content: "4T 유물 - 하하",
+      content: "고대 - 공% 상",
     },
     {
       value: 111,
-      content: "4T 유물 - 공% 상",
+      content: "고대 - 무공% 상",
     },
     {
       value: 112,
-      content: "4T 유물 - 무공% 상",
+      content: "고대 - 공% 중",
     },
     {
       value: 113,
-      content: "4T 유물 - 공% 중",
+      content: "고대 - 무공% 중",
     },
     {
       value: 114,
-      content: "4T 유물 - 무공% 중",
+      content: "유물 - 상상",
+    },
+    {
+      value: 115,
+      content: "유물 - 중중",
+    },
+    {
+      value: 116,
+      content: "유물 - 하하",
+    },
+    {
+      value: 117,
+      content: "유물 - 공% 상/ 무공% 중",
+    },
+    {
+      value: 118,
+      content: "유물 - 공% 중/ 무공% 상",
+    },
+    {
+      value: 119,
+      content: "유물 - 공% 상/ 무공% 하",
+    },
+    {
+      value: 120,
+      content: "유물 - 공% 하/ 무공% 상",
+    },
+    {
+      value: 121,
+      content: "유물 - 공% 중/ 무공% 하",
+    },
+    {
+      value: 122,
+      content: "유물 - 공% 하/ 무공% 중",
+    },
+    {
+      value: 123,
+      content: "유물 - 공% 상",
+    },
+    {
+      value: 124,
+      content: "유물 - 무공% 상",
+    },
+    {
+      value: 125,
+      content: "유물 - 공% 중",
+    },
+    {
+      value: 126,
+      content: "유물 - 무공% 중",
     },
   ];
   const ring = [
     {
       value: 201,
-      content: "4T 고대 - 상상",
+      content: "고대 - 상상",
     },
     {
       value: 202,
-      content: "4T 고대 - 중중",
+      content: "고대 - 중중",
     },
     {
       value: 203,
-      content: "4T 고대 - 하하",
+      content: "고대 - 하하",
     },
     {
       value: 204,
-      content: "4T 고대 - 치명타 적중 상",
+      content: "고대 - 치적% 상/ 치피% 중",
     },
     {
       value: 205,
-      content: "4T 고대 - 치명타 피해 상",
+      content: "고대 - 치적% 중/ 치피% 상",
     },
     {
       value: 206,
-      content: "4T 고대 - 치명타 적중 중",
+      content: "고대 - 치적% 상/ 치피% 하",
     },
     {
       value: 207,
-      content: "4T 고대 - 치명타 피해 중",
+      content: "고대 - 치적% 하/ 치피% 상",
     },
     {
       value: 208,
-      content: "4T 유물 - 상상",
+      content: "고대 - 치적% 중/ 치피% 하",
     },
     {
       value: 209,
-      content: "4T 유물 - 중중",
+      content: "고대 - 치적% 하/ 치피% 중",
     },
     {
       value: 210,
-      content: "4T 유물 - 하하",
+      content: "고대 - 치명타 적중 상",
     },
     {
       value: 211,
-      content: "4T 유물 - 치명타 적중 상",
+      content: "고대 - 치명타 피해 상",
     },
     {
       value: 212,
-      content: "4T 유물 - 치명타 피해 상",
+      content: "고대 - 치명타 적중 중",
     },
     {
       value: 213,
-      content: "4T 유물 - 치명타 적중 중",
+      content: "고대 - 치명타 피해 중",
     },
     {
       value: 214,
-      content: "4T 유물 - 치명타 피해 중",
+      content: "유물 - 상상",
+    },
+    {
+      value: 215,
+      content: "유물 - 중중",
+    },
+    {
+      value: 216,
+      content: "유물 - 하하",
+    },
+    {
+      value: 217,
+      content: "유물 - 치적% 상/ 치피% 중",
+    },
+    {
+      value: 218,
+      content: "유물 - 치적% 중/ 치피% 상",
+    },
+    {
+      value: 219,
+      content: "유물 - 치적% 상/ 치피% 하",
+    },
+    {
+      value: 220,
+      content: "유물 - 치적% 하/ 치피% 상",
+    },
+    {
+      value: 221,
+      content: "유물 - 치적% 중/ 치피% 하",
+    },
+    {
+      value: 222,
+      content: "유물 - 치적% 하/ 치피% 중",
+    },
+    {
+      value: 223,
+      content: "유물 - 치명타 적중 상",
+    },
+    {
+      value: 224,
+      content: "유물 - 치명타 피해 상",
+    },
+    {
+      value: 225,
+      content: "유물 - 치명타 적중 중",
+    },
+    {
+      value: 226,
+      content: "유물 - 치명타 피해 중",
     },
   ];
 
@@ -212,7 +356,7 @@ const CustomChartPage = () => {
   return (
     <div>
       <div>
-        <div className="flex justify-center gap-10">
+        <div className="flex justify-center gap-10 text-xs">
           <div>
             <p className="text-center">목걸이</p>
             <SelectBox
@@ -264,8 +408,8 @@ const CustomChartPage = () => {
             />
           </div>
           <button className="normalBtm" onClick={search}>
-            {" "}
-            검색하기{" "}
+            {""}
+            검색하기{""}
           </button>
         </div>
         <div className="pt-10">
@@ -282,7 +426,9 @@ const CustomChartPage = () => {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="time" className="text-xs" />
               <YAxis tickFormatter={(value) => value.toLocaleString() + "G"} />
-              <Tooltip formatter={(name) => [`${name.toLocaleString()} Gold`]} />
+              <Tooltip
+                formatter={(name) => [`${name.toLocaleString()} Gold`]}
+              />
               <Line
                 type="monotone"
                 dataKey="buyPrice"
