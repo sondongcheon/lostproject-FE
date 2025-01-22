@@ -59,7 +59,7 @@ function MauctionTierFourSup({ getCountLog }) {
     selectValue1: null,
     selectOption2: null,
     selectValue2: null,
-    selectOption3: null,
+    selectOption3: "46",
     selectValue3: null,
   });
   const [selectOption3, setSelectOption3] = useState({
@@ -85,7 +85,7 @@ function MauctionTierFourSup({ getCountLog }) {
     selectValue1: null,
     selectOption2: null,
     selectValue2: null,
-    selectOption3: null,
+    selectOption3: "46",
     selectValue3: null,
   });
   const [selectOption4, setSelectOption4] = useState({
