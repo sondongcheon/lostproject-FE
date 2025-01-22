@@ -102,8 +102,7 @@ const SelectSideBar = ({ setSelectCategory, setSelectGrade, setSelectCustom, set
             name="고대 반지"
           />
           <br />
-          유물 데이터 수집중
-          {/* <SideBarlist
+          <SideBarlist
             onClick={() => {
               listclick("neck", "umuoel", false, "sup_");
             }}
@@ -116,7 +115,7 @@ const SelectSideBar = ({ setSelectCategory, setSelectGrade, setSelectCustom, set
             }}
             img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_24.png"
             name="유물 반지"
-          /> */}
+          />
         </div>
         <br />
         <p className="text-center text-xs"> 오늘의 차트 방문자 - {logSearch[0]}</p>

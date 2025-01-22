@@ -141,13 +141,7 @@ function MauctionTierFourSup({ getCountLog }) {
     selectValue3: null,
   });
 
-  const options = [
-    selectOption1,
-    selectOption2,
-    selectOption3,
-    selectOption4,
-    selectOption5,
-  ];
+  const options = [selectOption1, selectOption2, selectOption3, selectOption4, selectOption5];
 
   const [selectOptionReq, setSelectOptionReq] = useState([
     // {
@@ -325,13 +319,7 @@ function MauctionTierFourSup({ getCountLog }) {
     }));
   };
 
-  const updateSet = [
-    updateOption1,
-    updateOption2,
-    updateOption3,
-    updateOption4,
-    updateOption5,
-  ];
+  const updateSet = [updateOption1, updateOption2, updateOption3, updateOption4, updateOption5];
 
   return (
     <div className="mainMobileBody">
@@ -349,10 +337,7 @@ function MauctionTierFourSup({ getCountLog }) {
 
       <div className="gap-x-4 gap-y-4">
         <div className="pb-4">
-          <AllSelectPresetComp
-            updateSet={updateSet}
-            type={0}
-          ></AllSelectPresetComp>
+          <AllSelectPresetComp updateSet={updateSet} type={1}></AllSelectPresetComp>
         </div>
         <div className="pb-4">
           <SelectOptionComp

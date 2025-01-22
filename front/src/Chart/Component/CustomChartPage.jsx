@@ -412,7 +412,7 @@ const CustomChartPage = () => {
             검색하기{""}
           </button>
         </div>
-        <div className="pt-10">
+        <div className="flex m-10 border-b-2 border-red-200 bg-opacity-75 bg-white rounded-3xl">
           <ResponsiveContainer width="100%" height={400}>
             <LineChart
               data={data.chartInfoList}
@@ -426,9 +426,7 @@ const CustomChartPage = () => {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="time" className="text-xs" />
               <YAxis tickFormatter={(value) => value.toLocaleString() + "G"} />
-              <Tooltip
-                formatter={(name) => [`${name.toLocaleString()} Gold`]}
-              />
+              <Tooltip formatter={(name) => [`${name.toLocaleString()} Gold`]} />
               <Line
                 type="monotone"
                 dataKey="buyPrice"
@@ -440,10 +438,13 @@ const CustomChartPage = () => {
             </LineChart>
           </ResponsiveContainer>
         </div>
-        <div>
+      </div>
+      <div className="items-center grid grid-cols-2 m-2 p-2 border-2 border-gray-500 rounded-xl text-center bg-opacity-50 bg-white">
+        <div className="">
           <p>주간 평균가 : {data?.weeklyAvg?.toLocaleString()} G</p>
           <p> 변동 비율 : {data?.weeklyAvgP}%</p>
-          <br />
+        </div>
+        <div className="">
           <p>주간 최저가 : {data?.weeklyMin?.toLocaleString()} G</p>
           <p> 변동 비율 : {data?.weeklyMinP}%</p>
         </div>

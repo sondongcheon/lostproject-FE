@@ -3,12 +3,7 @@ import axios from "axios";
 
 import Menulist from "./Menulist";
 
-const TopMenu = ({
-  setSelectCategory,
-  setSelectGrade,
-  setSelectCustom,
-  setSelectType,
-}) => {
+const TopMenu = ({ setSelectCategory, setSelectGrade, setSelectCustom, setSelectType }) => {
   const [logSearch, setLogSearch] = useState([]);
 
   const getCountLog = () => {
@@ -98,8 +93,7 @@ const TopMenu = ({
             name="고대 반지"
           />
           <br />
-          유물 데이터 수집중
-          {/* <Menulist
+          <Menulist
             onClick={() => {
               listclick("neck", "umuoel", false, "sup_");
             }}
@@ -112,7 +106,7 @@ const TopMenu = ({
             }}
             img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_24.png"
             name="유물 반지"
-          /> */}
+          />
           <br />
           <button
             className="w-full normalBtm mb-4"
@@ -125,10 +119,7 @@ const TopMenu = ({
         </div>
       </div>
       <br />
-      <p className="text-center text-xs">
-        {" "}
-        오늘의 차트 방문자 - {logSearch[0]}
-      </p>
+      <p className="text-center text-xs"> 오늘의 차트 방문자 - {logSearch[0]}</p>
       <p className="text-center text-xs"> 누적 차트 방문자 - {logSearch[1]}</p>
     </div>
   );
