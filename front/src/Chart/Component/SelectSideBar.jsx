@@ -20,8 +20,6 @@ const SelectSideBar = ({ setSelectCategory, setSelectGrade, setSelectCustom, set
     setSelectGrade(grade);
     setSelectCustom(custom);
     setSelectType(type);
-
-    console.log("cl");
   };
 
   useEffect(() => {

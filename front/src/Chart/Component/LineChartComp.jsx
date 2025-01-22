@@ -19,9 +19,7 @@ const LineChartComp = ({ category, grade, value, value2, type }) => {
       .then((res) => {
         setData(res.data.data);
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch((error) => {});
   };
 
   useEffect(() => {
