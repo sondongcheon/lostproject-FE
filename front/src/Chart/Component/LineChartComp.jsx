@@ -26,7 +26,7 @@ const LineChartComp = ({ category, grade, value, value2, type }) => {
 
   useEffect(() => {
     loadData();
-  }, [category, grade]);
+  }, [category, grade, type]);
 
   const [data, setData] = useState(null);
 
@@ -48,9 +48,7 @@ const LineChartComp = ({ category, grade, value, value2, type }) => {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="time" className="text-xs" />
               <YAxis tickFormatter={(value) => value.toLocaleString() + "G"} />
-              <Tooltip
-                formatter={(name) => [`${name.toLocaleString()} Gold`]}
-              />
+              <Tooltip formatter={(name) => [`${name.toLocaleString()} Gold`]} />
               <Line
                 type="monotone"
                 dataKey="buyPrice"

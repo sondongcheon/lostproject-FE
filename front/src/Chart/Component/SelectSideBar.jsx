@@ -3,12 +3,7 @@ import axios from "axios";
 
 import SideBarlist from "./SideBarlist";
 
-const SelectSideBar = ({
-  setSelectCategory,
-  setSelectGrade,
-  setSelectCustom,
-  setSelectType,
-}) => {
+const SelectSideBar = ({ setSelectCategory, setSelectGrade, setSelectCustom, setSelectType }) => {
   const [logSearch, setLogSearch] = useState([]);
 
   const getCountLog = () => {
@@ -25,6 +20,8 @@ const SelectSideBar = ({
     setSelectGrade(grade);
     setSelectCustom(custom);
     setSelectType(type);
+
+    console.log("cl");
   };
 
   useEffect(() => {
@@ -124,14 +121,8 @@ const SelectSideBar = ({
           /> */}
         </div>
         <br />
-        <p className="text-center text-xs">
-          {" "}
-          오늘의 차트 방문자 - {logSearch[0]}
-        </p>
-        <p className="text-center text-xs">
-          {" "}
-          누적 차트 방문자 - {logSearch[1]}
-        </p>
+        <p className="text-center text-xs"> 오늘의 차트 방문자 - {logSearch[0]}</p>
+        <p className="text-center text-xs"> 누적 차트 방문자 - {logSearch[1]}</p>
       </div>
     </div>
   );
