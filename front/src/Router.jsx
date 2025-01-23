@@ -4,9 +4,9 @@ import MainNav from "./common/MainNav";
 import Auction from "./Pages/Auction.jsx";
 import AuctionSup from "./Pages/AuctionSup.jsx";
 import UseBasicInfo from "./Information/UseBasicInfo.jsx";
-import NoticeBoard from "./Board/NoticeBoard.jsx";
-import BoardDetail from "./Board/BoardDetail.jsx";
-import MiniBoard from "./Board/MiniBoard.jsx";
+import NoticeBoard from "./Pages/NoticeBoard.jsx";
+import NoticeBoardDetail from "./Pages/NoticeBoardDetail.jsx";
+import MiniBoard from "./Pages/MiniBoard.jsx";
 import Chart from "./Pages/Chart.jsx";
 
 import TestFour from "./Main/TestFour.jsx";
@@ -42,7 +42,7 @@ function Router() {
         />
         <Route path="/usebasicinfo" element={<UseBasicInfo />} />
         <Route path="/notice" element={<NoticeBoard />} />
-        <Route path="/notice/:id" element={<BoardDetail />} />
+        <Route path="/notice/:id" element={<NoticeBoardDetail />} />
         <Route path="/mini" element={<MiniBoard />} />
         <Route path="/chart" element={<Chart />} />
 

@@ -6,7 +6,7 @@ import MenuDropdown from "./Component/MenuDropdown";
 
 function MainNav({ logSearch, getCountLog }) {
   const isMobile = useMediaQuery({
-    query: "(max-width:468px)",
+    query: "(max-width:800px)",
   });
 
   const [isMenuClick, setIsMenuClick] = useState(false);
