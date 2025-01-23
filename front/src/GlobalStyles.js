@@ -217,6 +217,77 @@ const GlobalStyles = createGlobalStyle`
   color: #40AC8D;
 }
 
+  @media (max-width: 800px) {
+
+    body {
+      width: 100vw; /* 고정된 너비 */
+      height: 800px; /* 고정된 높이 */
+      background-color: #ECEBDE;
+      font-family: "Pretendard";
+    }
+
+    .size-font-xl{
+      font-size : 20px;
+    }
+
+    .size-font-sm{
+      font-size : 18px;
+    }
+
+    .size-font-xs{
+      font-size : 16px;
+    }
+
+    .size-font-xxs{
+      font-size : 14px;
+    }
+
+    .size-font-xxxs{
+      font-size : 12px;
+    }
+
+    .mobile-grid-3 {
+    grid-template-columns: repeat(3, 1fr); /* 2열 그리드 */
+    }
+  }
+
+  @media (max-width: 640px) {
+
+    body {
+      width: 100vw; /* 고정된 너비 */
+      height: 800px; /* 고정된 높이 */
+      background-color: #ECEBDE;
+      font-family: "Pretendard";
+    }
+
+    .size-font-xl{
+      font-size : 18px;
+    }
+
+    .size-font-sm{
+      font-size : 16px;
+    }
+
+    .size-font-xs{
+      font-size : 14px;
+    }
+
+    .size-font-xxs{
+      font-size : 12px;
+    }
+
+    .size-font-xxxs{
+      font-size : 10px;
+    }
+
+        .mobile-grid-3 {
+    grid-template-columns: repeat(2, 1fr); /* 2열 그리드 */
+    }
+    .mobile-grid-3 > :last-child {
+    grid-column: span 2; /* 마지막 요소 2열 차지 */
+    }
+  }
+
   @media (max-width: 468px) { /* 모바일 화면 크기 조건 */
     body {
       width: 100vw; /* 고정된 너비 */
@@ -286,6 +357,10 @@ const GlobalStyles = createGlobalStyle`
     grid-template-columns: repeat(3, 1fr); /* 2열 그리드 */
     }
 
+    .size-font-xl{
+      font-size : 16px;
+    }
+
     .size-font-sm{
       font-size : 14px;
     }
@@ -305,6 +380,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   @media (max-width: 400px) {
+
+    .size-font-xl{
+      font-size : 14px;
+    }
     
     .size-font-sm{
       font-size : 12px;
@@ -327,6 +406,30 @@ const GlobalStyles = createGlobalStyle`
     }
     .mobile-grid-3 > :last-child {
     grid-column: span 2; /* 마지막 요소 2열 차지 */
+    }
+
+  }
+
+    @media (max-width: 355px) {
+
+    .size-font-xl{
+      font-size : 12px;
+    }
+    
+    .size-font-sm{
+      font-size : 10px;
+    }
+
+    .size-font-xs{
+      font-size : 8px;
+    }
+
+    .size-font-xxs{
+      font-size : 5px;
+    }
+
+    .size-font-xxxs{
+      font-size : 3px;
     }
 
   }

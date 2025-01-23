@@ -1,0 +1,433 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
+import Cookies from "js-cookie";
+
+import HeadKeyBox from "./Component/HeadKeyBox";
+import AllSelectPresetComp from "./Component/AllSelectPresetComp";
+import SelectOptionComp from "./Component/SelectOptionComp";
+import SelectSummary from "./Component/SelectSummary";
+import ResultBox from "./Component/ResultBox";
+
+function TauctionTierFourSup({ getCountLog }) {
+  const [selectOption1, setSelectOption1] = useState({
+    id: 1,
+    accName: "목걸이",
+    optionName: {
+      first: "아덴+",
+      second: "낙인+",
+      third: "아무 특옵",
+    },
+    optionValue: {
+      first: "43",
+      second: "44",
+      third: "아무 특옵",
+    },
+    tier: "4",
+    itemGrade: "",
+    quality: null,
+    categoryCode: 200010,
+    upgradeLevel: null,
+    tradeAllowCount: null,
+    selectOption1: null,
+    selectValue1: null,
+    selectOption2: null,
+    selectValue2: null,
+    selectOption3: null,
+    selectValue3: null,
+  });
+  const [selectOption2, setSelectOption2] = useState({
+    id: 2,
+    accName: "귀걸이1",
+    optionName: {
+      first: "회복+",
+      second: "실드+",
+      third: "아무 특옵",
+    },
+    optionValue: {
+      first: "47",
+      second: "48",
+      third: "아무 특옵",
+    },
+    tier: "4",
+    itemGrade: "",
+    quality: null,
+    categoryCode: 200020,
+    upgradeLevel: null,
+    tradeAllowCount: null,
+    selectOption1: null,
+    selectValue1: null,
+    selectOption2: null,
+    selectValue2: null,
+    selectOption3: "46",
+    selectValue3: null,
+  });
+  const [selectOption3, setSelectOption3] = useState({
+    id: 3,
+    accName: "귀걸이2",
+    optionName: {
+      first: "회복+",
+      second: "실드+",
+      third: "아무 특옵",
+    },
+    optionValue: {
+      first: "47",
+      second: "48",
+      third: "아무 특옵",
+    },
+    tier: "4",
+    itemGrade: "",
+    quality: null,
+    categoryCode: 200020,
+    upgradeLevel: null,
+    tradeAllowCount: null,
+    selectOption1: null,
+    selectValue1: null,
+    selectOption2: null,
+    selectValue2: null,
+    selectOption3: "46",
+    selectValue3: null,
+  });
+  const [selectOption4, setSelectOption4] = useState({
+    id: 4,
+    accName: "반지1",
+    optionName: {
+      first: "아공강",
+      second: "아피강",
+      third: "아무 특옵",
+    },
+    optionValue: {
+      first: "51",
+      second: "52",
+      third: "아무 특옵",
+    },
+    tier: "4",
+    itemGrade: "",
+    quality: null,
+    categoryCode: 200030,
+    upgradeLevel: null,
+    tradeAllowCount: null,
+    selectOption1: null,
+    selectValue1: null,
+    selectOption2: null,
+    selectValue2: null,
+    selectOption3: null,
+    selectValue3: null,
+  });
+  const [selectOption5, setSelectOption5] = useState({
+    id: 5,
+    accName: "반지2",
+    optionName: {
+      first: "아공강",
+      second: "아피강",
+      third: "아무 특옵",
+    },
+    optionValue: {
+      first: "51",
+      second: "52",
+      third: "아무 특옵",
+    },
+    tier: "4",
+    itemGrade: "",
+    quality: null,
+    categoryCode: 200030,
+    upgradeLevel: null,
+    tradeAllowCount: null,
+    selectOption1: null,
+    selectValue1: null,
+    selectOption2: null,
+    selectValue2: null,
+    selectOption3: null,
+    selectValue3: null,
+  });
+
+  const options = [
+    selectOption1,
+    selectOption2,
+    selectOption3,
+    selectOption4,
+    selectOption5,
+  ];
+
+  const [selectOptionReq, setSelectOptionReq] = useState([
+    // {
+    //   quality: "",
+    //   upgradeLevel: "",
+    //   tradeAllowCount: "",
+    //   itemGrade: "",
+    //   etcOptionList: [
+    //     {
+    //       option: "",
+    //       value: "",
+    //     },
+    //     {
+    //       option: "",
+    //       value: "",
+    //     },
+    //     {
+    //       option: "",
+    //       value: "",
+    //     },
+    //   ],
+    // },
+  ]);
+
+  const [result, setResult] = useState([
+    {
+      options: [],
+    },
+    { options: [] },
+    { options: [] },
+    { options: [] },
+    { options: [] },
+  ]);
+
+  const [count, setCount] = useState(5);
+
+  const [searchState, setSearchState] = useState(false);
+
+  const [apiKey, setApiKey] = useState("");
+  const [saveKey, setSaveKey] = useState(false);
+
+  const [total, setTotal] = useState(0);
+
+  const [resultList, setResultList] = useState([[], [], [], [], [], []]);
+
+  const getTotal = (res) => {
+    var tmp = res.reduce((sum, item) => {
+      return sum + (item?.auctionInfo.buyPrice || 0);
+    }, 0);
+    setResult(res);
+    setTotal(tmp);
+  };
+
+  useEffect(() => {
+    const cookieValue = Cookies.get("apiKey" ?? "");
+    if (Cookies.get("apiKey") !== undefined) {
+      setSaveKey(true);
+    }
+    setApiKey(cookieValue);
+  }, []);
+
+  useEffect(() => {
+    if (selectOptionReq.length > 0) {
+      const encodedApiKey = encodeURIComponent(apiKey);
+      setSearchState(true);
+      if (saveKey)
+        Cookies.set("apiKey", apiKey, {
+          expires: 89,
+          secure: true,
+          sameSite: "Strict",
+        });
+      else Cookies.remove("apiKey");
+      axios
+        .post(`${process.env.REACT_APP_URL}/auction/test5`, selectOptionReq, {
+          headers: { apiKey: encodedApiKey },
+          params: { type: 0 },
+        })
+        .then((res) => {
+          getTotal(res.data.data.searchResultRes);
+          setResultList(res.data.data.result);
+        })
+        .catch((error) => {
+          const handleError = () => {
+            if (error.response.data.code.includes("API-")) {
+              return Swal.fire({
+                icon: "warning",
+                html: error.response.data.message,
+                confirmButtonText: "확인",
+              });
+            } else {
+              return Swal.fire({
+                icon: "warning",
+                title: "예측되지 못한 오류입니다.",
+                html: error.response.data.message,
+                confirmButtonText: "확인",
+              });
+            }
+          };
+
+          return handleError().then(() => {
+            // 60초 대기
+            if (error.response.data.code === "API-001") {
+              return new Promise((resolve) => setTimeout(resolve, 60000));
+            } else {
+              return new Promise((resolve) => setTimeout(resolve, 3000));
+            }
+          });
+        })
+        .finally(() => {
+          setSearchState(false);
+          getCountLog();
+        });
+    }
+  }, [selectOptionReq]); // selectOptionReq가 변경될 때마다 실행
+
+  const updateSelect = () => {
+    const newSelectOptionReq = options.map((option) => ({
+      tier: option.tier || "",
+      quality: option.quality || "",
+      upgradeLevel: option.upgradeLevel || "",
+      tradeAllowCount: option.tradeAllowCount || "",
+      categoryCode: option.categoryCode || "",
+      itemGrade: option.itemGrade || "",
+      etcOptionList: [
+        {
+          option: option.selectOption1 || null,
+          value: option.selectValue1 || null,
+        },
+        {
+          option: option.selectOption2 || null,
+          value: option.selectValue2 || null,
+        },
+        {
+          option: option.selectOption3 || null,
+          value: option.selectValue3 || null,
+        },
+      ],
+    }));
+
+    setSelectOptionReq(newSelectOptionReq);
+  };
+
+  const check = () => {
+    console.log(selectOption2);
+  };
+
+  const updateOption1 = (key, value) => {
+    setSelectOption1((prevState) => ({
+      ...prevState,
+      [key]: value,
+    }));
+  };
+  const updateOption2 = (key, value) => {
+    setSelectOption2((prevState) => ({
+      ...prevState,
+      [key]: value,
+    }));
+  };
+  const updateOption3 = (key, value) => {
+    setSelectOption3((prevState) => ({
+      ...prevState,
+      [key]: value,
+    }));
+  };
+  const updateOption4 = (key, value) => {
+    setSelectOption4((prevState) => ({
+      ...prevState,
+      [key]: value,
+    }));
+  };
+  const updateOption5 = (key, value) => {
+    setSelectOption5((prevState) => ({
+      ...prevState,
+      [key]: value,
+    }));
+  };
+
+  const updateSet = [
+    updateOption1,
+    updateOption2,
+    updateOption3,
+    updateOption4,
+    updateOption5,
+  ];
+
+  return (
+    <div className="mainMobileBody">
+      {/* <button className="normalBtm" onClick={() => check()}>
+        dfsfdsa
+      </button> */}
+      <div className="mb-4">
+        <HeadKeyBox
+          apiKey={apiKey}
+          setApiKey={setApiKey}
+          saveKey={saveKey}
+          setSaveKey={setSaveKey}
+        ></HeadKeyBox>
+      </div>
+
+      <div className="gap-x-4 gap-y-4">
+        <div className="pb-4">
+          <AllSelectPresetComp
+            updateSet={updateSet}
+            type={1}
+          ></AllSelectPresetComp>
+        </div>
+        <div className="pb-4">
+          <SelectOptionComp
+            options={selectOption1}
+            onOptionsChange={updateOption1}
+          ></SelectOptionComp>
+        </div>
+        <div className="pb-4">
+          <SelectOptionComp
+            options={selectOption2}
+            onOptionsChange={updateOption2}
+          ></SelectOptionComp>
+        </div>
+        <div className="pb-4">
+          <SelectOptionComp
+            options={selectOption3}
+            onOptionsChange={updateOption3}
+          ></SelectOptionComp>
+        </div>
+        <div className="pb-4">
+          <SelectOptionComp
+            options={selectOption4}
+            onOptionsChange={updateOption4}
+          ></SelectOptionComp>
+        </div>
+        <div className="pb-4">
+          <SelectOptionComp
+            options={selectOption5}
+            onOptionsChange={updateOption5}
+          ></SelectOptionComp>
+        </div>
+      </div>
+
+      <div className="mt-6">
+        <SelectSummary
+          search={updateSelect}
+          total={total}
+          searchState={searchState}
+          apiKey={apiKey}
+        ></SelectSummary>
+
+        <div className="gap-x-4 mt-6">
+          <div className="space-y-2">
+            {result.map((item, index) => (
+              <ResultBox
+                result={item}
+                option={options[index]}
+                onClick={() => setCount(index)}
+                className={`${
+                  count === index
+                    ? "bg-[#EDF1D6] " // 선택된 인덱스에 배경색과 투명도
+                    : "bg-[#F5F5F5]" // 선택되지 않은 경우
+                }`}
+              />
+            ))}
+          </div>
+          <div className="pt-10">
+            {count < 5 && resultList[count]?.length > 0 && (
+              <div className="space-y-2">
+                {resultList[count].map((item, index) => (
+                  <ResultBox
+                    key={index}
+                    result={item}
+                    option={options[count]}
+                    number={index}
+                    className={"bg-[#F5F5F5]"}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default TauctionTierFourSup;
