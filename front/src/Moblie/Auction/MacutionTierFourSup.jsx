@@ -7,6 +7,7 @@ import HeadKeyBox from "./Component/HeadKeyBox";
 import AllSelectPresetComp from "./Component/AllSelectPresetComp";
 import SelectOptionComp from "./Component/SelectOptionComp";
 import SelectSummary from "./Component/SelectSummary";
+import SearchBtm from "./Component/SearchBtm";
 import ResultBox from "./Component/ResultBox";
 
 function MauctionTierFourSup({ getCountLog }) {
@@ -381,6 +382,14 @@ function MauctionTierFourSup({ getCountLog }) {
 
         <div className="gap-x-4 mt-6">
           <div className="space-y-2">
+            <SearchBtm
+              selectOptions={options}
+              search={updateSelect}
+              total={total}
+              searchState={searchState}
+              apiKey={apiKey}
+            ></SearchBtm>
+
             {result.map((item, index) => (
               <ResultBox
                 result={item}

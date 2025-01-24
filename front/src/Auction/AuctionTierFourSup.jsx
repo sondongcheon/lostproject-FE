@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 import HeadKeyBox from "./Component/HeadKeyBox";
 import AllSelectPresetComp from "./Component/AllSelectPresetComp";
 import SelectOptionComp from "./Component/SelectOptionComp";
-import SelectSummary from "./Component/SelectSummary";
+import SearchBtm from "./Component/SearchBtm";
 import ResultBox from "./Component/ResultBox";
 
 function AuctionTierFourSup({ getCountLog }) {
@@ -141,13 +141,7 @@ function AuctionTierFourSup({ getCountLog }) {
     selectValue3: null,
   });
 
-  const options = [
-    selectOption1,
-    selectOption2,
-    selectOption3,
-    selectOption4,
-    selectOption5,
-  ];
+  const options = [selectOption1, selectOption2, selectOption3, selectOption4, selectOption5];
 
   const [selectOptionReq, setSelectOptionReq] = useState([
     // {
@@ -315,13 +309,7 @@ function AuctionTierFourSup({ getCountLog }) {
     }));
   };
 
-  const updateSet = [
-    updateOption1,
-    updateOption2,
-    updateOption3,
-    updateOption4,
-    updateOption5,
-  ];
+  const updateSet = [updateOption1, updateOption2, updateOption3, updateOption4, updateOption5];
 
   return (
     <div className="mainbody">
@@ -338,10 +326,7 @@ function AuctionTierFourSup({ getCountLog }) {
       </div>
       <div className="grid grid-cols-2 gap-x-4 gap-y-4">
         <div>
-          <AllSelectPresetComp
-            updateSet={updateSet}
-            type={1}
-          ></AllSelectPresetComp>
+          <AllSelectPresetComp updateSet={updateSet} type={1}></AllSelectPresetComp>
         </div>
         <div>
           <SelectOptionComp
@@ -376,13 +361,13 @@ function AuctionTierFourSup({ getCountLog }) {
       </div>
 
       <div className="mt-6">
-        <SelectSummary
+        <SearchBtm
           selectOptions={options}
           search={updateSelect}
           total={total}
           searchState={searchState}
           apiKey={apiKey}
-        ></SelectSummary>
+        ></SearchBtm>
 
         <div className="grid grid-cols-2 gap-x-4 mt-6">
           <div className="space-y-2">
