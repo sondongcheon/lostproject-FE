@@ -10,174 +10,18 @@ import SelectSummary from "./Component/SelectSummary";
 import SearchBtm from "./Component/SearchBtm";
 import ResultBox from "./Component/ResultBox";
 
-function MauctionTierFourSup({ getCountLog }) {
-  const [selectOption1, setSelectOption1] = useState({
-    id: 1,
-    accName: "목걸이",
-    optionName: {
-      first: "아덴+",
-      second: "낙인+",
-      third: "아무 특옵",
-    },
-    optionValue: {
-      first: "43",
-      second: "44",
-      third: "아무 특옵",
-    },
-    tier: "4",
-    itemGrade: "",
-    quality: null,
-    categoryCode: 200010,
-    upgradeLevel: null,
-    tradeAllowCount: null,
-    selectOption1: null,
-    selectValue1: null,
-    selectOption2: null,
-    selectValue2: null,
-    selectOption3: null,
-    selectValue3: null,
-  });
-  const [selectOption2, setSelectOption2] = useState({
-    id: 2,
-    accName: "귀걸이1",
-    optionName: {
-      first: "회복+",
-      second: "실드+",
-      third: "아무 특옵",
-    },
-    optionValue: {
-      first: "47",
-      second: "48",
-      third: "아무 특옵",
-    },
-    tier: "4",
-    itemGrade: "",
-    quality: null,
-    categoryCode: 200020,
-    upgradeLevel: null,
-    tradeAllowCount: null,
-    selectOption1: null,
-    selectValue1: null,
-    selectOption2: null,
-    selectValue2: null,
-    selectOption3: "46",
-    selectValue3: null,
-  });
-  const [selectOption3, setSelectOption3] = useState({
-    id: 3,
-    accName: "귀걸이2",
-    optionName: {
-      first: "회복+",
-      second: "실드+",
-      third: "아무 특옵",
-    },
-    optionValue: {
-      first: "47",
-      second: "48",
-      third: "아무 특옵",
-    },
-    tier: "4",
-    itemGrade: "",
-    quality: null,
-    categoryCode: 200020,
-    upgradeLevel: null,
-    tradeAllowCount: null,
-    selectOption1: null,
-    selectValue1: null,
-    selectOption2: null,
-    selectValue2: null,
-    selectOption3: "46",
-    selectValue3: null,
-  });
-  const [selectOption4, setSelectOption4] = useState({
-    id: 4,
-    accName: "반지1",
-    optionName: {
-      first: "아공강",
-      second: "아피강",
-      third: "아무 특옵",
-    },
-    optionValue: {
-      first: "51",
-      second: "52",
-      third: "아무 특옵",
-    },
-    tier: "4",
-    itemGrade: "",
-    quality: null,
-    categoryCode: 200030,
-    upgradeLevel: null,
-    tradeAllowCount: null,
-    selectOption1: null,
-    selectValue1: null,
-    selectOption2: null,
-    selectValue2: null,
-    selectOption3: null,
-    selectValue3: null,
-  });
-  const [selectOption5, setSelectOption5] = useState({
-    id: 5,
-    accName: "반지2",
-    optionName: {
-      first: "아공강",
-      second: "아피강",
-      third: "아무 특옵",
-    },
-    optionValue: {
-      first: "51",
-      second: "52",
-      third: "아무 특옵",
-    },
-    tier: "4",
-    itemGrade: "",
-    quality: null,
-    categoryCode: 200030,
-    upgradeLevel: null,
-    tradeAllowCount: null,
-    selectOption1: null,
-    selectValue1: null,
-    selectOption2: null,
-    selectValue2: null,
-    selectOption3: null,
-    selectValue3: null,
-  });
-
-  const options = [selectOption1, selectOption2, selectOption3, selectOption4, selectOption5];
-
-  const [selectOptionReq, setSelectOptionReq] = useState([
-    // {
-    //   quality: "",
-    //   upgradeLevel: "",
-    //   tradeAllowCount: "",
-    //   itemGrade: "",
-    //   etcOptionList: [
-    //     {
-    //       option: "",
-    //       value: "",
-    //     },
-    //     {
-    //       option: "",
-    //       value: "",
-    //     },
-    //     {
-    //       option: "",
-    //       value: "",
-    //     },
-    //   ],
-    // },
-  ]);
-
-  const [result, setResult] = useState([
-    {
-      options: [],
-    },
-    { options: [] },
-    { options: [] },
-    { options: [] },
-    { options: [] },
-  ]);
-
-  const [count, setCount] = useState(5);
+function MauctionTierFourSup({
+  getCountLog,
+  options,
+  updateOptions,
+  result,
+  setResult,
+  resultList,
+  setResultList,
+  count,
+  setCount,
+}) {
+  const [selectOptionReq, setSelectOptionReq] = useState([]);
 
   const [searchState, setSearchState] = useState(false);
 
@@ -185,8 +29,6 @@ function MauctionTierFourSup({ getCountLog }) {
   const [saveKey, setSaveKey] = useState(false);
 
   const [total, setTotal] = useState(0);
-
-  const [resultList, setResultList] = useState([[], [], [], [], [], []]);
 
   const getTotal = (res) => {
     var tmp = res.reduce((sum, item) => {
@@ -286,41 +128,8 @@ function MauctionTierFourSup({ getCountLog }) {
   };
 
   const check = () => {
-    console.log(selectOption2);
+    console.log(options.selectOption2);
   };
-
-  const updateOption1 = (key, value) => {
-    setSelectOption1((prevState) => ({
-      ...prevState,
-      [key]: value,
-    }));
-  };
-  const updateOption2 = (key, value) => {
-    setSelectOption2((prevState) => ({
-      ...prevState,
-      [key]: value,
-    }));
-  };
-  const updateOption3 = (key, value) => {
-    setSelectOption3((prevState) => ({
-      ...prevState,
-      [key]: value,
-    }));
-  };
-  const updateOption4 = (key, value) => {
-    setSelectOption4((prevState) => ({
-      ...prevState,
-      [key]: value,
-    }));
-  };
-  const updateOption5 = (key, value) => {
-    setSelectOption5((prevState) => ({
-      ...prevState,
-      [key]: value,
-    }));
-  };
-
-  const updateSet = [updateOption1, updateOption2, updateOption3, updateOption4, updateOption5];
 
   return (
     <div className="mainMobileBody">
@@ -338,36 +147,36 @@ function MauctionTierFourSup({ getCountLog }) {
 
       <div className="gap-x-4 gap-y-4">
         <div className="pb-4">
-          <AllSelectPresetComp updateSet={updateSet} type={1}></AllSelectPresetComp>
+          <AllSelectPresetComp updateSet={updateOptions} type={1}></AllSelectPresetComp>
         </div>
         <div className="pb-4">
           <SelectOptionComp
-            options={selectOption1}
-            onOptionsChange={updateOption1}
+            options={options[0]}
+            onOptionsChange={updateOptions[0]}
           ></SelectOptionComp>
         </div>
         <div className="pb-4">
           <SelectOptionComp
-            options={selectOption2}
-            onOptionsChange={updateOption2}
+            options={options[1]}
+            onOptionsChange={updateOptions[1]}
           ></SelectOptionComp>
         </div>
         <div className="pb-4">
           <SelectOptionComp
-            options={selectOption3}
-            onOptionsChange={updateOption3}
+            options={options[2]}
+            onOptionsChange={updateOptions[2]}
           ></SelectOptionComp>
         </div>
         <div className="pb-4">
           <SelectOptionComp
-            options={selectOption4}
-            onOptionsChange={updateOption4}
+            options={options[3]}
+            onOptionsChange={updateOptions[3]}
           ></SelectOptionComp>
         </div>
         <div className="pb-4">
           <SelectOptionComp
-            options={selectOption5}
-            onOptionsChange={updateOption5}
+            options={options[4]}
+            onOptionsChange={updateOptions[4]}
           ></SelectOptionComp>
         </div>
       </div>
