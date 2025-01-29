@@ -8,14 +8,14 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
   const [optionProps, setOptionProps] = useState([]);
 
   useEffect(() => {
-    if (["41", "43", "45", "49", "51"].includes(options.optionValue.first)) {
+    if (["41", "43", "45", "49", "51"].includes(options?.optionValue.first)) {
       setOptionProps([
         { value: "53", content: "공격력+" },
         { value: "54", content: "무기공격력+" },
         { value: "55", content: "최대생명력+" },
         { value: "56", content: "최대마나+" },
       ]);
-    } else if (["47"].includes(options.optionValue.first)) {
+    } else if (["47"].includes(options?.optionValue.first)) {
       setOptionProps([
         { value: "53", content: "공격력+" },
         { value: "46", content: "무기공격력%" },
@@ -24,7 +24,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
         { value: "56", content: "최대마나+" },
       ]);
     }
-  }, [options.optionValue.first]);
+  }, [options?.optionValue.first]);
 
   const updateOption = (key, value) => {
     setCurrentOption((prevState) => ({
@@ -34,10 +34,10 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
   };
 
   const handleCategoryCode = () => {
-    if (options.categoryCode === 200000) {
-      if (options.accName === "목걸이") {
+    if (options?.categoryCode === 200000) {
+      if (options?.accName === "목걸이") {
         onOptionsChange("categoryCode", 200010);
-      } else if (options.accName === "귀걸이") {
+      } else if (options?.accName === "귀걸이") {
         onOptionsChange("categoryCode", 200020);
       } else {
         onOptionsChange("categoryCode", 200030);
@@ -47,9 +47,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
       onOptionsChange("selectOption3", currentOption.selectOption3);
     } else {
       onOptionsChange("categoryCode", 200000);
-      updateOption("selectOption1", options.selectOption1);
-      updateOption("selectOption2", options.selectOption2);
-      updateOption("selectOption3", options.selectOption3);
+      updateOption("selectOption1", options?.selectOption1);
+      updateOption("selectOption2", options?.selectOption2);
+      updateOption("selectOption3", options?.selectOption3);
       onOptionsChange("selectOption1", null);
       onOptionsChange("selectOption2", null);
       onOptionsChange("selectOption3", null);
@@ -60,20 +60,20 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
     <div>
       <div
         className={`h-44 flex shadow-lg bg-[#F5F5F5] border-2 rounded-3xl ${
-          options.categoryCode === 200000 ? "border-red-500" : null
+          options?.categoryCode === 200000 ? "border-red-500" : null
         }`}
       >
         {/* 왼쪽 고정 크기 영역 */}
         <div className="w-20 flex flex-col justify-center items-center border-black">
-          <p className="font-bold ">{options.categoryCode === 200000 ? "" : options.accName}</p>
+          <p className="font-bold ">{options?.categoryCode === 200000 ? "" : options?.accName}</p>
           <button
             className={`text-xs font-bold ${
-              options.categoryCode === 200000 ? "normalSelBtm" : "normalBtm color-tomato"
+              options?.categoryCode === 200000 ? "normalSelBtm" : "normalBtm color-tomato"
             }`}
             onClick={handleCategoryCode}
           >
             특수추적 <br />
-            {options.categoryCode === 200000 ? "제거" : "추가"}
+            {options?.categoryCode === 200000 ? "제거" : "추가"}
           </button>
         </div>
 
@@ -85,28 +85,28 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
               <div
                 className="font-bold col-span-1 border-b-2 border-gray-300 flex items-center justify-center text-center text-xs"
                 onClick={() => {
-                  onOptionsChange("tier", `${options.tier}` === "3" ? "4" : "3");
-                  if (options.itemGrade === "전설") {
+                  onOptionsChange("tier", `${options?.tier}` === "3" ? "4" : "3");
+                  if (options?.itemGrade === "전설") {
                     onOptionsChange("itemGrade", "");
                   }
                 }}
               >
-                {options.tier}T
+                {options?.tier}T
                 <br />
                 (click!)
               </div>
               <div className="col-span-3 border-b-2 border-gray-300 flex items-center justify-center">
                 <form
                   className={`grid ${
-                    options.tier === "3" ? "grid-cols-3 gap-2" : "grid-cols-2 gap-4"
+                    options?.tier === "3" ? "grid-cols-3 gap-2" : "grid-cols-2 gap-4"
                   }`}
                 >
-                  <label className={`${options.tier === "4" ? "hidden" : ""}`}>
+                  <label className={`${options?.tier === "4" ? "hidden" : ""}`}>
                     <input
                       type="radio"
-                      name={`${options.id}_itemGrade`}
+                      name={`${options?.id}_itemGrade`}
                       value="전설"
-                      checked={options.itemGrade === "전설"}
+                      checked={options?.itemGrade === "전설"}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("itemGrade", e.target.value)}
                     />
@@ -115,9 +115,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label>
                     <input
                       type="radio"
-                      name={`${options.id}_itemGrade`}
+                      name={`${options?.id}_itemGrade`}
                       value="유물"
-                      checked={options.itemGrade === "유물"}
+                      checked={options?.itemGrade === "유물"}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("itemGrade", e.target.value)}
                     />
@@ -126,9 +126,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label>
                     <input
                       type="radio"
-                      name={`${options.id}_itemGrade`}
+                      name={`${options?.id}_itemGrade`}
                       value="고대"
-                      checked={options.itemGrade === "고대"}
+                      checked={options?.itemGrade === "고대"}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("itemGrade", e.target.value)}
                     />
@@ -147,7 +147,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     type="range"
                     min="0"
                     max="100"
-                    value={options.quality || 0}
+                    value={options?.quality || 0}
                     onChange={(e) =>
                       onOptionsChange("quality", parseInt(e.target.value, 10) || null)
                     }
@@ -161,7 +161,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     type="number"
                     min="0"
                     max="100"
-                    value={options.quality || 0}
+                    value={options?.quality || 0}
                     onChange={(e) => {
                       const value = parseInt(e.target.value, 10);
                       onOptionsChange(
@@ -182,10 +182,10 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label>
                     <input
                       type="radio"
-                      name={`${options.id}_upgradeLevel`}
+                      name={`${options?.id}_upgradeLevel`}
                       value={null}
                       className="mr-1"
-                      checked={options.upgradeLevel === null}
+                      checked={options?.upgradeLevel === null}
                       onChange={() => onOptionsChange("upgradeLevel", null)}
                     />
                     <span className="text-xs">All</span>
@@ -194,7 +194,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label>
                     <input
                       type="radio"
-                      name={`${options.id}_upgradeLevel`}
+                      name={`${options?.id}_upgradeLevel`}
                       value="1"
                       className="mr-1"
                       onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
@@ -205,7 +205,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label>
                     <input
                       type="radio"
-                      name={`${options.id}_upgradeLevel`}
+                      name={`${options?.id}_upgradeLevel`}
                       value="2"
                       className="mr-1"
                       onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
@@ -216,7 +216,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label>
                     <input
                       type="radio"
-                      name={`${options.id}_upgradeLevel`}
+                      name={`${options?.id}_upgradeLevel`}
                       value="3"
                       className="mr-1"
                       onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
@@ -235,10 +235,10 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label>
                     <input
                       type="radio"
-                      name={`${options.id}tradeCount`}
+                      name={`${options?.id}tradeCount`}
                       value={null}
                       className="mr-1"
-                      checked={options.tradeAllowCount === null}
+                      checked={options?.tradeAllowCount === null}
                       onChange={() => onOptionsChange("tradeAllowCount", null)}
                     />
                     <span className="text-xs">All</span>
@@ -246,7 +246,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label>
                     <input
                       type="radio"
-                      name={`${options.id}tradeCount`}
+                      name={`${options?.id}tradeCount`}
                       value="0"
                       className="mr-1"
                       onChange={(e) => onOptionsChange("tradeAllowCount", e.target.value)}
@@ -256,7 +256,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label>
                     <input
                       type="radio"
-                      name={`${options.id}tradeCount`}
+                      name={`${options?.id}tradeCount`}
                       value="1"
                       className="mr-1"
                       onChange={(e) => onOptionsChange("tradeAllowCount", e.target.value)}
@@ -267,7 +267,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label>
                     <input
                       type="radio"
-                      name={`${options.id}tradeCount`}
+                      name={`${options?.id}tradeCount`}
                       value="2"
                       className="mr-1"
                       onChange={(e) => onOptionsChange("tradeAllowCount", e.target.value)}
@@ -291,7 +291,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                 {/* 나머지 75% 영역에 라디오 버튼들 배치 */}
                 <div className="w-[75%] justify-center items-center relative">
                   {/* 옵션이 200000일 경우만 덮기 */}
-                  {options.categoryCode === 200000 && (
+                  {options?.categoryCode === 200000 && (
                     <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center m-1">
                       <p className="text-sm text-red-500 font-bold">등급만 선택 합니다</p>
                     </div>
@@ -300,44 +300,44 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     <label>
                       <input
                         type="radio"
-                        name={`${options.id}selectOption1`}
-                        value={options.optionValue.first}
-                        checked={options.selectOption1 === options.optionValue.first}
-                        disabled={options.selectOption2 === options.optionValue.first}
+                        name={`${options?.id}selectOption1`}
+                        value={options?.optionValue.first}
+                        checked={options?.selectOption1 === options?.optionValue.first}
+                        disabled={options?.selectOption2 === options?.optionValue.first}
                         onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
                       />
-                      <span className="text-xs">{options.optionName.first}</span>
+                      <span className="text-xs">{options?.optionName.first}</span>
                     </label>
 
                     <label>
                       <input
                         type="radio"
-                        name={`${options.id}selectOption1`}
-                        value={options.optionValue.second}
-                        checked={options.selectOption1 === options.optionValue.second}
-                        disabled={options.selectOption2 === options.optionValue.second}
+                        name={`${options?.id}selectOption1`}
+                        value={options?.optionValue.second}
+                        checked={options?.selectOption1 === options?.optionValue.second}
+                        disabled={options?.selectOption2 === options?.optionValue.second}
                         onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
                       />
-                      <span className="text-xs">{options.optionName.second}</span>
+                      <span className="text-xs">{options?.optionName.second}</span>
                     </label>
 
                     {/* <label>
                       <input
                         type="radio"
-                        name={`${options.id}selectOption1`}
-                        value={options.optionValue.third}
-                        checked={options.selectOption1 === options.optionValue.third}
+                        name={`${options?.id}selectOption1`}
+                        value={options?.optionValue.third}
+                        checked={options?.selectOption1 === options?.optionValue.third}
                         onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
                       />
-                      {options.optionName.third}
+                      {options?.optionName.third}
                     </label> */}
 
                     <label>
                       <input
                         type="radio"
-                        name={`${options.id}selectOption1`}
+                        name={`${options?.id}selectOption1`}
                         value={null}
-                        checked={options.selectOption1 === null}
+                        checked={options?.selectOption1 === null}
                         onChange={() => onOptionsChange("selectOption1", null)}
                       />
                       <span className="text-xs">미선택</span>
@@ -356,9 +356,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label className="flex items-center">
                     <input
                       type="radio"
-                      name={`${options.id}selectValue1`}
+                      name={`${options?.id}selectValue1`}
                       value="3"
-                      checked={options.selectValue1 === "3"}
+                      checked={options?.selectValue1 === "3"}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue1", e.target.value)}
                     />
@@ -367,9 +367,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label className="flex items-center">
                     <input
                       type="radio"
-                      name={`${options.id}selectValue1`}
+                      name={`${options?.id}selectValue1`}
                       value="2"
-                      checked={options.selectValue1 === "2"}
+                      checked={options?.selectValue1 === "2"}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue1", e.target.value)}
                     />
@@ -378,9 +378,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label className="flex items-center">
                     <input
                       type="radio"
-                      name={`${options.id}selectValue1`}
+                      name={`${options?.id}selectValue1`}
                       value="1"
-                      checked={options.selectValue1 === "1"}
+                      checked={options?.selectValue1 === "1"}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue1", e.target.value)}
                     />
@@ -389,8 +389,8 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label className="flex items-center">
                     <input
                       type="radio"
-                      name={`${options.id}selectValue1`}
-                      checked={options.selectValue1 === null}
+                      name={`${options?.id}selectValue1`}
+                      checked={options?.selectValue1 === null}
                       value={null}
                       className="mr-1"
                       onChange={() => onOptionsChange("selectValue1", null)}
@@ -410,7 +410,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                 {/* 나머지 75% 영역에 라디오 버튼들 배치 */}
                 <div className="w-[75%]  justify-center items-center relative">
                   {/* 옵션이 200000일 경우만 덮기 */}
-                  {options.categoryCode === 200000 && (
+                  {options?.categoryCode === 200000 && (
                     <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center  m-1">
                       <p className="text-sm text-red-500 font-bold">등급만 선택 합니다</p>
                     </div>
@@ -419,41 +419,41 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     <label>
                       <input
                         type="radio"
-                        name={`${options.id}selectOption2`}
-                        value={options.optionValue.first}
-                        checked={options.selectOption2 === options.optionValue.first}
-                        disabled={options.selectOption1 === options.optionValue.first}
+                        name={`${options?.id}selectOption2`}
+                        value={options?.optionValue.first}
+                        checked={options?.selectOption2 === options?.optionValue.first}
+                        disabled={options?.selectOption1 === options?.optionValue.first}
                         onChange={(e) => onOptionsChange("selectOption2", e.target.value)}
                       />
-                      <span className="text-xs">{options.optionName.first}</span>
+                      <span className="text-xs">{options?.optionName.first}</span>
                     </label>
                     <label>
                       <input
                         type="radio"
-                        name={`${options.id}selectOption2`}
-                        value={options.optionValue.second}
-                        checked={options.selectOption2 === options.optionValue.second}
-                        disabled={options.selectOption1 === options.optionValue.second}
+                        name={`${options?.id}selectOption2`}
+                        value={options?.optionValue.second}
+                        checked={options?.selectOption2 === options?.optionValue.second}
+                        disabled={options?.selectOption1 === options?.optionValue.second}
                         onChange={(e) => onOptionsChange("selectOption2", e.target.value)}
                       />
-                      <span className="text-xs">{options.optionName.second}</span>
+                      <span className="text-xs">{options?.optionName.second}</span>
                     </label>
                     {/* <label>
                       <input
                         type="radio"
-                        name={`${options.id}selectOption2`}
-                        value={options.optionValue.third}
-                        checked={options.selectOption2 === options.optionValue.third}
+                        name={`${options?.id}selectOption2`}
+                        value={options?.optionValue.third}
+                        checked={options?.selectOption2 === options?.optionValue.third}
                         onChange={(e) => onOptionsChange("selectOption2", e.target.value)}
                       />
-                      {options.optionName.third}
+                      {options?.optionName.third}
                     </label> */}
                     <label>
                       <input
                         type="radio"
-                        name={`${options.id}selectOption2`}
+                        name={`${options?.id}selectOption2`}
                         value={null}
-                        checked={options.selectOption2 === null}
+                        checked={options?.selectOption2 === null}
                         onChange={() => onOptionsChange("selectOption2", null)}
                       />
                       <span className="text-xs">미선택</span>
@@ -471,9 +471,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label className="flex items-center">
                     <input
                       type="radio"
-                      name={`${options.id}selectValue2`}
+                      name={`${options?.id}selectValue2`}
                       value="3"
-                      checked={options.selectValue2 === "3"}
+                      checked={options?.selectValue2 === "3"}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue2", e.target.value)}
                     />
@@ -482,9 +482,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label className="flex items-center">
                     <input
                       type="radio"
-                      name={`${options.id}selectValue2`}
+                      name={`${options?.id}selectValue2`}
                       value="2"
-                      checked={options.selectValue2 === "2"}
+                      checked={options?.selectValue2 === "2"}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue2", e.target.value)}
                     />
@@ -493,9 +493,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label className="flex items-center">
                     <input
                       type="radio"
-                      name={`${options.id}selectValue2`}
+                      name={`${options?.id}selectValue2`}
                       value="1"
-                      checked={options.selectValue2 === "1"}
+                      checked={options?.selectValue2 === "1"}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue2", e.target.value)}
                     />
@@ -504,9 +504,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label className="flex items-center">
                     <input
                       type="radio"
-                      name={`${options.id}selectValue2`}
+                      name={`${options?.id}selectValue2`}
                       value={null}
-                      checked={options.selectValue2 === null}
+                      checked={options?.selectValue2 === null}
                       className="mr-1"
                       onChange={() => onOptionsChange("selectValue2", null)}
                     />
@@ -522,7 +522,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
               </div> */}
 
               {/* 옵션이 200000일 경우만 덮기 */}
-              {/* {options.categoryCode === 200000 && (
+              {/* {options?.categoryCode === 200000 && (
                 <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center rounded-3xl m-1">
                   <p className="text-sm text-red-500 font-bold">특옵만 선택합니다</p>
                 </div>
@@ -537,7 +537,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <div className="flex justify-center items-center">
                     <SelectBox
                       options={optionProps}
-                      value={options.selectOption3}
+                      value={options?.selectOption3}
                       name="selectOption3"
                       onOptionsChange={onOptionsChange}
                       css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5]"
@@ -555,9 +555,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label className="flex items-center">
                     <input
                       type="radio"
-                      name={`${options.id}selectValue3`}
+                      name={`${options?.id}selectValue3`}
                       value="3"
-                      checked={options.selectValue3 === "3"}
+                      checked={options?.selectValue3 === "3"}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue3", e.target.value)}
                     />
@@ -566,9 +566,9 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label className="flex items-center">
                     <input
                       type="radio"
-                      name={`${options.id}selectValue3`}
+                      name={`${options?.id}selectValue3`}
                       value="2"
-                      checked={options.selectValue3 === "2"}
+                      checked={options?.selectValue3 === "2"}
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue3", e.target.value)}
                     />
@@ -577,8 +577,8 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label className="flex items-center">
                     <input
                       type="radio"
-                      name={`${options.id}selectValue3`}
-                      checked={options.selectValue3 === "1"}
+                      name={`${options?.id}selectValue3`}
+                      checked={options?.selectValue3 === "1"}
                       value="1"
                       className="mr-1"
                       onChange={(e) => onOptionsChange("selectValue3", e.target.value)}
@@ -588,8 +588,8 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   <label className="flex items-center">
                     <input
                       type="radio"
-                      name={`${options.id}selectValue3`}
-                      checked={options.selectValue3 === null}
+                      name={`${options?.id}selectValue3`}
+                      checked={options?.selectValue3 === null}
                       value={null}
                       className="mr-1"
                       onChange={() => onOptionsChange("selectValue3", null)}
