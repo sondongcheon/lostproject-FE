@@ -13,10 +13,21 @@ function Chart({}) {
     query: "(max-width:800px)",
   });
 
+  const [request, setRequest] = useState({
+    time: 8,
+    point: 15,
+  });
+
   return (
     <div>
       <div>
-        {isMobile ? <MChartMain /> : isTablet ? <TChartMain /> : <ChartMain />}
+        {isMobile ? (
+          <MChartMain request={request} setRequest={setRequest} />
+        ) : isTablet ? (
+          <TChartMain request={request} setRequest={setRequest} />
+        ) : (
+          <ChartMain request={request} setRequest={setRequest} />
+        )}
       </div>
     </div>
   );
