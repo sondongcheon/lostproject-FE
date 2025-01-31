@@ -119,8 +119,8 @@ const TopMenu = ({ setSelectCategory, setSelectGrade, setSelectCustom, setSelect
         </div>
       </div>
       <br />
-      <p className="text-center text-xs"> 오늘의 차트 방문자 - {logSearch[0]}</p>
-      <p className="text-center text-xs"> 누적 차트 방문자 - {logSearch[1]}</p>
+      <p className="text-center text-xs"> 오늘의 차트 방문자 - {logSearch[1]}</p>
+      <p className="text-center text-xs"> 누적 차트 방문자 - {logSearch[0]}</p>
     </div>
   );
 };

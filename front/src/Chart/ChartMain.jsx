@@ -6,7 +6,7 @@ import FixChartPage from "./Component/FixChartPage";
 import CustomChartPage from "./Component/CustomChartPage";
 import { type } from "@testing-library/user-event/dist/type";
 
-function ChartMain() {
+function ChartMain({ request, setRequest }) {
   const getCountLog = () => {
     axios
       .get(`${process.env.REACT_APP_URL}/chart/uplog`, {
@@ -40,7 +40,13 @@ function ChartMain() {
           {selectCustom ? (
             <CustomChartPage />
           ) : (
-            <FixChartPage category={selectCategory} grade={selectGrade} type={selectType} />
+            <FixChartPage
+              category={selectCategory}
+              grade={selectGrade}
+              type={selectType}
+              request={request}
+              setRequest={setRequest}
+            />
           )}
         </div>
       </div>

@@ -343,7 +343,6 @@ const CustomChartPage = () => {
   };
 
   const search = () => {
-    console.log("request", request);
     axios
       .post(`${process.env.REACT_APP_URL}/chart/custom`, request)
       .then((res) => {

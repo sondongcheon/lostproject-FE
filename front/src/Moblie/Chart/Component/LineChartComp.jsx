@@ -10,11 +10,20 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const LineChartComp = ({ category, grade, value, value2, type }) => {
+const LineChartComp = ({ category, grade, value, value2, type, request }) => {
   const loadData = () => {
     axios
       .get(`${process.env.REACT_APP_URL}/chart/info`, {
-        params: { tier: 4, category, grade, value, value2, type },
+        params: {
+          tier: 4,
+          category,
+          grade,
+          value,
+          value2,
+          type,
+          time: request.time,
+          point: request.point,
+        },
       })
       .then((res) => {
         setData(res.data.data);
@@ -26,7 +35,7 @@ const LineChartComp = ({ category, grade, value, value2, type }) => {
 
   useEffect(() => {
     loadData();
-  }, [category, grade]);
+  }, [category, grade, type, request]);
 
   const [data, setData] = useState(null);
 
@@ -37,9 +46,7 @@ const LineChartComp = ({ category, grade, value, value2, type }) => {
           <h2 className="text-center">{data?.name}</h2>
           <ResponsiveContainer width="100%" height={200}>
             <LineChart
-              data={data?.chartInfoList
-                .filter((_, index) => index % 3 === 2)
-                .slice(0, 5)}
+              data={data?.chartInfoList}
               margin={{
                 top: 5,
                 right: 50,
@@ -50,9 +57,7 @@ const LineChartComp = ({ category, grade, value, value2, type }) => {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="time" className="text-xs" />
               <YAxis tickFormatter={(value) => value.toLocaleString() + "G"} />
-              <Tooltip
-                formatter={(name) => [`${name.toLocaleString()} Gold`]}
-              />
+              <Tooltip formatter={(name) => [`${name.toLocaleString()} Gold`]} />
               <Line
                 type="monotone"
                 dataKey="buyPrice"

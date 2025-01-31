@@ -59,8 +59,9 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
 
   return (
     <div>
-      <div className="h-40 w-full border-2 rounded-3xl bg-[#F2F1E6]  shadow-lg">
+      <div className="h-52 w-full border-2 rounded-3xl bg-[#F2F1E6]  shadow-lg">
         <div className="flex flex-col items-center justify-center size-font-xs gap-y-2 mt-2">
+          <p>착용 악세 검색</p>
           <div className="flex justify-center items-center">
             <input
               className="w-3/4 h-4 text-center"
@@ -76,64 +77,72 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
               <BiSearchAlt />
             </button>
           </div>
-          <div>아이템 레벨 - {resultAcc[0]?.itemLevel}</div>
+          {resultAcc[0]?.itemLevel ? (
+            <div>아이템 레벨 - {resultAcc[0].itemLevel}</div>
+          ) : (
+            <div className="text-gray-400">아이템 레벨 정보 없음</div>
+          )}
         </div>
 
         <div className="grid grid-cols-5  flex ">
-          {selectOptions.map((option, index) => (
-            <div className="h-full flex items-center">
-              <div className="size-font-xxs">
-                {" "}
-                <div className="font-bold ">
+          {selectOptions
+            .filter((_, index) => resultAcc[index])
+            .map((option, index) => (
+              <div className="h-full flex items-center">
+                <div className="size-font-xxs">
+                  {" "}
+                  <div className="font-bold ">
+                    <span
+                      className="pr-4"
+                      style={{
+                        background: "linear-gradient(to bottom, transparent 30%, #F5FF00 70%)",
+                      }}
+                    >
+                      <span>
+                        {resultAcc[index]?.type && <>{resultAcc[index]?.type} &nbsp;</>}
+                        {resultAcc[index]?.tier !== 0 && resultAcc[index]?.grade && (
+                          <>
+                            | &nbsp; {resultAcc[index]?.tier}T-{resultAcc[index]?.grade}
+                          </>
+                        )}
+                      </span>
+                    </span>
+                  </div>
                   <span
-                    className="pr-4"
+                    className={`rounded-full text-white`}
                     style={{
-                      background: "linear-gradient(to bottom, transparent 30%, #F5FF00 70%)",
+                      backgroundColor: (() => rankColor(resultAcc[index]?.valueLevel[0] || ""))(),
                     }}
                   >
-                    <span>
-                      {resultAcc[index]?.type && <>{resultAcc[index]?.type} &nbsp;</>}
-                      {resultAcc[index]?.tier !== 0 && resultAcc[index]?.grade && (
-                        <>
-                          | &nbsp; {resultAcc[index]?.tier}T-{resultAcc[index]?.grade}
-                        </>
-                      )}
-                    </span>
+                    {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
+                    {resultAcc[index]?.valueLevel[0]}
                   </span>
+                  {truncateString(resultAcc[index]?.option[0], 7)} {resultAcc[index]?.value[0]}{" "}
+                  <br />{" "}
+                  <span
+                    className={`rounded-full text-white`}
+                    style={{
+                      backgroundColor: (() => rankColor(resultAcc[index]?.valueLevel[1] || ""))(),
+                    }}
+                  >
+                    {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
+                    {resultAcc[index]?.valueLevel[1]}
+                  </span>{" "}
+                  {truncateString(resultAcc[index]?.option[1], 7)} {resultAcc[index]?.value[1]}{" "}
+                  <br />{" "}
+                  <span
+                    className={`rounded-full text-white`}
+                    style={{
+                      backgroundColor: (() => rankColor(resultAcc[index]?.valueLevel[2] || ""))(),
+                    }}
+                  >
+                    {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
+                    {resultAcc[index]?.valueLevel[2]}
+                  </span>{" "}
+                  {truncateString(resultAcc[index]?.option[2], 7)} {resultAcc[index]?.value[2]}{" "}
                 </div>
-                <span
-                  className={`rounded-full text-white`}
-                  style={{
-                    backgroundColor: (() => rankColor(resultAcc[index]?.valueLevel[0] || ""))(),
-                  }}
-                >
-                  {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
-                  {resultAcc[index]?.valueLevel[0]}
-                </span>
-                {truncateString(resultAcc[index]?.option[0], 7)} {resultAcc[index]?.value[0]} <br />{" "}
-                <span
-                  className={`rounded-full text-white`}
-                  style={{
-                    backgroundColor: (() => rankColor(resultAcc[index]?.valueLevel[1] || ""))(),
-                  }}
-                >
-                  {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
-                  {resultAcc[index]?.valueLevel[1]}
-                </span>{" "}
-                {truncateString(resultAcc[index]?.option[1], 7)} {resultAcc[index]?.value[1]} <br />{" "}
-                <span
-                  className={`rounded-full text-white`}
-                  style={{
-                    backgroundColor: (() => rankColor(resultAcc[index]?.valueLevel[2] || ""))(),
-                  }}
-                >
-                  {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
-                  {resultAcc[index]?.valueLevel[2]}
-                </span>{" "}
-                {truncateString(resultAcc[index]?.option[2], 7)} {resultAcc[index]?.value[2]}{" "}
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </div>

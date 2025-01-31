@@ -10,11 +10,20 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const LineChartComp = ({ category, grade, value, value2, type }) => {
+const LineChartComp = ({ category, grade, value, value2, type, request }) => {
   const loadData = () => {
     axios
       .get(`${process.env.REACT_APP_URL}/chart/info`, {
-        params: { tier: 4, category, grade, value, value2, type },
+        params: {
+          tier: 4,
+          category,
+          grade,
+          value,
+          value2,
+          type,
+          time: request.time,
+          point: request.point,
+        },
       })
       .then((res) => {
         setData(res.data.data);
@@ -24,15 +33,34 @@ const LineChartComp = ({ category, grade, value, value2, type }) => {
 
   useEffect(() => {
     loadData();
-  }, [category, grade, type]);
+  }, [category, grade, type, request]);
 
   const [data, setData] = useState(null);
 
   return (
     <div>
       <div className="flex m-10 border-b-2 border-red-200 bg-opacity-75 bg-white rounded-3xl">
-        <div className=" w-[80%]">
-          <h2 className="text-center">{data?.name}</h2>
+        <div className="w-[80%]">
+          <h2 className="flex items-baseline justify-center text-center">
+            {data?.name?.split(/(상|중|하)/g).map((part, index) =>
+              ["상"].includes(part) ? (
+                <span key={index} className="font-bold text-xl text-[#E38E49]">
+                  {part}
+                </span>
+              ) : ["중"].includes(part) ? (
+                <span key={index} className="font-bold text-xl text-[#7E1891]">
+                  {part}
+                </span>
+              ) : ["하"].includes(part) ? (
+                <span key={index} className="font-bold text-xl text-[#0A3981]">
+                  {part}
+                </span>
+              ) : (
+                part
+              )
+            )}
+          </h2>
+          {/* <img className="" src={neckHH} alt="" /> */}
           <ResponsiveContainer width="100%" height={200}>
             <LineChart
               data={data?.chartInfoList}

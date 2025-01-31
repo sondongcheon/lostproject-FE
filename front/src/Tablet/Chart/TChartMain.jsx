@@ -5,7 +5,7 @@ import TopMenu from "./Component/TopMenu";
 import FixChartPage from "./Component/FixChartPage";
 import CustomChartPage from "./Component/CustomChartPage";
 
-function MChartMain() {
+function MChartMain({ request, setRequest }) {
   const getCountLog = () => {
     axios
       .get(`${process.env.REACT_APP_URL}/chart/uplog`, {
@@ -43,6 +43,8 @@ function MChartMain() {
               category={selectCategory}
               grade={selectGrade}
               type={selectType}
+              request={request}
+              setRequest={setRequest}
             />
           )}
         </div>
