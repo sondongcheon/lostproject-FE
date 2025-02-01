@@ -28,9 +28,7 @@ const LineChartComp = ({ category, grade, value, value2, type, request }) => {
       .then((res) => {
         setData(res.data.data);
       })
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch((error) => {});
   };
 
   useEffect(() => {
@@ -62,7 +60,7 @@ const LineChartComp = ({ category, grade, value, value2, type, request }) => {
                   if (!payload || payload.length === 0) return null;
                   const data = payload[0].payload;
                   return (
-                    <div className="bg-white p-2 border rounded shadow-md">
+                    <div className="bg-white p-2 border rounded dow-md">
                       <p>{label}</p> {/* X축 값 (예: 시간) */}
                       <p>{`${data.buyPrice.toLocaleString()} Gold`}</p>
                       <p>{`경매장 등록 수량: ${data.totalCount}`}</p>

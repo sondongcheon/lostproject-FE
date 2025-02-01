@@ -33,7 +33,6 @@ const LineChartComp = ({ category, grade, value, value2, type, request }) => {
 
   useEffect(() => {
     loadData();
-    console.log(data);
   }, [category, grade, type, request]);
 
   const [data, setData] = useState(null);
