@@ -13,9 +13,9 @@ const FixChartPage = ({ category, grade, type, request, setRequest }) => {
     const colorClass = colorMap[color] || "bg-gray-100 text-gray-700 border-gray-300";
     return (
       <div className="flex items-center my-6">
-        <div className="flex-1 border-t-4 border-gray-300" />
+        <div className=" flex-1 border-t-4 border-gray-300" />
         <h2 className={`mx-4 px-4 py-1 text-lg font-bold ${colorClass} rounded`}>{title}</h2>
-        <div className="flex-1 border-t-4 border-gray-300" />
+        <div className=" flex-1 border-t-4 border-gray-300" />
       </div>
     );
   };
