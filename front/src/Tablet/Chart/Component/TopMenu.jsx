@@ -3,7 +3,14 @@ import axios from "axios";
 
 import Menulist from "./Menulist";
 
-const TopMenu = ({ setSelectCategory, setSelectGrade, setSelectCustom, setSelectType }) => {
+const TopMenu = ({
+  setSelectCategory,
+  setSelectGrade,
+  setSelectCustom,
+  setSelectType,
+  request,
+  setRequest,
+}) => {
   const [logSearch, setLogSearch] = useState([]);
 
   const getCountLog = () => {
@@ -26,11 +33,59 @@ const TopMenu = ({ setSelectCategory, setSelectGrade, setSelectCustom, setSelect
     getCountLog();
   }, []);
 
+  const updateOption = (key, value) => {
+    setRequest((prevState) => ({
+      ...prevState,
+      [key]: value,
+    }));
+  };
+
+  const pointList = [
+    {
+      value: 10,
+      content: "10개",
+    },
+    {
+      value: 15,
+      content: "15개",
+    },
+    {
+      value: 20,
+      content: "20개",
+    },
+  ];
+
+  const timeList = [
+    {
+      value: 1,
+      content: "1시간 간격",
+    },
+    {
+      value: 2,
+      content: "2시간 간격",
+    },
+    {
+      value: 4,
+      content: "4시간 간격",
+    },
+    {
+      value: 8,
+      content: "8시간 간격",
+    },
+    {
+      value: 12,
+      content: "12시간 간격",
+    },
+  ];
+
   return (
     <div className="h-full border-2 border-gray-500 rounded-xl">
       <div className="flex justify-center gap-x-2 p-4 top-20 size-font-sm">
         <div className="p-4 border-t-2 border-b-2 border-gray-400 rounded-xl">
-          <h1 className="text-center">딜러 옵션</h1>
+          <div className="flex">
+            <span className="font-bold">딜러 옵션</span>
+            <div className="mt-[10px] mx-2 border-t-2 border-black border-dotted w-1/2" />
+          </div>
           <Menulist
             onClick={() => {
               listclick("neck", "godae", false, "");

@@ -82,7 +82,7 @@ const SelectSideBar = ({
   return (
     <div className="h-full">
       <div className="bg-white shadow-2xl rounded-xl p-4 sticky top-20">
-        <div className="p-2 border-gray-400 rounded-xl">
+        <div className="border-gray-400 rounded-xl">
           <div className="flex">
             <span className="font-bold">딜러 옵션</span>
             <div className="mt-[10px] mx-2 border-t-2 border-black border-dotted w-1/2" />
@@ -134,7 +134,7 @@ const SelectSideBar = ({
             />
           </div>
         </div>
-        <div className="p-2 border-gray-400 rounded-xl">
+        <div className=" border-gray-400 rounded-xl">
           <div className="flex">
             <span className="font-bold">서포터 옵션</span>
             <div className="mt-[10px] mx-2 border-t border-t-2 border-black border-dotted w-2/5" />
@@ -180,7 +180,7 @@ const SelectSideBar = ({
         >
           🔎부위 선택 보기
         </button>
-        <div className="flex  text-xs mb-4">
+        <div className="flex items-baseline  text-xs mb-4">
           <span className="">조회 시간 주기&nbsp;</span>
           <SelectBox
             options={timeList}
@@ -190,7 +190,7 @@ const SelectSideBar = ({
             css="text-center rounded-xl border-gray-400 border-2 w-24 bg-[#F5F5F5]"
           />
         </div>
-        <div className="flex  text-xs">
+        <div className="flex items-baseline text-xs">
           <span className="">검색 지점 갯수&nbsp;</span>
           <SelectBox
             options={pointList}
@@ -200,8 +200,7 @@ const SelectSideBar = ({
             css="text-center rounded-xl border-gray-400 border-2 w-24 bg-[#F5F5F5]"
           />
         </div>
-        <div className="mt-[20px] border-t-2 border-gray-400 w-full" />
-        <br />
+        <div className="my-[18px] border-t-2 border-gray-400 w-full" />
         <p className="text-xs">ㆍ금일 차트 방문자 - {logSearch[1]}</p>
         <p className="text-xs">ㆍ누적 차트 방문자 - {logSearch[0]}</p>
       </div>

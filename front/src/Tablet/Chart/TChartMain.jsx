@@ -33,6 +33,8 @@ function MChartMain({ request, setRequest }) {
             setSelectGrade={setSelectGrade}
             setSelectCustom={setSelectCustom}
             setSelectType={setSelectType}
+            request={request}
+            setRequest={setRequest}
           />
         </div>
         <div className="">
