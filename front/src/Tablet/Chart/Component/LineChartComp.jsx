@@ -57,7 +57,19 @@ const LineChartComp = ({ category, grade, value, value2, type, request }) => {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="time" className="size-font-xxs" />
               <YAxis tickFormatter={(value) => value.toLocaleString() + "G"} />
-              <Tooltip formatter={(name) => [`${name.toLocaleString()} Gold`]} />
+              <Tooltip
+                content={({ payload, label }) => {
+                  if (!payload || payload.length === 0) return null;
+                  const data = payload[0].payload;
+                  return (
+                    <div className="bg-white p-2 border rounded shadow-md">
+                      <p>{label}</p> {/* X축 값 (예: 시간) */}
+                      <p>{`${data.buyPrice.toLocaleString()} Gold`}</p>
+                      <p>{`경매장 등록 수량: ${data.totalCount}`}</p>
+                    </div>
+                  );
+                }}
+              />
               <Line
                 type="monotone"
                 dataKey="buyPrice"
