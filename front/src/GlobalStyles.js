@@ -226,6 +226,10 @@ const GlobalStyles = createGlobalStyle`
       font-family: "Pretendard";
     }
 
+    .size-font-2xl{
+      font-size : 22px;
+    }
+
     .size-font-xl{
       font-size : 20px;
     }
@@ -258,6 +262,10 @@ const GlobalStyles = createGlobalStyle`
       height: 800px; /* 고정된 높이 */
       background-color: #ECEBDE;
       font-family: "Pretendard";
+    }
+
+    .size-font-2xl{
+      font-size : 20px;
     }
 
     .size-font-xl{

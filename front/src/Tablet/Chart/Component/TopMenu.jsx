@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import Menulist from "./Menulist";
+import SelectBox from "../../../common/Component/SelectBox";
 
 const TopMenu = ({
   setSelectCategory,
@@ -42,16 +43,16 @@ const TopMenu = ({
 
   const pointList = [
     {
+      value: 8,
+      content: "8개",
+    },
+    {
       value: 10,
       content: "10개",
     },
     {
       value: 15,
       content: "15개",
-    },
-    {
-      value: 20,
-      content: "20개",
     },
   ];
 
@@ -79,10 +80,10 @@ const TopMenu = ({
   ];
 
   return (
-    <div className="h-full border-2 border-gray-500 rounded-xl">
-      <div className="flex justify-center gap-x-2 p-4 top-20 size-font-sm">
-        <div className="p-4 border-t-2 border-b-2 border-gray-400 rounded-xl">
-          <div className="flex">
+    <div className="h-full bg-white shadow-2xl rounded-xl p-4 rounded-xl">
+      <div className="flex justify-center gap-x-2 p-4 top-20 size-font-2xl">
+        <div className="p-4 w-1/2">
+          <div className="flex mb-4">
             <span className="font-bold">딜러 옵션</span>
             <div className="mt-[10px] mx-2 border-t-2 border-black border-dotted w-1/2" />
           </div>
@@ -131,8 +132,11 @@ const TopMenu = ({
           />
         </div>
         <br />
-        <div className="p-4 border-t-2 border-b-2 border-gray-400 rounded-xl">
-          <h1 className="text-center">서포터 옵션</h1>
+        <div className="p-4 w-1/2">
+          <div className="flex mb-4">
+            <span className="font-bold">서포터 옵션</span>
+            <div className="mt-[10px] mx-2 border-t border-t-2 border-black border-dotted w-1/2" />
+          </div>
           <Menulist
             onClick={() => {
               listclick("neck", "godae", false, "sup_");
@@ -162,9 +166,8 @@ const TopMenu = ({
             img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_24.png"
             name="유물 반지"
           />
-          <br />
           <button
-            className="w-full normalBtm mb-4"
+            className="w-full border-2 border-gray-300 bg-[#d1d5db] hover:bg-white my-4 rounded-xl px-2 py-4"
             onClick={() => {
               setSelectCustom(true);
             }}
@@ -173,9 +176,32 @@ const TopMenu = ({
           </button>
         </div>
       </div>
-      <br />
-      <p className="text-center text-xs"> 오늘의 차트 방문자 - {logSearch[1]}</p>
-      <p className="text-center text-xs"> 누적 차트 방문자 - {logSearch[0]}</p>
+      <div className=" grid grid-cols-2 font-bold">
+        <div className="flex items-baseline justify-center">
+          <span>조회 시간 주기&nbsp;</span>
+          <SelectBox
+            options={timeList}
+            value={request.time}
+            name="time"
+            onOptionsChange={updateOption}
+            css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5]"
+          />
+        </div>
+        <div className="flex items-baseline justify-center">
+          <span>검색 지점 갯수&nbsp;</span>
+          <SelectBox
+            options={pointList}
+            value={request.point}
+            name="point"
+            onOptionsChange={updateOption}
+            css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5]"
+          />
+        </div>
+      </div>
+      <div className="mt-4 text-center text-sm space-x-10">
+        <span> 오늘의 차트 방문자 - {logSearch[1]}</span>
+        <span> 누적 차트 방문자 - {logSearch[0]}</span>
+      </div>
     </div>
   );
 };
