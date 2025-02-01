@@ -30,7 +30,7 @@ const FixChartPage = ({ category, grade, type, request, setRequest }) => {
   useEffect(() => {
     updateOption("time", 8);
     updateOption("point", 8);
-  });
+  }, []);
 
   const pointList = [
     {
