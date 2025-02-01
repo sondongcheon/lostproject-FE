@@ -140,7 +140,7 @@ const SelectSideBar = ({
             <div className="mt-[10px] mx-2 border-t border-t-2 border-black border-dotted w-2/5" />
           </div>
 
-          <div className="py-2">
+          <div className="pt-2">
             <SideBarlist
               onClick={() => {
                 listclick("neck", "godae", false, "sup_");
