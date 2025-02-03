@@ -88,13 +88,15 @@ function AuctionTierFour({
             if (error.response.data.code === "API-001") {
               return new Promise((resolve) => setTimeout(resolve, 60000));
             } else {
-              return new Promise((resolve) => setTimeout(resolve, 3000));
+              return new Promise((resolve) => setTimeout(resolve, 5000));
             }
           });
         })
         .finally(() => {
-          setSearchState(false);
-          getCountLog();
+          setTimeout(() => {
+            setSearchState(false);
+            getCountLog();
+          }, 5000);
         });
     }
   }, [selectOptionReq]); // selectOptionReq가 변경될 때마다 실행

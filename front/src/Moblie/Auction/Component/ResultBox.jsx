@@ -9,16 +9,16 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
 
   return (
     <div onClick={onClick} className={`pt-4 pb-4 shadow-lg border-2 rounded-3xl ${className}`}>
-      <div className="grid grid-cols-10 mx-auto w-[95%] text-[8px]">
+      <div className="flex mx-auto w-[95%] text-[8px]">
         <div
-          className={`col-span-1 font-bold flex flex-col justify-center items-center  pr-4 ${
+          className={`w-[12%] font-bold flex flex-col justify-center items-center  pr-4 ${
             number !== undefined ? "text-3xl" : "size-font-xxxs"
           }`}
         >
           <img className="" src={result?.icon || ""} />
           {number !== undefined ? `${number + 1}` : option.accName}
         </div>
-        <div className="col-span-3">
+        <div className="w-[28%]">
           <p>등급 - {result?.grade || "결과 없음"}</p>
           <p>이름 - {result?.name || "결과 없음"}</p>
           <p>품질 - {result?.gradeQuality || "결과 없음"}</p>
@@ -29,7 +29,7 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
               : result?.auctionInfo?.tradeAllowCount || "결과 없음"}
           </p>
         </div>
-        <div className="col-span-4">
+        <div className="w-[38%]">
           {result?.options.map((option, index) => {
             return (
               <span className={`${option.valueGrade === "" ? "" : "font-bold"}`}>
@@ -42,7 +42,7 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
             );
           })}
         </div>
-        <div className="col-span-2 ">
+        <div className="w-[18]">
           <div className="grid grid-rows-4">
             <div>
               <span className="font-bold">가격 - {price.toLocaleString()} G</span>

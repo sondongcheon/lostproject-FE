@@ -12,8 +12,11 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
     return str.length > maxLength ? str.substring(0, maxLength) + "..." : str;
   }
 
+  const [searchCharState, setSearchCharState] = useState(false);
+
   const searchAcc = () => {
     const encodedApiKey = encodeURIComponent(apiKey);
+    setSearchCharState(true);
     axios
       .get(`${process.env.REACT_APP_URL}/auction/equipment/${name}`, {
         headers: { apiKey: encodedApiKey },
@@ -47,6 +50,11 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
             return new Promise((resolve) => setTimeout(resolve, 3000));
           }
         });
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setSearchCharState(false);
+        }, 5000);
       });
   };
 
@@ -59,7 +67,7 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
 
   return (
     <div>
-      <div className="h-32 w-full border-2 rounded-3xl bg-[#F2F1E6]  shadow-lg">
+      <div className="h-36 w-full border-2 rounded-3xl bg-[#F2F1E6]  shadow-lg">
         <div className="flex flex-col items-center justify-center size-font-xs gap-y-2 mt-2">
           <p>착용 악세 검색</p>
           <div className="flex justify-center items-center ">
@@ -73,8 +81,15 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
             <button
               className="flex justify-center items-center w-4 h-4 bg-[#FF6347]"
               onClick={searchAcc}
+              disabled={searchCharState}
             >
-              <BiSearchAlt />
+              {searchCharState ? (
+                <div className="w-full h-full bg-[url('./Assets/loading.webp')] bg-contain bg-center bg-no-repeat">
+                  {" "}
+                </div>
+              ) : (
+                <BiSearchAlt />
+              )}
             </button>
           </div>
           {resultAcc[0]?.itemLevel ? (
@@ -89,7 +104,7 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
             .filter((_, index) => resultAcc[index])
             .map((option, index) => (
               <div className="h-full flex items-center">
-                <div className="size-font-xxs">
+                <div className="size-font-xxxs">
                   {" "}
                   <div className="font-bold ">
                     <span
