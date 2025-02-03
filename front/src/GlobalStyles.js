@@ -406,7 +406,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     .size-font-xxxs{
-      font-size : 5px;
+      font-size : 6px;
     }
 
     .mobile-grid-3 {

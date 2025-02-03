@@ -12,8 +12,11 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
     return str.length > maxLength ? str.substring(0, maxLength) + "..." : str;
   }
 
+  const [searchCharState, setSearchCharState] = useState(false);
+
   const searchAcc = () => {
     const encodedApiKey = encodeURIComponent(apiKey);
+    setSearchCharState(true);
     axios
       .get(`${process.env.REACT_APP_URL}/auction/equipment/${name}`, {
         headers: { apiKey: encodedApiKey },
@@ -47,6 +50,11 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
             return new Promise((resolve) => setTimeout(resolve, 3000));
           }
         });
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setSearchCharState(false);
+        }, 5000);
       });
   };
 
@@ -73,8 +81,15 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
             <button
               className="flex justify-center items-center w-4 h-4 bg-[#FF6347]"
               onClick={searchAcc}
+              disabled={searchState}
             >
-              <BiSearchAlt />
+              {searchState ? (
+                <div className="h-full bg-[url('./Assets/loading.webp')] bg-contain bg-center bg-no-repeat">
+                  {" "}
+                </div>
+              ) : (
+                "검색하기"
+              )}
             </button>
           </div>
           {resultAcc[0]?.itemLevel ? (

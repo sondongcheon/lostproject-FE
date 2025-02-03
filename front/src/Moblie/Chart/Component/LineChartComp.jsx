@@ -41,7 +41,25 @@ const LineChartComp = ({ category, grade, value, value2, type, request }) => {
     <div>
       <div className="mt-10 border-b-2 border-red-200 bg-opacity-75 bg-white rounded-3xl">
         <div className="">
-          <h2 className="text-center">{data?.name}</h2>
+          <h2 className="flex items-baseline justify-center text-center">
+            {data?.name?.split(/(상|중|하)/g).map((part, index) =>
+              ["상"].includes(part) ? (
+                <span key={index} className="font-bold text-xl text-[#E38E49]">
+                  {part}
+                </span>
+              ) : ["중"].includes(part) ? (
+                <span key={index} className="font-bold text-xl text-[#7E1891]">
+                  {part}
+                </span>
+              ) : ["하"].includes(part) ? (
+                <span key={index} className="font-bold text-xl text-[#0A3981]">
+                  {part}
+                </span>
+              ) : (
+                part
+              )
+            )}
+          </h2>
           <ResponsiveContainer width="100%" height={200}>
             <LineChart
               data={data?.chartInfoList}
