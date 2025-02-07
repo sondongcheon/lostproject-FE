@@ -103,6 +103,7 @@ const LineChartComp = ({ category, grade, value, value2, type, request }) => {
                 yAxisId="left"
                 type="monotone"
                 dataKey="buyPrice"
+                name="등록 가격"
                 stroke="#8884d8"
                 strokeWidth={2}
                 dot={{ r: 5 }}
