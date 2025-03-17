@@ -18,8 +18,8 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
       });
     } else if (type === 1) {
       setOptions({
-        selectOption1: ["43", "47", "47", "51", "51"],
-        selectOption2: ["44", "48", "48", "52", "52"],
+        selectOption1: ["43", "46", "46", "51", "51"],
+        selectOption2: ["44", "54", "54", "52", "52"],
       });
     }
     setGrade("quality", 67);
@@ -77,7 +77,10 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
       updateOption("selectValue2", null);
     });
     updateSet.forEach((updateOption, index) => {
-      updateOption("selectOption3", type === 1 && (index === 1 || index === 2) ? "46" : null);
+      updateOption(
+        "selectOption3",
+        type === 1 && (index === 1 || index === 2) ? "46" : null
+      );
     });
     updateSet.forEach((updateOption) => {
       updateOption("selectValue3", null);
@@ -103,7 +106,9 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
             </button>
           </div>
           <div className="grid grid-cols-4 justify-center items-center p-4">
-            <span className="col-span-1 text-sm text-center font-bold">품질</span>
+            <span className="col-span-1 text-sm text-center font-bold">
+              품질
+            </span>
             <input
               type="range"
               min="0"
@@ -127,7 +132,10 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                 onChange={(e) => {
                   const value = parseInt(e.target.value, 10);
                   setSliderValue(value); // 로컬 상태 업데이트
-                  setGrade("quality", isNaN(value) ? null : Math.min(100, Math.max(0, value)));
+                  setGrade(
+                    "quality",
+                    isNaN(value) ? null : Math.min(100, Math.max(0, value))
+                  );
                 }}
               />
               {/* {sliderValue === 0 ? "미지정" : sliderValue} */}
@@ -136,19 +144,27 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
         </div>
         <div className="flex flex-1 grid grid-cols-4 text-sm font-bold pl-2 pr-4">
           <div className=" text-center flex justify-center gab-y-4 items-center">
-            <button className="allBtm w-20 text-xs" onClick={() => setGrade("itemGrade", "유물")}>
+            <button
+              className="allBtm w-20 text-xs"
+              onClick={() => setGrade("itemGrade", "유물")}
+            >
               ALL 유물
             </button>
           </div>
           <div className=" text-center flex justify-center items-center">
-            <button className="allBtm w-20 text-xs" onClick={() => setGrade("itemGrade", "고대")}>
+            <button
+              className="allBtm w-20 text-xs"
+              onClick={() => setGrade("itemGrade", "고대")}
+            >
               ALL 고대
             </button>
           </div>
           <div className=" text-center flex justify-center items-center">
             <button
               className="normalBtm color-tomato w-20 text-xs"
-              onClick={() => setOption("selectValue1", "3", "selectValue2", null)}
+              onClick={() =>
+                setOption("selectValue1", "3", "selectValue2", null)
+              }
             >
               상단일 <br />
               일괄 선택
@@ -157,7 +173,9 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
           <div className="text-center flex justify-center items-center">
             <button
               className="normalBtm color-tomato w-20 text-xs"
-              onClick={() => setOption("selectValue1", "2", "selectValue2", null)}
+              onClick={() =>
+                setOption("selectValue1", "2", "selectValue2", null)
+              }
             >
               중단일 <br />
               일괄 선택
@@ -167,7 +185,9 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
           <div className=" text-center flex justify-center items-center">
             <button
               className="normalBtm color-tomato w-20 text-xs"
-              onClick={() => setOption("selectValue1", "3", "selectValue2", "3")}
+              onClick={() =>
+                setOption("selectValue1", "3", "selectValue2", "3")
+              }
             >
               상상 <br />
               일괄 선택
@@ -176,7 +196,9 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
           <div className=" text-center flex justify-center items-center">
             <button
               className="normalBtm color-tomato w-20 text-xs"
-              onClick={() => setOption("selectValue1", "2", "selectValue2", "2")}
+              onClick={() =>
+                setOption("selectValue1", "2", "selectValue2", "2")
+              }
             >
               중중 <br />
               일괄 선택
@@ -185,7 +207,9 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
           <div className=" text-center flex justify-center items-center">
             <button
               className="normalBtm color-tomato w-20 text-xs"
-              onClick={() => setOption("selectValue1", "3", "selectValue2", "2")}
+              onClick={() =>
+                setOption("selectValue1", "3", "selectValue2", "2")
+              }
             >
               상중 <br />
               일괄 선택
@@ -194,7 +218,9 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
           <div className=" text-center flex justify-center items-center">
             <button
               className="normalBtm color-tomato w-20 text-xs"
-              onClick={() => setOption("selectValue1", "2", "selectValue2", "3")}
+              onClick={() =>
+                setOption("selectValue1", "2", "selectValue2", "3")
+              }
             >
               중상 <br />
               일괄 선택
@@ -204,7 +230,9 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
           <div className=" text-center flex justify-center items-center">
             <button
               className="normalBtm color-tomato w-20 text-xs"
-              onClick={() => setOption("selectValue1", "2", "selectValue2", "1")}
+              onClick={() =>
+                setOption("selectValue1", "2", "selectValue2", "1")
+              }
             >
               중하 <br />
               일괄 선택
@@ -213,7 +241,9 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
           <div className=" text-center flex justify-center items-center">
             <button
               className="normalBtm color-tomato w-20 text-xs"
-              onClick={() => setOption("selectValue1", "1", "selectValue2", "2")}
+              onClick={() =>
+                setOption("selectValue1", "1", "selectValue2", "2")
+              }
             >
               하중 <br />
               일괄 선택
@@ -222,7 +252,9 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
           <div className=" text-center flex justify-center items-center">
             <button
               className="normalBtm color-tomato w-20 text-xs"
-              onClick={() => setOption("selectValue1", "3", "selectValue2", "1")}
+              onClick={() =>
+                setOption("selectValue1", "3", "selectValue2", "1")
+              }
             >
               상하 <br />
               일괄 선택
@@ -231,7 +263,9 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
           <div className=" text-center flex justify-center items-center">
             <button
               className="normalBtm color-tomato w-20 text-xs"
-              onClick={() => setOption("selectValue1", "1", "selectValue2", "3")}
+              onClick={() =>
+                setOption("selectValue1", "1", "selectValue2", "3")
+              }
             >
               하상 <br />
               일괄 선택

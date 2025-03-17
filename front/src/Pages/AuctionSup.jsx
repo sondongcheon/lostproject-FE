@@ -43,13 +43,13 @@ function AuctionSup({ getCountLog }) {
     id: 2,
     accName: "귀걸이1",
     optionName: {
-      first: "회복+",
-      second: "실드+",
+      first: "무공%",
+      second: "무공+",
       third: "아무 특옵",
     },
     optionValue: {
-      first: "47",
-      second: "48",
+      first: "46",
+      second: "54",
       third: "아무 특옵",
     },
     tier: "4",
@@ -69,13 +69,13 @@ function AuctionSup({ getCountLog }) {
     id: 3,
     accName: "귀걸이2",
     optionName: {
-      first: "회복+",
-      second: "실드+",
+      first: "무공%",
+      second: "무공+",
       third: "아무 특옵",
     },
     optionValue: {
-      first: "47",
-      second: "48",
+      first: "46",
+      second: "54",
       third: "아무 특옵",
     },
     tier: "4",
@@ -177,8 +177,20 @@ function AuctionSup({ getCountLog }) {
 
   const [count, setCount] = useState(5);
 
-  const options = [selectOption1, selectOption2, selectOption3, selectOption4, selectOption5];
-  const updateOptions = [updateOption1, updateOption2, updateOption3, updateOption4, updateOption5];
+  const options = [
+    selectOption1,
+    selectOption2,
+    selectOption3,
+    selectOption4,
+    selectOption5,
+  ];
+  const updateOptions = [
+    updateOption1,
+    updateOption2,
+    updateOption3,
+    updateOption4,
+    updateOption5,
+  ];
   const [result, setResult] = useState([
     {
       options: [],

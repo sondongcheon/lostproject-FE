@@ -88,7 +88,7 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
                   {" "}
                 </div>
               ) : (
-                "검색하기"
+                <BiSearchAlt />
               )}
             </button>
           </div>
@@ -110,51 +110,60 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
                     <span
                       className="pr-4"
                       style={{
-                        background: "linear-gradient(to bottom, transparent 30%, #F5FF00 70%)",
+                        background:
+                          "linear-gradient(to bottom, transparent 30%, #F5FF00 70%)",
                       }}
                     >
                       <span>
-                        {resultAcc[index]?.type && <>{resultAcc[index]?.type} &nbsp;</>}
-                        {resultAcc[index]?.tier !== 0 && resultAcc[index]?.grade && (
-                          <>
-                            | &nbsp; {resultAcc[index]?.tier}T-{resultAcc[index]?.grade}
-                          </>
+                        {resultAcc[index]?.type && (
+                          <>{resultAcc[index]?.type} &nbsp;</>
                         )}
+                        {resultAcc[index]?.tier !== 0 &&
+                          resultAcc[index]?.grade && (
+                            <>
+                              | &nbsp; {resultAcc[index]?.tier}T-
+                              {resultAcc[index]?.grade}
+                            </>
+                          )}
                       </span>
                     </span>
                   </div>
                   <span
                     className={`rounded-full text-white`}
                     style={{
-                      backgroundColor: (() => rankColor(resultAcc[index]?.valueLevel[0] || ""))(),
+                      backgroundColor: (() =>
+                        rankColor(resultAcc[index]?.valueLevel[0] || ""))(),
                     }}
                   >
                     {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
                     {resultAcc[index]?.valueLevel[0]}
                   </span>
-                  {truncateString(resultAcc[index]?.option[0], 7)} {resultAcc[index]?.value[0]}{" "}
-                  <br />{" "}
+                  {truncateString(resultAcc[index]?.option[0], 7)}{" "}
+                  {resultAcc[index]?.value[0]} <br />{" "}
                   <span
                     className={`rounded-full text-white`}
                     style={{
-                      backgroundColor: (() => rankColor(resultAcc[index]?.valueLevel[1] || ""))(),
+                      backgroundColor: (() =>
+                        rankColor(resultAcc[index]?.valueLevel[1] || ""))(),
                     }}
                   >
                     {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
                     {resultAcc[index]?.valueLevel[1]}
                   </span>{" "}
-                  {truncateString(resultAcc[index]?.option[1], 7)} {resultAcc[index]?.value[1]}{" "}
-                  <br />{" "}
+                  {truncateString(resultAcc[index]?.option[1], 7)}{" "}
+                  {resultAcc[index]?.value[1]} <br />{" "}
                   <span
                     className={`rounded-full text-white`}
                     style={{
-                      backgroundColor: (() => rankColor(resultAcc[index]?.valueLevel[2] || ""))(),
+                      backgroundColor: (() =>
+                        rankColor(resultAcc[index]?.valueLevel[2] || ""))(),
                     }}
                   >
                     {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
                     {resultAcc[index]?.valueLevel[2]}
                   </span>{" "}
-                  {truncateString(resultAcc[index]?.option[2], 7)} {resultAcc[index]?.value[2]}{" "}
+                  {truncateString(resultAcc[index]?.option[2], 7)}{" "}
+                  {resultAcc[index]?.value[2]}{" "}
                 </div>
               </div>
             ))}
