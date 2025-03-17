@@ -8,23 +8,21 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
   const [optionProps, setOptionProps] = useState([]);
 
   useEffect(() => {
-    if (["41", "43", "45", "49", "51"].includes(options.optionValue.first)) {
+    if (["54"].includes(options?.optionValue.second)) {
       setOptionProps([
         { value: "53", content: "공격력+" },
-        { value: "54", content: "무기공격력+" },
         { value: "55", content: "최대생명력+" },
         { value: "56", content: "최대마나+" },
       ]);
-    } else if (["47"].includes(options.optionValue.first)) {
+    } else {
       setOptionProps([
         { value: "53", content: "공격력+" },
-        { value: "46", content: "무기공격력%" },
         { value: "54", content: "무기공격력+" },
         { value: "55", content: "최대생명력+" },
         { value: "56", content: "최대마나+" },
       ]);
     }
-  }, [options.optionValue.first]);
+  }, [options?.optionValue.second]);
 
   const updateOption = (key, value) => {
     setCurrentOption((prevState) => ({
