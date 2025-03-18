@@ -105,6 +105,7 @@ function AuctionTierFour({
     const newSelectOptionReq = options.map((option) => ({
       tier: option.tier || "",
       quality: option.quality || "",
+      statPercentage: option.statPercentage || "",
       upgradeLevel: option.upgradeLevel || "",
       tradeAllowCount: option.tradeAllowCount || "",
       categoryCode: option.categoryCode || "",
@@ -148,10 +149,7 @@ function AuctionTierFour({
 
       <div className="grid grid-cols-2 gap-x-4 gap-y-4">
         <div>
-          <AllSelectPresetComp
-            updateSet={updateOptions}
-            type={0}
-          ></AllSelectPresetComp>
+          <AllSelectPresetComp updateSet={updateOptions} type={0}></AllSelectPresetComp>
         </div>
         <div>
           <SelectOptionComp

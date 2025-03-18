@@ -71,9 +71,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                 </p>
                 <button
                   className={`size-font-xxxs font-bold ${
-                    options.categoryCode === 200000
-                      ? "normalSelBtm"
-                      : "normalBtm color-tomato"
+                    options.categoryCode === 200000 ? "normalSelBtm" : "normalBtm color-tomato"
                   }`}
                   onClick={handleCategoryCode}
                 >
@@ -85,10 +83,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                 <div
                   className="font-bold col-span-1 flex items-center justify-center text-center size-font-xxxs"
                   onClick={() => {
-                    onOptionsChange(
-                      "tier",
-                      `${options.tier}` === "3" ? "4" : "3"
-                    );
+                    onOptionsChange("tier", `${options.tier}` === "3" ? "4" : "3");
                     if (options.itemGrade === "전설") {
                       onOptionsChange("itemGrade", "");
                     }
@@ -101,23 +96,17 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                 <div className="col-span-3 flex items-center justify-center size-font-xs">
                   <form
                     className={`grid ${
-                      options.tier === "3"
-                        ? "grid-cols-3 gap-2 "
-                        : "grid-cols-2 gap-2 "
+                      options.tier === "3" ? "grid-cols-3 gap-2 " : "grid-cols-2 gap-2 "
                     }`}
                   >
-                    <label
-                      className={`${options.tier === "4" ? "hidden" : ""}`}
-                    >
+                    <label className={`${options.tier === "4" ? "hidden" : ""}`}>
                       <input
                         type="radio"
                         name={`${options.id}_itemGrade`}
                         value="전설"
                         checked={options.itemGrade === "전설"}
                         className="mr-1"
-                        onChange={(e) =>
-                          onOptionsChange("itemGrade", e.target.value)
-                        }
+                        onChange={(e) => onOptionsChange("itemGrade", e.target.value)}
                       />
                       전설
                     </label>
@@ -128,9 +117,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         value="유물"
                         checked={options.itemGrade === "유물"}
                         className="mr-1"
-                        onChange={(e) =>
-                          onOptionsChange("itemGrade", e.target.value)
-                        }
+                        onChange={(e) => onOptionsChange("itemGrade", e.target.value)}
                       />
                       유물
                     </label>
@@ -141,16 +128,14 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         value="고대"
                         checked={options.itemGrade === "고대"}
                         className="mr-1"
-                        onChange={(e) =>
-                          onOptionsChange("itemGrade", e.target.value)
-                        }
+                        onChange={(e) => onOptionsChange("itemGrade", e.target.value)}
                       />
                       고대
                     </label>
                   </form>
                 </div>
               </div>
-              <div className="p-2 grid grid-cols-4">
+              <div className="p-2 grid grid-cols-4 border-b-2 border-gray-300">
                 <div className="size-font-sm font-bold col-span-1  flex items-center justify-center">
                   품질
                 </div>
@@ -162,10 +147,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       max="100"
                       value={options.quality || 0}
                       onChange={(e) =>
-                        onOptionsChange(
-                          "quality",
-                          parseInt(e.target.value, 10) || null
-                        )
+                        onOptionsChange("quality", parseInt(e.target.value, 10) || null)
                       }
                       className="slider w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
                     />
@@ -182,9 +164,43 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         const value = parseInt(e.target.value, 10);
                         onOptionsChange(
                           "quality",
-                          isNaN(value)
-                            ? null
-                            : Math.min(100, Math.max(0, value))
+                          isNaN(value) ? null : Math.min(100, Math.max(0, value))
+                        );
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="p-2 grid grid-cols-4">
+                <div className="font-bold col-span-1  border-gray-200 border-gray-300 flex items-center justify-center text-[12px]">
+                  힘민지%
+                </div>
+                <div className="col-span-3 flex items-center justify-center">
+                  <div className="w-3/4 pl-2">
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      value={options.statPercentage || 0}
+                      onChange={(e) =>
+                        onOptionsChange("statPercentage", parseInt(e.target.value, 10) || null)
+                      }
+                      className="slider w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                    />
+                  </div>
+                  <div className="w-1/4 text-center text-xs text-gray-500">
+                    <input
+                      className="w-full text-center rounded-3xl border border-gray-300"
+                      placeholder="0"
+                      type="number"
+                      min="0"
+                      max="100"
+                      value={options.statPercentage || 0}
+                      onChange={(e) => {
+                        const value = parseInt(e.target.value, 10);
+                        onOptionsChange(
+                          "statPercentage",
+                          isNaN(value) ? null : Math.min(100, Math.max(0, value))
                         );
                       }}
                     />
@@ -195,7 +211,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
 
             {/* 6:4 비율로 나누기 */}
             <div className="flex-[13] grid grid-rows-3">
-              <div className="grid grid-cols-2 border-b-2 border-gray-300">
+              <div className="p-2 grid grid-cols-2 border-b-2 border-gray-300">
                 <div className="flex items-center">
                   {/* 그룹명 "연마효과"가 25% 영역에 정중앙 배치 */}
                   <div className="w-[25%] flex justify-center">
@@ -207,9 +223,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     {/* 옵션이 200000일 경우만 덮기 */}
                     {options.categoryCode === 200000 && (
                       <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center m-1">
-                        <p className="size-font-xs text-red-500 font-bold">
-                          등급만 선택 합니다
-                        </p>
+                        <p className="size-font-xs text-red-500 font-bold">등급만 선택 합니다</p>
                       </div>
                     )}
                     <form className="grid mobile-grid-3 justify-items-center pr-2">
@@ -218,19 +232,11 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                           type="radio"
                           name={`${options.id}selectOption1`}
                           value={options.optionValue.first}
-                          checked={
-                            options.selectOption1 === options.optionValue.first
-                          }
-                          disabled={
-                            options.selectOption2 === options.optionValue.first
-                          }
-                          onChange={(e) =>
-                            onOptionsChange("selectOption1", e.target.value)
-                          }
+                          checked={options.selectOption1 === options.optionValue.first}
+                          disabled={options.selectOption2 === options.optionValue.first}
+                          onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
                         />
-                        <span className="size-font-xxs">
-                          {options.optionName.first}
-                        </span>
+                        <span className="size-font-xxs">{options.optionName.first}</span>
                       </label>
 
                       <label>
@@ -238,19 +244,11 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                           type="radio"
                           name={`${options.id}selectOption1`}
                           value={options.optionValue.second}
-                          checked={
-                            options.selectOption1 === options.optionValue.second
-                          }
-                          disabled={
-                            options.selectOption2 === options.optionValue.second
-                          }
-                          onChange={(e) =>
-                            onOptionsChange("selectOption1", e.target.value)
-                          }
+                          checked={options.selectOption1 === options.optionValue.second}
+                          disabled={options.selectOption2 === options.optionValue.second}
+                          onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
                         />
-                        <span className="size-font-xxs">
-                          {options.optionName.second}
-                        </span>
+                        <span className="size-font-xxs">{options.optionName.second}</span>
                       </label>
 
                       {/* <label>
@@ -270,9 +268,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                           name={`${options.id}selectOption1`}
                           value={null}
                           checked={options.selectOption1 === null}
-                          onChange={() =>
-                            onOptionsChange("selectOption1", null)
-                          }
+                          onChange={() => onOptionsChange("selectOption1", null)}
                         />
                         <span className="size-font-xxs">미선택</span>
                       </label>
@@ -288,9 +284,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         value="3"
                         checked={options.selectValue1 === "3"}
                         className="mr-1"
-                        onChange={(e) =>
-                          onOptionsChange("selectValue1", e.target.value)
-                        }
+                        onChange={(e) => onOptionsChange("selectValue1", e.target.value)}
                       />
                       <span className="size-font-xxs">상</span>
                     </label>
@@ -301,9 +295,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         value="2"
                         checked={options.selectValue1 === "2"}
                         className="mr-1"
-                        onChange={(e) =>
-                          onOptionsChange("selectValue1", e.target.value)
-                        }
+                        onChange={(e) => onOptionsChange("selectValue1", e.target.value)}
                       />
                       <span className="size-font-xxs">중</span>
                     </label>
@@ -314,9 +306,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         value="1"
                         checked={options.selectValue1 === "1"}
                         className="mr-1"
-                        onChange={(e) =>
-                          onOptionsChange("selectValue1", e.target.value)
-                        }
+                        onChange={(e) => onOptionsChange("selectValue1", e.target.value)}
                       />
                       <span className="size-font-xxs">하</span>
                     </label>
@@ -334,7 +324,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-2 border-b-2 border-gray-300">
+              <div className="p-2 grid grid-cols-2 border-b-2 border-gray-300">
                 <div className="flex items-center justify-center  ">
                   {/* 그룹명 "연마효과"가 25% 영역에 정중앙 배치 */}
                   <div className="w-[25%] flex justify-center">
@@ -346,9 +336,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     {/* 옵션이 200000일 경우만 덮기 */}
                     {options.categoryCode === 200000 && (
                       <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center  m-1">
-                        <p className="size-font-xs text-red-500 font-bold">
-                          등급만 선택 합니다
-                        </p>
+                        <p className="size-font-xs text-red-500 font-bold">등급만 선택 합니다</p>
                       </div>
                     )}
                     <form className="grid mobile-grid-3 justify-items-center pr-2">
@@ -357,38 +345,22 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                           type="radio"
                           name={`${options.id}selectOption2`}
                           value={options.optionValue.first}
-                          checked={
-                            options.selectOption2 === options.optionValue.first
-                          }
-                          disabled={
-                            options.selectOption1 === options.optionValue.first
-                          }
-                          onChange={(e) =>
-                            onOptionsChange("selectOption2", e.target.value)
-                          }
+                          checked={options.selectOption2 === options.optionValue.first}
+                          disabled={options.selectOption1 === options.optionValue.first}
+                          onChange={(e) => onOptionsChange("selectOption2", e.target.value)}
                         />
-                        <span className="size-font-xxs">
-                          {options.optionName.first}
-                        </span>
+                        <span className="size-font-xxs">{options.optionName.first}</span>
                       </label>
                       <label>
                         <input
                           type="radio"
                           name={`${options.id}selectOption2`}
                           value={options.optionValue.second}
-                          checked={
-                            options.selectOption2 === options.optionValue.second
-                          }
-                          disabled={
-                            options.selectOption1 === options.optionValue.second
-                          }
-                          onChange={(e) =>
-                            onOptionsChange("selectOption2", e.target.value)
-                          }
+                          checked={options.selectOption2 === options.optionValue.second}
+                          disabled={options.selectOption1 === options.optionValue.second}
+                          onChange={(e) => onOptionsChange("selectOption2", e.target.value)}
                         />
-                        <span className="size-font-xxs">
-                          {options.optionName.second}
-                        </span>
+                        <span className="size-font-xxs">{options.optionName.second}</span>
                       </label>
                       {/* <label>
                       <input
@@ -406,9 +378,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                           name={`${options.id}selectOption2`}
                           value={null}
                           checked={options.selectOption2 === null}
-                          onChange={() =>
-                            onOptionsChange("selectOption2", null)
-                          }
+                          onChange={() => onOptionsChange("selectOption2", null)}
                         />
                         <span className="size-font-xxs">미선택</span>
                       </label>
@@ -424,9 +394,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         value="3"
                         checked={options.selectValue2 === "3"}
                         className="mr-1"
-                        onChange={(e) =>
-                          onOptionsChange("selectValue2", e.target.value)
-                        }
+                        onChange={(e) => onOptionsChange("selectValue2", e.target.value)}
                       />
                       <span className="size-font-xxs">상</span>
                     </label>
@@ -437,9 +405,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         value="2"
                         checked={options.selectValue2 === "2"}
                         className="mr-1"
-                        onChange={(e) =>
-                          onOptionsChange("selectValue2", e.target.value)
-                        }
+                        onChange={(e) => onOptionsChange("selectValue2", e.target.value)}
                       />
                       <span className="size-font-xxs">중</span>
                     </label>
@@ -450,9 +416,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         value="1"
                         checked={options.selectValue2 === "1"}
                         className="mr-1"
-                        onChange={(e) =>
-                          onOptionsChange("selectValue2", e.target.value)
-                        }
+                        onChange={(e) => onOptionsChange("selectValue2", e.target.value)}
                       />
                       <span className="size-font-xxs">하</span>
                     </label>
@@ -470,7 +434,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-2 relative">
+              <div className="p-2 grid grid-cols-2 border-b-2 border-gray-300 relative">
                 {/* 전체를 덮는 미구현 메시지
               <div className="absolute inset-0 bg-gray-200 bg-opacity-90 text-gray-500 text-xs flex justify-center items-center z-10 rounded-3xl">
                 현재 미구현, 특수 옵션 2개만 활용합니다. 공용 옵션 선택 추가 예정
@@ -511,9 +475,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         value="3"
                         checked={options.selectValue3 === "3"}
                         className="mr-1"
-                        onChange={(e) =>
-                          onOptionsChange("selectValue3", e.target.value)
-                        }
+                        onChange={(e) => onOptionsChange("selectValue3", e.target.value)}
                       />
                       <span className="text-xs">상</span>
                     </label>
@@ -524,9 +486,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         value="2"
                         checked={options.selectValue3 === "2"}
                         className="mr-1"
-                        onChange={(e) =>
-                          onOptionsChange("selectValue3", e.target.value)
-                        }
+                        onChange={(e) => onOptionsChange("selectValue3", e.target.value)}
                       />
                       <span className="text-xs">중</span>
                     </label>
@@ -537,9 +497,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                         checked={options.selectValue3 === "1"}
                         value="1"
                         className="mr-1"
-                        onChange={(e) =>
-                          onOptionsChange("selectValue3", e.target.value)
-                        }
+                        onChange={(e) => onOptionsChange("selectValue3", e.target.value)}
                       />
                       <span className="text-xs">하</span>
                     </label>
@@ -557,124 +515,112 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div className="pt-2 border-t-2 border-gray-300 flex gap-x-6 items-center justify-center">
-          <div className="grid grid-cols-4 gap-2">
-            <div className="font-bold col-span-1 flex items-center justify-center size-font-xxxs">
-              연마 단계
-            </div>
-            <div className="col-span-3 flex items-center justify-center">
-              <form className="grid grid-cols-4 gap-2 justify-items-center">
-                <label>
-                  <input
-                    type="radio"
-                    name={`${options.id}_upgradeLevel`}
-                    value={null}
-                    className="mr-1"
-                    checked={options.upgradeLevel === null}
-                    onChange={() => onOptionsChange("upgradeLevel", null)}
-                  />
-                  <span className="size-font-xxxs">All</span>
-                </label>
+              <div className="p-2 flex gap-x-6 items-center justify-center">
+                <div className="grid grid-cols-4 gap-2">
+                  <div className="font-bold col-span-1 flex items-center justify-center size-font-xxxs">
+                    연마 단계
+                  </div>
+                  <div className="col-span-3 flex items-center justify-center">
+                    <form className="grid grid-cols-4 gap-2 justify-items-center">
+                      <label>
+                        <input
+                          type="radio"
+                          name={`${options.id}_upgradeLevel`}
+                          value={null}
+                          className="mr-1"
+                          checked={options.upgradeLevel === null}
+                          onChange={() => onOptionsChange("upgradeLevel", null)}
+                        />
+                        <span className="size-font-xxxs">All</span>
+                      </label>
 
-                <label>
-                  <input
-                    type="radio"
-                    name={`${options.id}_upgradeLevel`}
-                    value="1"
-                    className="mr-1"
-                    onChange={(e) =>
-                      onOptionsChange("upgradeLevel", e.target.value)
-                    }
-                  />
-                  <span className="size-font-xxxs">1</span>
-                </label>
+                      <label>
+                        <input
+                          type="radio"
+                          name={`${options.id}_upgradeLevel`}
+                          value="1"
+                          className="mr-1"
+                          onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
+                        />
+                        <span className="size-font-xxxs">1</span>
+                      </label>
 
-                <label>
-                  <input
-                    type="radio"
-                    name={`${options.id}_upgradeLevel`}
-                    value="2"
-                    className="mr-1"
-                    onChange={(e) =>
-                      onOptionsChange("upgradeLevel", e.target.value)
-                    }
-                  />
-                  <span className="size-font-xxxs">2</span>
-                </label>
+                      <label>
+                        <input
+                          type="radio"
+                          name={`${options.id}_upgradeLevel`}
+                          value="2"
+                          className="mr-1"
+                          onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
+                        />
+                        <span className="size-font-xxxs">2</span>
+                      </label>
 
-                <label>
-                  <input
-                    type="radio"
-                    name={`${options.id}_upgradeLevel`}
-                    value="3"
-                    className="mr-1"
-                    onChange={(e) =>
-                      onOptionsChange("upgradeLevel", e.target.value)
-                    }
-                  />
-                  <span className="size-font-xxxs">3</span>
-                </label>
-              </form>
-            </div>
-          </div>
-          <div className="grid grid-cols-4 gap-2">
-            <div className="col-span-1 flex items-center justify-center font-bold size-font-xxxs">
-              거래 횟수
-            </div>
-            <div className="col-span-3 flex items-center justify-center">
-              <form className="grid grid-cols-4 gap-2 justify-items-center">
-                <label>
-                  <input
-                    type="radio"
-                    name={`${options.id}tradeCount`}
-                    value={null}
-                    className="mr-1"
-                    checked={options.tradeAllowCount === null}
-                    onChange={() => onOptionsChange("tradeAllowCount", null)}
-                  />
-                  <span className="size-font-xxxs">All</span>
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name={`${options.id}tradeCount`}
-                    value="0"
-                    className="mr-1"
-                    onChange={(e) =>
-                      onOptionsChange("tradeAllowCount", e.target.value)
-                    }
-                  />
-                  <span className="size-font-xxxs">0</span>
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name={`${options.id}tradeCount`}
-                    value="1"
-                    className="mr-1"
-                    onChange={(e) =>
-                      onOptionsChange("tradeAllowCount", e.target.value)
-                    }
-                  />
-                  <span className="size-font-xxxs">1</span>
-                </label>
+                      <label>
+                        <input
+                          type="radio"
+                          name={`${options.id}_upgradeLevel`}
+                          value="3"
+                          className="mr-1"
+                          onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
+                        />
+                        <span className="size-font-xxxs">3</span>
+                      </label>
+                    </form>
+                  </div>
+                </div>
+                <div className="grid grid-cols-4 gap-2">
+                  <div className="col-span-1 flex items-center justify-center font-bold size-font-xxxs">
+                    거래 횟수
+                  </div>
+                  <div className="col-span-3 flex items-center justify-center">
+                    <form className="grid grid-cols-4 gap-2 justify-items-center">
+                      <label>
+                        <input
+                          type="radio"
+                          name={`${options.id}tradeCount`}
+                          value={null}
+                          className="mr-1"
+                          checked={options.tradeAllowCount === null}
+                          onChange={() => onOptionsChange("tradeAllowCount", null)}
+                        />
+                        <span className="size-font-xxxs">All</span>
+                      </label>
+                      <label>
+                        <input
+                          type="radio"
+                          name={`${options.id}tradeCount`}
+                          value="0"
+                          className="mr-1"
+                          onChange={(e) => onOptionsChange("tradeAllowCount", e.target.value)}
+                        />
+                        <span className="size-font-xxxs">0</span>
+                      </label>
+                      <label>
+                        <input
+                          type="radio"
+                          name={`${options.id}tradeCount`}
+                          value="1"
+                          className="mr-1"
+                          onChange={(e) => onOptionsChange("tradeAllowCount", e.target.value)}
+                        />
+                        <span className="size-font-xxxs">1</span>
+                      </label>
 
-                <label>
-                  <input
-                    type="radio"
-                    name={`${options.id}tradeCount`}
-                    value="2"
-                    className="mr-1"
-                    onChange={(e) =>
-                      onOptionsChange("tradeAllowCount", e.target.value)
-                    }
-                  />
-                  <span className="size-font-xxxs">2</span>
-                </label>
-              </form>
+                      <label>
+                        <input
+                          type="radio"
+                          name={`${options.id}tradeCount`}
+                          value="2"
+                          className="mr-1"
+                          onChange={(e) => onOptionsChange("tradeAllowCount", e.target.value)}
+                        />
+                        <span className="size-font-xxxs">2</span>
+                      </label>
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

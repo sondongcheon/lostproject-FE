@@ -106,6 +106,7 @@ function TauctionTierFour({
     const newSelectOptionReq = options.map((option) => ({
       tier: option.tier || "",
       quality: option.quality || "",
+      statPercentage: option.statPercentage || "",
       upgradeLevel: option.upgradeLevel || "",
       tradeAllowCount: option.tradeAllowCount || "",
       categoryCode: option.categoryCode || "",
