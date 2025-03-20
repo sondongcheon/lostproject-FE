@@ -8,6 +8,7 @@ import AllSelectPresetComp from "./Component/AllSelectPresetComp";
 import SelectOptionComp from "./Component/SelectOptionComp";
 import SearchBtm from "./Component/SearchBtm";
 import ResultBox from "./Component/ResultBox";
+import PageNation from "./Component/PageNation";
 
 function AuctionTierFourSup({
   getCountLog,
@@ -19,6 +20,8 @@ function AuctionTierFourSup({
   setResultList,
   count,
   setCount,
+  currentPage,
+  setCurrentPage,
 }) {
   const [selectOptionReq, setSelectOptionReq] = useState([]);
 
@@ -34,6 +37,13 @@ function AuctionTierFourSup({
       return sum + (item?.auctionInfo.buyPrice || 0);
     }, 0);
     setResult(res);
+    res.some((item, index) => {
+      if (item) {
+        setCount(index);
+        return true;
+      }
+      return false;
+    });
     setTotal(tmp);
   };
 
@@ -58,6 +68,7 @@ function AuctionTierFourSup({
         .then((res) => {
           getTotal(res.data.data.searchResultRes);
           setResultList(res.data.data.result);
+          setCurrentPage([1, 1, 1, 1, 1, 1]);
         })
         .catch((error) => {
           const handleError = () => {
@@ -182,7 +193,7 @@ function AuctionTierFourSup({
         ></SearchBtm>
 
         <div className="grid grid-cols-2 gap-x-4 mt-6">
-          <div className="space-y-2">
+          <div className="space-y-2 mt-12">
             {result.map((item, index) => (
               <ResultBox
                 result={item}
@@ -197,9 +208,30 @@ function AuctionTierFourSup({
             ))}
           </div>
           <div>
-            {count < 5 && resultList[count]?.length > 0 && (
+            <div
+              className={`"h-12 gap-x-4 w-full border-black border-2" ${
+                (result[count]?.cntCount || 0) < 1 && (result[count]?.cntPage || 0) < 1
+                  ? "invisible"
+                  : ""
+              }`}
+            >
+              <PageNation
+                dataLength={resultList[count].length}
+                setResult={setResult}
+                setResultList={setResultList}
+                option={options[count]}
+                cntPage={result[count]?.cntPage || 0}
+                cntCount={result[count]?.cntCount || 0}
+                apiKey={apiKey}
+                type={2}
+                selAcc={count}
+                currentPage={currentPage[count]}
+                setCurrentPage={setCurrentPage}
+              />
+            </div>
+            {count < 5 && resultList[count][currentPage[count] - 1]?.length > 0 && (
               <div className="space-y-2">
-                {resultList[count].map((item, index) => (
+                {resultList[count][currentPage[count] - 1].map((item, index) => (
                   <ResultBox
                     key={index}
                     result={item}

@@ -54,8 +54,7 @@ function MainNav({ logSearch, getCountLog }) {
         <div className="container mx-auto px-2 py-1 flex justify-between items-center h-full text-[#2b2b2b] font-bold ">
           {/* 왼쪽에 'test' 홈페이지 링크 */}
           <span className="text-3xl cursor-pointer text-white font-a" onClick={() => navigate("/")}>
-            LoaRoot{" "}
-            <span className="text-xs">[Ver 2.0.1] - 힘민지 제어 기능 업데이트 중(일지확인)</span>
+            LoaRoot <span className="size-font-xxxs">[Ver 2.0.2]</span>
           </span>
 
           {/* 오른쪽에 페이지 이동 공간 잡기 */}
@@ -73,37 +72,31 @@ function MainNav({ logSearch, getCountLog }) {
           ) : (
             <div className="flex gap-10">
               <div
-                className="cursor-pointer text-base  hover:underline"
+                className="cursor-pointer text-base hover:underline size-font-xxxs"
                 onClick={() => navigate("/auction")}
               >
                 딜러악세 검색기
               </div>
               <div
-                className="cursor-pointer text-base hover:underline"
+                className="cursor-pointer text-base hover:underline size-font-xxxs"
                 onClick={() => navigate("/auctionsup")}
               >
                 서폿악세 검색기
               </div>
-              {/* <div
-              className="cursor-pointer text-base  hover:underline"
-              onClick={() => navigate("/usebasicinfo")}
-            >
-              사용방법 상세보기
-            </div> */}
               <div
-                className="cursor-pointer text-base hover:underline"
+                className="cursor-pointer text-base hover:underline size-font-xxxs"
                 onClick={() => navigate("/chart")}
               >
                 시세 차트
               </div>
               <div
-                className="cursor-pointer text-base hover:underline"
+                className="cursor-pointer text-base hover:underline size-font-xxxs"
                 onClick={() => navigate("/notice")}
               >
                 개발일지
               </div>
               <div
-                className="cursor-pointer text-base hover:underline"
+                className="cursor-pointer text-base hover:underline size-font-xxxs"
                 onClick={() => navigate("/mini")}
               >
                 유저 코멘트

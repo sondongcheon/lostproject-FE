@@ -217,6 +217,73 @@ const GlobalStyles = createGlobalStyle`
   color: #40AC8D;
 }
 
+.size-font-2xl{
+  font-size : 28px;
+}
+
+.size-font-xl{
+  font-size : 26px;
+}
+
+.size-font-sm{
+  font-size : 24px;
+}
+
+.size-font-xs{
+  font-size : 20px;
+}
+
+.size-font-xxs{
+  font-size : 18px;
+}
+
+.size-font-xxxs{
+  font-size : 16px;
+}
+
+.size-font-4xs{
+  font-size : 14px;
+}
+
+.size-font-5xs{
+  font-size : 12px;
+}
+
+  @media (max-width: 1024px) {
+
+    .size-font-2xl{
+      font-size : 24px;
+    }
+
+    .size-font-xl{
+      font-size : 22px;
+    }
+
+    .size-font-sm{
+      font-size : 20px;
+    }
+
+    .size-font-xs{
+      font-size : 18px;
+    }
+
+    .size-font-xxs{
+      font-size : 16px;
+    }
+
+    .size-font-xxxs{
+      font-size : 14px;
+    }
+
+    .size-font-4xs{
+      font-size : 12px;
+    }
+
+    .size-font-5xs{
+      font-size : 10px;
+    }
+}
+
   @media (max-width: 800px) {
 
     body {
@@ -249,6 +316,10 @@ const GlobalStyles = createGlobalStyle`
     .size-font-xxxs{
       font-size : 12px;
     }
+
+    .size-font-4xs{
+  font-size : 10px;
+}
 
     .mobile-grid-3 {
     grid-template-columns: repeat(3, 1fr); /* 2열 그리드 */
@@ -287,6 +358,10 @@ const GlobalStyles = createGlobalStyle`
     .size-font-xxxs{
       font-size : 10px;
     }
+
+    .size-font-4xs{
+  font-size : 8px;
+}
 
         .mobile-grid-3 {
     grid-template-columns: repeat(2, 1fr); /* 2열 그리드 */
@@ -385,6 +460,10 @@ const GlobalStyles = createGlobalStyle`
       font-size : 8px;
     }
 
+    .size-font-4xs{
+  font-size : 6px;
+}
+
   }
 
   @media (max-width: 400px) {
@@ -408,6 +487,10 @@ const GlobalStyles = createGlobalStyle`
     .size-font-xxxs{
       font-size : 6px;
     }
+
+    .size-font-4xs{
+  font-size : 4px;
+}
 
     .mobile-grid-3 {
     grid-template-columns: repeat(2, 1fr); /* 2열 그리드 */
@@ -439,6 +522,10 @@ const GlobalStyles = createGlobalStyle`
     .size-font-xxxs{
       font-size : 3px;
     }
+
+    .size-font-4xs{
+  font-size : 2px;
+}
 
   }
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const AllSelectPresetComp = ({ updateSet, type }) => {
   const [sliderValue, setSliderValue] = useState(67);
-  const [sliderStatValue, setSliderStatValue] = useState(50);
+  const [sliderStatValue, setSliderStatValue] = useState(10);
   const [options, setOptions] = useState({});
 
   const setGrade = (key, value) => {
@@ -24,7 +24,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
       });
     }
     setGrade("quality", 67);
-    setGrade("statPercentage", 50);
+    setGrade("statPercentage", 10);
   }, type);
 
   const setOption = (key1, value1, key2, value2) => {
@@ -50,7 +50,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
 
   const setReset = () => {
     setSliderValue(67);
-    setSliderStatValue(50);
+    setSliderStatValue(10);
 
     updateSet.forEach((updateOption) => {
       updateOption("tier", "4");
@@ -62,7 +62,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
       updateOption("quality", 67);
     });
     updateSet.forEach((updateOption) => {
-      updateOption("statPercentage", 50);
+      updateOption("statPercentage", 10);
     });
     updateSet.forEach((updateOption) => {
       updateOption("upgradeLevel", null);
