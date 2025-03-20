@@ -287,7 +287,13 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                 <div className="font-bold col-span-1 border-b-2 border-gray-200 border-l-2 border-gray-300 flex items-center justify-center text-[12px]">
                   힘민지%
                 </div>
-                <div className="col-span-3 border-b-2 border-gray-300 flex items-center justify-center">
+                <div className="col-span-3 border-b-2 border-gray-300 flex items-center justify-center relative">
+                  {/* 옵션이 200000일 경우만 덮기 */}
+                  {options?.categoryCode === 200000 && (
+                    <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center m-2">
+                      <p className="text-xs text-red-500 font-bold">스텟 필터가 불가능합니다</p>
+                    </div>
+                  )}
                   <div className="w-3/4 pl-2">
                     <input
                       type="range"

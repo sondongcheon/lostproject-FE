@@ -176,21 +176,10 @@ function AuctionSup({ getCountLog }) {
   };
 
   const [count, setCount] = useState(5);
+  const [currentPage, setCurrentPage] = useState([1, 1, 1, 1, 1, 1]); // 각 게시판의 현재 페이지
 
-  const options = [
-    selectOption1,
-    selectOption2,
-    selectOption3,
-    selectOption4,
-    selectOption5,
-  ];
-  const updateOptions = [
-    updateOption1,
-    updateOption2,
-    updateOption3,
-    updateOption4,
-    updateOption5,
-  ];
+  const options = [selectOption1, selectOption2, selectOption3, selectOption4, selectOption5];
+  const updateOptions = [updateOption1, updateOption2, updateOption3, updateOption4, updateOption5];
   const [result, setResult] = useState([
     {
       options: [],
@@ -201,16 +190,6 @@ function AuctionSup({ getCountLog }) {
     { options: [] },
   ]);
   const [resultList, setResultList] = useState([[], [], [], [], [], []]);
-
-  useEffect(() => {
-    result.some((item, index) => {
-      if (item) {
-        setCount(index);
-        return true;
-      }
-      return false;
-    });
-  }, [result]);
 
   return (
     <div>
@@ -226,6 +205,8 @@ function AuctionSup({ getCountLog }) {
             setResultList={setResultList}
             count={count}
             setCount={setCount}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
         ) : isTablet ? (
           <TauctionTierFourSup
@@ -238,6 +219,8 @@ function AuctionSup({ getCountLog }) {
             setResultList={setResultList}
             count={count}
             setCount={setCount}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
         ) : (
           <AuctionTierFourSup
@@ -250,6 +233,8 @@ function AuctionSup({ getCountLog }) {
             setResultList={setResultList}
             count={count}
             setCount={setCount}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
         )}
       </div>
