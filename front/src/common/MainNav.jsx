@@ -87,7 +87,13 @@ function MainNav({ logSearch, getCountLog }) {
                 className="cursor-pointer text-base hover:underline size-font-xxxs"
                 onClick={() => navigate("/chart")}
               >
-                시세 차트
+                시세 차트(악세)
+              </div>
+              <div
+                className="cursor-pointer text-base hover:underline size-font-xxxs"
+                onClick={() => navigate("/chartitems")}
+              >
+                주요 아이템 차트(각인서)
               </div>
               <div
                 className="cursor-pointer text-base hover:underline size-font-xxxs"

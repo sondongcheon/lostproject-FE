@@ -40,6 +40,16 @@ function Main(props) {
       ),
       clicklink: "/chart",
     },
+    {
+      imgUrl: "https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_9_25.png",
+      title: "주요아이템 차트(각인서)",
+      info: (
+        <>
+          각인서, 보석(예정) 등 <br /> 주요 아이템의 가격 변화를 확인할 수 있습니다.
+        </>
+      ),
+      clicklink: "/chartitems",
+    },
   ];
 
   return (
