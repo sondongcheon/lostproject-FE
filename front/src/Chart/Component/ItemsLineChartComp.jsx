@@ -16,7 +16,7 @@ const ItemsLineChartComp = ({ data }) => {
   return (
     <div className="flex m-10 border-b-2 border-red-200 bg-opacity-75 bg-white rounded-3xl">
       <div className="w-[80%] ">
-        <h2 className="flex items-baseline justify-center text-center">
+        <h2 className="flex items-center justify-center text-center">
           {" "}
           <img
             className="w-8"
@@ -82,14 +82,18 @@ const ItemsLineChartComp = ({ data }) => {
           </ComposedChart>
         </ResponsiveContainer>
       </div>
-      <div className="w-[20%] m-2 p-2 flex flex-col justify-center border-2 border-gray-500 rounded-xl h-[250px] text-sm">
-        <p>실시간 현재 최저가 : {data?.currentMinPrice.toLocaleString()} G</p>
-        <p>실시간 최근 거래가 : {data?.recentPrice.toLocaleString()} G</p>
-
+      <div className="w-[20%] m-2 flex flex-col items-center justify-center border-2 border-gray-500 rounded-xl h-[250px] text-xl text-center">
+        <p>
+          실시간 현재 최저가 <br />
+          <span className="font-bold text-3xl">{data?.currentMinPrice.toLocaleString()} G</span>
+        </p>
         <br />
-        <p>14일간 평균 거래가 : 구현중</p>
-        <p>14일간 최저 거래가 : 구현중</p>
-        <br />
+        <p>
+          실시간 최근 거래가 <br />
+          <span className="font-bold text-3xl">{data?.recentPrice.toLocaleString()} G</span>
+        </p>
+        {/* <p>14일간 평균 거래가 : 구현중</p>
+        <p>14일간 최저 거래가 : 구현중</p> */}
       </div>
     </div>
   );
