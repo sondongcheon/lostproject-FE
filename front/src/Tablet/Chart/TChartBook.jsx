@@ -7,7 +7,7 @@ function TChartBook(props) {
   return (
     <div>
       <div className="mainMobileBody">
-        <div className="mx-36 w-[50%] ">
+        <div className="mx-auto w-[50%] ">
           <ItemsTopMenu />
         </div>
         <div className="">

@@ -146,10 +146,17 @@ function AuctionTierFour({
 
   return (
     <div className="mainbody">
-      {/* <button className="normalBtm" onClick={() => check()}>
-        dfsfdsa
-      </button> */}
-      <div className="mb-4">
+      <div className="mb-4 grid grid-cols-2 gap-x-4 gap-y-4">
+        <div className="h-34  flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5]">
+          <span className="p-4">
+            <span className="text-red-500 font-bold text-xl">특수 추적</span>
+            <span>이란?</span>
+            <br />
+            연마 등급만 정하고(ex. 상단일 3개 중중 2개) 그 등급을 어느 악세서리와 매칭하는게 가장
+            저렴한지 <br /> 검색합니다. 연마 옵션을 선택 하지 않고, 등급만 선택한 후 모든 경우의
+            수를 비교합니다.
+          </span>
+        </div>
         <HeadKeyBox
           apiKey={apiKey}
           setApiKey={setApiKey}
