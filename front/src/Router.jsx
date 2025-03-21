@@ -8,6 +8,7 @@ import NoticeBoard from "./Pages/NoticeBoard.jsx";
 import NoticeBoardDetail from "./Pages/NoticeBoardDetail.jsx";
 import MiniBoard from "./Pages/MiniBoard.jsx";
 import Chart from "./Pages/Chart.jsx";
+import ChartItems from "./Pages/ChartItems.jsx";
 
 import TestFour from "./Main/TestFour.jsx";
 import { useState } from "react";
@@ -32,19 +33,14 @@ function Router() {
       <MainNav logSearch={logSearch} getCountLog={getCountLog} />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route
-          path="/auction"
-          element={<Auction getCountLog={getCountLog} />}
-        />
-        <Route
-          path="/auctionsup"
-          element={<AuctionSup getCountLog={getCountLog} />}
-        />
+        <Route path="/auction" element={<Auction getCountLog={getCountLog} />} />
+        <Route path="/auctionsup" element={<AuctionSup getCountLog={getCountLog} />} />
         <Route path="/usebasicinfo" element={<UseBasicInfo />} />
         <Route path="/notice" element={<NoticeBoard />} />
         <Route path="/notice/:id" element={<NoticeBoardDetail />} />
         <Route path="/mini" element={<MiniBoard />} />
         <Route path="/chart" element={<Chart />} />
+        <Route path="/chartitems" element={<ChartItems />} />
 
         <Route path="/test4" element={<TestFour />} />
       </Routes>
