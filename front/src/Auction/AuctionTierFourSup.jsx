@@ -199,7 +199,7 @@ function AuctionTierFourSup({
         ></SearchBtm>
 
         <div className="grid grid-cols-2 gap-x-4 mt-6">
-          <div className="space-y-2 mt-12">
+          <div className="space-y-2 mt-24">
             {result.map((item, index) => (
               <ResultBox
                 result={item}
