@@ -56,7 +56,7 @@ function Main(props) {
     <div className="mainbody">
       <div>
         <br />
-        <h1 className="mt-24 text-center text-3xl">주요 서비스</h1>
+        <h1 className="mt-4 text-center text-3xl">주요 서비스</h1>
       </div>
       <div className="flex grid grid-cols-2">
         {boxInfo.map((box, index) => (

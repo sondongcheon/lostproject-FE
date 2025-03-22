@@ -71,7 +71,7 @@ const FixChartItemsPage = () => {
   useEffect(() => {
     if (hasKeyMounted) {
       setHasKeyMounted(false);
-    } else {
+    } else if (!searchState) {
       loadData();
     }
   }, [apiKey]);

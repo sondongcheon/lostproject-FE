@@ -84,7 +84,7 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
           {result?.options?.length > 5 && (
             <div className="group relative">
               {/* 마우스 오버 대상 */}
-              <button className="px-4 py-2 bg-blue-500 text-white rounded-lg size-font-xxs">
+              <button className="px-4 py-2 bg-blue-500 text-white rounded-lg size-font-xxxs">
                 힘민지 범위 확인하기
               </button>
 
