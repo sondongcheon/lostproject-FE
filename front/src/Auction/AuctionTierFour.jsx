@@ -10,6 +10,9 @@ import SearchBtm from "./Component/SearchBtm";
 import ResultBox from "./Component/ResultBox";
 import PageNation from "./Component/PageNation";
 
+import { FcOpenedFolder } from "react-icons/fc";
+import { FcFolder } from "react-icons/fc";
+
 function AuctionTierFour({
   getCountLog,
   options,
@@ -32,6 +35,29 @@ function AuctionTierFour({
 
   const [total, setTotal] = useState(0);
 
+  const [folderFlags, setFolderFlags] = useState(() => {
+    const savedFlags = localStorage.getItem("folderFlags");
+    return savedFlags
+      ? JSON.parse(savedFlags)
+      : {
+          folder1: false,
+          presetFolder: false,
+          acc1: false,
+          acc2: false,
+          acc3: false,
+          acc4: false,
+          acc5: false,
+          findCharacter: false,
+        };
+  });
+
+  const controllFolder = (key) => {
+    setFolderFlags((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
+
   const getTotal = (res) => {
     var tmp = res.reduce((sum, item) => {
       return sum + (item?.auctionInfo.buyPrice || 0);
@@ -46,6 +72,10 @@ function AuctionTierFour({
     });
     setTotal(tmp);
   };
+
+  useEffect(() => {
+    localStorage.setItem("folderFlags", JSON.stringify(folderFlags));
+  }, [folderFlags]);
 
   useEffect(() => {
     const cookieValue = Cookies.get("apiKey" ?? "");
@@ -146,7 +176,23 @@ function AuctionTierFour({
 
   return (
     <div className="mainbody">
-      <div className="mb-4 grid grid-cols-2 gap-x-4 gap-y-4">
+      <div
+        className="flex"
+        onClick={() => {
+          controllFolder("folder1");
+        }}
+      >
+        {folderFlags.folder1 ? (
+          <span className="flex items-center font-bold">
+            <FcFolder className="ml-8 w-12 h-12" /> - 특수추적 설명, API KEY 설정창 닫힘
+          </span>
+        ) : (
+          <FcOpenedFolder className="ml-8 w-12 h-12" />
+        )}
+      </div>
+      <div
+        className={`mb-4 grid grid-cols-2 gap-x-4 gap-y-4 ${folderFlags.folder1 ? "hidden" : ""}`}
+      >
         <div className="h-34  flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5]">
           <span className="p-4">
             <span className="text-red-500 font-bold text-xl">특수 추적</span>
@@ -225,7 +271,7 @@ function AuctionTierFour({
               />
             ))}
           </div>
-          <div>
+          <div className="h-[1024px] overflow-y-invisible shadow-xl overflow-x-hidden">
             <div
               className={`"h-12 gap-x-4 w-full border-black border-2" ${
                 (result[count]?.cntCount || 0) < 1 && (result[count]?.cntPage || 0) < 1
@@ -255,7 +301,7 @@ function AuctionTierFour({
                     result={item}
                     option={options[count]}
                     number={index}
-                    className={"bg-[#F5F5F5]"}
+                    className={"bg-[#F5F5F5] pointer-events-none"}
                   />
                 ))}
               </div>

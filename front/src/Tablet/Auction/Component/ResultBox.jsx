@@ -221,7 +221,7 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
                   ).toFixed(2)}
                   %{" "}
                 </span>
-                <div className="absolute w-[300%] top-full mt-2 px-3 py-2 bg-gray-800 text-white text-sm rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute w-[300%] top-full mt-2 px-3 py-2 bg-gray-800 text-white text-sm rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300 right-0">
                   현재 연마 단계에서 가질 수 있는 최대 스텟에 비해 <br /> 어느 정도 비율로 높은
                   수치를 가졌는지를 보여줍니다.
                 </div>

@@ -11,6 +11,9 @@ import SearchBtm from "./Component/SearchBtm";
 import ResultBox from "./Component/ResultBox";
 import PageNation from "./Component/PageNation";
 
+import { FcOpenedFolder } from "react-icons/fc";
+import { FcFolder } from "react-icons/fc";
+
 function MauctionTierFourSup({
   getCountLog,
   options,
@@ -32,6 +35,29 @@ function MauctionTierFourSup({
   const [saveKey, setSaveKey] = useState(false);
 
   const [total, setTotal] = useState(0);
+
+  const [folderFlags, setFolderFlags] = useState(() => {
+    const savedFlags = localStorage.getItem("folderFlags");
+    return savedFlags
+      ? JSON.parse(savedFlags)
+      : {
+          folder1: false,
+          presetFolder: false,
+          acc1: false,
+          acc2: false,
+          acc3: false,
+          acc4: false,
+          acc5: false,
+          findCharacter: false,
+        };
+  });
+
+  const controllFolder = (key) => {
+    setFolderFlags((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
 
   const getTotal = (res) => {
     var tmp = res.reduce((sum, item) => {
@@ -55,6 +81,10 @@ function MauctionTierFourSup({
     }
     setApiKey(cookieValue);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("folderFlags", JSON.stringify(folderFlags));
+  }, [folderFlags]);
 
   useEffect(() => {
     if (selectOptionReq.length > 0) {
@@ -147,7 +177,21 @@ function MauctionTierFourSup({
 
   return (
     <div className="mainMobileBody">
-      <div className="mb-4">
+      <div
+        className="flex"
+        onClick={() => {
+          controllFolder("folder1");
+        }}
+      >
+        {folderFlags.folder1 ? (
+          <span className="flex items-center font-bold size-font-xl">
+            <FcFolder className="ml-8 w-12 h-12" /> - 특수추적 설명, API KEY 설정창 닫힘
+          </span>
+        ) : (
+          <FcOpenedFolder className="ml-8 w-12 h-12" />
+        )}
+      </div>
+      <div className={`mb-4 ${folderFlags.folder1 ? "hidden" : ""}`}>
         <div className="h-30  flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5] mb-4">
           <span className="p-4 text-sm">
             <span className="text-red-500 font-bold text-xl">특수 추적</span>
@@ -167,34 +211,118 @@ function MauctionTierFourSup({
       </div>
 
       <div className="gap-x-4 gap-y-4">
-        <div className="pb-4">
+        <div
+          className="flex"
+          onClick={() => {
+            controllFolder("persetFolder");
+          }}
+        >
+          {folderFlags.persetFolder ? (
+            <span className="flex items-center font-bold size-font-xl">
+              <FcFolder className="ml-8 w-12 h-12" /> - 일괄선택 프리셋 닫힘
+            </span>
+          ) : (
+            <FcOpenedFolder className="ml-8 w-12 h-12" />
+          )}
+        </div>
+        <div className={`pb-4 ${folderFlags.persetFolder ? "hidden" : ""}`}>
           <AllSelectPresetComp updateSet={updateOptions} type={1}></AllSelectPresetComp>
         </div>
-        <div className="pb-4">
+        <div
+          className="flex"
+          onClick={() => {
+            controllFolder("acc1");
+          }}
+        >
+          {folderFlags.acc1 ? (
+            <span className="flex items-center font-bold size-font-xl">
+              <FcFolder className="ml-8 w-12 h-12" /> - 목걸이 옵션 선택창 닫힘
+            </span>
+          ) : (
+            <FcOpenedFolder className="ml-8 w-12 h-12" />
+          )}
+        </div>
+        <div className={`pb-4 ${folderFlags.acc1 ? "hidden" : ""}`}>
           <SelectOptionComp
             options={options[0]}
             onOptionsChange={updateOptions[0]}
           ></SelectOptionComp>
         </div>
-        <div className="pb-4">
+        <div
+          className="flex"
+          onClick={() => {
+            controllFolder("acc2");
+          }}
+        >
+          {folderFlags.acc2 ? (
+            <span className="flex items-center font-bold size-font-xl">
+              <FcFolder className="ml-8 w-12 h-12" /> - 귀걸이1 옵션 선택창 닫힘
+            </span>
+          ) : (
+            <FcOpenedFolder className="ml-8 w-12 h-12" />
+          )}
+        </div>
+        <div className={`pb-4 ${folderFlags.acc2 ? "hidden" : ""}`}>
           <SelectOptionComp
             options={options[1]}
             onOptionsChange={updateOptions[1]}
           ></SelectOptionComp>
         </div>
-        <div className="pb-4">
+        <div
+          className="flex"
+          onClick={() => {
+            controllFolder("acc3");
+          }}
+        >
+          {folderFlags.acc3 ? (
+            <span className="flex items-center font-bold size-font-xl">
+              <FcFolder className="ml-8 w-12 h-12" /> - 귀걸이2 옵션 선택창 닫힘
+            </span>
+          ) : (
+            <FcOpenedFolder className="ml-8 w-12 h-12" />
+          )}
+        </div>
+        <div className={`pb-4 ${folderFlags.acc3 ? "hidden" : ""}`}>
           <SelectOptionComp
             options={options[2]}
             onOptionsChange={updateOptions[2]}
           ></SelectOptionComp>
         </div>
-        <div className="pb-4">
+        <div
+          className="flex"
+          onClick={() => {
+            controllFolder("acc4");
+          }}
+        >
+          {folderFlags.acc4 ? (
+            <span className="flex items-center font-bold size-font-xl">
+              <FcFolder className="ml-8 w-12 h-12" /> - 반지1 옵션 선택창 닫힘
+            </span>
+          ) : (
+            <FcOpenedFolder className="ml-8 w-12 h-12" />
+          )}
+        </div>
+        <div className={`pb-4 ${folderFlags.acc4 ? "hidden" : ""}`}>
           <SelectOptionComp
             options={options[3]}
             onOptionsChange={updateOptions[3]}
           ></SelectOptionComp>
         </div>
-        <div className="pb-4">
+        <div
+          className="flex"
+          onClick={() => {
+            controllFolder("acc5");
+          }}
+        >
+          {folderFlags.acc5 ? (
+            <span className="flex items-center font-bold size-font-xl">
+              <FcFolder className="ml-8 w-12 h-12" /> - 반지2 옵션 선택창 닫힘
+            </span>
+          ) : (
+            <FcOpenedFolder className="ml-8 w-12 h-12" />
+          )}
+        </div>
+        <div className={`pb-4 ${folderFlags.acc5 ? "hidden" : ""}`}>
           <SelectOptionComp
             options={options[4]}
             onOptionsChange={updateOptions[4]}
@@ -212,13 +340,29 @@ function MauctionTierFourSup({
 
         <div className="gap-x-4 mt-6">
           <div className="space-y-2">
-            <SearchBtm
-              selectOptions={options}
-              search={updateSelect}
-              total={total}
-              searchState={searchState}
-              apiKey={apiKey}
-            ></SearchBtm>
+            <div
+              className="flex"
+              onClick={() => {
+                controllFolder("findCharacter");
+              }}
+            >
+              {folderFlags.findCharacter ? (
+                <span className="flex items-center font-bold">
+                  <FcFolder className="ml-8 w-12 h-12" /> - 캐릭터 검색창 닫힘
+                </span>
+              ) : (
+                <FcOpenedFolder className="ml-8 w-12 h-12" />
+              )}
+            </div>
+            <div className={` ${folderFlags.findCharacter ? "hidden" : ""}`}>
+              <SearchBtm
+                selectOptions={options}
+                search={updateSelect}
+                total={total}
+                searchState={searchState}
+                apiKey={apiKey}
+              ></SearchBtm>
+            </div>
 
             {result.map((item, index) => (
               <ResultBox

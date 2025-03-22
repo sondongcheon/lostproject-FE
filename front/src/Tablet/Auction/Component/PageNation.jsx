@@ -153,7 +153,7 @@ const PageNation = ({
       <div className="h-24 grid grid-cols-6 ">
         <div className="h-full flex pl-2 pb-4 group relative">
           <BsFillQuestionCircleFill className="self-end w-1/5 h-1/2" />
-          <div className="absolute z-50 top-full w-[250%] mt-2 px-3 py-2 bg-gray-800 text-white size-font-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="absolute z-50 top-full w-[250%] mt-2 px-3 py-2 bg-gray-800 text-white size-font-xs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
             좌측, 최저가 / 우측, 추가목록 입니다. <br />
             좌측에서 부위 클릭시 우측 목록이 해당 부위에 맞게 변경됩니다. <br />
             우측 리스트에서 버튼을 통해 추가 매물을 조회할 수 있습니다. <br />
