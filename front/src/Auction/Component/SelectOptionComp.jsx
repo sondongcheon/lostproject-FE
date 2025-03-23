@@ -84,17 +84,17 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
           <div className="flex-[7] grid grid-rows-3">
             <div className="grid grid-cols-4">
               <div
-                className="font-bold col-span-1 border-b-2 border-gray-300 flex items-center justify-center text-center text-xs"
-                onClick={() => {
-                  onOptionsChange("tier", `${options?.tier}` === "3" ? "4" : "3");
-                  if (options?.itemGrade === "전설") {
-                    onOptionsChange("itemGrade", "");
-                  }
-                }}
+                className="font-bold col-span-1 border-b-2 border-gray-300 flex items-center justify-center text-center text-xl"
+                // onClick={() => {
+                //   onOptionsChange("tier", `${options?.tier}` === "3" ? "4" : "3");
+                //   if (options?.itemGrade === "전설") {
+                //     onOptionsChange("itemGrade", "");
+                //   }
+                // }}
               >
-                {options?.tier}T
+                {/* {options?.tier} */}
+                등급
                 <br />
-                (click!)
               </div>
               <div className="col-span-3 border-b-2 border-gray-300 flex items-center justify-center">
                 <form
