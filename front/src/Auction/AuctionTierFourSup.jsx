@@ -260,8 +260,15 @@ function AuctionTierFourSup({
           }}
         >
           {folderFlags.searchMenu ? (
-            <span className="flex items-center font-bold">
-              <FcFolder className="ml-8 w-12 h-12" /> - 검색 관련 메뉴 닫힘&nbsp;&nbsp;&nbsp;
+            <div className="flex">
+              <span
+                className="flex items-center font-bold"
+                onClick={() => {
+                  controllFolder("searchMenu");
+                }}
+              >
+                <FcFolder className="ml-8 w-12 h-12" /> - 검색 관련 메뉴 닫힘&nbsp;&nbsp;&nbsp;{" "}
+              </span>
               <button
                 className="bg-[#40AC8D] resetBtm h-10 mb-4"
                 onClick={updateSelect}
@@ -275,7 +282,7 @@ function AuctionTierFourSup({
                   "검색하기"
                 )}
               </button>
-            </span>
+            </div>
           ) : (
             <FcOpenedFolder className="ml-8 w-12 h-12" />
           )}
