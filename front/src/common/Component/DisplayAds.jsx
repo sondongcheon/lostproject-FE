@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const DisplayAds = () => {
   useEffect(() => {
@@ -30,7 +30,7 @@ const DisplayAds = () => {
       className="adsbygoogle"
       style={{ display: "block" }}
       data-ad-client="ca-pub-8134526358385769"
-      data-ad-slot="3545458418"
+      data-ad-slot="4417611364"
       data-ad-format="auto"
       data-full-width-responsive="true"
     ></ins>

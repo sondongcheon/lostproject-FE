@@ -10,6 +10,8 @@ import SearchBtm from "./Component/SearchBtm";
 import ResultBox from "./Component/ResultBox";
 import PageNation from "./Component/PageNation";
 
+import DisplayAds from "../common/Component/DisplayAds";
+
 import { FcOpenedFolder } from "react-icons/fc";
 import { FcFolder } from "react-icons/fc";
 
@@ -167,187 +169,195 @@ function AuctionTierFourSup({
   };
 
   return (
-    <div className="mainbody">
-      <div
-        className="flex"
-        onClick={() => {
-          controllFolder("folder1");
-        }}
-      >
-        {folderFlags.folder1 ? (
-          <span className="flex items-center font-bold">
-            <FcFolder className="ml-8 w-12 h-12" /> - 특수추적 설명, API KEY 설정창 닫힘
-          </span>
-        ) : (
-          <FcOpenedFolder className="ml-8 w-12 h-12" />
-        )}
+    <div className="flex">
+      <div className="mt-32 w-[15%]">
+        <DisplayAds />
       </div>
-      <div
-        className={`mb-4 grid grid-cols-2 gap-x-4 gap-y-4 ${folderFlags.folder1 ? "hidden" : ""}`}
-      >
-        <div className="h-34  flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5]">
-          <span className="p-4">
-            <span className="text-red-500 font-bold text-xl">특수 추적</span>
-            <span>이란?</span>
-            <br />
-            연마 등급만 정하고(ex. 상단일 3개 중중 2개) 그 등급을 어느 악세서리와 매칭하는게 가장
-            저렴한지 <br /> 검색합니다. 연마 옵션을 선택 하지 않고, 등급만 선택한 후 모든 경우의
-            수를 비교합니다. <br /> 대신, 스텟 필터 기능이 동작하지 않습니다.
-          </span>
-        </div>
-        <HeadKeyBox
-          apiKey={apiKey}
-          setApiKey={setApiKey}
-          saveKey={saveKey}
-          setSaveKey={setSaveKey}
-        ></HeadKeyBox>
-      </div>
-
-      <div
-        className="flex"
-        onClick={() => {
-          controllFolder("selAll");
-        }}
-      >
-        {folderFlags.selAll ? (
-          <span className="flex items-center font-bold">
-            <FcFolder className="ml-8 w-12 h-12" /> - 옵션 선택창 닫힘
-          </span>
-        ) : (
-          <FcOpenedFolder className="ml-8 w-12 h-12" />
-        )}
-      </div>
-      <div className={`grid grid-cols-2 gap-x-4 gap-y-4 ${folderFlags.selAll ? "hidden" : ""}`}>
-        <div>
-          <AllSelectPresetComp updateSet={updateOptions} type={1}></AllSelectPresetComp>
-        </div>
-        <div>
-          <SelectOptionComp
-            options={options[0]}
-            onOptionsChange={updateOptions[0]}
-          ></SelectOptionComp>
-        </div>
-        <div>
-          <SelectOptionComp
-            options={options[1]}
-            onOptionsChange={updateOptions[1]}
-          ></SelectOptionComp>
-        </div>
-        <div>
-          <SelectOptionComp
-            options={options[2]}
-            onOptionsChange={updateOptions[2]}
-          ></SelectOptionComp>
-        </div>
-        <div>
-          <SelectOptionComp
-            options={options[3]}
-            onOptionsChange={updateOptions[3]}
-          ></SelectOptionComp>
-        </div>
-        <div>
-          <SelectOptionComp
-            options={options[4]}
-            onOptionsChange={updateOptions[4]}
-          ></SelectOptionComp>
-        </div>
-      </div>
-      <div className="mt-6">
+      <div className="mainbody">
         <div
           className="flex"
           onClick={() => {
-            controllFolder("searchMenu");
+            controllFolder("folder1");
           }}
         >
-          {folderFlags.searchMenu ? (
-            <div className="flex">
-              <span
-                className="flex items-center font-bold"
-                onClick={() => {
-                  controllFolder("searchMenu");
-                }}
-              >
-                <FcFolder className="ml-8 w-12 h-12" /> - 검색 관련 메뉴 닫힘&nbsp;&nbsp;&nbsp;{" "}
-              </span>
-              <button
-                className="bg-[#40AC8D] resetBtm h-10 mb-4"
-                onClick={updateSelect}
-                disabled={searchState}
-              >
-                {searchState ? (
-                  <div className="h-full bg-[url('./Assets/loading.webp')] bg-contain bg-center bg-no-repeat">
-                    {" "}
-                  </div>
-                ) : (
-                  "검색하기"
-                )}
-              </button>
-            </div>
+          {folderFlags.folder1 ? (
+            <span className="flex items-center font-bold">
+              <FcFolder className="ml-8 w-12 h-12" /> - 특수추적 설명, API KEY 설정창 닫힘
+            </span>
           ) : (
             <FcOpenedFolder className="ml-8 w-12 h-12" />
           )}
         </div>
-        <div className={` ${folderFlags.searchMenu ? "hidden" : ""}`}>
-          <SearchBtm
-            selectOptions={options}
-            search={updateSelect}
-            total={total}
-            searchState={searchState}
-            apiKey={apiKey}
-          ></SearchBtm>
-        </div>
-        <div className="grid grid-cols-2 gap-x-4 mt-6">
-          <div className="space-y-2 mt-24">
-            {result.map((item, index) => (
-              <ResultBox
-                result={item}
-                option={options[index]}
-                onClick={() => setCount(index)}
-                className={`${
-                  count === index
-                    ? "bg-[#EDF1D6] " // 선택된 인덱스에 배경색과 투명도
-                    : "bg-[#F5F5F5]" // 선택되지 않은 경우
-                }`}
-              />
-            ))}
+        <div
+          className={`mb-4 grid grid-cols-2 gap-x-4 gap-y-4 ${folderFlags.folder1 ? "hidden" : ""}`}
+        >
+          <div className="h-34  flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5]">
+            <span className="p-4">
+              <span className="text-red-500 font-bold text-xl">특수 추적</span>
+              <span>이란?</span>
+              <br />
+              연마 등급만 정하고(ex. 상단일 3개 중중 2개) 그 등급을 어느 악세서리와 매칭하는게 가장
+              저렴한지 <br /> 검색합니다. 연마 옵션을 선택 하지 않고, 등급만 선택한 후 모든 경우의
+              수를 비교합니다. <br /> 대신, 스텟 필터 기능이 동작하지 않습니다.
+            </span>
           </div>
-          <div className="h-[1024px] overflow-y-invisible shadow-xl overflow-x-hidden">
-            <div
-              className={`"h-12 gap-x-4 w-full border-black border-2" ${
-                (result[count]?.cntCount || 0) < 1 && (result[count]?.cntPage || 0) < 1
-                  ? "invisible"
-                  : ""
-              }`}
-            >
-              <PageNation
-                dataLength={resultList[count].length}
-                setResult={setResult}
-                setResultList={setResultList}
-                option={options[count]}
-                cntPage={result[count]?.cntPage || 0}
-                cntCount={result[count]?.cntCount || 0}
-                apiKey={apiKey}
-                type={2}
-                selAcc={count}
-                currentPage={currentPage[count]}
-                setCurrentPage={setCurrentPage}
-              />
-            </div>
-            {count < 5 && resultList[count][currentPage[count] - 1]?.length > 0 && (
-              <div className="space-y-2">
-                {resultList[count][currentPage[count] - 1].map((item, index) => (
-                  <ResultBox
-                    key={index}
-                    result={item}
-                    option={options[count]}
-                    number={index}
-                    className={"bg-[#F5F5F5] pointer-events-none"}
-                  />
-                ))}
+          <HeadKeyBox
+            apiKey={apiKey}
+            setApiKey={setApiKey}
+            saveKey={saveKey}
+            setSaveKey={setSaveKey}
+          ></HeadKeyBox>
+        </div>
+
+        <div
+          className="flex"
+          onClick={() => {
+            controllFolder("selAll");
+          }}
+        >
+          {folderFlags.selAll ? (
+            <span className="flex items-center font-bold">
+              <FcFolder className="ml-8 w-12 h-12" /> - 옵션 선택창 닫힘
+            </span>
+          ) : (
+            <FcOpenedFolder className="ml-8 w-12 h-12" />
+          )}
+        </div>
+        <div className={`grid grid-cols-2 gap-x-4 gap-y-4 ${folderFlags.selAll ? "hidden" : ""}`}>
+          <div>
+            <AllSelectPresetComp updateSet={updateOptions} type={1}></AllSelectPresetComp>
+          </div>
+          <div>
+            <SelectOptionComp
+              options={options[0]}
+              onOptionsChange={updateOptions[0]}
+            ></SelectOptionComp>
+          </div>
+          <div>
+            <SelectOptionComp
+              options={options[1]}
+              onOptionsChange={updateOptions[1]}
+            ></SelectOptionComp>
+          </div>
+          <div>
+            <SelectOptionComp
+              options={options[2]}
+              onOptionsChange={updateOptions[2]}
+            ></SelectOptionComp>
+          </div>
+          <div>
+            <SelectOptionComp
+              options={options[3]}
+              onOptionsChange={updateOptions[3]}
+            ></SelectOptionComp>
+          </div>
+          <div>
+            <SelectOptionComp
+              options={options[4]}
+              onOptionsChange={updateOptions[4]}
+            ></SelectOptionComp>
+          </div>
+        </div>
+        <div className="mt-6">
+          <div
+            className="flex"
+            onClick={() => {
+              controllFolder("searchMenu");
+            }}
+          >
+            {folderFlags.searchMenu ? (
+              <div className="flex">
+                <span
+                  className="flex items-center font-bold"
+                  onClick={() => {
+                    controllFolder("searchMenu");
+                  }}
+                >
+                  <FcFolder className="ml-8 w-12 h-12" /> - 검색 관련 메뉴 닫힘&nbsp;&nbsp;&nbsp;{" "}
+                </span>
+                <button
+                  className="bg-[#40AC8D] resetBtm h-10 mb-4"
+                  onClick={updateSelect}
+                  disabled={searchState}
+                >
+                  {searchState ? (
+                    <div className="h-full bg-[url('./Assets/loading.webp')] bg-contain bg-center bg-no-repeat">
+                      {" "}
+                    </div>
+                  ) : (
+                    "검색하기"
+                  )}
+                </button>
               </div>
+            ) : (
+              <FcOpenedFolder className="ml-8 w-12 h-12" />
             )}
           </div>
+          <div className={` ${folderFlags.searchMenu ? "hidden" : ""}`}>
+            <SearchBtm
+              selectOptions={options}
+              search={updateSelect}
+              total={total}
+              searchState={searchState}
+              apiKey={apiKey}
+            ></SearchBtm>
+          </div>
+          <div className="grid grid-cols-2 gap-x-4 mt-6">
+            <div className="space-y-2 mt-24">
+              {result.map((item, index) => (
+                <ResultBox
+                  result={item}
+                  option={options[index]}
+                  onClick={() => setCount(index)}
+                  className={`${
+                    count === index
+                      ? "bg-[#EDF1D6] " // 선택된 인덱스에 배경색과 투명도
+                      : "bg-[#F5F5F5]" // 선택되지 않은 경우
+                  }`}
+                />
+              ))}
+            </div>
+            <div className="h-[1024px] overflow-y-invisible shadow-xl overflow-x-hidden">
+              <div
+                className={`"h-12 gap-x-4 w-full border-black border-2" ${
+                  (result[count]?.cntCount || 0) < 1 && (result[count]?.cntPage || 0) < 1
+                    ? "invisible"
+                    : ""
+                }`}
+              >
+                <PageNation
+                  dataLength={resultList[count].length}
+                  setResult={setResult}
+                  setResultList={setResultList}
+                  option={options[count]}
+                  cntPage={result[count]?.cntPage || 0}
+                  cntCount={result[count]?.cntCount || 0}
+                  apiKey={apiKey}
+                  type={2}
+                  selAcc={count}
+                  currentPage={currentPage[count]}
+                  setCurrentPage={setCurrentPage}
+                />
+              </div>
+              {count < 5 && resultList[count][currentPage[count] - 1]?.length > 0 && (
+                <div className="space-y-2">
+                  {resultList[count][currentPage[count] - 1].map((item, index) => (
+                    <ResultBox
+                      key={index}
+                      result={item}
+                      option={options[count]}
+                      number={index}
+                      className={"bg-[#F5F5F5] pointer-events-none"}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
+      </div>
+      <div className="mt-32 w-[15%]">
+        <DisplayAds />
       </div>
     </div>
   );

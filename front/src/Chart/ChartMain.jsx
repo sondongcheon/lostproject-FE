@@ -6,6 +6,8 @@ import FixChartPage from "./Component/FixChartPage";
 import CustomChartPage from "./Component/CustomChartPage";
 import { type } from "@testing-library/user-event/dist/type";
 
+import DisplayAds from "../common/Component/DisplayAds";
+
 function ChartMain({ request, setRequest }) {
   const getCountLog = () => {
     axios
@@ -26,7 +28,10 @@ function ChartMain({ request, setRequest }) {
   const [selectType, setSelectType] = useState("");
 
   return (
-    <div className="w-[1900px]">
+    <div className="flex">
+      <div className="mt-32 w-[15%]">
+        <DisplayAds />
+      </div>
       <div className="mainbody flex">
         <div className="w-[15%]">
           <SelectSideBar
@@ -51,6 +56,9 @@ function ChartMain({ request, setRequest }) {
             />
           )}
         </div>
+      </div>
+      <div className="mt-32 w-[15%]">
+        <DisplayAds />
       </div>
     </div>
   );
