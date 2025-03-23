@@ -81,7 +81,7 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
             <button
               className="flex justify-center items-center w-4 h-4 bg-[#FF6347]"
               onClick={searchAcc}
-              disabled={searchCharState}
+              disabled={searchCharState || name.length < 3}
             >
               {searchCharState ? (
                 <div className="w-full h-full bg-[url('./Assets/loading.webp')] bg-contain bg-center bg-no-repeat">

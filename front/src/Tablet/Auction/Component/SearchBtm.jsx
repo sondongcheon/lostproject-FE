@@ -73,7 +73,7 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
           <div className="flex justify-center items-center">
             <input
               className="w-3/4 h-4 text-center"
-              placeholder="착용 악세 검색"
+              placeholder="닉네임 입력"
               value={name}
               type="text"
               onChange={(e) => setName(e.target.value)}
@@ -81,7 +81,7 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
             <button
               className="flex justify-center items-center w-4 h-4 bg-[#FF6347]"
               onClick={searchAcc}
-              disabled={searchState}
+              disabled={searchState || name.length < 3}
             >
               {searchState ? (
                 <div className="h-full bg-[url('./Assets/loading.webp')] bg-contain bg-center bg-no-repeat">
