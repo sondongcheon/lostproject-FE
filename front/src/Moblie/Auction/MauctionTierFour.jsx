@@ -184,22 +184,23 @@ function MauctionTierFour({
         }}
       >
         {folderFlags.folder1 ? (
-          <span className="flex items-center font-bold size-font-xl">
-            <FcFolder className="ml-8 w-12 h-12" /> - 특수추적 설명, API KEY 설정창 닫힘
+          <span className="flex items-center font-bold size-font-sm">
+            <FcFolder className="ml-8 w-8 h-8" /> - 특수추적 설명, API KEY 설정창 닫힘
           </span>
         ) : (
-          <FcOpenedFolder className="ml-8 w-12 h-12" />
+          <FcOpenedFolder className="ml-8 w-8 h-8" />
         )}
       </div>
       <div className={`mb-4 ${folderFlags.folder1 ? "hidden" : ""}`}>
         <div className="h-30  flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5] mb-4">
-          <span className="p-4 text-sm">
-            <span className="text-red-500 font-bold text-xl">특수 추적</span>
+          <span className="p-4 size-font-xs">
+            <span className="text-red-500 font-bold size-font-xl">특수 추적</span>
             <span>이란?</span>
             <br />
             연마 등급만 정하고(ex. 상단일 3개 중중 2개) <br /> 그 등급을 어느 악세서리와 매칭하는게
-            가장 저렴한지 <br /> 검색합니다. 연마 옵션을 선택 하지 않고, <br />
-            등급만 선택한 후 모든 경우의 수를 비교합니다.
+            가장 저렴한지 검색합니다. <br /> 연마 옵션을 선택 하지 않고, 등급만 선택한 후 모든
+            경우의 수를 비교합니다. <br />
+            대신, 스텟 필터 기능이 동작하지 않습니다.
           </span>
         </div>
         <HeadKeyBox
@@ -218,11 +219,11 @@ function MauctionTierFour({
           }}
         >
           {folderFlags.persetFolder ? (
-            <span className="flex items-center font-bold size-font-xl">
-              <FcFolder className="ml-8 w-12 h-12" /> - 일괄선택 프리셋 닫힘
+            <span className="flex items-center font-bold size-font-sm">
+              <FcFolder className="ml-8 w-8 h-8" /> - 일괄선택 프리셋 닫힘
             </span>
           ) : (
-            <FcOpenedFolder className="ml-8 w-12 h-12" />
+            <FcOpenedFolder className="ml-8 w-8 h-8" />
           )}
         </div>
         <div className={`pb-4 ${folderFlags.persetFolder ? "hidden" : ""}`}>
@@ -235,11 +236,11 @@ function MauctionTierFour({
           }}
         >
           {folderFlags.acc1 ? (
-            <span className="flex items-center font-bold size-font-xl">
-              <FcFolder className="ml-8 w-12 h-12" /> - 목걸이 옵션 선택창 닫힘
+            <span className="flex items-center font-bold size-font-sm">
+              <FcFolder className="ml-8 w-8 h-8" /> - 목걸이 옵션 선택창 닫힘
             </span>
           ) : (
-            <FcOpenedFolder className="ml-8 w-12 h-12" />
+            <FcOpenedFolder className="ml-8 w-8 h-8" />
           )}
         </div>
         <div className={`pb-4 ${folderFlags.acc1 ? "hidden" : ""}`}>
@@ -255,11 +256,11 @@ function MauctionTierFour({
           }}
         >
           {folderFlags.acc2 ? (
-            <span className="flex items-center font-bold size-font-xl">
-              <FcFolder className="ml-8 w-12 h-12" /> - 귀걸이1 옵션 선택창 닫힘
+            <span className="flex items-center font-bold size-font-sm">
+              <FcFolder className="ml-8 w-8 h-8" /> - 귀걸이1 옵션 선택창 닫힘
             </span>
           ) : (
-            <FcOpenedFolder className="ml-8 w-12 h-12" />
+            <FcOpenedFolder className="ml-8 w-8 h-8" />
           )}
         </div>
         <div className={`pb-4 ${folderFlags.acc2 ? "hidden" : ""}`}>
@@ -275,11 +276,11 @@ function MauctionTierFour({
           }}
         >
           {folderFlags.acc3 ? (
-            <span className="flex items-center font-bold size-font-xl">
-              <FcFolder className="ml-8 w-12 h-12" /> - 귀걸이2 옵션 선택창 닫힘
+            <span className="flex items-center font-bold size-font-sm">
+              <FcFolder className="ml-8 w-8 h-8" /> - 귀걸이2 옵션 선택창 닫힘
             </span>
           ) : (
-            <FcOpenedFolder className="ml-8 w-12 h-12" />
+            <FcOpenedFolder className="ml-8 w-8 h-8" />
           )}
         </div>
         <div className={`pb-4 ${folderFlags.acc3 ? "hidden" : ""}`}>
@@ -295,11 +296,11 @@ function MauctionTierFour({
           }}
         >
           {folderFlags.acc4 ? (
-            <span className="flex items-center font-bold size-font-xl">
-              <FcFolder className="ml-8 w-12 h-12" /> - 반지1 옵션 선택창 닫힘
+            <span className="flex items-center font-bold size-font-sm">
+              <FcFolder className="ml-8 w-8 h-8" /> - 반지1 옵션 선택창 닫힘
             </span>
           ) : (
-            <FcOpenedFolder className="ml-8 w-12 h-12" />
+            <FcOpenedFolder className="ml-8 w-8 h-8" />
           )}
         </div>
         <div className={`pb-4 ${folderFlags.acc4 ? "hidden" : ""}`}>
@@ -315,11 +316,11 @@ function MauctionTierFour({
           }}
         >
           {folderFlags.acc5 ? (
-            <span className="flex items-center font-bold size-font-xl">
-              <FcFolder className="ml-8 w-12 h-12" /> - 반지2 옵션 선택창 닫힘
+            <span className="flex items-center font-bold size-font-sm">
+              <FcFolder className="ml-8 w-8 h-8" /> - 반지2 옵션 선택창 닫힘
             </span>
           ) : (
-            <FcOpenedFolder className="ml-8 w-12 h-12" />
+            <FcOpenedFolder className="ml-8 w-8 h-8" />
           )}
         </div>
         <div className={`pb-4 ${folderFlags.acc5 ? "hidden" : ""}`}>
@@ -347,11 +348,11 @@ function MauctionTierFour({
               }}
             >
               {folderFlags.findCharacter ? (
-                <span className="flex items-center font-bold">
-                  <FcFolder className="ml-8 w-12 h-12" /> - 캐릭터 검색창 닫힘
+                <span className="flex items-center font-bold size-font-sm">
+                  <FcFolder className="ml-8 w-8 h-8" /> - 캐릭터 검색창 닫힘
                 </span>
               ) : (
-                <FcOpenedFolder className="ml-8 w-12 h-12" />
+                <FcOpenedFolder className="ml-8 w-8 h-8" />
               )}
             </div>
             <div className={` ${folderFlags.findCharacter ? "hidden" : ""}`}>

@@ -42,6 +42,8 @@ function AuctionTierFour({
       : {
           folder1: false,
           presetFolder: false,
+          selAll: false,
+          searchMenu: false,
           acc1: false,
           acc2: false,
           acc3: false,
@@ -200,7 +202,8 @@ function AuctionTierFour({
             <br />
             연마 등급만 정하고(ex. 상단일 3개 중중 2개) 그 등급을 어느 악세서리와 매칭하는게 가장
             저렴한지 <br /> 검색합니다. 연마 옵션을 선택 하지 않고, 등급만 선택한 후 모든 경우의
-            수를 비교합니다.
+            수를 비교합니다. <br />
+            대신, 스텟 필터 기능이 동작하지 않습니다.
           </span>
         </div>
         <HeadKeyBox
@@ -211,7 +214,21 @@ function AuctionTierFour({
         ></HeadKeyBox>
       </div>
 
-      <div className="grid grid-cols-2 gap-x-4 gap-y-4">
+      <div
+        className="flex"
+        onClick={() => {
+          controllFolder("selAll");
+        }}
+      >
+        {folderFlags.selAll ? (
+          <span className="flex items-center font-bold">
+            <FcFolder className="ml-8 w-12 h-12" /> - 옵션 선택창 닫힘
+          </span>
+        ) : (
+          <FcOpenedFolder className="ml-8 w-12 h-12" />
+        )}
+      </div>
+      <div className={`grid grid-cols-2 gap-x-4 gap-y-4 ${folderFlags.selAll ? "hidden" : ""}`}>
         <div>
           <AllSelectPresetComp updateSet={updateOptions} type={0}></AllSelectPresetComp>
         </div>
@@ -248,13 +265,42 @@ function AuctionTierFour({
       </div>
 
       <div className="mt-6">
-        <SearchBtm
-          selectOptions={options}
-          search={updateSelect}
-          total={total}
-          searchState={searchState}
-          apiKey={apiKey}
-        ></SearchBtm>
+        <div
+          className="flex"
+          onClick={() => {
+            controllFolder("searchMenu");
+          }}
+        >
+          {folderFlags.searchMenu ? (
+            <span className="flex items-center font-bold">
+              <FcFolder className="ml-8 w-12 h-12" /> - 검색 관련 메뉴 닫힘&nbsp;&nbsp;&nbsp;
+              <button
+                className="bg-[#40AC8D] resetBtm h-10 mb-4"
+                onClick={updateSelect}
+                disabled={searchState}
+              >
+                {searchState ? (
+                  <div className="h-full bg-[url('./Assets/loading.webp')] bg-contain bg-center bg-no-repeat">
+                    {" "}
+                  </div>
+                ) : (
+                  "검색하기"
+                )}
+              </button>
+            </span>
+          ) : (
+            <FcOpenedFolder className="ml-8 w-12 h-12" />
+          )}
+        </div>
+        <div className={` ${folderFlags.searchMenu ? "hidden" : ""}`}>
+          <SearchBtm
+            selectOptions={options}
+            search={updateSelect}
+            total={total}
+            searchState={searchState}
+            apiKey={apiKey}
+          ></SearchBtm>
+        </div>
 
         <div className="grid grid-cols-2 gap-x-4 mt-6">
           <div className="space-y-2 mt-24">

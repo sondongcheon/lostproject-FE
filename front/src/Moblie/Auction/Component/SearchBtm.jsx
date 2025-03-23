@@ -131,8 +131,10 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
                   >
                     {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
                     {resultAcc[index]?.valueLevel[0]}
+                  </span>{" "}
+                  <span>
+                    {truncateString(resultAcc[index]?.option[0], 5)} {resultAcc[index]?.value[0]}{" "}
                   </span>
-                  {truncateString(resultAcc[index]?.option[0], 5)} {resultAcc[index]?.value[0]}{" "}
                   <br />{" "}
                   <span
                     className={`rounded-full text-white`}
@@ -143,7 +145,9 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
                     {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
                     {resultAcc[index]?.valueLevel[1]}
                   </span>{" "}
-                  {truncateString(resultAcc[index]?.option[1], 5)} {resultAcc[index]?.value[1]}{" "}
+                  <span>
+                    {truncateString(resultAcc[index]?.option[1], 5)} {resultAcc[index]?.value[1]}{" "}
+                  </span>
                   <br />{" "}
                   <span
                     className={`rounded-full text-white`}
@@ -154,7 +158,26 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
                     {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
                     {resultAcc[index]?.valueLevel[2]}
                   </span>{" "}
-                  {truncateString(resultAcc[index]?.option[2], 5)} {resultAcc[index]?.value[2]}{" "}
+                  <span>
+                    {truncateString(resultAcc[index]?.option[2], 5)} {resultAcc[index]?.value[2]}{" "}
+                  </span>
+                  <br />
+                  <span
+                    className={`rounded-full text-white group relative`}
+                    style={{
+                      backgroundColor: (() => rankColor(resultAcc[index]?.statLevel || ""))(),
+                    }}
+                  >
+                    {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
+                    {resultAcc[index]?.statLevel}
+                    <div className="absolute top-full w-[250%] px-3 py-2 bg-gray-800 text-white size-font-5xs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+                      0~24% 無급 스텟 <br />
+                      25~49% 하급 스텟 <br />
+                      50~74% 중급 스텟 <br />
+                      75~100% 상급 스텟 <br />
+                    </div>
+                  </span>{" "}
+                  {resultAcc[index]?.statPer}%, {resultAcc[index]?.stat}
                 </div>
               </div>
             ))}
