@@ -64,7 +64,7 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
       <div className="flex mx-auto w-[95%] text-[8px]">
         <div
           className={`w-[12%] font-bold flex flex-col justify-center items-center  pr-4 ${
-            number !== undefined ? "text-3xl" : "size-font-xxxs"
+            number !== undefined ? "text-3xl" : "size-font-xxs"
           }`}
         >
           <img className="" src={result?.icon || ""} />

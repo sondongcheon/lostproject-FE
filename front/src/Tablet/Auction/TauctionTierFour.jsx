@@ -193,13 +193,14 @@ function TauctionTierFour({
       </div>
       <div className={`mb-4 ${folderFlags.folder1 ? "hidden" : ""}`}>
         <div className="h-30  flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5] mb-4">
-          <span className="p-4 text-sm">
+          <span className="p-4 size-font-xs">
             <span className="text-red-500 font-bold size-font-xl">특수 추적</span>
             <span>이란?</span>
             <br />
             연마 등급만 정하고(ex. 상단일 3개 중중 2개) 그 등급을 어느 악세서리와 매칭하는게 가장
             저렴한지 검색합니다. <br /> 연마 옵션을 선택 하지 않고, 등급만 선택한 후 모든 경우의
-            수를 비교합니다.
+            수를 비교합니다. <br />
+            대신, 스텟 필터 기능이 동작하지 않습니다.
           </span>
         </div>
         <HeadKeyBox
