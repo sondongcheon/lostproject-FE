@@ -11,7 +11,7 @@ const ItemsSideBar = ({}) => {
         <div className="border-gray-400 rounded-xl">
           <div className="flex">
             <span className="font-bold">주요 아이템</span>
-            <div className="mt-[10px] mx-2 border-t-2 border-black border-dotted w-2/5" />
+            <div className="mt-[10px] mx-2 border-t-2 border-black border-dotted w-1/3" />
           </div>
 
           <div className="py-2">
