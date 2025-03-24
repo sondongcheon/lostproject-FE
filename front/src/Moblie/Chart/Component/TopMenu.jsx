@@ -4,6 +4,8 @@ import axios from "axios";
 import Menulist from "./Menulist";
 import SelectBox from "../../../common/Component/SelectBox";
 
+import { BsFillQuestionCircleFill } from "react-icons/bs";
+
 const TopMenu = ({
   setSelectCategory,
   setSelectGrade,
@@ -76,6 +78,10 @@ const TopMenu = ({
     {
       value: 12,
       content: "12시간 간격",
+    },
+    {
+      value: 24,
+      content: "24시간 간격",
     },
   ];
 
@@ -167,13 +173,28 @@ const TopMenu = ({
             name="유물 반지"
           />
           <button
-            className="w-full border-2 border-gray-300 bg-[#d1d5db] hover:bg-white my-4 rounded-xl px-2 py-4"
+            className="w-full border-2 border-gray-300 bg-[#d1d5db] hover:bg-white my-4 rounded-xl px-2 py-2"
             onClick={() => {
               setSelectCustom(true);
             }}
           >
             🔎부위 선택 보기
           </button>
+          <div className="flex group relative items-center gap-x-1">
+            <BsFillQuestionCircleFill className="h-full " /> 부위 선택 보기란?
+            <div className="absolute bottom-12 w-[180%] px-3 py-2 bg-gray-800 text-white size-font-xs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300 right-0">
+              이 기능은 무엇인가요 ? <br />
+              <br />
+              부위별로 등급을 선택하여
+              <br />
+              합산된 그래프를 볼 수 있는 기능입니다. <br />
+              <br />
+              예시로, 목걸이 상중, 귀걸이 상하, 상을 선택하면 <br /> 각 부위별로 저장된 시간별
+              가격들이 합산되어
+              <br />
+              예전에 삿다면 얼마였을까? 를 볼수 있습니다.
+            </div>
+          </div>
         </div>
       </div>
       <div className=" grid grid-cols-2 font-bold size-font-xs">

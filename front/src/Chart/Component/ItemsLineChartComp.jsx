@@ -85,12 +85,30 @@ const ItemsLineChartComp = ({ data }) => {
       <div className="w-[20%] m-2 flex flex-col items-center justify-center border-2 border-gray-500 rounded-xl h-[250px] text-xl text-center">
         <p>
           실시간 현재 최저가 <br />
-          <span className="font-bold text-3xl">{data?.currentMinPrice.toLocaleString()} G</span>
+          <p className="font-bold text-3xl">{data?.currentMinPrice.toLocaleString()} G</p>
+          <p className="text-xs">
+            전일, 현재 차액{" "}
+            {data?.stats?.length > 0
+              ? (() => {
+                  const prev = data.stats.at(-1).avgPrice;
+                  const current = data.currentMinPrice;
+                  const diff = current - prev;
+                  const percent = (diff / prev) * 100;
+                  const isUp = diff > 0;
+
+                  return (
+                    <span className={isUp ? "text-green-500" : "text-red-500"}>
+                      {isUp ? "▲" : "▼"} {diff.toLocaleString()} G ({percent.toFixed(1)}%)
+                    </span>
+                  );
+                })()
+              : "-?"}
+          </p>
         </p>
         <br />
         <p>
           실시간 최근 거래가 <br />
-          <span className="font-bold text-3xl">{data?.recentPrice.toLocaleString()} G</span>
+          <p className="font-bold text-3xl">{data?.recentPrice.toLocaleString()} G</p>
         </p>
         {/* <p>14일간 평균 거래가 : 구현중</p>
         <p>14일간 최저 거래가 : 구현중</p> */}

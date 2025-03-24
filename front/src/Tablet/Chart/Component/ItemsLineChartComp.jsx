@@ -89,6 +89,24 @@ const ItemsLineChartComp = ({ data }) => {
             {data?.currentMinPrice.toLocaleString()} G
           </span>
         </p>
+        <p className="size-font-4xs">
+          전일, 현재 차액 <br />
+          {data?.stats?.length > 0
+            ? (() => {
+                const prev = data.stats.at(-1).avgPrice;
+                const current = data.currentMinPrice;
+                const diff = current - prev;
+                const percent = (diff / prev) * 100;
+                const isUp = diff > 0;
+
+                return (
+                  <span className={isUp ? "text-green-500" : "text-red-500"}>
+                    {isUp ? "▲" : "▼"} {diff.toLocaleString()} G ({percent.toFixed(1)}%)
+                  </span>
+                );
+              })()
+            : "-?"}
+        </p>
         <br />
         <p>
           실시간 최근 거래가 <br />
