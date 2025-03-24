@@ -77,6 +77,10 @@ const SelectSideBar = ({
       value: 12,
       content: "12시간 간격",
     },
+    {
+      value: 24,
+      content: "24시간 간격",
+    },
   ];
 
   return (
@@ -173,12 +177,24 @@ const SelectSideBar = ({
           </div>
         </div>
         <button
-          className="w-full border-2 border-gray-300 bg-[#d1d5db] hover:bg-white my-4 rounded-xl px-2 py-4"
+          className="w-full border-2 border-gray-300 bg-[#d1d5db] hover:bg-white my-4 rounded-xl px-2 py-4 group relative"
           onClick={() => {
             setSelectCustom(true);
           }}
         >
           🔎부위 선택 보기
+          <div className="absolute z-50 top-full w-[200%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300 right-0">
+            이 기능은 무엇인가요 ? <br />
+            <br />
+            부위별로 등급을 선택하여
+            <br />
+            합산된 그래프를 볼 수 있는 기능입니다. <br />
+            <br />
+            예시로, 목걸이 상중, 귀걸이 상하, 상을 선택하면 <br /> 각 부위별로 저장된 시간별
+            가격들이 합산되어
+            <br />
+            예전에 삿다면 얼마였을까? 를 볼수 있습니다.
+          </div>
         </button>
         <div className="flex items-baseline  text-xs mb-4">
           <span className="">조회 시간 주기&nbsp;</span>

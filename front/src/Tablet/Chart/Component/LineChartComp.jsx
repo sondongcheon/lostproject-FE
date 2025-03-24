@@ -12,6 +12,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+import { BsFillQuestionCircleFill } from "react-icons/bs";
+
 const LineChartComp = ({ category, grade, value, value2, type, request }) => {
   const loadData = () => {
     axios
@@ -112,20 +114,33 @@ const LineChartComp = ({ category, grade, value, value2, type, request }) => {
             </ComposedChart>
           </ResponsiveContainer>
         </div>
-        <div className="items-center grid grid-cols-2 m-2 p-2 border-2 border-gray-500 rounded-xl size-font-xxs text-center">
-          <div className="">
+        <div className="items-center flex m-2 p-2 border-2 border-gray-500 rounded-xl size-font-xxs text-center">
+          <div className="w-[45%]">
             <p>월간 평균가 : {data?.monthAvg?.toLocaleString()} G</p>
             <p> 변동 비율 : {data?.monthAvgP}%</p>
             <br />
             <p>월간 최저가 : {data?.monthMin?.toLocaleString()} G</p>
             <p> 변동 비율 : {data?.monthMinP}%</p>
           </div>
-          <div className="">
+          <div className="w-[45%]">
             <p>주간 평균가 : {data?.weeklyAvg?.toLocaleString()} G</p>
             <p> 변동 비율 : {data?.weeklyAvgP}%</p>
             <br />
             <p>주간 최저가 : {data?.weeklyMin?.toLocaleString()} G</p>
             <p> 변동 비율 : {data?.weeklyMinP}%</p>
+          </div>
+          <div className="w-[10%]">
+            <div className="flex group relative">
+              <BsFillQuestionCircleFill className="w-1/3 h-full" />
+              <div className="absolute top-full w-[550%] px-3 py-2 text-start bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300 right-0">
+                매물 검색 기준은 품질80, 스텟 필터X 버전입니다. <br />
+                스텟 필터 기능이 3월 3주차부터 제공되어서 기준 수정중입니다. <br />
+                <br />
+                평균, 최저 기준입니다. <br />
+                7, 30일 전 부터 금일까지의 매물 데이터의 가격의 평균 → 주간, 월간 평균가 <br />
+                7, 30일 전 부터 금일까지의 매물 데이터중 가장 낮은가격 → 주간,월간 최저가 <br />
+              </div>
+            </div>
           </div>
         </div>
       </div>
