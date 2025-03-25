@@ -28,7 +28,7 @@ const FixChartPage = ({ category, grade, type, request, setRequest }) => {
   };
 
   useEffect(() => {
-    updateOption("time", 8);
+    updateOption("time", 1);
     updateOption("point", 15);
   }, []);
 

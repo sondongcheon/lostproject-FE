@@ -14,7 +14,7 @@ function Chart({}) {
   });
 
   const [request, setRequest] = useState({
-    time: 8,
+    time: 1,
     point: 15,
   });
 

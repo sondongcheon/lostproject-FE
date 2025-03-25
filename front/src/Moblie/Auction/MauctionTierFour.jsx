@@ -10,6 +10,7 @@ import SelectSummary from "./Component/SelectSummary";
 import SearchBtm from "./Component/SearchBtm";
 import ResultBox from "./Component/ResultBox";
 import PageNation from "./Component/PageNation";
+import Calstat from "./Component/Calstat";
 
 import { FcOpenedFolder } from "react-icons/fc";
 import { FcFolder } from "react-icons/fc";
@@ -43,6 +44,7 @@ function MauctionTierFour({
       : {
           folder1: false,
           presetFolder: false,
+          calFolder: false,
           acc1: false,
           acc2: false,
           acc3: false,
@@ -185,24 +187,13 @@ function MauctionTierFour({
       >
         {folderFlags.folder1 ? (
           <span className="flex items-center font-bold size-font-sm">
-            <FcFolder className="ml-8 w-8 h-8" /> - 특수추적 설명, API KEY 설정창 닫힘
+            <FcFolder className="ml-8 w-8 h-8" /> - API KEY 설정창 닫힘
           </span>
         ) : (
           <FcOpenedFolder className="ml-8 w-8 h-8" />
         )}
       </div>
       <div className={`mb-4 ${folderFlags.folder1 ? "hidden" : ""}`}>
-        <div className="h-30  flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5] mb-4">
-          <span className="p-4 size-font-xs">
-            <span className="text-red-500 font-bold size-font-xl">특수 추적</span>
-            <span>이란?</span>
-            <br />
-            연마 등급만 정하고(ex. 상단일 3개 중중 2개) <br /> 그 등급을 어느 악세서리와 매칭하는게
-            가장 저렴한지 검색합니다. <br /> 연마 옵션을 선택 하지 않고, 등급만 선택한 후 모든
-            경우의 수를 비교합니다. <br />
-            대신, 스텟 필터 기능이 동작하지 않습니다.
-          </span>
-        </div>
         <HeadKeyBox
           apiKey={apiKey}
           setApiKey={setApiKey}
@@ -211,6 +202,23 @@ function MauctionTierFour({
         ></HeadKeyBox>
       </div>
 
+      <div
+        className="flex"
+        onClick={() => {
+          controllFolder("calFolder");
+        }}
+      >
+        {folderFlags.calFolder ? (
+          <span className="flex items-center font-bold size-font-sm">
+            <FcFolder className="ml-8 w-8 h-8" /> - 스텟 계산기 닫힘
+          </span>
+        ) : (
+          <FcOpenedFolder className="ml-8 w-8 h-8" />
+        )}
+      </div>
+      <div className={`mb-4 ${folderFlags.calFolder ? "hidden" : ""}`}>
+        <Calstat></Calstat>
+      </div>
       <div className="gap-x-4 gap-y-4">
         <div
           className="flex"

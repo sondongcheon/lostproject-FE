@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import Swal from "sweetalert2";
+import { set } from "date-fns";
 
 const HeadKeyBox = ({ apiKey, setApiKey, saveKey, setSaveKey }) => {
   return (
     <div>
-      <div className="h-34 flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5] grid grid-rows-2">
+      <div className="h-24 shadow-lg border-2 rounded-3xl bg-[#F5F5F5]">
         <div className="flex justify-center items-center gap-x-4">
           <div className=" flex items-center">
             {/* <span className="font-bold"> {`API 키`}</span> */}

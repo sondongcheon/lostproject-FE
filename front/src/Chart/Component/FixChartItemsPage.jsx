@@ -66,6 +66,7 @@ const FixChartItemsPage = () => {
       setSaveKey(false);
     }
     setApiKey(cookieValue);
+    loadData();
   }, []);
 
   useEffect(() => {
@@ -109,16 +110,16 @@ const FixChartItemsPage = () => {
 
         <div className="group relative">
           <button
-            className="w-32 h-full shadow-lg border-2 rounded-3xl bg-[#F5F5F5] "
+            className="w-28 h-full shadow-lg border-2 rounded-3xl bg-[#F5F5F5] "
             onClick={loadData}
             disabled={searchState}
           >
             {searchState ? (
-              <div className="w-32 h-full bg-[url('./Assets/loading.webp')] bg-contain bg-center bg-no-repeat">
+              <div className="w-28 h-full bg-[url('./Assets/loading.webp')] bg-contain bg-center bg-no-repeat">
                 {" "}
               </div>
             ) : (
-              <TbZoomReset className="w-32 h-auto" />
+              <TbZoomReset className="w-28 h-20" />
             )}
           </button>
           <div className="absolute top-full w-[270px] mt-2 px-3 py-2 bg-gray-800 text-white text-sm rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
