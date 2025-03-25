@@ -66,6 +66,7 @@ const FixChartItemsPage = () => {
       setSaveKey(false);
     }
     setApiKey(cookieValue);
+    loadData();
   }, []);
 
   useEffect(() => {

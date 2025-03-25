@@ -1,0 +1,200 @@
+import React, { useState, useEffect } from "react";
+
+import { BsFillQuestionCircleFill } from "react-icons/bs";
+
+const Calstat = () => {
+  const [category, setCategory] = useState(0);
+  const [upgradeLevel, setUpgradeLevel] = useState(0);
+  const [stat, setStat] = useState(null);
+
+  const [statPer, setStatPer] = useState(null);
+  const [statFull, setStatFull] = useState(null);
+
+  useEffect(() => {
+    if (category === "0") {
+      if (upgradeLevel === "0") {
+        setStatPer((((stat - 12678) / 2679) * 100).toFixed(2));
+        setStatFull(parseInt(stat) + 2500);
+      } else if (upgradeLevel === "1") {
+        setStatPer((((stat - 13035) / 2679) * 100).toFixed(2));
+        setStatFull(parseInt(stat) + 2143);
+      } else if (upgradeLevel === "2") {
+        setStatPer((((stat - 13749) / 2679) * 100).toFixed(2));
+        setStatFull(parseInt(stat) + 1429);
+      } else if (upgradeLevel === "3") {
+        setStatPer((((stat - 15178) / 2679) * 100).toFixed(2));
+        setStatFull(parseInt(stat));
+      }
+    } else if (category === "1") {
+      if (upgradeLevel === "0") {
+        setStatPer((((stat - 9861) / 2083) * 100).toFixed(2));
+        setStatFull(parseInt(stat) + 1945);
+      } else if (upgradeLevel === "1") {
+        setStatPer((((stat - 10139) / 2083) * 100).toFixed(2));
+        setStatFull(parseInt(stat) + 1667);
+      } else if (upgradeLevel === "2") {
+        setStatPer((((stat - 10695) / 2083) * 100).toFixed(2));
+        setStatFull(parseInt(stat) + 1111);
+      } else if (upgradeLevel === "3") {
+        setStatPer((((stat - 11806) / 2083) * 100).toFixed(2));
+        setStatFull(parseInt(stat));
+      }
+    } else if (category === "2") {
+      if (upgradeLevel === "0") {
+        setStatPer((((stat - 9156) / 1935) * 100).toFixed(2));
+        setStatFull(parseInt(stat) + 1806);
+      } else if (upgradeLevel === "1") {
+        setStatPer((((stat - 9414) / 1935) * 100).toFixed(2));
+        setStatFull(parseInt(stat) + 1548);
+      } else if (upgradeLevel === "2") {
+        setStatPer((((stat - 9930) / 1935) * 100).toFixed(2));
+        setStatFull(parseInt(stat) + 1032);
+      } else if (upgradeLevel === "3") {
+        setStatPer((((stat - 10962) / 1935) * 100).toFixed(2));
+        setStatFull(parseInt(stat));
+      }
+    }
+  }, [stat, category, upgradeLevel]);
+  return (
+    <div>
+      <div className="w-full h-20 flex justify-center items-center border-gray-300 shadow-lg px-2 gap-x-2 border-2 rounded-3xl bg-[#F5F5F5]">
+        <div className="w-[52%] size-font-xs">
+          <div className="flex justify-center size-font-sm gap-x-4 mb-2">
+            <span className="font-bold ">이 장신구는 몇?</span>
+
+            <div className="group relative">
+              <BsFillQuestionCircleFill className=" h-full"></BsFillQuestionCircleFill>
+              <div className="absolute z-10 top-full w-[2000%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+                좋아보이는 장신구를 드셨군요? <br />
+                그 장신구의 스텟을 입력해 보세요 <br /> 어느정도 급의 스텟인지 확인 할 수 있어요
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-4">
+            <div className="font-bold col-span-1 border-b-2 border-gray-300 flex items-center justify-center">
+              부위
+            </div>
+            <div className="col-span-3 border-b-2 border-gray-300 flex items-center justify-center">
+              <form className="grid grid-cols-3 gap-2 justify-items-center">
+                <label>
+                  <input
+                    type="radio"
+                    name="category"
+                    value="0"
+                    // className="mr-1"
+                    // checked={options?.upgradeLevel === null}
+                    onChange={(e) => setCategory(e.target.value)}
+                  />
+                  <span className="">목걸이</span>
+                </label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="category"
+                    value="1"
+                    // className="mr-1"
+                    onChange={(e) => setCategory(e.target.value)}
+                  />
+                  <span className="">귀걸이</span>
+                </label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="category"
+                    value="2"
+                    // className="mr-1"
+                    onChange={(e) => setCategory(e.target.value)}
+                  />
+                  <span className="">반지</span>
+                </label>
+              </form>
+            </div>
+          </div>
+          <div className="grid grid-cols-4">
+            <div className="font-bold col-span-1 border-gray-300 flex items-center justify-center text-xs">
+              연마
+            </div>
+            <div className="col-span-3  border-gray-300 flex items-center justify-center">
+              <form className="grid grid-cols-4 gap-2 justify-items-center">
+                <label>
+                  <input
+                    type="radio"
+                    name="upgradeLevel"
+                    value="0"
+                    // className="mr-1"
+                    // checked={options?.upgradeLevel === null}
+                    onChange={(e) => setUpgradeLevel(e.target.value)}
+                  />
+                  <span className="">0</span>
+                </label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="upgradeLevel"
+                    value="1"
+                    // className="mr-1"
+                    onChange={(e) => setUpgradeLevel(e.target.value)}
+                  />
+                  <span className="">1</span>
+                </label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="upgradeLevel"
+                    value="2"
+                    // className="mr-1"
+                    onChange={(e) => setUpgradeLevel(e.target.value)}
+                  />
+                  <span className="">2</span>
+                </label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="upgradeLevel"
+                    value="3"
+                    // className="mr-1"
+                    onChange={(e) => setUpgradeLevel(e.target.value)}
+                  />
+                  <span className="">3</span>
+                </label>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div className="w-[18%] size-font-xs">
+          <div className="font-bold  border-gray-300 flex items-center justify-center ">
+            현재 스텟
+          </div>
+          <div className=" border-gray-300 flex items-center justify-center">
+            <input
+              className="border boder-gray-200 rounded-xl text-end px-2"
+              placeholder="0"
+              type="number"
+              min="0"
+              max="17857"
+              onChange={(e) => setStat(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className="w-[30%] size-font-xs">
+          <p>
+            {" "}
+            현재 스텟% -{" "}
+            <span className="font-bold">{statPer > 0 && statPer < 101 ? statPer : "0"}% </span>
+          </p>
+          <p>
+            {" "}
+            연마 완료시 스텟 - <span className="font-bold">{statFull}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Calstat;

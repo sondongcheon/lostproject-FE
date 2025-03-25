@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import SelectBox from "../../common/Component/SelectBox";
 
+import { BsFillQuestionCircleFill } from "react-icons/bs";
+
 const SelectOptionComp = ({ options, onOptionsChange }) => {
   const [currentOption, setCurrentOption] = useState({});
 
@@ -62,7 +64,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
         }`}
       >
         {/* 왼쪽 고정 크기 영역 */}
-        <div className="w-20 flex flex-col justify-center items-center border-black">
+        <div className="w-20 flex flex-col justify-center items-center gap-y-2 ">
           <p className="font-bold ">{options?.categoryCode === 200000 ? "" : options?.accName}</p>
           <button
             className={`text-xs font-bold  ${
@@ -76,6 +78,24 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
             특수추적 <br />
             {options?.categoryCode === 200000 ? "제거" : "추가"}
           </button>
+          <div className=" flex items-center group relative mx-4">
+            <BsFillQuestionCircleFill className="h-full" />
+            <div className="absolute w-[3200%] z-20 top-full px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+              특수추적 이란? 연마 등급만 정하고(ex. 상단일 1개 중중 2개) <br />
+              그 등급을 어느 악세서리와 매칭하는게 가장 저렴한지 검색합니다.
+              <br />
+              연마 옵션을 선택 하지 않고, 등급만 선택한 후 모든 경우의수를 비교합니다. <br />
+              대신, 스텟 필터 기능이 동작하지 않습니다. <br /> <br />
+              예시처럼 고른다면? 아래 조합을 다 검색돌리고 제일 싼 결과를 알려줍니다.
+              <br />
+              목걸이 추피 상, 귀걸이 중중, 반지 중중 <br />
+              목걸이 적추피 상, 귀걸이 중중, 반지 중중 <br />
+              목걸이 중중, 귀걸이 공상, 반지 중중 <br />
+              목걸이 중중, 귀걸이 무공상, 반지 중중 <br />
+              목걸이 중중, 귀걸이 중중, 반지 치적상 <br />
+              목걸이 중중, 귀걸이 중중, 반지 치피상 <br />
+            </div>
+          </div>
         </div>
 
         {/* 오른쪽 비율 영역 */}

@@ -59,27 +59,27 @@ const SelectSideBar = ({
   const timeList = [
     {
       value: 1,
-      content: "1시간 간격",
+      content: "1일 간격",
     },
     {
       value: 2,
-      content: "2시간 간격",
+      content: "2일 간격",
+    },
+    {
+      value: 3,
+      content: "3일 간격",
     },
     {
       value: 4,
-      content: "4시간 간격",
+      content: "4일 간격",
     },
     {
-      value: 8,
-      content: "8시간 간격",
+      value: 5,
+      content: "5일 간격",
     },
     {
-      value: 12,
-      content: "12시간 간격",
-    },
-    {
-      value: 24,
-      content: "24시간 간격",
+      value: 7,
+      content: "7일 간격",
     },
   ];
 
