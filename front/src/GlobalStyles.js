@@ -89,6 +89,14 @@ const GlobalStyles = createGlobalStyle`
   transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
 }
 
+.presetBtm {
+  transition: background-color 1s, color 1s; /* 호버 효과를 위한 부드러운 전환 */
+}
+
+.presetBtm:hover {
+  transform: scale(1.2);
+}
+
 
 
 .normalBtm:hover {
