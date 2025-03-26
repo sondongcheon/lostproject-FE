@@ -172,46 +172,46 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
         </div>
 
         <div className="flex flex-1 grid grid-cols-4 text-[8px] mb-4 font-bold pl-2 pr-4">
-          <div className="border-[#dd4407] border-2 m-3 h-16 rounded-lg text-center flex justify-center items-center ">
+          <div className="border-[#dd4407] border-2 m-2 h-16 rounded-lg text-center flex justify-center items-center ">
             <button
-              className=" w-20 text-[#dd4407] text-[18px]"
+              className=" text-[#dd4407] size-font-xl"
               onClick={() => setGrade("itemGrade", "유물")}
             >
               All 유물
             </button>
           </div>
-          <div className="border-[#ddb300] border-2 m-3 h-16 rounded-lg text-center flex justify-center items-center ">
+          <div className="border-[#ddb300] border-2 m-2 h-16 rounded-lg text-center flex justify-center items-center ">
             <button
-              className=" w-20 text-[#ddb300] text-[18px]"
+              className=" text-[#ddb300] size-font-xl"
               onClick={() => setGrade("itemGrade", "고대")}
             >
               All 고대
             </button>
           </div>
-          <div className="bg-[#E38E49] border-2 m-3 h-16 rounded-lg text-center flex justify-center items-center ">
+          <div className="bg-[#E38E49] border-2 m-2 h-16 rounded-lg text-center flex justify-center items-center ">
             <button
-              className="text-xs"
+              className="size-font-xs"
               onClick={() => setOption("selectValue1", "3", "selectValue2", null)}
             >
-              <p className="text-sm text-white">상단일</p>
+              <p className="size-font-xl text-white">상단일</p>
               일괄 선택
             </button>
           </div>
-          <div className="bg-[#953fb2] border-2 m-3 h-16 rounded-lg text-center flex justify-center items-center">
+          <div className="bg-[#953fb2] border-2 m-2 h-16 rounded-lg text-center flex justify-center items-center">
             <button
-              className="w-20 text-xs"
+              className="size-font-xs"
               onClick={() => setOption("selectValue1", "2", "selectValue2", null)}
             >
-              <p className="text-sm text-white">중단일</p>
+              <p className="size-font-xl text-white">중단일</p>
               일괄 선택
             </button>
           </div>
 
           <div className="col-span-3">
-            <div className="grid grid-cols-3 border-[#E38E49] border-2 m-3 rounded-lg h-16">
+            <div className="grid grid-cols-3 border-[#E38E49] border-2 m-2 rounded-lg h-16">
               <div className=" text-center flex justify-center items-center">
                 <button
-                  className=" w-20 text-xs"
+                  className="  text-xs"
                   onClick={() => setOption("selectValue1", "3", "selectValue2", "3")}
                 >
                   <p className="text-sm text-[#E38E49]">상 상</p>
@@ -220,21 +220,30 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
               </div>
               <div className=" text-center flex justify-center items-center group relative">
                 <button
-                  className="w-28 border-dashed border-gray-400 border-x text-xs"
+                  className="w-full border-dashed border-gray-400 border-x text-xs"
                   onClick={() => setOption("selectValue1", "3", "selectValue2", "2")}
                 >
                   <span className="text-sm text-[#E38E49]">상 </span>
                   <span className="text-sm text-[#7E1891]">중 </span> <br />
                   일괄 선택
                 </button>
-                <div className="absolute z-10 top-full w-[250%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
-                  목걸이 → 추피 상, 적주피 중 <br /> 귀걸이 → 공 상, 무공 중 <br />
-                  반지 → 치적 상, 치피 중
+                <div className="absolute z-10 right-auto bottom-16 w-[200%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+                  {type === 0 ? (
+                    <span>
+                      목걸이 → 추피 상, 적주피 중 <br /> 귀걸이 → 공 상, 무공 중 <br />
+                      반지 → 치적 상, 치피 중
+                    </span>
+                  ) : (
+                    <span>
+                      목걸이 → 아덴+ 상, 낙인력 중 <br /> 귀걸이 → 무공% 상, 무공+ 중 <br />
+                      반지 → 아공강 상, 아피강 중
+                    </span>
+                  )}
                 </div>
               </div>
               <div className=" text-center flex justify-center items-center group relative">
                 <button
-                  className=" w-20 text-xs"
+                  className=" text-xs"
                   onClick={() => setOption("selectValue1", "3", "selectValue2", "1")}
                 >
                   <span className="text-sm font-bold text-[#E38E49]">상 </span>
@@ -242,13 +251,22 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                   <br />
                   일괄 선택
                 </button>
-                <div className="absolute z-10 top-full w-[250%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
-                  목걸이 → 추피 상, 적주피 하 <br /> 귀걸이 → 공 상, 무공 하 <br />
-                  반지 → 치적 상, 치피 하
+                <div className="absolute z-10  right-auto bottom-16 w-[200%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+                  {type === 0 ? (
+                    <span>
+                      목걸이 → 추피 상, 적주피 하 <br /> 귀걸이 → 공 상, 무공 하 <br />
+                      반지 → 치적 상, 치피 중
+                    </span>
+                  ) : (
+                    <span>
+                      목걸이 → 아덴+ 상, 낙인력 하 <br /> 귀걸이 → 무공% 상, 무공+ 하 <br />
+                      반지 → 아공강 상, 아피강 하
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-3 border-[#7E1891] border-2 m-3 rounded-lg h-16">
+            <div className="grid grid-cols-3 border-[#7E1891] border-2 m-2 rounded-lg h-16">
               <div className="text-center flex justify-center items-center">
                 <button
                   className=" w-20 text-xs"
@@ -267,42 +285,69 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                   <span className="text-sm text-[#E38E49]">상 </span> <br />
                   일괄 선택
                 </button>
-                <div className="absolute z-10 top-full w-[250%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
-                  목걸이 → 추피 중, 적주피 상 <br /> 귀걸이 → 공 중, 무공 상 <br />
-                  반지 → 치적 중, 치피 상
+                <div className="absolute z-10 right-auto bottom-16 w-[200%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+                  {type === 0 ? (
+                    <span>
+                      목걸이 → 추피 중, 적주피 상 <br /> 귀걸이 → 공 중, 무공 상 <br />
+                      반지 → 치적 중, 치피 상
+                    </span>
+                  ) : (
+                    <span>
+                      목걸이 → 아덴+ 중, 낙인력 상 <br /> 귀걸이 → 무공% 중, 무공+ 상 <br />
+                      반지 → 아공강 중, 아피강 상
+                    </span>
+                  )}
                 </div>
               </div>
-              <div className="text-center flex justify-center items-center group relative">
+              <div className=" text-center flex justify-center items-center  group relative">
                 <button
-                  className=" w-20 text-xs"
-                  onClick={() => setOption("selectValue1", "1", "selectValue2", "3")}
+                  className=" text-xs"
+                  onClick={() => setOption("selectValue1", "2", "selectValue2", "1")}
                 >
-                  <span className="text-sm text-[#0A3981]">하 </span>
-                  <span className="text-sm text-[#E38E49]">상 </span>
-                  <br />
+                  <span className="text-sm text-[#7E1891]">중 </span>
+                  <span className="text-sm text-[#0A3981]">하 </span> <br />
                   일괄 선택
                 </button>
-                <div className="absolute z-10 top-full w-[250%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
-                  목걸이 → 추피 하, 적주피 상 <br /> 귀걸이 → 공 하, 무공 상 <br />
-                  반지 → 치적 하, 치피 상
+                <div className="absolute z-10 right-auto bottom-16 w-[200%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+                  {type === 0 ? (
+                    <span>
+                      목걸이 → 추피 하, 적주피 상 <br /> 귀걸이 → 공 하, 무공 상 <br />
+                      반지 → 치적 하, 치피 상
+                    </span>
+                  ) : (
+                    <span>
+                      목걸이 → 아덴+ 하, 낙인력 상 <br /> 귀걸이 → 무공% 하, 무공+ 상 <br />
+                      반지 → 아공강 하, 아피강 상
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="border-[#0A3981] border-2 rounded-lg m-2 h-36 grid grid-rows-2">
-            <div className=" text-center flex justify-center items-center  group relative">
+          <div className="border-[#0A3981] border-2 rounded-lg my-auto h-36 grid grid-rows-2">
+            <div className="text-center flex justify-center items-center group relative">
               <button
                 className="border-b border-dashed border-gray-400 w-12 h-full text-xs"
-                onClick={() => setOption("selectValue1", "2", "selectValue2", "1")}
+                onClick={() => setOption("selectValue1", "1", "selectValue2", "3")}
               >
-                <span className="text-sm text-[#7E1891]">중 </span>
-                <span className="text-sm text-[#0A3981]">하 </span> <br />
+                <span className="text-sm text-[#0A3981]">하 </span>
+                <span className="text-sm text-[#E38E49]">상 </span>
+                <br />
                 일괄 선택
               </button>
-              <div className="absolute top-full w-[250%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
-                목걸이 → 추피 중, 적주피 하 <br /> 귀걸이 → 공 중, 무공 하 <br />
-                반지 → 치적 중, 치피 하
+              <div className="absolute z-10 right-0 bottom-16 w-[200%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+                {type === 0 ? (
+                  <span>
+                    목걸이 → 추피 중, 적주피 하 <br /> 귀걸이 → 공 중, 무공 하 <br />
+                    반지 → 치적 중, 치피 하
+                  </span>
+                ) : (
+                  <span>
+                    목걸이 → 아덴+ 중, 낙인력 하 <br /> 귀걸이 → 무공% 중, 무공+ 하 <br />
+                    반지 → 아공강 중, 아피강 하
+                  </span>
+                )}
               </div>
             </div>
             <div className=" text-center flex justify-center items-center group relative">
@@ -314,9 +359,18 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                 <span className="text-sm text-[#7E1891]">중 </span> <br />
                 일괄 선택
               </button>
-              <div className="absolute top-full w-[250%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
-                목걸이 → 추피 하, 적주피 중 <br /> 귀걸이 → 공 하, 무공 중 <br />
-                반지 → 치적 하, 치피 중
+              <div className="absolute z-10 right-0 bottom-16 w-[200%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+                {type === 0 ? (
+                  <span>
+                    목걸이 → 추피 하, 적주피 중 <br /> 귀걸이 → 공 하, 무공 중 <br />
+                    반지 → 치적 하, 치피 중
+                  </span>
+                ) : (
+                  <span>
+                    목걸이 → 아덴+ 하, 낙인력 중 <br /> 귀걸이 → 무공% 하, 무공+ 중 <br />
+                    반지 → 아공강 하, 아피강 중
+                  </span>
+                )}
               </div>
             </div>
           </div>
@@ -351,20 +405,31 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
               <div className="text-center flex justify-center items-center">
                 <button
                   className="w-28 border-dashed border-gray-400 border-r w-20 text-xs"
-                  onClick={() => setGrade("selectOption3", "53")}
+                  onClick={(type) =>
+                    type === 0 ? setGrade("selectOption3", "53") : setGrade("selectOption3", "55")
+                  }
                 >
-                  <p className="text-sm text-[#40AC8D] font-bold">공용 공+ </p>
+                  {type === 0 ? (
+                    <p className="text-sm text-[#40AC8D] font-bold">공용 공+</p>
+                  ) : (
+                    <p className="text-sm text-[#40AC8D] font-bold">최대 생명력</p>
+                  )}
                   일괄 선택
                 </button>
               </div>
 
               <div className="text-center flex justify-center items-center ">
                 <button
-                  className={`  w-28 text-xs ${type === 1 ? "opacity-0 cursor-not-allowed" : ""}`}
-                  onClick={() => setGrade("selectOption3", "54")}
-                  disabled={type === 1}
+                  className={`  w-28 text-xs `}
+                  onClick={(type) =>
+                    type === 0 ? setGrade("selectOption3", "54") : setGrade("selectOption3", "56")
+                  }
                 >
-                  <p className="text-sm text-[#40AC8D] font-bold">공용 무공 </p>
+                  {type === 0 ? (
+                    <p className="text-sm text-[#40AC8D] font-bold">공용 무공</p>
+                  ) : (
+                    <p className="text-sm text-[#40AC8D] font-bold">최대 마나</p>
+                  )}
                   일괄 선택
                 </button>
               </div>
