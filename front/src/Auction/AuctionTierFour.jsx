@@ -204,26 +204,26 @@ function AuctionTierFour({
           onClick={() => handleToggle("presetFolder")}
         >
           <img
-            src={folderFlags.presetFolder ? folderOpen : folderClose}
+            src={folderFlags.presetFolder ? folderClose : folderOpen}
             alt="toggle icon"
             className={`absolute z-10 mr-20 w-8 h-8 transform transition-transform duration-500 ease-in-out ${
               folderFlags.presetFolder
-                ? "animate-spinClockwise" // 닫을 때
-                : "animate-spinCounterClockwise" // 열 때
+                ? "animate-spinCounterClockwise" // 열 때
+                : "animate-spinClockwise" // 닫을 때
             }`}
           />
           <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
             {folderFlags.presetFolder ? (
-              <span> 일괄 선택 프리셋 닫기 </span>
-            ) : (
               <span> 일괄 선택 프리셋 열기 </span>
+            ) : (
+              <span> 일괄 선택 프리셋 닫기 </span>
             )}
           </span>
         </div>
 
         <div
           className={`transition-all duration-500 ${
-            folderFlags.presetFolder ? "max-h-44 opacity-100 mt-4" : "max-h-0 opacity-0"
+            folderFlags.presetFolder ? "max-h-0 opacity-0" : "max-h-44 opacity-100 mt-4"
           }`}
         >
           <AllSelectPresetComp updateSet={updateOptions} type={0} />
@@ -234,25 +234,27 @@ function AuctionTierFour({
           onClick={() => handleToggle("selAll")}
         >
           <img
-            src={folderFlags.selAll ? folderOpen : folderClose}
+            src={folderFlags.selAll ? folderClose : folderOpen}
             alt="toggle icon"
             className={`absolute z-10 w-8 h-8 mr-20 transform transition-transform duration-500 ease-in-out ${
               folderFlags.selAll
-                ? "animate-spinClockwise" // 닫을 때
-                : "animate-spinCounterClockwise" // 열 때
+                ? "animate-spinCounterClockwise" // 열 때
+                : "animate-spinClockwise" // 닫을 때
             }`}
           />
           <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
             {folderFlags.selAll ? (
-              <span> 전체 옵션 선택창 닫기 </span>
-            ) : (
               <span> 전체 옵션 선택창 열기 </span>
+            ) : (
+              <span> 전체 옵션 선택창 닫기 </span>
             )}
           </span>
         </div>
         <div
-          className={`grid grid-cols-2 gap-x-4 gap-y-4 transition-all duration-1000 ${
-            folderFlags.selAll ? "max-h-132 opacity-100 mt-4" : "max-h-0 opacity-0"
+          className={`grid grid-cols-2 gap-x-4 gap-y-4 transition-all duration-1000 overflow-hidden ${
+            folderFlags.selAll
+              ? "max-h-0 opacity-0"
+              : "max-h-[1000px] opacity-100 mt-4 pointer-events-auto"
           }`}
         >
           <div>
@@ -302,25 +304,25 @@ function AuctionTierFour({
             onClick={() => handleToggle("searchMenu")}
           >
             <img
-              src={folderFlags.searchMenu ? folderOpen : folderClose}
+              src={folderFlags.searchMenu ? folderClose : folderOpen}
               alt="toggle icon"
               className={`absolute z-10 w-8 h-8 mr-20 w-8 h-8 transform transition-transform duration-500 ease-in-out ${
                 folderFlags.searchMenu
-                  ? "animate-spinClockwise" // 닫을 때
-                  : "animate-spinCounterClockwise" // 열 때
+                  ? "animate-spinCounterClockwise" // 열 때
+                  : "animate-spinClockwise" // 닫을 때
               }`}
             />
             <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
               {folderFlags.searchMenu ? (
-                <span> 검색/캐릭터검색 닫기 </span>
-              ) : (
                 <span> 검색/캐릭터검색 열기 </span>
+              ) : (
+                <span> 검색/캐릭터검색 닫기 </span>
               )}
             </span>
           </div>
           <div
             className={`transition-all duration-500 ${
-              folderFlags.searchMenu ? "max-h-44 opacity-100 mt-4" : "max-h-0 opacity-0"
+              folderFlags.searchMenu ? "max-h-0 opacity-0" : "max-h-44 opacity-100 mt-4"
             }`}
           >
             <SearchBtm
