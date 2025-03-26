@@ -172,7 +172,7 @@ const Calstat = () => {
           </div>
           <div className=" border-gray-300 flex items-center justify-center">
             <input
-              className="border boder-gray-200 rounded-xl text-end"
+              className="border boder-gray-200 rounded-xl text-end px-2"
               placeholder="0"
               type="number"
               min="0"

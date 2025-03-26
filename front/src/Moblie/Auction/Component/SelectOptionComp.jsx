@@ -68,7 +68,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
             {/* 3 영역: 세로로 4칸, 각 칸을 3:7로 나누기 */}
             <div className="flex-[7] grid grid-rows-3">
               <div className="p-2 flex justify-center items-center border-b-2 border-gray-300 gap-x-2">
-                <p className="font-bold text-xs ">
+                <p className="font-bold size-font-xxs ">
                   {options.categoryCode === 200000 ? "" : options.accName}
                 </p>
                 <button
@@ -82,7 +82,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                 </button>
                 <div className="flex items-center group relative">
                   <BsFillQuestionCircleFill className="" />
-                  <div className="absolute w-[3200%] z-20 top-full px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+                  <div className="absolute w-[1500%] z-20 bottom-8 px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                     특수추적 이란? 연마 등급만 정하고(ex. 상단일 1개 중중 2개) <br />
                     그 등급을 어느 악세서리와 매칭하는게 가장 저렴한지 검색합니다.
                     <br />

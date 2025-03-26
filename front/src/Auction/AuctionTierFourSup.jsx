@@ -9,6 +9,7 @@ import SelectOptionComp from "./Component/SelectOptionComp";
 import SearchBtm from "./Component/SearchBtm";
 import ResultBox from "./Component/ResultBox";
 import PageNation from "./Component/PageNation";
+import Calstat from "./Component/Calstat";
 
 import DisplayAds from "../common/Component/DisplayAds";
 
@@ -214,6 +215,7 @@ function AuctionTierFourSup({
               saveKey={saveKey}
               setSaveKey={setSaveKey}
             ></HeadKeyBox>
+            <Calstat></Calstat>
           </div>
           <div>
             <SelectOptionComp
@@ -247,12 +249,7 @@ function AuctionTierFourSup({
           </div>
         </div>
         <div className="mt-6">
-          <div
-            className="flex"
-            onClick={() => {
-              controllFolder("searchMenu");
-            }}
-          >
+          <div className="flex">
             {folderFlags.searchMenu ? (
               <div className="flex">
                 <span
@@ -278,7 +275,12 @@ function AuctionTierFourSup({
                 </button>
               </div>
             ) : (
-              <FcOpenedFolder className="ml-8 w-12 h-12" />
+              <FcOpenedFolder
+                className="ml-8 w-12 h-12"
+                onClick={() => {
+                  controllFolder("searchMenu");
+                }}
+              />
             )}
           </div>
           <div className={` ${folderFlags.searchMenu ? "hidden" : ""}`}>
