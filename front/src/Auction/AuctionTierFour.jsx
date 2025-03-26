@@ -223,7 +223,9 @@ function AuctionTierFour({
 
         <div
           className={`transition-all duration-500 ${
-            folderFlags.presetFolder ? "max-h-0 opacity-0" : "max-h-44 opacity-100 mt-4"
+            folderFlags.presetFolder
+              ? "max-h-0 opacity-0 overflow-hidden"
+              : "max-h-[120%] opacity-100 mt-4"
           }`}
         >
           <AllSelectPresetComp updateSet={updateOptions} type={0} />
@@ -251,10 +253,10 @@ function AuctionTierFour({
           </span>
         </div>
         <div
-          className={`grid grid-cols-2 gap-x-4 gap-y-4 transition-all duration-1000 overflow-hidden ${
+          className={`grid grid-cols-2 gap-x-4 gap-y-4 transition-all duration-1000 ${
             folderFlags.selAll
-              ? "max-h-0 opacity-0"
-              : "max-h-[1000px] opacity-100 mt-4 pointer-events-auto"
+              ? "max-h-0 opacity-0 overflow-hidden"
+              : "max-h-[120%] opacity-100 mt-4 pointer-events-auto"
           }`}
         >
           <div>
@@ -322,7 +324,9 @@ function AuctionTierFour({
           </div>
           <div
             className={`transition-all duration-500 ${
-              folderFlags.searchMenu ? "max-h-0 opacity-0" : "max-h-44 opacity-100 mt-4"
+              folderFlags.searchMenu
+                ? "max-h-0 opacity-0 overflow-hidden"
+                : "max-h-44 opacity-100 mt-4"
             }`}
           >
             <SearchBtm

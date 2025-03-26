@@ -69,16 +69,18 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
           <button
             className={`text-xs font-bold  ${
               options?.categoryCode === 200000 ? "normalSelBtm" : "normalBtm color-tomato"
-            } ${
-              ["54"].includes(options?.optionValue?.second) ? "opacity-0 cursor-not-allowed" : ""
-            } `}
+            } ${["54"].includes(options?.optionValue?.second) ? "hidden" : ""} `}
             onClick={handleCategoryCode}
             disabled={["54"].includes(options?.optionValue?.second)}
           >
             특수추적 <br />
             {options?.categoryCode === 200000 ? "제거" : "추가"}
           </button>
-          <div className=" flex items-center group relative mx-4">
+          <div
+            className={` flex items-center group relative mx-4 ${
+              ["54"].includes(options?.optionValue?.second) ? "hidden" : ""
+            }`}
+          >
             <BsFillQuestionCircleFill className="h-full" />
             <div className="absolute w-[3200%] z-20 top-full px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
               특수추적 이란? 연마 등급만 정하고(ex. 상단일 1개 중중 2개) <br />
