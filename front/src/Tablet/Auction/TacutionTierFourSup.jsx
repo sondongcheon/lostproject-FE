@@ -13,8 +13,8 @@ import PageNation from "./Component/PageNation";
 
 import Calstat from "./Component/CalStat";
 
-import { FcOpenedFolder } from "react-icons/fc";
-import { FcFolder } from "react-icons/fc";
+import folderOpen from "../../Assets/folderOpen.png";
+import folderClose from "../../Assets/folderClose.png";
 
 function TauctionTierFourSup({
   getCountLog,
@@ -54,6 +54,19 @@ function TauctionTierFourSup({
           findCharacter: false,
         };
   });
+
+  const [rotateFlags, setRotateFlags] = useState({});
+
+  const handleToggle = (key) => {
+    // 회전 상태 변경
+    setRotateFlags((prev) => ({ ...prev, [key]: true }));
+    setTimeout(() => {
+      setRotateFlags((prev) => ({ ...prev, [key]: false }));
+    }, 500); // 회전 지속 시간
+
+    // 기존 토글 함수 호출
+    controllFolder(key);
+  };
 
   const controllFolder = (key) => {
     setFolderFlags((prev) => ({
@@ -177,20 +190,33 @@ function TauctionTierFourSup({
   return (
     <div className="mainMobileBody">
       <div
-        className="flex"
-        onClick={() => {
-          controllFolder("folder1");
-        }}
+        className="w-full flex items-center justify-center cursor-pointer"
+        onClick={() => handleToggle("folder1")}
       >
-        {folderFlags.folder1 ? (
-          <span className="flex items-center font-bold">
-            <FcFolder className="ml-8 w-12 h-12" /> - API KEY 설정창 닫힘
-          </span>
-        ) : (
-          <FcOpenedFolder className="ml-8 w-12 h-12" />
-        )}
+        <img
+          src={folderFlags.folder1 ? folderClose : folderOpen}
+          alt="toggle icon"
+          className={`absolute z-10 mr-20 w-8 h-8 transform transition-transform duration-300 ease-in-out ${
+            folderFlags.folder1
+              ? "animate-spinCounterClockwiseM" // 열 때
+              : "animate-spinClockwiseM" // 닫을 때
+          }`}
+        />
+        <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
+          {folderFlags.folder1 ? (
+            <span> API KEY 설정창 열기 </span>
+          ) : (
+            <span> API KEY 설정창 닫기 </span>
+          )}
+        </span>
       </div>
-      <div className={`mb-4 ${folderFlags.folder1 ? "hidden" : ""}`}>
+      <div
+        className={`transition-all duration-500 ${
+          folderFlags.folder1
+            ? "max-h-0 opacity-0 overflow-hidden"
+            : "max-h-[120%] opacity-100 mt-4"
+        }`}
+      >
         <HeadKeyBox
           apiKey={apiKey}
           setApiKey={setApiKey}
@@ -200,136 +226,202 @@ function TauctionTierFourSup({
       </div>
 
       <div
-        className="flex"
-        onClick={() => {
-          controllFolder("calFolder");
-        }}
+        className="mt-4 w-full flex items-center justify-center cursor-pointer"
+        onClick={() => handleToggle("calFolder")}
       >
-        {folderFlags.calFolder ? (
-          <span className="flex items-center font-bold">
-            <FcFolder className="ml-8 w-12 h-12" /> - 스텟 계산기 닫힘
-          </span>
-        ) : (
-          <FcOpenedFolder className="ml-8 w-12 h-12" />
-        )}
+        <img
+          src={folderFlags.calFolder ? folderClose : folderOpen}
+          alt="toggle icon"
+          className={`absolute z-10 mr-20 w-8 h-8 transform transition-transform duration-300 ease-in-out ${
+            folderFlags.calFolder
+              ? "animate-spinCounterClockwiseM" // 열 때
+              : "animate-spinClockwiseM" // 닫을 때
+          }`}
+        />
+        <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
+          {folderFlags.calFolder ? (
+            <span> 스텟 계산기 열기 </span>
+          ) : (
+            <span> 스텟 계산기 닫기 </span>
+          )}
+        </span>
       </div>
-      <div className={`mb-4 ${folderFlags.calFolder ? "hidden" : ""}`}>
+      <div
+        className={`transition-all duration-500 ${
+          folderFlags.calFolder
+            ? "max-h-0 opacity-0 overflow-hidden"
+            : "max-h-[120%] opacity-100 mt-4"
+        }`}
+      >
         <Calstat></Calstat>
       </div>
 
       <div className="gap-x-4 gap-y-4">
         <div
-          className="flex"
-          onClick={() => {
-            controllFolder("persetFolder");
-          }}
+          className="mt-4 w-full flex items-center justify-center cursor-pointer"
+          onClick={() => handleToggle("persetFolder")}
         >
-          {folderFlags.persetFolder ? (
-            <span className="flex items-center font-bold">
-              <FcFolder className="ml-8 w-12 h-12" /> - 일괄선택 프리셋 닫힘
-            </span>
-          ) : (
-            <FcOpenedFolder className="ml-8 w-12 h-12" />
-          )}
-        </div>
-        <div className={`pb-4 ${folderFlags.persetFolder ? "hidden" : ""}`}>
-          <AllSelectPresetComp updateSet={updateOptions} type={1}></AllSelectPresetComp>
+          <img
+            src={folderFlags.persetFolder ? folderClose : folderOpen}
+            alt="toggle icon"
+            className={`absolute z-10 mr-20 w-8 h-8 transform transition-transform duration-300 ease-in-out ${
+              folderFlags.persetFolder
+                ? "animate-spinCounterClockwiseM" // 열 때
+                : "animate-spinClockwiseM" // 닫을 때
+            }`}
+          />
+          <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
+            {folderFlags.persetFolder ? (
+              <span> 일괄 선택 프리셋 열기 </span>
+            ) : (
+              <span> 일괄 선택 프리셋 닫기 </span>
+            )}
+          </span>
         </div>
         <div
-          className="flex"
-          onClick={() => {
-            controllFolder("acc1");
-          }}
+          className={`transition-all duration-500 ${
+            folderFlags.persetFolder
+              ? "max-h-0 opacity-0 overflow-hidden"
+              : "max-h-[120%] opacity-100 mt-4"
+          }`}
         >
-          {folderFlags.acc1 ? (
-            <span className="flex items-center font-bold">
-              <FcFolder className="ml-8 w-12 h-12" /> - 목걸이 옵션 선택창 닫힘
-            </span>
-          ) : (
-            <FcOpenedFolder className="ml-8 w-12 h-12" />
-          )}
+          <AllSelectPresetComp updateSet={updateOptions} type={1}></AllSelectPresetComp>
         </div>
-        <div className={`pb-4 ${folderFlags.acc1 ? "hidden" : ""}`}>
+
+        <div
+          className="mt-4 w-full flex items-center justify-center cursor-pointer"
+          onClick={() => handleToggle("acc1")}
+        >
+          <img
+            src={folderFlags.acc1 ? folderClose : folderOpen}
+            alt="toggle icon"
+            className={`absolute z-10 mr-20 w-8 h-8 transform transition-transform duration-300 ease-in-out ${
+              folderFlags.acc1
+                ? "animate-spinCounterClockwiseM" // 열 때
+                : "animate-spinClockwiseM" // 닫을 때
+            }`}
+          />
+          <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
+            {folderFlags.acc1 ? <span> 목걸이 옵션 열기 </span> : <span> 목걸이 옵션 닫기 </span>}
+          </span>
+        </div>
+        <div
+          className={`transition-all duration-500 ${
+            folderFlags.acc1 ? "max-h-0 opacity-0 overflow-hidden" : "max-h-[120%] opacity-100 mt-4"
+          }`}
+        >
           <SelectOptionComp
             options={options[0]}
             onOptionsChange={updateOptions[0]}
           ></SelectOptionComp>
         </div>
+
         <div
-          className="flex"
-          onClick={() => {
-            controllFolder("acc2");
-          }}
+          className="mt-4 w-full flex items-center justify-center cursor-pointer"
+          onClick={() => handleToggle("acc2")}
         >
-          {folderFlags.acc2 ? (
-            <span className="flex items-center font-bold">
-              <FcFolder className="ml-8 w-12 h-12" /> - 귀걸이1 옵션 선택창 닫힘
-            </span>
-          ) : (
-            <FcOpenedFolder className="ml-8 w-12 h-12" />
-          )}
+          <img
+            src={folderFlags.acc2 ? folderClose : folderOpen}
+            alt="toggle icon"
+            className={`absolute z-10 mr-20 w-8 h-8 transform transition-transform duration-300 ease-in-out ${
+              folderFlags.acc2
+                ? "animate-spinCounterClockwiseM" // 열 때
+                : "animate-spinClockwiseM" // 닫을 때
+            }`}
+          />
+          <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
+            {folderFlags.acc2 ? <span> 귀걸이1 옵션 열기 </span> : <span> 귀걸이1 옵션 닫기 </span>}
+          </span>
         </div>
-        <div className={`pb-4 ${folderFlags.acc2 ? "hidden" : ""}`}>
+        <div
+          className={`transition-all duration-500 ${
+            folderFlags.acc2 ? "max-h-0 opacity-0 overflow-hidden" : "max-h-[120%] opacity-100 mt-4"
+          }`}
+        >
           <SelectOptionComp
             options={options[1]}
             onOptionsChange={updateOptions[1]}
           ></SelectOptionComp>
         </div>
+
         <div
-          className="flex"
-          onClick={() => {
-            controllFolder("acc3");
-          }}
+          className="mt-4 w-full flex items-center justify-center cursor-pointer"
+          onClick={() => handleToggle("acc3")}
         >
-          {folderFlags.acc3 ? (
-            <span className="flex items-center font-bold">
-              <FcFolder className="ml-8 w-12 h-12" /> - 귀걸이2 옵션 선택창 닫힘
-            </span>
-          ) : (
-            <FcOpenedFolder className="ml-8 w-12 h-12" />
-          )}
+          <img
+            src={folderFlags.acc3 ? folderClose : folderOpen}
+            alt="toggle icon"
+            className={`absolute z-10 mr-20 w-8 h-8 transform transition-transform duration-300 ease-in-out ${
+              folderFlags.acc3
+                ? "animate-spinCounterClockwiseM" // 열 때
+                : "animate-spinClockwiseM" // 닫을 때
+            }`}
+          />
+          <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
+            {folderFlags.acc3 ? <span> 귀걸이2 옵션 열기 </span> : <span> 귀걸이2 옵션 닫기 </span>}
+          </span>
         </div>
-        <div className={`pb-4 ${folderFlags.acc3 ? "hidden" : ""}`}>
+        <div
+          className={`transition-all duration-500 ${
+            folderFlags.acc3 ? "max-h-0 opacity-0 overflow-hidden" : "max-h-[120%] opacity-100 mt-4"
+          }`}
+        >
           <SelectOptionComp
             options={options[2]}
             onOptionsChange={updateOptions[2]}
           ></SelectOptionComp>
         </div>
+
         <div
-          className="flex"
-          onClick={() => {
-            controllFolder("acc4");
-          }}
+          className="mt-4 w-full flex items-center justify-center cursor-pointer"
+          onClick={() => handleToggle("acc4")}
         >
-          {folderFlags.acc4 ? (
-            <span className="flex items-center font-bold">
-              <FcFolder className="ml-8 w-12 h-12" /> - 반지1 옵션 선택창 닫힘
-            </span>
-          ) : (
-            <FcOpenedFolder className="ml-8 w-12 h-12" />
-          )}
+          <img
+            src={folderFlags.acc4 ? folderClose : folderOpen}
+            alt="toggle icon"
+            className={`absolute z-10 mr-20 w-8 h-8 transform transition-transform duration-300 ease-in-out ${
+              folderFlags.acc4
+                ? "animate-spinCounterClockwiseM" // 열 때
+                : "animate-spinClockwiseM" // 닫을 때
+            }`}
+          />
+          <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
+            {folderFlags.acc4 ? <span> 반지1 옵션 열기 </span> : <span> 반지1 옵션 닫기 </span>}
+          </span>
         </div>
-        <div className={`pb-4 ${folderFlags.acc4 ? "hidden" : ""}`}>
+        <div
+          className={`transition-all duration-500 ${
+            folderFlags.acc4 ? "max-h-0 opacity-0 overflow-hidden" : "max-h-[120%] opacity-100 mt-4"
+          }`}
+        >
           <SelectOptionComp
             options={options[3]}
             onOptionsChange={updateOptions[3]}
           ></SelectOptionComp>
         </div>
+
         <div
-          className="flex"
-          onClick={() => {
-            controllFolder("acc5");
-          }}
+          className="mt-4 w-full flex items-center justify-center cursor-pointer"
+          onClick={() => handleToggle("acc5")}
         >
-          {folderFlags.acc5 ? (
-            <span className="flex items-center font-bold">
-              <FcFolder className="ml-8 w-12 h-12" /> - 반지2 옵션 선택창 닫힘
-            </span>
-          ) : (
-            <FcOpenedFolder className="ml-8 w-12 h-12" />
-          )}
+          <img
+            src={folderFlags.acc5 ? folderClose : folderOpen}
+            alt="toggle icon"
+            className={`absolute z-10 mr-20 w-8 h-8 transform transition-transform duration-300 ease-in-out ${
+              folderFlags.acc5
+                ? "animate-spinCounterClockwiseM" // 열 때
+                : "animate-spinClockwiseM" // 닫을 때
+            }`}
+          />
+          <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
+            {folderFlags.acc5 ? <span> 반지2 옵션 열기 </span> : <span> 반지2 옵션 닫기 </span>}
+          </span>
         </div>
-        <div className={`pb-4 ${folderFlags.acc5 ? "hidden" : ""}`}>
+        <div
+          className={`transition-all duration-500 ${
+            folderFlags.acc5 ? "max-h-0 opacity-0 overflow-hidden" : "max-h-[120%] opacity-100 mt-4"
+          }`}
+        >
           <SelectOptionComp
             options={options[4]}
             onOptionsChange={updateOptions[4]}
@@ -348,20 +440,33 @@ function TauctionTierFourSup({
         <div className="gap-x-4 mt-6">
           <div className="space-y-2">
             <div
-              className="flex"
-              onClick={() => {
-                controllFolder("findCharacter");
-              }}
+              className="mt-4 w-full flex items-center justify-center cursor-pointer"
+              onClick={() => handleToggle("findCharacter")}
             >
-              {folderFlags.findCharacter ? (
-                <span className="flex items-center font-bold">
-                  <FcFolder className="ml-8 w-12 h-12" /> - 캐릭터 검색창 닫힘
-                </span>
-              ) : (
-                <FcOpenedFolder className="ml-8 w-12 h-12" />
-              )}
+              <img
+                src={folderFlags.findCharacter ? folderClose : folderOpen}
+                alt="toggle icon"
+                className={`absolute z-10 mr-20 w-8 h-8 transform transition-transform duration-300 ease-in-out ${
+                  folderFlags.findCharacter
+                    ? "animate-spinCounterClockwiseM" // 열 때
+                    : "animate-spinClockwiseM" // 닫을 때
+                }`}
+              />
+              <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
+                {folderFlags.findCharacter ? (
+                  <span> 캐릭터 검색창 열기 </span>
+                ) : (
+                  <span> 캐릭터 검색창 닫기 </span>
+                )}
+              </span>
             </div>
-            <div className={` ${folderFlags.findCharacter ? "hidden" : ""}`}>
+            <div
+              className={`transition-all duration-500 ${
+                folderFlags.findCharacter
+                  ? "max-h-0 opacity-0 overflow-hidden"
+                  : "max-h-[120%] opacity-100 mt-4"
+              }`}
+            >
               <SearchBtm
                 selectOptions={options}
                 search={updateSelect}
@@ -370,6 +475,7 @@ function TauctionTierFourSup({
                 apiKey={apiKey}
               ></SearchBtm>
             </div>
+
             {result.map((item, index) => (
               <ResultBox
                 result={item}
@@ -399,7 +505,7 @@ function TauctionTierFourSup({
                 cntPage={result[count]?.cntPage || 0}
                 cntCount={result[count]?.cntCount || 0}
                 apiKey={apiKey}
-                type={2}
+                type={1}
                 selAcc={count}
                 currentPage={currentPage[count]}
                 setCurrentPage={setCurrentPage}

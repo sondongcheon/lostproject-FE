@@ -24,6 +24,8 @@ module.exports = {
       animation: {
         slideIn: 'slideIn 0.3s ease-out',
         slideOut: 'slideOut 0.3s ease-in',
+        spinClockwiseM: 'spinClockwise 0.3s ease-in-out',
+        spinCounterClockwiseM: 'spinCounterClockwise 0.3s ease-in-out',
         spinClockwise: 'spinClockwise 0.5s ease-in-out',
         spinCounterClockwise: 'spinCounterClockwise 0.5s ease-in-out',
       },
