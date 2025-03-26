@@ -13,8 +13,8 @@ import Calstat from "./Component/Calstat";
 
 import DisplayAds from "../common/Component/DisplayAds";
 
-import { FcOpenedFolder } from "react-icons/fc";
-import { FcFolder } from "react-icons/fc";
+import folderOpen from "../Assets/folderOpen.png";
+import folderClose from "../Assets/folderClose.png";
 
 function AuctionTierFourSup({
   getCountLog,
@@ -55,6 +55,19 @@ function AuctionTierFourSup({
           findCharacter: false,
         };
   });
+
+  const [rotateFlags, setRotateFlags] = useState({});
+
+  const handleToggle = (key) => {
+    // 회전 상태 변경
+    setRotateFlags((prev) => ({ ...prev, [key]: true }));
+    setTimeout(() => {
+      setRotateFlags((prev) => ({ ...prev, [key]: false }));
+    }, 500); // 회전 지속 시간
+
+    // 기존 토글 함수 호출
+    controllFolder(key);
+  };
 
   const controllFolder = (key) => {
     setFolderFlags((prev) => ({
@@ -176,38 +189,61 @@ function AuctionTierFourSup({
       </div>
       <div className="mainbody">
         <div
-          className="flex"
-          onClick={() => {
-            controllFolder("presetFolder");
-          }}
+          className="w-full flex items-center justify-center cursor-pointer"
+          onClick={() => handleToggle("presetFolder")}
         >
-          {folderFlags.presetFolder ? (
-            <span className="flex items-center font-bold">
-              <FcFolder className="ml-8 w-12 h-12" /> - 일괄선택 프리셋 닫힘
-            </span>
-          ) : (
-            <FcOpenedFolder className="ml-8 w-12 h-12" />
-          )}
-        </div>
-        <div className={`mb-4 ${folderFlags.presetFolder ? "hidden" : ""}`}>
-          <AllSelectPresetComp updateSet={updateOptions} type={1}></AllSelectPresetComp>
+          <img
+            src={folderFlags.presetFolder ? folderOpen : folderClose}
+            alt="toggle icon"
+            className={`absolute z-10 mr-20 w-8 h-8 transform transition-transform duration-500 ease-in-out ${
+              folderFlags.presetFolder
+                ? "animate-spinClockwise" // 닫을 때
+                : "animate-spinCounterClockwise" // 열 때
+            }`}
+          />
+          <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
+            {folderFlags.presetFolder ? (
+              <span> 일괄 선택 프리셋 닫기 </span>
+            ) : (
+              <span> 일괄 선택 프리셋 열기 </span>
+            )}
+          </span>
         </div>
 
         <div
-          className="flex"
-          onClick={() => {
-            controllFolder("selAll");
-          }}
+          className={`transition-all duration-500 ${
+            folderFlags.presetFolder ? "max-h-44 opacity-100 mt-4" : "max-h-0 opacity-0"
+          }`}
         >
-          {folderFlags.selAll ? (
-            <span className="flex items-center font-bold">
-              <FcFolder className="ml-8 w-12 h-12" /> - 옵션 선택창 닫힘
-            </span>
-          ) : (
-            <FcOpenedFolder className="ml-8 w-12 h-12" />
-          )}
+          <AllSelectPresetComp updateSet={updateOptions} type={1} />
         </div>
-        <div className={`grid grid-cols-2 gap-x-4 gap-y-4 ${folderFlags.selAll ? "hidden" : ""}`}>
+
+        <div
+          className="mt-4 flex items-center justify-center cursor-pointer"
+          onClick={() => handleToggle("selAll")}
+        >
+          <img
+            src={folderFlags.selAll ? folderOpen : folderClose}
+            alt="toggle icon"
+            className={`absolute z-10 w-8 h-8 mr-20 transform transition-transform duration-500 ease-in-out ${
+              folderFlags.selAll
+                ? "animate-spinClockwise" // 닫을 때
+                : "animate-spinCounterClockwise" // 열 때
+            }`}
+          />
+          <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
+            {folderFlags.selAll ? (
+              <span> 전체 옵션 선택창 닫기 </span>
+            ) : (
+              <span> 전체 옵션 선택창 열기 </span>
+            )}
+          </span>
+        </div>
+        <div
+          className={`grid grid-cols-2 gap-x-4 gap-y-4 transition-all duration-1000 ${
+            folderFlags.selAll ? "max-h-132 opacity-100 mt-4" : "max-h-0 opacity-0"
+          }`}
+        >
           <div>
             <HeadKeyBox
               apiKey={apiKey}
@@ -249,41 +285,32 @@ function AuctionTierFourSup({
           </div>
         </div>
         <div className="mt-6">
-          <div className="flex">
-            {folderFlags.searchMenu ? (
-              <div className="flex">
-                <span
-                  className="flex items-center font-bold"
-                  onClick={() => {
-                    controllFolder("searchMenu");
-                  }}
-                >
-                  <FcFolder className="ml-8 w-12 h-12" /> - 검색 관련 메뉴 닫힘&nbsp;&nbsp;&nbsp;{" "}
-                </span>
-                <button
-                  className="bg-[#40AC8D] resetBtm h-10 mb-4"
-                  onClick={updateSelect}
-                  disabled={searchState}
-                >
-                  {searchState ? (
-                    <div className="h-full bg-[url('./Assets/loading.webp')] bg-contain bg-center bg-no-repeat">
-                      {" "}
-                    </div>
-                  ) : (
-                    "검색하기"
-                  )}
-                </button>
-              </div>
-            ) : (
-              <FcOpenedFolder
-                className="ml-8 w-12 h-12"
-                onClick={() => {
-                  controllFolder("searchMenu");
-                }}
-              />
-            )}
+          <div
+            className=" flex items-center justify-center cursor-pointer"
+            onClick={() => handleToggle("searchMenu")}
+          >
+            <img
+              src={folderFlags.searchMenu ? folderOpen : folderClose}
+              alt="toggle icon"
+              className={`absolute z-10 w-8 h-8 mr-20 w-8 h-8 transform transition-transform duration-500 ease-in-out ${
+                folderFlags.searchMenu
+                  ? "animate-spinClockwise" // 닫을 때
+                  : "animate-spinCounterClockwise" // 열 때
+              }`}
+            />
+            <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
+              {folderFlags.searchMenu ? (
+                <span> 검색/캐릭터검색 닫기 </span>
+              ) : (
+                <span> 검색/캐릭터검색 열기 </span>
+              )}
+            </span>
           </div>
-          <div className={` ${folderFlags.searchMenu ? "hidden" : ""}`}>
+          <div
+            className={`transition-all duration-500 ${
+              folderFlags.searchMenu ? "max-h-44 opacity-100 mt-4" : "max-h-0 opacity-0"
+            }`}
+          >
             <SearchBtm
               selectOptions={options}
               search={updateSelect}
