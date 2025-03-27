@@ -378,26 +378,26 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                 </button>
                 <button
                   className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
-                  onClick={(type) =>
+                  onClick={() =>
                     type === 0 ? setGrade("selectOption3", "53") : setGrade("selectOption3", "55")
                   }
                 >
                   {type === 0 ? (
                     <p className="text-sm font-bold">공용 공+</p>
                   ) : (
-                    <p className="text-sm font-bold">최대 생명력</p>
+                    <p className="text-sm font-bold">공용 최생</p>
                   )}
                 </button>
                 <button
                   className={`w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm`}
-                  onClick={(type) =>
+                  onClick={() =>
                     type === 0 ? setGrade("selectOption3", "54") : setGrade("selectOption3", "56")
                   }
                 >
                   {type === 0 ? (
                     <p className="text-sm font-bold">공용 무공</p>
                   ) : (
-                    <p className="text-sm font-bold">최대 마나</p>
+                    <p className="text-sm font-bold">공용 최마</p>
                   )}
                 </button>
                 <button
