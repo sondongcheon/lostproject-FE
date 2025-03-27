@@ -244,8 +244,8 @@ function AuctionTierFourSup({
         <div
           className={`grid grid-cols-2 gap-x-4 gap-y-4 transition-all duration-1000 ${
             folderFlags.selAll
-              ? "max-h-0 opacity-0"
-              : "max-h-[120%] opacity-100 mt-4 overflow-hidden"
+              ? "max-h-0 opacity-0 overflow-hidden"
+              : "max-h-[120%] opacity-100 mt-4 "
           }`}
         >
           <div>

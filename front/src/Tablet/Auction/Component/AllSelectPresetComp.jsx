@@ -204,7 +204,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                 {type === 0 ? (
                   <p className="text-sm font-bold">공용 공+</p>
                 ) : (
-                  <p className="text-sm font-bold">최대 생명력</p>
+                  <p className="text-sm font-bold">공용 최생</p>
                 )}
               </button>
               <button
@@ -216,7 +216,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                 {type === 0 ? (
                   <p className="text-sm font-bold">공용 무공</p>
                 ) : (
-                  <p className="text-sm font-bold">최대 마나</p>
+                  <p className="text-sm font-bold">공용 최마</p>
                 )}
               </button>
               <button
@@ -274,7 +274,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                 >
                   상 중
                 </button>
-                <div className="absolute z-20 bottom-8 w-[250%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+                <div className="absolute z-20 bottom-8 w-[150%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                   {type === 0 ? (
                     <span>
                       목걸이 → 추피 상, 적주피 중 <br /> 귀걸이 → 공 상, 무공 중 <br />
@@ -295,7 +295,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                 >
                   상 하
                 </button>
-                <div className="absolute z-20 bottom-8 w-[250%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+                <div className="absolute z-20 bottom-8 w-[150%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                   {type === 0 ? (
                     <span>
                       목걸이 → 추피 상, 적주피 하 <br /> 귀걸이 → 공 상, 무공 하 <br />
@@ -317,7 +317,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                 >
                   하 상
                 </button>
-                <div className="absolute z-20 bottom-8 w-[250%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+                <div className="absolute z-20 bottom-8 right-0 w-[150%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                   {type === 0 ? (
                     <span>
                       목걸이 → 추피 하, 적주피 상 <br /> 귀걸이 → 공 하, 무공 상 <br />
@@ -351,7 +351,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                 >
                   중 상
                 </button>
-                <div className="absolute z-20 top-full w-[250%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+                <div className="absolute z-20 top-full w-[150%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                   {type === 0 ? (
                     <span>
                       목걸이 → 추피 중, 적주피 상 <br /> 귀걸이 → 공 중, 무공 상 <br />
@@ -372,7 +372,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                 >
                   중 하
                 </button>
-                <div className="absolute z-20 top-full w-[250%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+                <div className="absolute z-20 top-full w-[150%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                   {type === 0 ? (
                     <span>
                       목걸이 → 추피 중, 적주피 하 <br /> 귀걸이 → 공 중, 무공 하 <br />
@@ -393,7 +393,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                 >
                   하 중
                 </button>
-                <div className="absolute z-20 top-full w-[250%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+                <div className="absolute z-20 top-full right-0 w-[150%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                   {type === 0 ? (
                     <span>
                       목걸이 → 추피 하, 적주피 중 <br /> 귀걸이 → 공 하, 무공 중 <br />
