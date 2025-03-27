@@ -1,8 +1,8 @@
 import React from "react";
 
-const Menulist = ({ img, onClick, name }) => {
+const Menulist = ({ img, clickAction, name }) => {
   return (
-    <li onClick={onClick} className="commonHover flex">
+    <li onClick={clickAction} className="commonHover flex my-2 size-font-xl">
       <img className="w-6" src={img} alt="" />
       {name}
     </li>

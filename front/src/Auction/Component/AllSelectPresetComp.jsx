@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const AllSelectPresetComp = ({ updateSet, type }) => {
+const AllSelectPresetComp = ({ updateSet, type, search, searchState, apiKey }) => {
   const [sliderValue, setSliderValue] = useState(67);
   const [sliderStatValue, setSliderStatValue] = useState(10);
   const [options, setOptions] = useState({});
@@ -99,13 +99,48 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
     <div>
       <div className="flex">
         <div className="h-44 w-full flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5] ">
-          <div className="w-[25%] py-5">
-            <div className=" text-center flex justify-center items-center ">
-              <button className="resetBtm bg-[#b2ddad]" onClick={setReset}>
-                선택 초기화
-              </button>
+          <div className="w-[25%] grid grid-rows-4 gap-y-4 py-2 ">
+            <div className="overflow-hidden">
+              <h1
+                className={`relative w-full h-full flex items-center overflow-hidden text-sm text-red-500 font-bold ${
+                  apiKey === "" || !apiKey ? "visible" : "invisible"
+                }`}
+              >
+                <div className="flex animate-marquee-loop whitespace-nowrap">
+                  <span className="mr-10">
+                    🚨 API Key가 입력되지 않았습니다.🚨 공용키가 사용되어 검색되므로 분당 횟수
+                    초과가 일어날 확률이 높습니다.
+                  </span>
+                  <span>
+                    🚨 API Key가 입력되지 않았습니다.🚨 공용키가 사용되어 검색되므로 분당 횟수
+                    초과가 일어날 확률이 높습니다.
+                  </span>
+                </div>
+              </h1>
             </div>
-            <div className="grid grid-cols-4 justify-center items-center p-4">
+            <div className=" w-full gap-x-4 text-center flex justify-center items-center ">
+              <button className="w-1/3 resetBtm bg-[#b2ddad]" onClick={setReset}>
+                초기화
+              </button>
+
+              <div className="w-1/3 flex justify-center items-center ">
+                <button
+                  className="w-full bg-[#40AC8D] resetBtm"
+                  onClick={search}
+                  disabled={searchState}
+                >
+                  {searchState ? (
+                    <div className="h-full bg-[url('./Assets/loading.webp')] bg-contain bg-center bg-no-repeat">
+                      {" "}
+                    </div>
+                  ) : (
+                    "검색하기"
+                  )}
+                </button>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-4 justify-center items-center px-4">
               <span className="col-span-1 text-sm text-center font-bold">전체 품질</span>
               <input
                 type="range"
@@ -136,7 +171,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                 {/* {sliderValue === 0 ? "미지정" : sliderValue} */}
               </div>
             </div>
-            <div className="grid grid-cols-4 justify-center items-center p-4">
+            <div className="grid grid-cols-4 justify-center items-center px-4">
               <span className="col-span-1 text-xs text-center font-bold">전체 힘민지%</span>
               <input
                 type="range"

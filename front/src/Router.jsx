@@ -9,6 +9,7 @@ import NoticeBoardDetail from "./Pages/NoticeBoardDetail.jsx";
 import MiniBoard from "./Pages/MiniBoard.jsx";
 import Chart from "./Pages/Chart.jsx";
 import ChartItems from "./Pages/ChartItems.jsx";
+import ChartJewel from "./Pages/ChartJewel.jsx";
 
 import TestFour from "./Main/TestFour.jsx";
 import { useState } from "react";
@@ -40,7 +41,8 @@ function Router() {
         <Route path="/notice/:id" element={<NoticeBoardDetail />} />
         <Route path="/mini" element={<MiniBoard />} />
         <Route path="/chart" element={<Chart />} />
-        <Route path="/chartitems" element={<ChartItems />} />
+        <Route path="/chartitems/book" element={<ChartItems />} />
+        <Route path="/chartitems/jewel" element={<ChartJewel />} />
 
         <Route path="/test4" element={<TestFour />} />
       </Routes>
