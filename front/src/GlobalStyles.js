@@ -135,7 +135,7 @@ const GlobalStyles = createGlobalStyle`
   font-style : bold;
   //border: 1px solid #40AC8D; /* 배경색을 테두리 색으로 */
   border-radius: 8px; /* 외곽선을 약간 둥글게 */
-  padding: 8px 16px; /* 버튼 크기 조절 */
+  padding: 4px 8px; /* 버튼 크기 조절 */
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
 }
