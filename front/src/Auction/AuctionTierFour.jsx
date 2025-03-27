@@ -228,7 +228,13 @@ function AuctionTierFour({
               : "max-h-[120%] opacity-100 mt-4"
           }`}
         >
-          <AllSelectPresetComp updateSet={updateOptions} type={0} />
+          <AllSelectPresetComp
+            updateSet={updateOptions}
+            type={0}
+            search={updateSelect}
+            searchState={searchState}
+            apiKey={apiKey}
+          />
         </div>
 
         <div

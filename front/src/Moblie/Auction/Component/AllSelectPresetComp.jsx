@@ -99,8 +99,8 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
     <div>
       <div className="shadow-lg border-2 rounded-3xl bg-[#F5F5F5] pt-4 pb-4">
         <div className="py-2">
-          <div className="text-[8px] text-center flex justify-center items-center ">
-            <button className="resetBtm bg-[#b2ddad]" onClick={setReset}>
+          <div className="w-full flex justify-center items-center ">
+            <button className=" resetBtm text-center size-font-xl bg-[#b2ddad]" onClick={setReset}>
               초기화
             </button>
           </div>

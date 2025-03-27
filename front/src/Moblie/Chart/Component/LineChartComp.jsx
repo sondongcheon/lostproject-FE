@@ -117,7 +117,7 @@ const LineChartComp = ({ category, grade, value, value2, type, request }) => {
         <div className="items-center flex m-2 p-2 border-2 border-gray-500 rounded-xl text-xs text-center">
           <div className="flex flex-col group relative ">
             <BsFillQuestionCircleFill className="w-full" />
-            <div className="absolute top-full w-[2700%] px-3 py-2 text-start bg-gray-800 text-white size-font-xs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300 left">
+            <div className="absolute top-full w-[2700%] px-3 py-2 text-start bg-gray-800 text-white size-font-xs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
               매물 검색 기준은 품질80, 스텟 필터X 버전입니다. <br />
               스텟 필터 기능이 3월 3주차부터 제공되어서 기준 수정중입니다. <br />
               <br />

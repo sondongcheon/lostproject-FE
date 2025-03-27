@@ -130,7 +130,6 @@ const GlobalStyles = createGlobalStyle`
   
 
 .resetBtm {
-  width: 10rem; // 160px
   //background-color: #40AC8D;
   color: black;
   font-style : bold;

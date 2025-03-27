@@ -94,21 +94,21 @@ const TopMenu = ({
             <div className="mt-[10px] mx-2 border-t-2 border-black border-dotted w-1/2" />
           </div>
           <Menulist
-            onClick={() => {
+            clickAction={() => {
               listclick("neck", "godae", false, "");
             }}
             img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_215.png"
             name="고대 목걸이"
           />
           <Menulist
-            onClick={() => {
+            clickAction={() => {
               listclick("earing", "godae", false, "");
             }}
             img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_115.png"
             name="고대 귀걸이"
           />
           <Menulist
-            onClick={() => {
+            clickAction={() => {
               listclick("ring", "godae", false, "");
             }}
             img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_22.png"
@@ -116,21 +116,21 @@ const TopMenu = ({
           />
           <br />
           <Menulist
-            onClick={() => {
+            clickAction={() => {
               listclick("neck", "umuoel", false, "");
             }}
             img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_217.png"
             name="유물 목걸이"
           />
           <Menulist
-            onClick={() => {
+            clickAction={() => {
               listclick("earing", "umuoel", false, "");
             }}
             img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_117.png"
             name="유물 귀걸이"
           />
           <Menulist
-            onClick={() => {
+            clickAction={() => {
               listclick("ring", "umuoel", false, "");
             }}
             img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_24.png"
@@ -144,14 +144,14 @@ const TopMenu = ({
             <div className="mt-[10px] mx-2 border-t border-t-2 border-black border-dotted w-1/2" />
           </div>
           <Menulist
-            onClick={() => {
+            clickAction={() => {
               listclick("neck", "godae", false, "sup_");
             }}
             img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_215.png"
             name="고대 목걸이"
           />
           <Menulist
-            onClick={() => {
+            clickAction={() => {
               listclick("ring", "godae", false, "sup_");
             }}
             img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_22.png"
@@ -159,14 +159,14 @@ const TopMenu = ({
           />
           <br />
           <Menulist
-            onClick={() => {
+            clickAction={() => {
               listclick("neck", "umuoel", false, "sup_");
             }}
             img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_217.png"
             name="유물 목걸이"
           />
           <Menulist
-            onClick={() => {
+            clickAction={() => {
               listclick("ring", "umuoel", false, "sup_");
             }}
             img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_24.png"
@@ -174,7 +174,7 @@ const TopMenu = ({
           />
           <button
             className="w-full border-2 border-gray-300 bg-[#d1d5db] hover:bg-white my-4 rounded-xl px-2 py-4"
-            onClick={() => {
+            clickAction={() => {
               setSelectCustom(true);
             }}
           >

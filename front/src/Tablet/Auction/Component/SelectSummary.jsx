@@ -12,11 +12,11 @@ const SelectSummary = ({ search, total, searchState, apiKey }) => {
                 : "hidden"
             } `}
           >
-            🚨 API Key가 입력되지 않았습니다.🚨 <br /> 공용키가 사용되어
-            검색되므로 분당 횟수 초과가 일어날 확률이 높습니다.
+            🚨 API Key가 입력되지 않았습니다.🚨 <br /> 공용키가 사용되어 검색되므로 분당 횟수 초과가
+            일어날 확률이 높습니다.
           </h1>
           <button
-            className="bg-[#40AC8D] resetBtm text-xs h-10 mb-4"
+            className="bg-[#40AC8D] w-1/2 resetBtm text-xs h-10 mb-4"
             onClick={search}
             disabled={searchState}
           >
@@ -28,9 +28,7 @@ const SelectSummary = ({ search, total, searchState, apiKey }) => {
               "검색하기"
             )}
           </button>
-          <p className="font-bold text-xl">
-            총 금액 : {total.toLocaleString()} G
-          </p>
+          <p className="font-bold text-xl">총 금액 : {total.toLocaleString()} G</p>
         </div>
       </div>
     </div>

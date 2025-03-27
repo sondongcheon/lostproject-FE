@@ -94,21 +94,21 @@ const SelectSideBar = ({
 
           <div className="py-2">
             <SideBarlist
-              onClick={() => {
+              clickAction={() => {
                 listclick("neck", "godae", false, "");
               }}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_215.png"
               name="&nbsp;고대 목걸이"
             />
             <SideBarlist
-              onClick={() => {
+              clickAction={() => {
                 listclick("earing", "godae", false, "");
               }}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_115.png"
               name="&nbsp;고대 귀걸이"
             />
             <SideBarlist
-              onClick={() => {
+              clickAction={() => {
                 listclick("ring", "godae", false, "");
               }}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_22.png"
@@ -116,21 +116,21 @@ const SelectSideBar = ({
             />
             <br />
             <SideBarlist
-              onClick={() => {
+              clickAction={() => {
                 listclick("neck", "umuoel", false, "");
               }}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_217.png"
               name="&nbsp;유물 목걸이"
             />
             <SideBarlist
-              onClick={() => {
+              clickAction={() => {
                 listclick("earing", "umuoel", false, "");
               }}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_117.png"
               name="&nbsp;유물 귀걸이"
             />
             <SideBarlist
-              onClick={() => {
+              clickAction={() => {
                 listclick("ring", "umuoel", false, "");
               }}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_24.png"
@@ -146,14 +146,14 @@ const SelectSideBar = ({
 
           <div className="pt-2">
             <SideBarlist
-              onClick={() => {
+              clickAction={() => {
                 listclick("neck", "godae", false, "sup_");
               }}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_215.png"
               name="&nbsp;고대 목걸이"
             />
             <SideBarlist
-              onClick={() => {
+              clickAction={() => {
                 listclick("ring", "godae", false, "sup_");
               }}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_22.png"
@@ -161,14 +161,14 @@ const SelectSideBar = ({
             />
             <br />
             <SideBarlist
-              onClick={() => {
+              clickAction={() => {
                 listclick("neck", "umuoel", false, "sup_");
               }}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_217.png"
               name="&nbsp;유물 목걸이"
             />
             <SideBarlist
-              onClick={() => {
+              clickAction={() => {
                 listclick("ring", "umuoel", false, "sup_");
               }}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/acc/acc_24.png"
