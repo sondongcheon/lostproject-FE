@@ -78,7 +78,7 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
             초과가 일어날 확률이 높습니다.
           </h1>
           <button
-            className="bg-[#40AC8D] resetBtm h-10 mb-4"
+            className="w-1/2 h-full bg-[#40AC8D] resetBtm h-10 mb-4"
             onClick={search}
             disabled={searchState}
           >

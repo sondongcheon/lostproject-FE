@@ -99,7 +99,7 @@ const AllSelectPresetComp = ({ updateSet, type, search, searchState, apiKey }) =
     <div>
       <div className="flex">
         <div className="h-44 w-full flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5] ">
-          <div className="w-[25%] grid grid-rows-4 gap-y-4 py-2 ">
+          <div className="w-[25%] grid grid-rows-4 gap-y-2 py-2 ">
             <div className="overflow-hidden">
               <h1
                 className={`relative w-full h-full flex items-center overflow-hidden text-sm text-red-500 font-bold ${
@@ -123,9 +123,9 @@ const AllSelectPresetComp = ({ updateSet, type, search, searchState, apiKey }) =
                 초기화
               </button>
 
-              <div className="w-1/3 flex justify-center items-center ">
+              <div className="w-1/3 h-full flex justify-center items-center ">
                 <button
-                  className="w-full bg-[#40AC8D] resetBtm"
+                  className="w-full h-full bg-[#40AC8D] resetBtm"
                   onClick={search}
                   disabled={searchState}
                 >
