@@ -66,14 +66,14 @@ const FixChartItemsPage = () => {
       setSaveKey(false);
     }
     setApiKey(cookieValue);
-    loadData();
+    loadData(Cookies.get("apiKey"));
   }, []);
 
   useEffect(() => {
     if (hasKeyMounted) {
       setHasKeyMounted(false);
     } else if (!searchState) {
-      loadData(Cookies.get("apiKey"));
+      loadData(apiKey);
     }
   }, [apiKey]);
 
