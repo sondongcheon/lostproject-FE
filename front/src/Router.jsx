@@ -1,6 +1,7 @@
 import { BrowserRouter, React, Route, Routes } from "react-router-dom";
 import Main from "./Pages/Main.jsx";
 import MainNav from "./common/MainNav";
+import Footer from "./common/Footer.jsx";
 import Auction from "./Pages/Auction.jsx";
 import AuctionSup from "./Pages/AuctionSup.jsx";
 import UseBasicInfo from "./Information/UseBasicInfo.jsx";
@@ -46,6 +47,7 @@ function Router() {
 
         <Route path="/test4" element={<TestFour />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

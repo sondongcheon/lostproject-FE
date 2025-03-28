@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
   body {
   width: 1900px; /* 고정된 너비 */
-  height: 800px; /* 고정된 높이 */
+  min-height: 100vh; 
   overflow: auto; /* 넘치는 콘텐츠는 스크롤로 처리 */
   background-color: #ECEBDE;
     font-family: "Pretendard";
@@ -16,12 +16,14 @@ const GlobalStyles = createGlobalStyle`
   .mainbody {
     
     width: 70%;
+      min-height: 100vh; 
     margin: 0 auto;
     margin-top: 110px;
   }
     
   .mainMobileBody {
     // width: 468px; /* 고정된 너비 */
+      min-height: 100vh; 
     margin-top: 110px;
     margin-bottom: 110px;
     padding-bottom: 1px; /* 마진 상쇄 방지 */

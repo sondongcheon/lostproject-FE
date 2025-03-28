@@ -1,6 +1,7 @@
 import React from "react";
 
 import ServiceBox from "./Component/ServiceBox";
+import DisplayAds from "../common/Component/DisplayAds";
 
 function Main(props) {
   const boxInfo = [
@@ -53,20 +54,28 @@ function Main(props) {
   ];
 
   return (
-    <div className="mainbody">
-      <div>
-        <br />
-        <h1 className="mt-4 text-center text-3xl">주요 서비스</h1>
+    <div className="flex">
+      <div className="mt-32 w-[15%]">
+        <DisplayAds />
       </div>
-      <div className="flex grid grid-cols-2">
-        {boxInfo.map((box, index) => (
-          <ServiceBox
-            imgUrl={box.imgUrl}
-            title={box.title}
-            info={box.info}
-            clicklink={box.clicklink}
-          />
-        ))}
+      <div className="mainbody">
+        <div>
+          <br />
+          <h1 className="mt-4 text-center text-3xl">주요 서비스</h1>
+        </div>
+        <div className="flex grid grid-cols-2">
+          {boxInfo.map((box, index) => (
+            <ServiceBox
+              imgUrl={box.imgUrl}
+              title={box.title}
+              info={box.info}
+              clicklink={box.clicklink}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="mt-32 w-[15%]">
+        <DisplayAds />
       </div>
     </div>
   );

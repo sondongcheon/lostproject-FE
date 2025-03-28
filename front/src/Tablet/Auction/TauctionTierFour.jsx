@@ -15,6 +15,8 @@ import Calstat from "./Component/CalStat";
 import folderOpen from "../../Assets/folderOpen.png";
 import folderClose from "../../Assets/folderClose.png";
 
+import DisplayAds from "../../common/Component/DisplayAds";
+
 function TauctionTierFour({
   getCountLog,
   options,
@@ -529,6 +531,10 @@ function TauctionTierFour({
             )}
           </div>
         </div>
+      </div>
+
+      <div className="my-2">
+        <DisplayAds />
       </div>
     </div>
   );
