@@ -15,8 +15,8 @@ const FixChartItemsPage = () => {
   const [hasKeyMounted, setHasKeyMounted] = useState(true);
   const [searchState, setSearchState] = useState(false);
 
-  const loadData = () => {
-    const encodedApiKey = encodeURIComponent(apiKey);
+  const loadData = (key) => {
+    const encodedApiKey = encodeURIComponent(key);
     setSearchState(true);
 
     axios
@@ -66,14 +66,14 @@ const FixChartItemsPage = () => {
       setSaveKey(false);
     }
     setApiKey(cookieValue);
-    loadData();
+    loadData(Cookies.get("apiKey"));
   }, []);
 
   useEffect(() => {
     if (hasKeyMounted) {
       setHasKeyMounted(false);
     } else if (!searchState) {
-      loadData();
+      loadData(apiKey);
     }
   }, [apiKey]);
 
