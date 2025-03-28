@@ -2,6 +2,8 @@ import React from "react";
 
 import ServiceBox from "./Component/ServiceBox";
 
+import DisplayAds from "../../common/Component/DisplayAds";
+
 function Main(props) {
   const boxInfo = [
     {
@@ -68,6 +70,7 @@ function Main(props) {
           />
         ))}
       </div>
+      <DisplayAds />
     </div>
   );
 }
