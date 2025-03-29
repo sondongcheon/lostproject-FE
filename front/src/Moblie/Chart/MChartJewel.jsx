@@ -3,6 +3,8 @@ import React from "react";
 import ItemsTopMenu from "./Component/ItemsTopMenu";
 import FixChartJewelPage from "./Component/FixChartJewelPage";
 
+import DisplayAds from "../../common/Component/DisplayAds";
+
 function MChartJewel({ request, setRequest }) {
   return (
     <div>
@@ -13,6 +15,7 @@ function MChartJewel({ request, setRequest }) {
         <div className="">
           <FixChartJewelPage request={request} setRequest={setRequest} />
         </div>
+        <DisplayAds />
       </div>
     </div>
   );

@@ -41,7 +41,19 @@ const ItemsLineChartComp = ({ data }) => {
               tickFormatter={(value) => value.toLocaleString() + "G"}
               domain={[
                 0,
-                (dataMax) => Math.max(Math.floor((dataMax * 1.2) / 10000) * 10000, 100000),
+                (dataMax) =>
+                  Math.max(
+                    Math.floor((dataMax * 1.2) / 10000) * 10000,
+                    dataMax > 50000
+                      ? 100000
+                      : dataMax > 30000
+                      ? 50000
+                      : dataMax > 10000
+                      ? 30000
+                      : dataMax > 5000
+                      ? 10000
+                      : 5000
+                  ),
               ]}
             />
             <YAxis yAxisId="right" orientation="right" domain={[0, (dataMax) => dataMax * 1.5]} />

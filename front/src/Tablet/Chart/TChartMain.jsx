@@ -5,6 +5,8 @@ import TopMenu from "./Component/TopMenu";
 import FixChartPage from "./Component/FixChartPage";
 import CustomChartPage from "./Component/CustomChartPage";
 
+import DisplayAds from "../../common/Component/DisplayAds";
+
 function MChartMain({ request, setRequest }) {
   const getCountLog = () => {
     axios
@@ -50,6 +52,7 @@ function MChartMain({ request, setRequest }) {
             />
           )}
         </div>
+        <DisplayAds />
       </div>
     </div>
   );
