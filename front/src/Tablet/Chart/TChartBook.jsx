@@ -3,6 +3,8 @@ import React from "react";
 import ItemsTopMenu from "./Component/ItemsTopMenu";
 import FixChartItemsPage from "./Component/FixChartItemsPage";
 
+import DisplayAds from "../../common/Component/DisplayAds";
+
 function TChartBook(props) {
   return (
     <div>
@@ -13,6 +15,7 @@ function TChartBook(props) {
         <div className="">
           <FixChartItemsPage />
         </div>
+        <DisplayAds />
       </div>
     </div>
   );
