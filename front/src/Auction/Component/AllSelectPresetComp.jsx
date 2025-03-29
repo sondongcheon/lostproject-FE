@@ -100,23 +100,31 @@ const AllSelectPresetComp = ({ updateSet, type, search, searchState, apiKey }) =
       <div className="flex">
         <div className="h-44 w-full flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5] ">
           <div className="w-[25%] grid grid-rows-4 gap-y-2 py-2 ">
-            <div className="overflow-hidden">
-              <h1
-                className={`relative w-full h-full flex items-center overflow-hidden text-sm text-red-500 font-bold ${
-                  apiKey === "" || !apiKey ? "visible" : "invisible"
-                }`}
-              >
-                <div className="flex animate-marquee-loop whitespace-nowrap">
+            <div className=" overflow-hidden">
+              {apiKey === "" || !apiKey ? (
+                <div className="flex animate-marquee-loop whitespace-nowrap relative w-full h-full flex items-center overflow-hidden text-sm text-red-500 font-bold">
                   <span className="mr-10">
-                    🚨 API Key가 입력되지 않았습니다.🚨 공용키가 사용되어 검색되므로 분당 횟수
+                    🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로 분당 횟수
                     초과가 일어날 확률이 높습니다.
                   </span>
                   <span>
-                    🚨 API Key가 입력되지 않았습니다.🚨 공용키가 사용되어 검색되므로 분당 횟수
+                    🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로 분당 횟수
                     초과가 일어날 확률이 높습니다.
                   </span>
                 </div>
-              </h1>
+              ) : (
+                <div className="h-full flex items-center px-8">
+                  <span className="font-bold text-xl">| 전체 선택 프리셋</span>
+                </div>
+              )}
+
+              {/* <h1
+                className={` ${
+                  apiKey === "" || !apiKey ? "visible" : "invisible"
+                }`}
+              >
+                
+              </h1> */}
             </div>
             <div className=" w-full gap-x-4 text-center flex justify-center items-center ">
               <button className="w-1/3 resetBtm bg-[#b2ddad]" onClick={setReset}>
@@ -140,8 +148,8 @@ const AllSelectPresetComp = ({ updateSet, type, search, searchState, apiKey }) =
               </div>
             </div>
 
-            <div className="grid grid-cols-4 justify-center items-center px-4">
-              <span className="col-span-1 text-sm text-center font-bold">전체 품질</span>
+            <div className="grid grid-cols-3 justify-center items-center px-8">
+              <span className=" text-sm  font-bold">전체 품질</span>
               <input
                 type="range"
                 min="0"
@@ -152,11 +160,11 @@ const AllSelectPresetComp = ({ updateSet, type, search, searchState, apiKey }) =
                   setSliderValue(value); // 로컬 상태 업데이트
                   setGrade("quality", value === 0 ? null : value); // 부모에 값 전달
                 }}
-                className="slider col-span-2 w-full  h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                className="slider w-full  h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
               />
-              <div className="col-span-1  text-center text-sm text-gray-500">
+              <div className=" text-center text-sm text-gray-500">
                 <input
-                  className="w-full text-center rounded-3xl border border-gray-300"
+                  className="w-2/3 h-[28px] text-center rounded-3xl border border-gray-300"
                   placeholder="미지정"
                   type="number"
                   min="0"
@@ -171,8 +179,8 @@ const AllSelectPresetComp = ({ updateSet, type, search, searchState, apiKey }) =
                 {/* {sliderValue === 0 ? "미지정" : sliderValue} */}
               </div>
             </div>
-            <div className="grid grid-cols-4 justify-center items-center px-4">
-              <span className="col-span-1 text-xs text-center font-bold">전체 힘민지%</span>
+            <div className="grid grid-cols-3 justify-center items-center px-8">
+              <span className=" text-sm font-bold">전체 힘민지%</span>
               <input
                 type="range"
                 min="0"
@@ -183,11 +191,11 @@ const AllSelectPresetComp = ({ updateSet, type, search, searchState, apiKey }) =
                   setSliderStatValue(value); // 로컬 상태 업데이트
                   setGrade("statPercentage", value === 0 ? null : value); // 부모에 값 전달
                 }}
-                className="slider col-span-2 w-full  h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                className="slider  w-full  h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
               />
-              <div className="col-span-1  text-center text-sm text-gray-500">
+              <div className="  text-center text-sm text-gray-500">
                 <input
-                  className="w-full text-center rounded-3xl border border-gray-300"
+                  className="w-2/3 h-[28px] text-center rounded-3xl border border-gray-300"
                   placeholder="미지정"
                   type="number"
                   min="0"

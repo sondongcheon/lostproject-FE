@@ -54,7 +54,7 @@ function MainNav({ logSearch, getCountLog }) {
         <div className="container mx-auto px-2 py-1 flex justify-between items-center h-full text-[#2b2b2b] font-bold ">
           {/* 왼쪽에 'test' 홈페이지 링크 */}
           <span className="text-3xl cursor-pointer text-white font-a" onClick={() => navigate("/")}>
-            LoaRoot <span className="size-font-xxxs">[Ver 2.2.1]</span>
+            LoaRoot <span className="size-font-xxxs">[Ver 2.2.2]</span>
           </span>
 
           {/* 오른쪽에 페이지 이동 공간 잡기 */}
