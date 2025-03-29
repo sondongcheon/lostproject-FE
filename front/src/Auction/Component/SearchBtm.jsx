@@ -68,7 +68,7 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
   return (
     <div>
       <div className="h-32 flex justify-center items-center w-full">
-        <div className="w-[22%] h-full flex flex-col justify-center items-center shadow-lg border-2 rounded-3xl bg-gray-200">
+        <div className="w-[22%] h-full flex flex-col justify-center items-center shadow-lg rounded-3xl bg-gray-200">
           <h1
             className={`${
               apiKey === "" || !apiKey ? "font-bold text-center text-xs text-red-500" : "hidden"
@@ -93,7 +93,7 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
           <p className="font-bold text-xl">총 금액 : {total.toLocaleString()} G</p>
         </div>
         <div className="w-[2%]"></div>
-        <div className="w-[80%] grid grid-cols-6 h-full bg-[#F2F1E6] flex border-2 rounded-3xl bg-gray-200  shadow-lg">
+        <div className="w-[80%] grid grid-cols-6 h-full bg-[#F2F1E6] flex rounded-3xl bg-gray-200 shadow-lg">
           <div className="h-full flex flex-col items-center justify-center gap-y-2">
             <p>착용 악세 검색</p>
             <div className="flex justify-center items-center ">
@@ -119,7 +119,7 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
               </button>
             </div>
             {resultAcc[0]?.itemLevel ? (
-              <div>아이템 레벨 - {resultAcc[0].itemLevel}</div>
+              <div>아이템 레벨 {resultAcc[0].itemLevel}</div>
             ) : (
               <div className="text-gray-400">아이템 레벨 정보 없음</div>
             )}

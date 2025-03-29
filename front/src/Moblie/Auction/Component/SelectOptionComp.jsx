@@ -206,7 +206,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                 <div className="flex items-center">
                   {/* 그룹명 "연마효과"가 25% 영역에 정중앙 배치 */}
                   <div className="w-[25%] flex justify-center">
-                    <p className="size-font-xs font-bold pl-2">연마</p>
+                    <p className="size-font-xs font-bold pl-2">특옵</p>
                   </div>
 
                   {/* 나머지 75% 영역에 라디오 버튼들 배치 */}
@@ -319,7 +319,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                 <div className="flex items-center justify-center  ">
                   {/* 그룹명 "연마효과"가 25% 영역에 정중앙 배치 */}
                   <div className="w-[25%] flex justify-center">
-                    <p className="size-font-xs font-bold pl-2">연마</p>
+                    <p className="size-font-xs font-bold pl-2">특옵</p>
                   </div>
 
                   {/* 나머지 75% 영역에 라디오 버튼들 배치 */}
@@ -441,7 +441,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                 {/* 왼쪽 "연마효과" 그룹 */}
                 <div className="grid grid-cols-4 flex items-center justify-center ">
                   <div className="col-span-1 flex justify-center">
-                    <p className="size-font-xxs pl-2 font-bold">공용옵</p>
+                    <p className="size-font-xs pl-2 font-bold">공용</p>
                   </div>
                   <div className="col-span-3 justify-center items-center">
                     <div className="flex justify-center items-center">

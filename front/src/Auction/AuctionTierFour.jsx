@@ -238,7 +238,7 @@ function AuctionTierFour({
         </div>
 
         <div
-          className="mt-4 flex items-center justify-center cursor-pointer"
+          className="mt-12 flex items-center justify-center cursor-pointer"
           onClick={() => handleToggle("selAll")}
         >
           <img
@@ -306,7 +306,7 @@ function AuctionTierFour({
           </div>
         </div>
 
-        <div className="mt-6">
+        <div className="mt-12">
           <div
             className=" flex items-center justify-center cursor-pointer"
             onClick={() => handleToggle("searchMenu")}
@@ -359,7 +359,7 @@ function AuctionTierFour({
                 />
               ))}
             </div>
-            <div className="h-[1024px] overflow-y-invisible shadow-xl overflow-x-hidden">
+            <div className="h-[952px] rounded-xl overflow-y-invisible overflow-x-hidden">
               <div
                 className={`"h-12 gap-x-4 w-full border-black border-2" ${
                   (result[count]?.cntCount || 0) < 1 && (result[count]?.cntPage || 0) < 1

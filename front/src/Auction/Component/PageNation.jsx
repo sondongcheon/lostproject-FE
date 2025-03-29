@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { IoCaretForwardOutline } from "react-icons/io5";
-import { IoCaretBackOutline } from "react-icons/io5";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
+
+import leftBtm from "../../Assets/leftBtm.png";
+import rightBtm from "../../Assets/rightBtm.png";
+import loading from "../../Assets/loading.webp";
 
 const PageNation = ({
   dataLength,
@@ -164,27 +166,23 @@ const PageNation = ({
             10개를 채우기 위해 다음페이지 요청 시 다소 시간이 소요됩니다.
           </div>
         </div>
-        <div className="gap-x-8 flex items-center justify-center col-span-4">
+        <div className="flex items-center justify-center col-span-4">
           <button
-            className="bg-[#F5F5F5] border-2 border-gray-500 rounded-xl w-20 h-1/3 flex items-center justify-center mx-auto"
+            className="h-8 flex items-center justify-center mx-auto"
             onClick={backPage}
             disabled={currentPage === 1}
           >
-            <IoCaretBackOutline className="w-full h-full" />
+            <img src={leftBtm} className="w-full h-full" />
           </button>
-          <span className="size-font-2xl font-bold">{currentPage}</span>
+          <span className="text-center w-8 size-font-2xl font-bold text-[#2384bc]">
+            {nextPageBtm ? <img src={loading} className="h-8" /> : currentPage}
+          </span>
           <button
-            className="bg-[#F5F5F5] border-2 border-gray-500 rounded-xl w-20 h-1/3 flex items-center justify-center mx-auto"
+            className="h-8 flex items-center justify-center mx-auto"
             onClick={updateNextPage}
             disabled={nextPageBtm}
           >
-            {nextPageBtm ? (
-              <div className="w-full h-full bg-[url('./Assets/loading.webp')] bg-contain bg-center bg-no-repeat">
-                {" "}
-              </div>
-            ) : (
-              <IoCaretForwardOutline className="w-full h-full" />
-            )}
+            <img src={rightBtm} className="w-full h-full" />
           </button>
         </div>
         <div></div>

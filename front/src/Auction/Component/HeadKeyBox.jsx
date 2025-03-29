@@ -6,7 +6,7 @@ import { set } from "date-fns";
 const HeadKeyBox = ({ apiKey, setApiKey, saveKey, setSaveKey }) => {
   return (
     <div>
-      <div className="h-24 shadow-lg border-2 rounded-3xl bg-[#F5F5F5]">
+      <div className="h-20 shadow-lg border-2 rounded-3xl bg-[#F5F5F5]">
         <div className="flex justify-center items-center gap-x-4">
           <div className=" flex items-center">
             {/* <span className="font-bold"> {`API 키`}</span> */}
@@ -22,7 +22,7 @@ const HeadKeyBox = ({ apiKey, setApiKey, saveKey, setSaveKey }) => {
           <div style={{ display: "flex", alignItems: "center" }}>
             <span className="font-bold pr-1 ">저장</span>
             <input
-              className="h-16"
+              className="h-12"
               type="checkbox"
               checked={saveKey}
               onChange={(e) => setSaveKey(e.target.checked)}
@@ -58,12 +58,12 @@ const HeadKeyBox = ({ apiKey, setApiKey, saveKey, setSaveKey }) => {
         <div
           className={`${
             apiKey === "" || !apiKey
-              ? "font-bold text-center text-xs text-red-500"
-              : "opacity-0 invisible text-xs"
+              ? "font-bold text-center text-[13px] text-red-500"
+              : "opacity-0 invisible text-[13px]"
           } `}
         >
-          🚨 API Key가 입력되지 않았습니다.🚨 <br /> 공용키가 사용되어 검색은 가능합니다. 분당 횟수
-          초과가 일어날 확률이 높습니다.
+          🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색은 가능합니다. 분당 횟수 초과가
+          일어날 확률이 높습니다.
         </div>
       </div>
     </div>
