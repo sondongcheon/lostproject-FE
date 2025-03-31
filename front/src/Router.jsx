@@ -45,7 +45,7 @@ function Router() {
         <Route path="/chartitems/book" element={<ChartItems />} />
         <Route path="/chartitems/jewel" element={<ChartJewel />} />
 
-        {/* <Route path="/test4" element={<TestFour />} /> */}
+        <Route path="/test4" element={<TestFour />} />
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -144,6 +144,24 @@ function AuctionSup({ getCountLog }) {
     selectValue3: null,
   });
 
+  const loadPresetSlot = (slotIndex) => {
+    const presets = JSON.parse(localStorage.getItem("presetSlotsSup"));
+    if (!presets || !presets[slotIndex]) {
+      alert("해당 슬롯에 저장된 프리셋이 없습니다.");
+      return;
+    }
+
+    const loadedOptions = presets[slotIndex].value;
+
+    setSelectOption1(loadedOptions[0]);
+    setSelectOption2(loadedOptions[1]);
+    setSelectOption3(loadedOptions[2]);
+    setSelectOption4(loadedOptions[3]);
+    setSelectOption5(loadedOptions[4]);
+
+    alert(`"${presets[slotIndex].name}" 프리셋을 불러왔습니다!`);
+  };
+
   const updateOption1 = (key, value) => {
     setSelectOption1((prevState) => ({
       ...prevState,
@@ -207,6 +225,7 @@ function AuctionSup({ getCountLog }) {
             setCount={setCount}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
+            loadPresetSlot={loadPresetSlot}
           />
         ) : isTablet ? (
           <TauctionTierFourSup
@@ -221,6 +240,7 @@ function AuctionSup({ getCountLog }) {
             setCount={setCount}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
+            loadPresetSlot={loadPresetSlot}
           />
         ) : (
           <AuctionTierFourSup
@@ -235,6 +255,7 @@ function AuctionSup({ getCountLog }) {
             setCount={setCount}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
+            loadPresetSlot={loadPresetSlot}
           />
         )}
       </div>

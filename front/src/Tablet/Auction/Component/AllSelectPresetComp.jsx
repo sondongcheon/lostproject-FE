@@ -24,7 +24,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
       });
     }
     setGrade("quality", 67);
-    setGrade("statPercentage", 10);
+    setGrade("statPer", 10);
   }, type);
 
   const setOption = (key1, value1, key2, value2) => {
@@ -62,7 +62,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
       updateOption("quality", 67);
     });
     updateSet.forEach((updateOption) => {
-      updateOption("statPercentage", 10);
+      updateOption("statPer", 10);
     });
     updateSet.forEach((updateOption) => {
       updateOption("upgradeLevel", null);
@@ -150,7 +150,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                 onChange={(e) => {
                   const value = parseInt(e.target.value, 10);
                   setSliderStatValue(value); // 로컬 상태 업데이트
-                  setGrade("statPercentage", value === 0 ? null : value); // 부모에 값 전달
+                  setGrade("statPer", value === 0 ? null : value); // 부모에 값 전달
                 }}
                 className="slider col-span-2 w-full  h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
               />
@@ -165,10 +165,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                   onChange={(e) => {
                     const value = parseInt(e.target.value, 10);
                     setSliderStatValue(value); // 로컬 상태 업데이트
-                    setGrade(
-                      "statPercentage",
-                      isNaN(value) ? null : Math.min(100, Math.max(0, value))
-                    );
+                    setGrade("statPer", isNaN(value) ? null : Math.min(100, Math.max(0, value)));
                   }}
                 />
                 {/* {sliderValue === 0 ? "미지정" : sliderValue} */}

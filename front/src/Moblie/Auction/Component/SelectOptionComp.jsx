@@ -520,10 +520,8 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   type="range"
                   min="0"
                   max="100"
-                  value={options.statPercentage || 0}
-                  onChange={(e) =>
-                    onOptionsChange("statPercentage", parseInt(e.target.value, 10) || null)
-                  }
+                  value={options.statPer || 0}
+                  onChange={(e) => onOptionsChange("statPer", parseInt(e.target.value, 10) || null)}
                   className="slider w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
                 />
               </div>
@@ -534,11 +532,11 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                   type="number"
                   min="0"
                   max="100"
-                  value={options.statPercentage || 0}
+                  value={options.statPer || 0}
                   onChange={(e) => {
                     const value = parseInt(e.target.value, 10);
                     onOptionsChange(
-                      "statPercentage",
+                      "statPer",
                       isNaN(value) ? null : Math.min(100, Math.max(0, value))
                     );
                   }}

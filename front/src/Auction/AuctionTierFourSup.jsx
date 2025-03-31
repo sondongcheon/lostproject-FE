@@ -28,6 +28,7 @@ function AuctionTierFourSup({
   setCount,
   currentPage,
   setCurrentPage,
+  loadPresetSlot,
 }) {
   const [selectOptionReq, setSelectOptionReq] = useState([]);
 
@@ -57,6 +58,36 @@ function AuctionTierFourSup({
   });
 
   const [rotateFlags, setRotateFlags] = useState({});
+
+  const savePresetSlot = (slotIndex, presetName) => {
+    if (slotIndex < 0 || slotIndex > 4) return;
+
+    const presets = JSON.parse(localStorage.getItem("presetSlotsSup")) || [
+      {
+        name: 1,
+      },
+      {
+        name: 2,
+      },
+      {
+        name: 3,
+      },
+      {
+        name: 4,
+      },
+      {
+        name: 5,
+      },
+    ];
+
+    presets[slotIndex] = {
+      name: presetName,
+      value: options, // 현재 선택된 options 배열
+    };
+
+    localStorage.setItem("presetSlotsSup", JSON.stringify(presets));
+    alert(`"${presetName}" 프리셋이 ${slotIndex + 1}번 슬롯에 저장되었습니다.`);
+  };
 
   const handleToggle = (key) => {
     // 회전 상태 변경
@@ -158,7 +189,7 @@ function AuctionTierFourSup({
     const newSelectOptionReq = options.map((option) => ({
       tier: option.tier || "",
       quality: option.quality || "",
-      statPercentage: option.statPercentage || "",
+      statPer: option.statPer || "",
       upgradeLevel: option.upgradeLevel || "",
       tradeAllowCount: option.tradeAllowCount || "",
       categoryCode: option.categoryCode || "",
@@ -223,6 +254,8 @@ function AuctionTierFourSup({
             search={updateSelect}
             searchState={searchState}
             apiKey={apiKey}
+            savePresetSlot={savePresetSlot}
+            loadPresetSlot={loadPresetSlot}
           />
         </div>
 

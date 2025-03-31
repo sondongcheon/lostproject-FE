@@ -48,7 +48,7 @@ const PageNation = ({
       const newSelectOptionReq = {
         tier: option.tier || "",
         quality: option.quality || "",
-        statPercentage: option.statPercentage || "",
+        statPer: option.statPer || "",
         upgradeLevel: option.upgradeLevel || "",
         tradeAllowCount: option.tradeAllowCount || "",
         categoryCode: option.categoryCode || "",

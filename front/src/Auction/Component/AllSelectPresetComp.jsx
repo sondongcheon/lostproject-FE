@@ -1,15 +1,67 @@
 import React, { useEffect, useState } from "react";
 
-const AllSelectPresetComp = ({ updateSet, type, search, searchState, apiKey }) => {
+const AllSelectPresetComp = ({
+  updateSet,
+  type,
+  search,
+  searchState,
+  apiKey,
+  savePresetSlot,
+  loadPresetSlot,
+  savePresetCodeSlot,
+}) => {
   const [sliderValue, setSliderValue] = useState(67);
   const [sliderStatValue, setSliderStatValue] = useState(10);
   const [options, setOptions] = useState({});
+  const [presetSelectValue, setPresetSelectValue] = useState("-1");
+  const [presetName, setPresetName] = useState("");
+  const [presetCode, setPresetCode] = useState("");
+
+  const [presetSlots, setPresetSlots] = useState([
+    {
+      name: 1,
+    },
+    {
+      name: 2,
+    },
+    {
+      name: 3,
+    },
+    {
+      name: 4,
+    },
+    {
+      name: 5,
+    },
+  ]);
+
+  const exportPreset = (index) => {
+    const preset = JSON.parse(localStorage.getItem("presetSlots" + (type === 0 ? "Del" : "Sup")));
+
+    const presetString = JSON.stringify(preset[index]);
+    console.log(presetString);
+    const encoded = btoa(unescape(encodeURIComponent(presetString)));
+    navigator.clipboard.writeText(encoded);
+    alert("프리셋이 클립보드에 복사되었습니다!");
+  };
 
   const setGrade = (key, value) => {
     updateSet.forEach((updateOption) => {
       updateOption(key, value);
     });
   };
+
+  const loadPreset = () => {
+    const stored = JSON.parse(localStorage.getItem("presetSlots" + (type === 0 ? "Del" : "Sup")));
+
+    if (stored) {
+      setPresetSlots(stored);
+    }
+  };
+
+  useEffect(() => {
+    loadPreset();
+  }, []);
 
   useEffect(() => {
     if (type === 0) {
@@ -24,7 +76,7 @@ const AllSelectPresetComp = ({ updateSet, type, search, searchState, apiKey }) =
       });
     }
     setGrade("quality", 67);
-    setGrade("statPercentage", 10);
+    setGrade("statPer", 10);
   }, type);
 
   const setOption = (key1, value1, key2, value2) => {
@@ -61,7 +113,7 @@ const AllSelectPresetComp = ({ updateSet, type, search, searchState, apiKey }) =
       updateOption("quality", 67);
     });
     updateSet.forEach((updateOption) => {
-      updateOption("statPercentage", 10);
+      updateOption("statPer", 10);
     });
     updateSet.forEach((updateOption) => {
       updateOption("upgradeLevel", null);
@@ -98,7 +150,7 @@ const AllSelectPresetComp = ({ updateSet, type, search, searchState, apiKey }) =
   return (
     <div>
       <div className="flex">
-        <div className="h-44 w-full flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5] ">
+        <div className="h-72 w-full flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5] ">
           <div className="w-[25%] grid grid-rows-4 gap-y-2 py-2 ">
             <div className=" overflow-hidden">
               {apiKey === "" || !apiKey ? (
@@ -189,7 +241,7 @@ const AllSelectPresetComp = ({ updateSet, type, search, searchState, apiKey }) =
                 onChange={(e) => {
                   const value = parseInt(e.target.value, 10);
                   setSliderStatValue(value); // 로컬 상태 업데이트
-                  setGrade("statPercentage", value === 0 ? null : value); // 부모에 값 전달
+                  setGrade("statPer", value === 0 ? null : value); // 부모에 값 전달
                 }}
                 className="slider  w-full  h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
               />
@@ -204,10 +256,7 @@ const AllSelectPresetComp = ({ updateSet, type, search, searchState, apiKey }) =
                   onChange={(e) => {
                     const value = parseInt(e.target.value, 10);
                     setSliderStatValue(value); // 로컬 상태 업데이트
-                    setGrade(
-                      "statPercentage",
-                      isNaN(value) ? null : Math.min(100, Math.max(0, value))
-                    );
+                    setGrade("statPer", isNaN(value) ? null : Math.min(100, Math.max(0, value)));
                   }}
                 />
                 {/* {sliderValue === 0 ? "미지정" : sliderValue} */}
@@ -449,6 +498,116 @@ const AllSelectPresetComp = ({ updateSet, type, search, searchState, apiKey }) =
                 >
                   일괄제거
                 </button>
+              </div>
+            </div>
+
+            {/* 프리셋 저장 */}
+            <div className="col-span-9 px-3">
+              <div>
+                <div className="border-b-[3px] pb-1 border-[#2384bc] text-[#2384bc] size-font-xxs mb-2">
+                  개인 저장 프리셋
+                </div>
+                <div className="h-16 flex">
+                  <div className="w-[40%] grid grid-cols-3">
+                    <div className="grid grid-rows-2">
+                      <select
+                        value={presetSelectValue || ""}
+                        onChange={(e) => setPresetSelectValue(e.target.value)}
+                        className="text-center my-auto h-2/3 rounded-xl border-gray-400 border-2 bg-[#F5F5F5]"
+                      >
+                        <option value="-1">저장 위치 선택</option>
+                        {presetSlots.map((presetSlot, index) => (
+                          <option value={index}>{presetSlot?.name}</option>
+                        ))}
+                      </select>
+
+                      <button
+                        className=" mx-auto bg-[#68afb4] text-white border border-[#d75101] h-8 my-1 rounded-2xl font-bold  presetBtm"
+                        onClick={() => {
+                          exportPreset(presetSelectValue);
+                        }}
+                        disabled={presetSelectValue === "-1"}
+                      >
+                        선택값 추출하기
+                      </button>
+                    </div>
+                    <div className="flex items-center grid grid-rows-2">
+                      <input
+                        type="text"
+                        placeholder="이름 (1~8자)"
+                        className="w-36 text-center border-red-500 border-2"
+                        onChange={(e) => setPresetName(e.target.value)}
+                        value={presetName}
+                        disabled={presetSelectValue === "-1"}
+                        maxLength={8}
+                      />
+
+                      <input
+                        type="text"
+                        placeholder="코드를 입력해주세요"
+                        className="w-36 text-center border-red-500 border-2"
+                        onChange={(e) => setPresetCode(e.target.value)}
+                        value={presetCode}
+                        disabled={presetSelectValue === "-1"}
+                      />
+                    </div>
+                    <div className="grid grid-rows-2">
+                      <button
+                        className=" mx-auto bg-[#68afb4] text-white border border-[#d75101] h-8 my-1 rounded-2xl font-bold  presetBtm"
+                        onClick={() => {
+                          savePresetSlot(presetSelectValue, presetName);
+                          loadPreset();
+                        }}
+                        disabled={presetName.length < 2}
+                      >
+                        현재 옵션 저장
+                      </button>
+                      <button
+                        className=" mx-auto bg-[#68afb4] text-white border border-[#d75101] h-8 my-1  rounded-2xl font-bold  presetBtm"
+                        onClick={() => {
+                          savePresetCodeSlot(presetSelectValue, presetCode);
+                          loadPreset();
+                        }}
+                      >
+                        입력 코드 저장
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="w-[60%] grid grid-cols-4 flex h-full">
+                    <button
+                      className="w-[90%] mx-auto bg-white text-gray-500 hover:bg-[#e38e49] hover:text-white border border-gray-500 hover:border-[#da7c2f] my-1  h-8 rounded-2xl font-bold  presetBtm"
+                      onClick={() => loadPresetSlot(0)}
+                    >
+                      {presetSlots[0]?.name || "1"}
+                    </button>
+                    <button
+                      className="w-[90%] mx-auto bg-white text-gray-500 hover:bg-[#e38e49] hover:text-white border border-gray-500 hover:border-[#da7c2f] my-1  h-8 rounded-2xl font-bold  presetBtm"
+                      onClick={() => loadPresetSlot(1)}
+                    >
+                      {presetSlots[1]?.name || "2"}
+                    </button>
+
+                    <button
+                      className="w-[90%] mx-auto bg-white text-gray-500 hover:bg-[#e38e49] hover:text-white border border-gray-500 hover:border-[#da7c2f] my-1  h-8 rounded-2xl font-bold  presetBtm"
+                      onClick={() => loadPresetSlot(2)}
+                    >
+                      {presetSlots[2]?.name || "3"}
+                    </button>
+                    <button
+                      className="w-[90%] mx-auto bg-white text-gray-500 hover:bg-[#e38e49] hover:text-white border border-gray-500 hover:border-[#da7c2f] my-1  h-8 rounded-2xl font-bold  presetBtm"
+                      onClick={() => loadPresetSlot(3)}
+                    >
+                      {presetSlots[3]?.name || "4"}
+                    </button>
+                    <button
+                      className="w-[90%] mx-auto bg-white text-gray-500 hover:bg-[#e38e49] hover:text-white border border-gray-500 hover:border-[#da7c2f] my-1  h-8 rounded-2xl font-bold  presetBtm"
+                      onClick={() => loadPresetSlot(4)}
+                    >
+                      {presetSlots[4]?.name || "5"}
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
