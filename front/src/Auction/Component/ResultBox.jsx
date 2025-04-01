@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const ResultBox = ({ number, result, option, onClick, className }) => {
+const ResultBox = ({ number, result, staticNameList, onClick, className }) => {
   const [price, setPrice] = useState(0);
   const [valueRange, setValueRange] = useState("");
   const [minValue, setMinValue] = useState(0);
@@ -76,7 +76,7 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
           }`}
         >
           <img className="w-2/3 border-dotted border-black bg-[#9c8c6a]" src={result?.icon || ""} />
-          {number !== undefined ? `${number + 1}` : option.accName}
+          {number !== undefined ? `${number + 1}` : staticNameList?.accName}
           {result?.options?.length > 5 && number === undefined && (
             <div className="group relative">
               <button className="mt-4 p-2 bg-gray-500 text-[11px] text-white rounded-xl">
@@ -107,8 +107,6 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
               <p>
                 {result?.auctionInfo?.tradeAllowCount === undefined
                   ? "검색 결과 없음"
-                  : result?.auctionInfo?.tradeAllowCount === 0
-                  ? "0"
                   : "[구매 시 거래 " + result?.auctionInfo?.tradeAllowCount + "회 가능]" ||
                     "검색 결과 없음"}
               </p>
@@ -117,7 +115,7 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
               <div className="">
                 {result?.options?.length > 2 && (
                   <div className="font-bold">
-                    {result?.options[1]?.optionName} {parseInt(result?.options[1]?.value) || "0"}{" "}
+                    {result?.options[1]?.optName} {parseInt(result?.options[1]?.value) || "0"}{" "}
                     <br />
                     {result?.options?.length > 2 && (
                       <div className="group relative flex items-center">
@@ -205,7 +203,7 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
                             })(),
                           }}
                         >
-                          {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
+                          {/* {getLevel(result?.options[1]?. optName, result?.options[1]?.value)} -{" "} */}
                           {result?.options[5]?.valueGrade}
                         </span>
                       )}
@@ -223,7 +221,7 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
                             })(),
                           }}
                         >
-                          {/* {getLevel(result?.options[2]?.optionName, result?.options[2]?.value)} */}
+                          {/* {getLevel(result?.options[2]?. optName, result?.options[2]?.value)} */}
                           {result?.options[6]?.valueGrade}
                         </span>
                       )}
@@ -241,7 +239,7 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
                             })(),
                           }}
                         >
-                          {/* {getLevel(result?.options[3]?.optionName, result?.options[3]?.value)} */}
+                          {/* {getLevel(result?.options[3]?. optName, result?.options[3]?.value)} */}
                           {result?.options[7]?.valueGrade || <br />}
                         </span>
                       )}

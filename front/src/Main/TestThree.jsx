@@ -258,9 +258,9 @@ function TestThree(props) {
                   <td>{Item?.name || "X"}</td>
                   <td>{Item?.gradeQuality || "X"}</td>
                   <td>
-                    {Item?.options[1]?.optionName || "X"} <br />
-                    {Item?.options[2]?.optionName || "값없음"} <br />
-                    {Item?.options[3]?.optionName || "값없음"}
+                    {Item?.options[1]?.optName || "X"} <br />
+                    {Item?.options[2]?.optName || "값없음"} <br />
+                    {Item?.options[3]?.optName || "값없음"}
                   </td>
                   <td>
                     {Item?.options[1]?.value || "X"} <br />

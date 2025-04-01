@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const ResultBox = ({ number, result, option, onClick, className }) => {
+const ResultBox = ({ number, result, onClick, className, staticNameList }) => {
   const [price, setPrice] = useState(0);
   const [valueRange, setValueRange] = useState("");
   const [minValue, setMinValue] = useState(0);
@@ -68,7 +68,7 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
           }`}
         >
           <img className="" src={result?.icon || ""} />
-          {number !== undefined ? `${number + 1}` : option.accName}
+          {number !== undefined ? `${number + 1}` : staticNameList?.accName}
         </div>
         <div className="col-span-3">
           <p>등급 - {result?.grade || "결과 없음"}</p>
@@ -137,7 +137,7 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
                     })(),
                   }}
                 >
-                  {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
+                  {/* {getLevel(result?.options[1]?. optName, result?.options[1]?.value)} -{" "} */}
                   {result?.options[5]?.valueGrade}
                 </span>
               )}
@@ -155,7 +155,7 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
                     })(),
                   }}
                 >
-                  {/* {getLevel(result?.options[2]?.optionName, result?.options[2]?.value)} */}
+                  {/* {getLevel(result?.options[2]?. optName, result?.options[2]?.value)} */}
                   {result?.options[6]?.valueGrade}
                 </span>
               )}
@@ -173,7 +173,7 @@ const ResultBox = ({ number, result, option, onClick, className }) => {
                     })(),
                   }}
                 >
-                  {/* {getLevel(result?.options[3]?.optionName, result?.options[3]?.value)} */}
+                  {/* {getLevel(result?.options[3]?. optName, result?.options[3]?.value)} */}
                   {result?.options[7]?.valueGrade || null}
                 </span>
               )}

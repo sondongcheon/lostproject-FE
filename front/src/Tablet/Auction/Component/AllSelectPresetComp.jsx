@@ -14,17 +14,17 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
   useEffect(() => {
     if (type === 0) {
       setOptions({
-        selectOption1: ["41", "45", "45", "49", "49"],
-        selectOption2: ["42", "46", "46", "50", "50"],
+        selOpt1: ["41", "45", "45", "49", "49"],
+        selOpt2: ["42", "46", "46", "50", "50"],
       });
     } else if (type === 1) {
       setOptions({
-        selectOption1: ["43", "46", "46", "51", "51"],
-        selectOption2: ["44", "54", "54", "52", "52"],
+        selOpt1: ["43", "46", "46", "51", "51"],
+        selOpt2: ["44", "54", "54", "52", "52"],
       });
     }
     setGrade("quality", 67);
-    setGrade("statPercentage", 10);
+    setGrade("statPer", 10);
   }, type);
 
   const setOption = (key1, value1, key2, value2) => {
@@ -43,7 +43,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
       });
     } else {
       updateSet.forEach((updateOption) => {
-        updateOption("selectOption2", null);
+        updateOption("selOpt2", null);
       });
     }
   };
@@ -62,31 +62,31 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
       updateOption("quality", 67);
     });
     updateSet.forEach((updateOption) => {
-      updateOption("statPercentage", 10);
+      updateOption("statPer", 10);
     });
     updateSet.forEach((updateOption) => {
       updateOption("upgradeLevel", null);
     });
     updateSet.forEach((updateOption) => {
-      updateOption("tradeAllowCount", null);
+      updateOption("trdCnt", null);
     });
     updateSet.forEach((updateOption) => {
-      updateOption("selectOption1", null);
+      updateOption("selOpt1", null);
     });
     updateSet.forEach((updateOption) => {
-      updateOption("selectValue1", null);
+      updateOption("selVal1", null);
     });
     updateSet.forEach((updateOption) => {
-      updateOption("selectOption2", null);
+      updateOption("selOpt2", null);
     });
     updateSet.forEach((updateOption) => {
-      updateOption("selectValue2", null);
+      updateOption("selVal2", null);
     });
     updateSet.forEach((updateOption, index) => {
-      updateOption("selectOption3", type === 1 && (index === 1 || index === 2) ? "46" : null);
+      updateOption("selOpt3", type === 1 && (index === 1 || index === 2) ? "46" : null);
     });
     updateSet.forEach((updateOption) => {
-      updateOption("selectValue3", null);
+      updateOption("selVal3", null);
     });
 
     updateSet[0]("categoryCode", 200010);
@@ -150,7 +150,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                 onChange={(e) => {
                   const value = parseInt(e.target.value, 10);
                   setSliderStatValue(value); // 로컬 상태 업데이트
-                  setGrade("statPercentage", value === 0 ? null : value); // 부모에 값 전달
+                  setGrade("statPer", value === 0 ? null : value); // 부모에 값 전달
                 }}
                 className="slider col-span-2 w-full  h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
               />
@@ -165,10 +165,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                   onChange={(e) => {
                     const value = parseInt(e.target.value, 10);
                     setSliderStatValue(value); // 로컬 상태 업데이트
-                    setGrade(
-                      "statPercentage",
-                      isNaN(value) ? null : Math.min(100, Math.max(0, value))
-                    );
+                    setGrade("statPer", isNaN(value) ? null : Math.min(100, Math.max(0, value)));
                   }}
                 />
                 {/* {sliderValue === 0 ? "미지정" : sliderValue} */}
@@ -182,26 +179,26 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
             <div className="grid grid-rows-2 grid-cols-3 h-20">
               <button
                 className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
-                onClick={() => setGrade("selectValue3", "3")}
+                onClick={() => setGrade("selVal3", "3")}
               >
                 공용 상
               </button>
               <button
                 className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
-                onClick={() => setGrade("selectValue3", "2")}
+                onClick={() => setGrade("selVal3", "2")}
               >
                 공용 중
               </button>
               <button
                 className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
-                onClick={() => setGrade("selectValue3", "1")}
+                onClick={() => setGrade("selVal3", "1")}
               >
                 공용 하
               </button>
               <button
                 className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
                 onClick={(type) =>
-                  type === 0 ? setGrade("selectOption3", "53") : setGrade("selectOption3", "55")
+                  type === 0 ? setGrade("selOpt3", "53") : setGrade("selOpt3", "55")
                 }
               >
                 {type === 0 ? (
@@ -213,7 +210,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
               <button
                 className={`w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm`}
                 onClick={(type) =>
-                  type === 0 ? setGrade("selectOption3", "54") : setGrade("selectOption3", "56")
+                  type === 0 ? setGrade("selOpt3", "54") : setGrade("selOpt3", "56")
                 }
               >
                 {type === 0 ? (
@@ -224,7 +221,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
               </button>
               <button
                 className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#566863] hover:text-white border border-[#566863] my-2 h-8 rounded-2xl font-bold  presetBtm"
-                onClick={() => setGrade("selectOption3", null)}
+                onClick={() => setGrade("selOpt3", null)}
               >
                 일괄제거
               </button>
@@ -259,21 +256,21 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
             <div className="grid grid-rows-2 grid-cols-5 h-20">
               <button
                 className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#e38e49] hover:text-white border border-gray-500 hover:border-[#da7c2f] my-2 h-8 rounded-2xl font-bold  presetBtm"
-                onClick={() => setOption("selectValue1", "3", "selectValue2", null)}
+                onClick={() => setOption("selVal1", "3", "selVal2", null)}
               >
                 상단일
               </button>
 
               <button
                 className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#e38e49] hover:text-white border border-gray-500 hover:border-[#da7c2f] my-2 h-8 rounded-2xl font-bold  presetBtm"
-                onClick={() => setOption("selectValue1", "3", "selectValue2", "3")}
+                onClick={() => setOption("selVal1", "3", "selVal2", "3")}
               >
                 상 상
               </button>
               <div className=" group relative flex justify-center">
                 <button
                   className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#e38e49] hover:text-white border border-gray-500 hover:border-[#da7c2f] my-2 h-8 rounded-2xl font-bold  presetBtm"
-                  onClick={() => setOption("selectValue1", "3", "selectValue2", "2")}
+                  onClick={() => setOption("selVal1", "3", "selVal2", "2")}
                 >
                   상 중
                 </button>
@@ -294,7 +291,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
               <div className=" group relative flex justify-center">
                 <button
                   className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#e38e49] hover:text-white border border-gray-500 hover:border-[#da7c2f] my-2 h-8 rounded-2xl font-bold  presetBtm"
-                  onClick={() => setOption("selectValue1", "3", "selectValue2", "1")}
+                  onClick={() => setOption("selVal1", "3", "selVal2", "1")}
                 >
                   상 하
                 </button>
@@ -316,7 +313,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
               <div className=" group relative flex justify-center">
                 <button
                   className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#2f5a9b] hover:text-white border border-gray-500 hover:border-[#0a3981] my-2 h-8 rounded-2xl font-bold  presetBtm"
-                  onClick={() => setOption("selectValue1", "1", "selectValue2", "3")}
+                  onClick={() => setOption("selVal1", "1", "selVal2", "3")}
                 >
                   하 상
                 </button>
@@ -336,13 +333,13 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
               </div>
               <button
                 className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#953fb2] hover:text-white border border-gray-500 hover:border-[#781f96] my-2 h-8 rounded-2xl font-bold  presetBtm"
-                onClick={() => setOption("selectValue1", "2", "selectValue2", null)}
+                onClick={() => setOption("selVal1", "2", "selVal2", null)}
               >
                 중단일
               </button>
               <button
                 className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#953fb2] hover:text-white border border-gray-500 hover:border-[#781f96] my-2 h-8 rounded-2xl font-bold  presetBtm"
-                onClick={() => setOption("selectValue1", "2", "selectValue2", "2")}
+                onClick={() => setOption("selVal1", "2", "selVal2", "2")}
               >
                 중 중
               </button>
@@ -350,7 +347,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
               <div className=" group relative flex justify-center">
                 <button
                   className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#953fb2] hover:text-white border border-gray-500 hover:border-[#781f96] my-2 h-8 rounded-2xl font-bold  presetBtm"
-                  onClick={() => setOption("selectValue1", "2", "selectValue2", "3")}
+                  onClick={() => setOption("selVal1", "2", "selVal2", "3")}
                 >
                   중 상
                 </button>
@@ -371,7 +368,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
               <div className=" group relative flex justify-center">
                 <button
                   className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#953fb2] hover:text-white border border-gray-500 hover:border-[#781f96] my-2 h-8 rounded-2xl font-bold  presetBtm"
-                  onClick={() => setOption("selectValue1", "2", "selectValue2", "1")}
+                  onClick={() => setOption("selVal1", "2", "selVal2", "1")}
                 >
                   중 하
                 </button>
@@ -392,7 +389,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
               <div className=" group relative flex justify-center">
                 <button
                   className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#2f5a9b] hover:text-white border border-gray-500 hover:border-[#0a3981] my-2 h-8 rounded-2xl font-bold  presetBtm"
-                  onClick={() => setOption("selectValue1", "1", "selectValue2", "2")}
+                  onClick={() => setOption("selVal1", "1", "selVal2", "2")}
                 >
                   하 중
                 </button>

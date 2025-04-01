@@ -28,6 +28,8 @@ function AuctionTierFourSup({
   setCount,
   currentPage,
   setCurrentPage,
+  loadPresetSlot,
+  staticNameList,
 }) {
   const [selectOptionReq, setSelectOptionReq] = useState([]);
 
@@ -57,6 +59,100 @@ function AuctionTierFourSup({
   });
 
   const [rotateFlags, setRotateFlags] = useState({});
+
+  const savePresetSlot = (slotIndex, presetName) => {
+    if (slotIndex < 0 || slotIndex > 4) return;
+
+    const presets = JSON.parse(localStorage.getItem("presetSlotsSup")) || [
+      {
+        name: "프리셋 1",
+      },
+      {
+        name: "프리셋 2",
+      },
+      {
+        name: "프리셋 3",
+      },
+      {
+        name: "프리셋 4",
+      },
+      {
+        name: "프리셋 5",
+      },
+    ];
+
+    presets[slotIndex] = {
+      name: presetName,
+      type: 2,
+      value: options, // 현재 선택된 options 배열
+    };
+
+    localStorage.setItem("presetSlotsSup", JSON.stringify(presets));
+    alert(`"${presetName}" 프리셋이 저장되었습니다.`);
+  };
+
+  const savePresetCodeSlot = async (slotIndex, code) => {
+    if (slotIndex < 0 || slotIndex > 4) return;
+
+    const presets = JSON.parse(localStorage.getItem("presetSlotsSup")) || [
+      {
+        name: "프리셋 1",
+      },
+      {
+        name: "프리셋 2",
+      },
+      {
+        name: "프리셋 3",
+      },
+      {
+        name: "프리셋 4",
+      },
+      {
+        name: "프리셋 5",
+      },
+    ];
+
+    try {
+      const decodedStr = atob(code);
+      // UTF-8로 복원
+      const jsonString = decodeURIComponent(escape(decodedStr));
+      // JSON 문자열을 배열로 변환
+      const decodedOption = JSON.parse(jsonString);
+
+      if (isValidPreset(decodedOption)) {
+        if (decodedOption.type === 1) {
+          alert("딜러 페이지의 프리셋 코드입니다.");
+          return;
+        }
+        presets[slotIndex] = {
+          name: decodedOption.name,
+          type: decodedOption.type,
+          value: decodedOption.value, // 현재 선택된 options 배열
+        };
+
+        await new Promise((resolve) => {
+          localStorage.setItem("presetSlotsSup", JSON.stringify(presets));
+          resolve(); // 로컬스토리지 저장이 끝나면 resolve
+        });
+
+        alert(`"${decodedOption.name}" 프리셋이 저장되었습니다.`);
+      } else {
+        alert("올바르지 않은 프리셋입니다.");
+      }
+    } catch (e) {
+      alert("잘못된 프리셋 코드입니다. 다시 확인해주세요.");
+      console.error("프리셋 불러오기 오류:", e);
+    }
+  };
+
+  function isValidPreset(preset) {
+    return (
+      typeof preset === "object" &&
+      typeof preset.name === "string" &&
+      typeof preset.type === "number" &&
+      Array.isArray(preset.value)
+    );
+  }
 
   const handleToggle = (key) => {
     // 회전 상태 변경
@@ -158,23 +254,23 @@ function AuctionTierFourSup({
     const newSelectOptionReq = options.map((option) => ({
       tier: option.tier || "",
       quality: option.quality || "",
-      statPercentage: option.statPercentage || "",
+      statPer: option.statPer || "",
       upgradeLevel: option.upgradeLevel || "",
-      tradeAllowCount: option.tradeAllowCount || "",
+      tradeAllowCount: option.trdCnt || "",
       categoryCode: option.categoryCode || "",
       itemGrade: option.itemGrade || "",
       etcOptionList: [
         {
-          option: option.selectOption1 || null,
-          value: option.selectValue1 || null,
+          option: option.selOpt1 || null,
+          value: option.selVal1 || null,
         },
         {
-          option: option.selectOption2 || null,
-          value: option.selectValue2 || null,
+          option: option.selOpt2 || null,
+          value: option.selVal2 || null,
         },
         {
-          option: option.selectOption3 || null,
-          value: option.selectValue3 || null,
+          option: option.selOpt3 || null,
+          value: option.selVal3 || null,
         },
       ],
     }));
@@ -223,6 +319,9 @@ function AuctionTierFourSup({
             search={updateSelect}
             searchState={searchState}
             apiKey={apiKey}
+            savePresetSlot={savePresetSlot}
+            loadPresetSlot={loadPresetSlot}
+            savePresetCodeSlot={savePresetCodeSlot}
           />
         </div>
 
@@ -267,30 +366,35 @@ function AuctionTierFourSup({
             <SelectOptionComp
               options={options[0]}
               onOptionsChange={updateOptions[0]}
+              staticNameList={staticNameList[0]}
             ></SelectOptionComp>
           </div>
           <div>
             <SelectOptionComp
               options={options[1]}
               onOptionsChange={updateOptions[1]}
+              staticNameList={staticNameList[1]}
             ></SelectOptionComp>
           </div>
           <div>
             <SelectOptionComp
               options={options[2]}
               onOptionsChange={updateOptions[2]}
+              staticNameList={staticNameList[2]}
             ></SelectOptionComp>
           </div>
           <div>
             <SelectOptionComp
               options={options[3]}
               onOptionsChange={updateOptions[3]}
+              staticNameList={staticNameList[3]}
             ></SelectOptionComp>
           </div>
           <div>
             <SelectOptionComp
               options={options[4]}
               onOptionsChange={updateOptions[4]}
+              staticNameList={staticNameList[4]}
             ></SelectOptionComp>
           </div>
         </div>
@@ -336,7 +440,7 @@ function AuctionTierFourSup({
               {result.map((item, index) => (
                 <ResultBox
                   result={item}
-                  option={options[index]}
+                  staticNameList={staticNameList[count]}
                   onClick={() => setCount(index)}
                   className={`${
                     count === index
@@ -374,7 +478,7 @@ function AuctionTierFourSup({
                     <ResultBox
                       key={index}
                       result={item}
-                      option={options[count]}
+                      staticNameList={staticNameList[count]}
                       number={index}
                       className={"bg-[#F5F5F5] pointer-events-none"}
                     />

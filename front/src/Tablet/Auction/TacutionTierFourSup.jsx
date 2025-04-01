@@ -30,6 +30,7 @@ function TauctionTierFourSup({
   setCount,
   currentPage,
   setCurrentPage,
+  staticNameList,
 }) {
   const [selectOptionReq, setSelectOptionReq] = useState([]);
 
@@ -165,23 +166,23 @@ function TauctionTierFourSup({
     const newSelectOptionReq = options.map((option) => ({
       tier: option.tier || "",
       quality: option.quality || "",
-      statPercentage: option.statPercentage || "",
+      statPer: option.statPer || "",
       upgradeLevel: option.upgradeLevel || "",
-      tradeAllowCount: option.tradeAllowCount || "",
+      tradeAllowCount: option.trdCnt || "",
       categoryCode: option.categoryCode || "",
       itemGrade: option.itemGrade || "",
       etcOptionList: [
         {
-          option: option.selectOption1 || null,
-          value: option.selectValue1 || null,
+          option: option.selOpt1 || null,
+          value: option.selVal1 || null,
         },
         {
-          option: option.selectOption2 || null,
-          value: option.selectValue2 || null,
+          option: option.selOpt2 || null,
+          value: option.selVal2 || null,
         },
         {
-          option: option.selectOption3 || null,
-          value: option.selectValue3 || null,
+          option: option.selOpt3 || null,
+          value: option.selVal3 || null,
         },
       ],
     }));
@@ -315,6 +316,7 @@ function TauctionTierFourSup({
           <SelectOptionComp
             options={options[0]}
             onOptionsChange={updateOptions[0]}
+            staticNameList={staticNameList[0]}
           ></SelectOptionComp>
         </div>
 
@@ -343,6 +345,7 @@ function TauctionTierFourSup({
           <SelectOptionComp
             options={options[1]}
             onOptionsChange={updateOptions[1]}
+            staticNameList={staticNameList[1]}
           ></SelectOptionComp>
         </div>
 
@@ -371,6 +374,7 @@ function TauctionTierFourSup({
           <SelectOptionComp
             options={options[2]}
             onOptionsChange={updateOptions[2]}
+            staticNameList={staticNameList[2]}
           ></SelectOptionComp>
         </div>
 
@@ -399,6 +403,7 @@ function TauctionTierFourSup({
           <SelectOptionComp
             options={options[3]}
             onOptionsChange={updateOptions[3]}
+            staticNameList={staticNameList[3]}
           ></SelectOptionComp>
         </div>
 
@@ -427,6 +432,7 @@ function TauctionTierFourSup({
           <SelectOptionComp
             options={options[4]}
             onOptionsChange={updateOptions[4]}
+            staticNameList={staticNameList[4]}
           ></SelectOptionComp>
         </div>
       </div>
@@ -481,7 +487,7 @@ function TauctionTierFourSup({
             {result.map((item, index) => (
               <ResultBox
                 result={item}
-                option={options[index]}
+                staticNameList={staticNameList[index]}
                 onClick={() => setCount(index)}
                 className={`${
                   count === index
@@ -519,7 +525,7 @@ function TauctionTierFourSup({
                   <ResultBox
                     key={index}
                     result={item}
-                    option={options[count]}
+                    staticNameList={staticNameList[count]}
                     number={index}
                     className={"bg-[#F5F5F5]"}
                   />

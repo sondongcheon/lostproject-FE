@@ -34,6 +34,9 @@ module.exports = {
         spinCounterClockwise: 'spinCounterClockwise 0.5s ease-in-out',
         'marquee-loop': 'marqueeLoop 15s linear infinite',
       },
+      boxShadow: {
+        'inset-indigo': 'inset -4px 4px 8px rgba(0, 0, 0, 0.4)', // 예시
+      },
     },
   },
   plugins: [],

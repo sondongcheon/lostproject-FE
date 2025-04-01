@@ -46,25 +46,25 @@ const PageNation = ({
       const newSelectOptionReq = {
         tier: option.tier || "",
         quality: option.quality || "",
-        statPercentage: option.statPercentage || "",
+        statPer: option.statPer || "",
         upgradeLevel: option.upgradeLevel || "",
-        tradeAllowCount: option.tradeAllowCount || "",
+        tradeAllowCount: option.trdCnt || "",
         categoryCode: option.categoryCode || "",
         itemGrade: option.itemGrade || "",
         pageNo: cntPage || "",
         numberCount: cntCount || "",
         etcOptionList: [
           {
-            option: option.selectOption1 || null,
-            value: option.selectValue1 || null,
+            option: option.selOpt1 || null,
+            value: option.selVal1 || null,
           },
           {
-            option: option.selectOption2 || null,
-            value: option.selectValue2 || null,
+            option: option.selOpt2 || null,
+            value: option.selVal2 || null,
           },
           {
-            option: option.selectOption3 || null,
-            value: option.selectValue3 || null,
+            option: option.selOpt3 || null,
+            value: option.selVal3 || null,
           },
         ],
       };
