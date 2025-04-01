@@ -186,6 +186,7 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                       name={`${staticNameList.id}_upgradeLevel`}
                       value="1"
                       className="mr-1"
+                      checked={options?.upgradeLevel === "1"}
                       onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
                     />
                     <span className="text-sm">1</span>
@@ -197,6 +198,7 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                       name={`${staticNameList.id}_upgradeLevel`}
                       value="2"
                       className="mr-1"
+                      checked={options?.upgradeLevel === "2"}
                       onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
                     />
                     <span className="text-sm">2</span>
@@ -208,6 +210,7 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                       name={`${staticNameList.id}_upgradeLevel`}
                       value="3"
                       className="mr-1"
+                      checked={options?.upgradeLevel === "3"}
                       onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
                     />
                     <span className="text-sm">3</span>
@@ -238,6 +241,7 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                       name={`${staticNameList.id}tradeCount`}
                       value="0"
                       className="mr-1"
+                      checked={options?.trdCnt === "0"}
                       onChange={(e) => onOptionsChange("trdCnt", e.target.value)}
                     />
                     <span className="text-sm">0</span>
@@ -248,6 +252,7 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                       name={`${staticNameList.id}tradeCount`}
                       value="1"
                       className="mr-1"
+                      checked={options?.trdCnt === "1"}
                       onChange={(e) => onOptionsChange("trdCnt", e.target.value)}
                     />
                     <span className="text-sm">1</span>
@@ -259,6 +264,7 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                       name={`${staticNameList.id}tradeCount`}
                       value="2"
                       className="mr-1"
+                      checked={options?.trdCnt === "2"}
                       onChange={(e) => onOptionsChange("trdCnt", e.target.value)}
                     />
                     <span className="text-sm">2</span>
