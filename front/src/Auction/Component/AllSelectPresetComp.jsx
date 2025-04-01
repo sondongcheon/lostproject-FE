@@ -597,9 +597,8 @@ const AllSelectPresetComp = ({
                       className="group relative w-full h-full text-white bg-[#2383bd]  border border-[#2383bd] rounded-r-xl font-bold transition duration-700 ease-in-out hover:bg-black  hover:border-black"
                       onClick={() => {
                         savePresetSlot(presetSelectValue, presetName);
-                        loadPreset();
                       }}
-                      disabled={presetName.length < 2}
+                      disabled={presetName.length < 2 && presetSelectValue === "-1"}
                     >
                       저장
                       <div
@@ -620,7 +619,11 @@ const AllSelectPresetComp = ({
                     <div key={index} className="flex items-center">
                       <button
                         className="w-4/5 mx-auto text-sm text-gray-500 font-bold hover:underline presetBtm"
-                        onClick={() => loadPresetSlot(index)}
+                        onClick={() => {
+                          loadPresetSlot(index);
+                          setPresetName(presetSlots[index].name);
+                          setPresetSelectValue(index + "");
+                        }}
                       >
                         {presetSlots[index]?.name || `${index + 1}`}
                       </button>
