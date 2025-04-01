@@ -209,9 +209,9 @@ function TestTwo(props) {
                   <td>{Item.Name}</td>
                   <td>{Item.GradeQuality}</td>
                   <td>
-                    {Item.Options[1].OptionName} <br />
-                    {Item.Options[2]?.OptionName || "값없음"} <br />
-                    {Item.Options[3]?.OptionName || "값없음"}
+                    {Item.Options[1].optName} <br />
+                    {Item.Options[2]?.optName || "값없음"} <br />
+                    {Item.Options[3]?.optName || "값없음"}
                   </td>
                   <td>
                     {Item.Options[1].Value} <br />

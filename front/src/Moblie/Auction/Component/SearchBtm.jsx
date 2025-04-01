@@ -129,7 +129,7 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
                       backgroundColor: (() => rankColor(resultAcc[index]?.valueLevel[0] || ""))(),
                     }}
                   >
-                    {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
+                    {/* {getLevel(result?.options[1]?. optName, result?.options[1]?.value)} -{" "} */}
                     {resultAcc[index]?.valueLevel[0]}
                   </span>{" "}
                   <span>
@@ -142,7 +142,7 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
                       backgroundColor: (() => rankColor(resultAcc[index]?.valueLevel[1] || ""))(),
                     }}
                   >
-                    {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
+                    {/* {getLevel(result?.options[1]?. optName, result?.options[1]?.value)} -{" "} */}
                     {resultAcc[index]?.valueLevel[1]}
                   </span>{" "}
                   <span>
@@ -155,7 +155,7 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
                       backgroundColor: (() => rankColor(resultAcc[index]?.valueLevel[2] || ""))(),
                     }}
                   >
-                    {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
+                    {/* {getLevel(result?.options[1]?. optName, result?.options[1]?.value)} -{" "} */}
                     {resultAcc[index]?.valueLevel[2]}
                   </span>{" "}
                   <span>
@@ -168,7 +168,7 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
                       backgroundColor: (() => rankColor(resultAcc[index]?.statLevel || ""))(),
                     }}
                   >
-                    {/* {getLevel(result?.options[1]?.optionName, result?.options[1]?.value)} -{" "} */}
+                    {/* {getLevel(result?.options[1]?. optName, result?.options[1]?.value)} -{" "} */}
                     {resultAcc[index]?.statLevel}
                     <div className="absolute top-full w-[250%] px-3 py-2 bg-gray-800 text-white size-font-5xs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                       0~24% 無급 스텟 <br />

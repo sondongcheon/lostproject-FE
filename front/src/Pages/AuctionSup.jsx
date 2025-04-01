@@ -13,181 +13,182 @@ function AuctionSup({ getCountLog }) {
     query: "(max-width:800px)",
   });
 
-  const [selectOption1, setSelectOption1] = useState({
-    id: 1,
-    accName: "목걸이",
-    optionName: {
-      first: "아덴+",
-      second: "낙인+",
-      third: "아무 특옵",
-    },
-    optionValue: {
-      first: "43",
-      second: "44",
-      third: "아무 특옵",
-    },
+  const [selOpt1, setSelOpt1] = useState({
     tier: "4",
     itemGrade: "",
     quality: null,
     categoryCode: 200010,
     upgradeLevel: null,
-    tradeAllowCount: null,
-    selectOption1: null,
-    selectValue1: null,
-    selectOption2: null,
-    selectValue2: null,
-    selectOption3: null,
-    selectValue3: null,
+    trdCnt: null,
+    selOpt1: null,
+    selVal1: null,
+    selOpt2: null,
+    selVal2: null,
+    selOpt3: null,
+    selVal3: null,
   });
-  const [selectOption2, setSelectOption2] = useState({
-    id: 2,
-    accName: "귀걸이1",
-    optionName: {
-      first: "무공%",
-      second: "무공+",
-      third: "아무 특옵",
-    },
-    optionValue: {
-      first: "46",
-      second: "54",
-      third: "아무 특옵",
-    },
+  const [selOpt2, setSelOpt2] = useState({
     tier: "4",
     itemGrade: "",
     quality: null,
     categoryCode: 200020,
     upgradeLevel: null,
-    tradeAllowCount: null,
-    selectOption1: null,
-    selectValue1: null,
-    selectOption2: null,
-    selectValue2: null,
-    selectOption3: "46",
-    selectValue3: null,
+    trdCnt: null,
+    selOpt1: null,
+    selVal1: null,
+    selOpt2: null,
+    selVal2: null,
+    selOpt3: "46",
+    selVal3: null,
   });
-  const [selectOption3, setSelectOption3] = useState({
-    id: 3,
-    accName: "귀걸이2",
-    optionName: {
-      first: "무공%",
-      second: "무공+",
-      third: "아무 특옵",
-    },
-    optionValue: {
-      first: "46",
-      second: "54",
-      third: "아무 특옵",
-    },
+  const [selOpt3, setSelOpt3] = useState({
     tier: "4",
     itemGrade: "",
     quality: null,
     categoryCode: 200020,
     upgradeLevel: null,
-    tradeAllowCount: null,
-    selectOption1: null,
-    selectValue1: null,
-    selectOption2: null,
-    selectValue2: null,
-    selectOption3: "46",
-    selectValue3: null,
+    trdCnt: null,
+    selOpt1: null,
+    selVal1: null,
+    selOpt2: null,
+    selVal2: null,
+    selOpt3: "46",
+    selVal3: null,
   });
-  const [selectOption4, setSelectOption4] = useState({
-    id: 4,
-    accName: "반지1",
-    optionName: {
-      first: "아공강",
-      second: "아피강",
-      third: "아무 특옵",
-    },
-    optionValue: {
-      first: "51",
-      second: "52",
-      third: "아무 특옵",
-    },
+  const [selOpt4, setSelOpt4] = useState({
     tier: "4",
     itemGrade: "",
     quality: null,
     categoryCode: 200030,
     upgradeLevel: null,
-    tradeAllowCount: null,
-    selectOption1: null,
-    selectValue1: null,
-    selectOption2: null,
-    selectValue2: null,
-    selectOption3: null,
-    selectValue3: null,
+    trdCnt: null,
+    selOpt1: null,
+    selVal1: null,
+    selOpt2: null,
+    selVal2: null,
+    selOpt3: null,
+    selVal3: null,
   });
-  const [selectOption5, setSelectOption5] = useState({
-    id: 5,
-    accName: "반지2",
-    optionName: {
-      first: "아공강",
-      second: "아피강",
-      third: "아무 특옵",
-    },
-    optionValue: {
-      first: "51",
-      second: "52",
-      third: "아무 특옵",
-    },
+  const [selOpt5, setSelOpt5] = useState({
     tier: "4",
     itemGrade: "",
     quality: null,
     categoryCode: 200030,
     upgradeLevel: null,
-    tradeAllowCount: null,
-    selectOption1: null,
-    selectValue1: null,
-    selectOption2: null,
-    selectValue2: null,
-    selectOption3: null,
-    selectValue3: null,
+    trdCnt: null,
+    selOpt1: null,
+    selVal1: null,
+    selOpt2: null,
+    selVal2: null,
+    selOpt3: null,
+    selVal3: null,
   });
+
+  const staticNameList = [
+    {
+      id: 1,
+      accName: "목걸이",
+      optName: {
+        first: "아덴+",
+        second: "낙인+",
+      },
+      optVal: {
+        first: "43",
+        second: "44",
+      },
+    },
+    {
+      id: 2,
+      accName: "귀걸이1",
+      optName: {
+        first: "무공%",
+        second: "무공+",
+      },
+      optVal: {
+        first: "46",
+        second: "54",
+      },
+    },
+    {
+      id: 3,
+      accName: "귀걸이2",
+      optName: {
+        first: "무공%",
+        second: "무공+",
+      },
+      optVal: {
+        first: "46",
+        second: "54",
+      },
+    },
+    {
+      id: 4,
+      accName: "반지1",
+      optName: {
+        first: "아공강",
+        second: "아피강",
+      },
+      optVal: {
+        first: "51",
+        second: "52",
+      },
+    },
+    {
+      id: 5,
+      accName: "반지2",
+      optName: {
+        first: "아공강",
+        second: "아피강",
+      },
+      optVal: {
+        first: "51",
+        second: "52",
+      },
+    },
+  ];
 
   const loadPresetSlot = (slotIndex) => {
     const presets = JSON.parse(localStorage.getItem("presetSlotsSup"));
-    if (!presets || !presets[slotIndex]) {
+    if (!presets || !presets[slotIndex] || !presets[slotIndex].type || !presets[slotIndex].value) {
       alert("해당 슬롯에 저장된 프리셋이 없습니다.");
       return;
     }
 
     const loadedOptions = presets[slotIndex].value;
 
-    setSelectOption1(loadedOptions[0]);
-    setSelectOption2(loadedOptions[1]);
-    setSelectOption3(loadedOptions[2]);
-    setSelectOption4(loadedOptions[3]);
-    setSelectOption5(loadedOptions[4]);
-
-    alert(`"${presets[slotIndex].name}" 프리셋을 불러왔습니다!`);
+    setSelOpt1(loadedOptions[0]);
+    setSelOpt2(loadedOptions[1]);
+    setSelOpt3(loadedOptions[2]);
+    setSelOpt4(loadedOptions[3]);
+    setSelOpt5(loadedOptions[4]);
   };
 
   const updateOption1 = (key, value) => {
-    setSelectOption1((prevState) => ({
+    setSelOpt1((prevState) => ({
       ...prevState,
       [key]: value,
     }));
   };
   const updateOption2 = (key, value) => {
-    setSelectOption2((prevState) => ({
+    setSelOpt2((prevState) => ({
       ...prevState,
       [key]: value,
     }));
   };
   const updateOption3 = (key, value) => {
-    setSelectOption3((prevState) => ({
+    setSelOpt3((prevState) => ({
       ...prevState,
       [key]: value,
     }));
   };
   const updateOption4 = (key, value) => {
-    setSelectOption4((prevState) => ({
+    setSelOpt4((prevState) => ({
       ...prevState,
       [key]: value,
     }));
   };
   const updateOption5 = (key, value) => {
-    setSelectOption5((prevState) => ({
+    setSelOpt5((prevState) => ({
       ...prevState,
       [key]: value,
     }));
@@ -196,7 +197,7 @@ function AuctionSup({ getCountLog }) {
   const [count, setCount] = useState(5);
   const [currentPage, setCurrentPage] = useState([1, 1, 1, 1, 1, 1]); // 각 게시판의 현재 페이지
 
-  const options = [selectOption1, selectOption2, selectOption3, selectOption4, selectOption5];
+  const options = [selOpt1, selOpt2, selOpt3, selOpt4, selOpt5];
   const updateOptions = [updateOption1, updateOption2, updateOption3, updateOption4, updateOption5];
   const [result, setResult] = useState([
     {
@@ -226,6 +227,7 @@ function AuctionSup({ getCountLog }) {
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
             loadPresetSlot={loadPresetSlot}
+            staticNameList={staticNameList}
           />
         ) : isTablet ? (
           <TauctionTierFourSup
@@ -241,6 +243,7 @@ function AuctionSup({ getCountLog }) {
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
             loadPresetSlot={loadPresetSlot}
+            staticNameList={staticNameList}
           />
         ) : (
           <AuctionTierFourSup
@@ -256,6 +259,7 @@ function AuctionSup({ getCountLog }) {
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
             loadPresetSlot={loadPresetSlot}
+            staticNameList={staticNameList}
           />
         )}
       </div>

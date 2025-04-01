@@ -3,13 +3,13 @@ import React, { useState, useEffect } from "react";
 import SelectBox from "../../../common/Component/SelectBox";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
 
-const SelectOptionComp = ({ options, onOptionsChange }) => {
+const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
   const [currentOption, setCurrentOption] = useState({});
 
   const [optionProps, setOptionProps] = useState([]);
 
   useEffect(() => {
-    if (["54"].includes(options?.optionValue.second)) {
+    if (["54"].includes(staticNameList?.optVal.second)) {
       setOptionProps([
         { value: "53", content: "공격력+" },
         { value: "55", content: "최대생명력+" },
@@ -23,7 +23,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
         { value: "56", content: "최대마나+" },
       ]);
     }
-  }, [options?.optionValue.second]);
+  }, [staticNameList?.optVal.second]);
 
   const updateOption = (key, value) => {
     setCurrentOption((prevState) => ({
@@ -34,24 +34,24 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
 
   const handleCategoryCode = () => {
     if (options.categoryCode === 200000) {
-      if (options.accName === "목걸이") {
+      if (staticNameList.accName === "목걸이") {
         onOptionsChange("categoryCode", 200010);
-      } else if (options.accName === "귀걸이") {
+      } else if (staticNameList.accName === "귀걸이") {
         onOptionsChange("categoryCode", 200020);
       } else {
         onOptionsChange("categoryCode", 200030);
       }
-      onOptionsChange("selectOption1", currentOption.selectOption1);
-      onOptionsChange("selectOption2", currentOption.selectOption2);
-      onOptionsChange("selectOption3", currentOption.selectOption3);
+      onOptionsChange("selOpt1", currentOption.selOpt1);
+      onOptionsChange("selOpt2", currentOption.selOpt2);
+      onOptionsChange("selOpt3", currentOption.selOpt3);
     } else {
       onOptionsChange("categoryCode", 200000);
-      updateOption("selectOption1", options.selectOption1);
-      updateOption("selectOption2", options.selectOption2);
-      updateOption("selectOption3", options.selectOption3);
-      onOptionsChange("selectOption1", null);
-      onOptionsChange("selectOption2", null);
-      onOptionsChange("selectOption3", null);
+      updateOption("selOpt1", options.selOpt1);
+      updateOption("selOpt2", options.selOpt2);
+      updateOption("selOpt3", options.selOpt3);
+      onOptionsChange("selOpt1", null);
+      onOptionsChange("selOpt2", null);
+      onOptionsChange("selOpt3", null);
     }
   };
 
@@ -68,12 +68,12 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
             <div className="flex-[7] grid grid-rows-3">
               <div className="p-2 flex justify-center items-center border-b-2 border-gray-300 gap-x-4">
                 <p className="font-bold size-font-xl">
-                  {options.categoryCode === 200000 ? "" : options.accName}
+                  {options.categoryCode === 200000 ? "" : staticNameList.accName}
                 </p>
                 <button
                   className={`size-font-xxxs font-bold ${
                     options.categoryCode === 200000 ? "normalSelBtm" : "normalBtm color-tomato"
-                  }  ${["54"].includes(options?.optionValue?.second) ? "hidden" : ""}`}
+                  }  ${["54"].includes(staticNameList?.optVal?.second) ? "hidden" : ""}`}
                   onClick={handleCategoryCode}
                 >
                   특수추적
@@ -82,7 +82,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                 <div>
                   <div
                     className={` flex items-center group relative mx-4 ${
-                      ["54"].includes(options?.optionValue?.second) ? "hidden" : ""
+                      ["54"].includes(staticNameList?.optVal?.second) ? "hidden" : ""
                     }`}
                   >
                     <BsFillQuestionCircleFill className="" />
@@ -129,7 +129,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     <label className={`${options.tier === "4" ? "hidden" : ""}`}>
                       <input
                         type="radio"
-                        name={`${options.id}_itemGrade`}
+                        name={`${staticNameList.id}_itemGrade`}
                         value="전설"
                         checked={options.itemGrade === "전설"}
                         className="mr-1"
@@ -140,7 +140,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     <label>
                       <input
                         type="radio"
-                        name={`${options.id}_itemGrade`}
+                        name={`${staticNameList.id}_itemGrade`}
                         value="유물"
                         checked={options.itemGrade === "유물"}
                         className="mr-1"
@@ -151,7 +151,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     <label>
                       <input
                         type="radio"
-                        name={`${options.id}_itemGrade`}
+                        name={`${staticNameList.id}_itemGrade`}
                         value="고대"
                         checked={options.itemGrade === "고대"}
                         className="mr-1"
@@ -257,45 +257,45 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       <label>
                         <input
                           type="radio"
-                          name={`${options.id}selectOption1`}
-                          value={options.optionValue.first}
-                          checked={options.selectOption1 === options.optionValue.first}
-                          disabled={options.selectOption2 === options.optionValue.first}
-                          onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
+                          name={`${staticNameList.id}selOpt1`}
+                          value={staticNameList.optVal.first}
+                          checked={options.selOpt1 === staticNameList.optVal.first}
+                          disabled={options.selOpt2 === staticNameList.optVal.first}
+                          onChange={(e) => onOptionsChange("selOpt1", e.target.value)}
                         />
-                        <span className="size-font-xxs">{options.optionName.first}</span>
+                        <span className="size-font-xxs">{staticNameList.optName.first}</span>
                       </label>
 
                       <label>
                         <input
                           type="radio"
-                          name={`${options.id}selectOption1`}
-                          value={options.optionValue.second}
-                          checked={options.selectOption1 === options.optionValue.second}
-                          disabled={options.selectOption2 === options.optionValue.second}
-                          onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
+                          name={`${staticNameList.id}selOpt1`}
+                          value={staticNameList.optVal.second}
+                          checked={options.selOpt1 === staticNameList.optVal.second}
+                          disabled={options.selOpt2 === staticNameList.optVal.second}
+                          onChange={(e) => onOptionsChange("selOpt1", e.target.value)}
                         />
-                        <span className="size-font-xxs">{options.optionName.second}</span>
+                        <span className="size-font-xxs">{staticNameList.optName.second}</span>
                       </label>
 
                       {/* <label>
                       <input
                         type="radio"
-                        name={`${options.id}selectOption1`}
-                        value={options.optionValue.third}
-                        checked={options.selectOption1 === options.optionValue.third}
-                        onChange={(e) => onOptionsChange("selectOption1", e.target.value)}
+                        name={`${staticNameList.id}selOpt1`}
+                        value={staticNameList.optVal.third}
+                        checked={options.selOpt1 === staticNameList.optVal.third}
+                        onChange={(e) => onOptionsChange("selOpt1", e.target.value)}
                       />
-                      {options.optionName.third}
+                      {options. optName.third}
                     </label> */}
 
                       <label>
                         <input
                           type="radio"
-                          name={`${options.id}selectOption1`}
+                          name={`${staticNameList.id}selOpt1`}
                           value={null}
-                          checked={options.selectOption1 === null}
-                          onChange={() => onOptionsChange("selectOption1", null)}
+                          checked={options.selOpt1 === null}
+                          onChange={() => onOptionsChange("selOpt1", null)}
                         />
                         <span className="size-font-xxs">미선택</span>
                       </label>
@@ -307,44 +307,44 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     <label className="flex items-center">
                       <input
                         type="radio"
-                        name={`${options.id}selectValue1`}
+                        name={`${staticNameList.id}selVal1`}
                         value="3"
-                        checked={options.selectValue1 === "3"}
+                        checked={options.selVal1 === "3"}
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("selectValue1", e.target.value)}
+                        onChange={(e) => onOptionsChange("selVal1", e.target.value)}
                       />
                       <span className="size-font-xxs">상</span>
                     </label>
                     <label className="flex items-center">
                       <input
                         type="radio"
-                        name={`${options.id}selectValue1`}
+                        name={`${staticNameList.id}selVal1`}
                         value="2"
-                        checked={options.selectValue1 === "2"}
+                        checked={options.selVal1 === "2"}
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("selectValue1", e.target.value)}
+                        onChange={(e) => onOptionsChange("selVal1", e.target.value)}
                       />
                       <span className="size-font-xxs">중</span>
                     </label>
                     <label className="flex items-center">
                       <input
                         type="radio"
-                        name={`${options.id}selectValue1`}
+                        name={`${staticNameList.id}selVal1`}
                         value="1"
-                        checked={options.selectValue1 === "1"}
+                        checked={options.selVal1 === "1"}
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("selectValue1", e.target.value)}
+                        onChange={(e) => onOptionsChange("selVal1", e.target.value)}
                       />
                       <span className="size-font-xxs">하</span>
                     </label>
                     <label className="flex items-center">
                       <input
                         type="radio"
-                        name={`${options.id}selectValue1`}
-                        checked={options.selectValue1 === null}
+                        name={`${staticNameList.id}selVal1`}
+                        checked={options.selVal1 === null}
                         value={null}
                         className="mr-1"
-                        onChange={() => onOptionsChange("selectValue1", null)}
+                        onChange={() => onOptionsChange("selVal1", null)}
                       />
                       <span className="size-font-xxs">X</span>
                     </label>
@@ -370,42 +370,42 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       <label>
                         <input
                           type="radio"
-                          name={`${options.id}selectOption2`}
-                          value={options.optionValue.first}
-                          checked={options.selectOption2 === options.optionValue.first}
-                          disabled={options.selectOption1 === options.optionValue.first}
-                          onChange={(e) => onOptionsChange("selectOption2", e.target.value)}
+                          name={`${staticNameList.id}selOpt2`}
+                          value={staticNameList.optVal.first}
+                          checked={options.selOpt2 === staticNameList.optVal.first}
+                          disabled={options.selOpt1 === staticNameList.optVal.first}
+                          onChange={(e) => onOptionsChange("selOpt2", e.target.value)}
                         />
-                        <span className="size-font-xxs">{options.optionName.first}</span>
+                        <span className="size-font-xxs">{staticNameList.optName.first}</span>
                       </label>
                       <label>
                         <input
                           type="radio"
-                          name={`${options.id}selectOption2`}
-                          value={options.optionValue.second}
-                          checked={options.selectOption2 === options.optionValue.second}
-                          disabled={options.selectOption1 === options.optionValue.second}
-                          onChange={(e) => onOptionsChange("selectOption2", e.target.value)}
+                          name={`${staticNameList.id}selOpt2`}
+                          value={staticNameList.optVal.second}
+                          checked={options.selOpt2 === staticNameList.optVal.second}
+                          disabled={options.selOpt1 === staticNameList.optVal.second}
+                          onChange={(e) => onOptionsChange("selOpt2", e.target.value)}
                         />
-                        <span className="size-font-xxs">{options.optionName.second}</span>
+                        <span className="size-font-xxs">{staticNameList.optName.second}</span>
                       </label>
                       {/* <label>
                       <input
                         type="radio"
-                        name={`${options.id}selectOption2`}
-                        value={options.optionValue.third}
-                        checked={options.selectOption2 === options.optionValue.third}
-                        onChange={(e) => onOptionsChange("selectOption2", e.target.value)}
+                        name={`${staticNameList.id}selOpt2`}
+                        value={staticNameList.optVal.third}
+                        checked={options.selOpt2 === staticNameList.optVal.third}
+                        onChange={(e) => onOptionsChange("selOpt2", e.target.value)}
                       />
-                      {options.optionName.third}
+                      {options. optName.third}
                     </label> */}
                       <label>
                         <input
                           type="radio"
-                          name={`${options.id}selectOption2`}
+                          name={`${staticNameList.id}selOpt2`}
                           value={null}
-                          checked={options.selectOption2 === null}
-                          onChange={() => onOptionsChange("selectOption2", null)}
+                          checked={options.selOpt2 === null}
+                          onChange={() => onOptionsChange("selOpt2", null)}
                         />
                         <span className="size-font-xxs">미선택</span>
                       </label>
@@ -417,44 +417,44 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     <label className="flex items-center">
                       <input
                         type="radio"
-                        name={`${options.id}selectValue2`}
+                        name={`${staticNameList.id}selVal2`}
                         value="3"
-                        checked={options.selectValue2 === "3"}
+                        checked={options.selVal2 === "3"}
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("selectValue2", e.target.value)}
+                        onChange={(e) => onOptionsChange("selVal2", e.target.value)}
                       />
                       <span className="size-font-xxs">상</span>
                     </label>
                     <label className="flex items-center">
                       <input
                         type="radio"
-                        name={`${options.id}selectValue2`}
+                        name={`${staticNameList.id}selVal2`}
                         value="2"
-                        checked={options.selectValue2 === "2"}
+                        checked={options.selVal2 === "2"}
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("selectValue2", e.target.value)}
+                        onChange={(e) => onOptionsChange("selVal2", e.target.value)}
                       />
                       <span className="size-font-xxs">중</span>
                     </label>
                     <label className="flex items-center">
                       <input
                         type="radio"
-                        name={`${options.id}selectValue2`}
+                        name={`${staticNameList.id}selVal2`}
                         value="1"
-                        checked={options.selectValue2 === "1"}
+                        checked={options.selVal2 === "1"}
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("selectValue2", e.target.value)}
+                        onChange={(e) => onOptionsChange("selVal2", e.target.value)}
                       />
                       <span className="size-font-xxs">하</span>
                     </label>
                     <label className="flex items-center">
                       <input
                         type="radio"
-                        name={`${options.id}selectValue2`}
+                        name={`${staticNameList.id}selVal2`}
                         value={null}
-                        checked={options.selectValue2 === null}
+                        checked={options.selVal2 === null}
                         className="mr-1"
-                        onChange={() => onOptionsChange("selectValue2", null)}
+                        onChange={() => onOptionsChange("selVal2", null)}
                       />
                       <span className="size-font-xxs">X</span>
                     </label>
@@ -483,8 +483,8 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     <div className="flex justify-center items-center">
                       <SelectBox
                         options={optionProps}
-                        value={options.selectOption3}
-                        name="selectOption3"
+                        value={options.selOpt3}
+                        name="selOpt3"
                         onOptionsChange={onOptionsChange}
                         css="size-font-xxs text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5]"
                       />
@@ -498,44 +498,44 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                     <label className="flex items-center">
                       <input
                         type="radio"
-                        name={`${options.id}selectValue3`}
+                        name={`${staticNameList.id}selVal3`}
                         value="3"
-                        checked={options.selectValue3 === "3"}
+                        checked={options.selVal3 === "3"}
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("selectValue3", e.target.value)}
+                        onChange={(e) => onOptionsChange("selVal3", e.target.value)}
                       />
                       <span className="text-xs">상</span>
                     </label>
                     <label className="flex items-center">
                       <input
                         type="radio"
-                        name={`${options.id}selectValue3`}
+                        name={`${staticNameList.id}selVal3`}
                         value="2"
-                        checked={options.selectValue3 === "2"}
+                        checked={options.selVal3 === "2"}
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("selectValue3", e.target.value)}
+                        onChange={(e) => onOptionsChange("selVal3", e.target.value)}
                       />
                       <span className="text-xs">중</span>
                     </label>
                     <label className="flex items-center">
                       <input
                         type="radio"
-                        name={`${options.id}selectValue3`}
-                        checked={options.selectValue3 === "1"}
+                        name={`${staticNameList.id}selVal3`}
+                        checked={options.selVal3 === "1"}
                         value="1"
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("selectValue3", e.target.value)}
+                        onChange={(e) => onOptionsChange("selVal3", e.target.value)}
                       />
                       <span className="text-xs">하</span>
                     </label>
                     <label className="flex items-center">
                       <input
                         type="radio"
-                        name={`${options.id}selectValue3`}
-                        checked={options.selectValue3 === null}
+                        name={`${staticNameList.id}selVal3`}
+                        checked={options.selVal3 === null}
                         value={null}
                         className="mr-1"
-                        onChange={() => onOptionsChange("selectValue3", null)}
+                        onChange={() => onOptionsChange("selVal3", null)}
                       />
                       <span className="text-xs">X</span>
                     </label>
@@ -552,7 +552,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       <label>
                         <input
                           type="radio"
-                          name={`${options.id}_upgradeLevel`}
+                          name={`${staticNameList.id}_upgradeLevel`}
                           value={null}
                           className="mr-1"
                           checked={options.upgradeLevel === null}
@@ -564,7 +564,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       <label>
                         <input
                           type="radio"
-                          name={`${options.id}_upgradeLevel`}
+                          name={`${staticNameList.id}_upgradeLevel`}
                           value="1"
                           className="mr-1"
                           onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
@@ -575,7 +575,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       <label>
                         <input
                           type="radio"
-                          name={`${options.id}_upgradeLevel`}
+                          name={`${staticNameList.id}_upgradeLevel`}
                           value="2"
                           className="mr-1"
                           onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
@@ -586,7 +586,7 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       <label>
                         <input
                           type="radio"
-                          name={`${options.id}_upgradeLevel`}
+                          name={`${staticNameList.id}_upgradeLevel`}
                           value="3"
                           className="mr-1"
                           onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
@@ -605,31 +605,31 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       <label>
                         <input
                           type="radio"
-                          name={`${options.id}tradeCount`}
+                          name={`${staticNameList.id}tradeCount`}
                           value={null}
                           className="mr-1"
-                          checked={options.tradeAllowCount === null}
-                          onChange={() => onOptionsChange("tradeAllowCount", null)}
+                          checked={options.trdCnt === null}
+                          onChange={() => onOptionsChange("trdCnt", null)}
                         />
                         <span className="size-font-xxxs">All</span>
                       </label>
                       <label>
                         <input
                           type="radio"
-                          name={`${options.id}tradeCount`}
+                          name={`${staticNameList.id}tradeCount`}
                           value="0"
                           className="mr-1"
-                          onChange={(e) => onOptionsChange("tradeAllowCount", e.target.value)}
+                          onChange={(e) => onOptionsChange("trdCnt", e.target.value)}
                         />
                         <span className="size-font-xxxs">0</span>
                       </label>
                       <label>
                         <input
                           type="radio"
-                          name={`${options.id}tradeCount`}
+                          name={`${staticNameList.id}tradeCount`}
                           value="1"
                           className="mr-1"
-                          onChange={(e) => onOptionsChange("tradeAllowCount", e.target.value)}
+                          onChange={(e) => onOptionsChange("trdCnt", e.target.value)}
                         />
                         <span className="size-font-xxxs">1</span>
                       </label>
@@ -637,10 +637,10 @@ const SelectOptionComp = ({ options, onOptionsChange }) => {
                       <label>
                         <input
                           type="radio"
-                          name={`${options.id}tradeCount`}
+                          name={`${staticNameList.id}tradeCount`}
                           value="2"
                           className="mr-1"
-                          onChange={(e) => onOptionsChange("tradeAllowCount", e.target.value)}
+                          onChange={(e) => onOptionsChange("trdCnt", e.target.value)}
                         />
                         <span className="size-font-xxxs">2</span>
                       </label>
