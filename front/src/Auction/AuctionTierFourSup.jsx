@@ -440,7 +440,7 @@ function AuctionTierFourSup({
               {result.map((item, index) => (
                 <ResultBox
                   result={item}
-                  staticNameList={staticNameList[count]}
+                  staticNameList={staticNameList[index]}
                   onClick={() => setCount(index)}
                   className={`${
                     count === index
