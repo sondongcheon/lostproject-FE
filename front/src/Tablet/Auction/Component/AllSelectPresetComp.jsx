@@ -1,15 +1,69 @@
 import React, { useEffect, useState } from "react";
 
-const AllSelectPresetComp = ({ updateSet, type }) => {
+import shareBtm from "../../../Assets/shareBtm.png";
+import { BsFillQuestionCircleFill } from "react-icons/bs";
+
+const AllSelectPresetComp = ({
+  updateSet,
+  type,
+  apiKey,
+  search,
+  searchState,
+  savePresetSlot,
+  loadPresetSlot,
+  savePresetCodeSlot,
+}) => {
   const [sliderValue, setSliderValue] = useState(67);
   const [sliderStatValue, setSliderStatValue] = useState(10);
   const [options, setOptions] = useState({});
+  const [presetSelectValue, setPresetSelectValue] = useState("-1");
+  const [presetName, setPresetName] = useState("");
+  const [presetCode, setPresetCode] = useState("");
+
+  const [presetSlots, setPresetSlots] = useState([
+    {
+      name: "프리셋 1",
+    },
+    {
+      name: "프리셋 2",
+    },
+    {
+      name: "프리셋 3",
+    },
+    {
+      name: "프리셋 4",
+    },
+    {
+      name: "프리셋 5",
+    },
+  ]);
+
+  const exportPreset = (index) => {
+    const preset = JSON.parse(localStorage.getItem("presetSlots" + (type === 0 ? "Del" : "Sup")));
+
+    const presetString = JSON.stringify(preset[index]);
+    const encoded = btoa(unescape(encodeURIComponent(presetString)));
+    navigator.clipboard.writeText(encoded);
+    alert("프리셋이 클립보드에 복사되었습니다!");
+  };
 
   const setGrade = (key, value) => {
     updateSet.forEach((updateOption) => {
       updateOption(key, value);
     });
   };
+
+  const loadPreset = () => {
+    const stored = JSON.parse(localStorage.getItem("presetSlots" + (type === 0 ? "Del" : "Sup")));
+
+    if (stored) {
+      setPresetSlots(stored);
+    }
+  };
+
+  useEffect(() => {
+    loadPreset();
+  }, []);
 
   useEffect(() => {
     if (type === 0) {
@@ -98,18 +152,67 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
 
   return (
     <div>
-      <div className="shadow-lg border-2 rounded-3xl bg-[#F5F5F5] pt-4 pb-4">
-        <div className="flex grid grid-cols-2">
-          <div className="pt-2 pb-2">
-            <div className="flex justify-center items-center ">
+      <div className="shadow-lg border-2 rounded-3xl bg-[#F5F5F5] pt-4">
+        <div className="flex grid grid-cols-5">
+          <div className="col-span-3 grid grid-rows-3 gap-y-2">
+            <div className="overflow-hidden">
+              {apiKey === "" || !apiKey ? (
+                <div className="flex animate-marquee-loop whitespace-nowrap relative w-[200%] h-full flex items-center overflow-hidden text-sm text-red-500 font-bold">
+                  <span className="">
+                    🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로 분당 횟수
+                    초과가 일어날 확률이 높습니다.
+                  </span>
+                  <span>
+                    🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로 분당 횟수
+                    초과가 일어날 확률이 높습니다.
+                  </span>
+                  <span className="">
+                    🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로 분당 횟수
+                    초과가 일어날 확률이 높습니다.
+                  </span>
+                  <span>
+                    🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로 분당 횟수
+                    초과가 일어날 확률이 높습니다.
+                  </span>
+                </div>
+              ) : (
+                <div className="h-full flex items-center px-8">
+                  <span className="font-bold text-xl">| 전체 선택 프리셋</span>
+                </div>
+              )}
+
+              {/* <h1
+                className={` ${
+                  apiKey === "" || !apiKey ? "visible" : "invisible"
+                }`}
+              >
+                
+              </h1> */}
+            </div>
+            <div className="flex justify-center items-center gap-x-12">
               <button
-                className="w-1/2 resetBtm text-center size-font-xs bg-[#b2ddad]"
+                className="w-1/3 resetBtm text-center size-font-xs bg-[#b2ddad]"
                 onClick={setReset}
               >
                 초기화
               </button>
+              <div className="w-1/3 h-full flex justify-center items-center ">
+                <button
+                  className="w-full h-full bg-[#40AC8D] resetBtm"
+                  onClick={search}
+                  disabled={searchState}
+                >
+                  {searchState ? (
+                    <div className="h-full bg-[url('./Assets/loading.webp')] bg-contain bg-center bg-no-repeat">
+                      {" "}
+                    </div>
+                  ) : (
+                    "검색하기"
+                  )}
+                </button>
+              </div>
             </div>
-            <div className="grid grid-cols-4 justify-center items-center p-4">
+            <div className="grid grid-cols-8 justify-center items-center px-4 py-2">
               <span className="col-span-1 text-sm text-center font-bold">품질</span>
               <input
                 type="range"
@@ -125,7 +228,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
               />
               <div className="col-span-1  text-center text-sm text-gray-500">
                 <input
-                  className="w-1/2 text-center rounded-3xl border border-gray-300"
+                  className="w-3/4 text-center rounded-3xl border border-gray-300"
                   placeholder="미지정"
                   type="number"
                   min="0"
@@ -139,8 +242,6 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                 />
                 {/* {sliderValue === 0 ? "미지정" : sliderValue} */}
               </div>
-            </div>
-            <div className="grid grid-cols-4 justify-center items-center p-4">
               <span className="col-span-1 text-xs text-center font-bold">힘민지%</span>
               <input
                 type="range"
@@ -156,7 +257,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
               />
               <div className="col-span-1  text-center text-sm text-gray-500">
                 <input
-                  className="w-1/2 text-center rounded-3xl border border-gray-300"
+                  className="w-3/4 text-center rounded-3xl border border-gray-300"
                   placeholder="미지정"
                   type="number"
                   min="0"
@@ -172,7 +273,7 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
               </div>
             </div>
           </div>
-          <div className="">
+          <div className="col-span-2">
             <div className="border-b-[3px] pb-1 border-[#40ac8d] w-[95%] mx-auto text-[#40ac8d] size-font-xxs mb-2">
               공용옵션 선택
             </div>
@@ -407,6 +508,137 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
                   )}
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+        {/* 프리셋 저장 */}
+        <div className="h-28 col-span-9 m-4 px-6 py-3 bg-[#e0dedf] rounded-3xl inset-shadow-sm shadow-inset-indigo">
+          <div className="h-1/3 flex items-center justify-between size-font-xxs">
+            <span>개인 저장 프리셋 </span>
+
+            <div className="flex items-center">
+              <div className="flex items-center mr-2 h-full group relative">
+                <BsFillQuestionCircleFill className=" h-4" />
+                <div className="absolute z-50 bottom-8 w-[2800%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+                  🛑주의🛑 저장 위치를 가장 먼저 선택해주세요 <br />
+                  <br />
+                  저장 위치를 선택한 뒤에 공유받은 코드를 붙여놓고 저장을 눌러주세요
+                  <br /> 선택한 위치에 공유받은 프리셋이 저장됩니다.
+                  <br /> 저장된 뒤 저장된 이름을 눌러 불러와주세요!
+                </div>
+              </div>
+              <button
+                className=" presetBtm"
+                onClick={() => {
+                  exportPreset(presetSelectValue);
+                }}
+                disabled={presetSelectValue === "-1"}
+              >
+                <img src={shareBtm} className="h-6" />
+              </button>
+              <select
+                value={presetSelectValue || ""}
+                onChange={(e) => setPresetSelectValue(e.target.value)}
+                className="size-font-xxs mr-2 text-center h-6 rounded-lg border-black border bg-[#F5F5F5]"
+              >
+                <option value="-1">저장 위치 선택</option>
+                {presetSlots.map((presetSlot, index) => (
+                  <option value={index}>{presetSlot?.name}</option>
+                ))}
+              </select>
+              <input
+                type="text"
+                placeholder="공유 받은 코드 입력"
+                className="w-36 h-6  size-font-xxs text-center border-[#68afb4] border bg-white rounded-l-xl"
+                onChange={(e) => setPresetCode(e.target.value)}
+                value={presetCode}
+                disabled={presetSelectValue === "-1"}
+              />
+              <button
+                className="w-16 h-6 size-font-xxs px-2 text-white bg-[#68afb4]  border border-[#68afb4] rounded-r-xl font-bold transition duration-700 ease-in-out hover:bg-black  hover:border-black"
+                onClick={async () => {
+                  await savePresetCodeSlot(presetSelectValue, presetCode);
+                  loadPresetSlot(presetSelectValue);
+                  loadPreset();
+                }}
+              >
+                저장
+              </button>
+            </div>
+          </div>
+          <div className="h-2/3 flex">
+            <div className="w-[30%] grid grid-cols-6 h-full gap-y-2 size-font-xxs">
+              <div className="col-span-2 h-full mx-auto group relative">
+                <BsFillQuestionCircleFill className="self-end h-6" />
+                <div className="absolute z-50 bottom-8 w-[1500%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+                  🛑주의🛑 저장 위치를 가장 먼저 선택해주세요 <br />
+                  <br />
+                  저장 위치를 선택한 뒤에 이름을 쓰고 저장을 누르면
+                  <br /> 다시 사이트에 접속해도 골라둔 옵션을 쉽게 불러올 수 있어요
+                </div>
+              </div>
+              <div className="col-span-4 flex items-center">
+                <select
+                  value={presetSelectValue || ""}
+                  onChange={(e) => setPresetSelectValue(e.target.value)}
+                  className="text-center w-full h-full rounded-lg border-black border bg-[#F5F5F5]"
+                >
+                  <option value="-1">저장 위치 선택</option>
+                  {presetSlots.map((presetSlot, index) => (
+                    <option value={index}>{presetSlot?.name}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="col-span-4 flex items-center">
+                <input
+                  type="text"
+                  placeholder="이름 (1~8자)"
+                  className="w-full h-full text-center border-[#2383bd] border bg-white rounded-l-xl"
+                  onChange={(e) => setPresetName(e.target.value)}
+                  value={presetName}
+                  disabled={presetSelectValue === "-1"}
+                  maxLength={8}
+                />
+              </div>
+              <div className="col-span-2 flex items-center">
+                <button
+                  className="group relative w-full h-full text-white bg-[#2383bd]  border border-[#2383bd] rounded-r-xl font-bold transition duration-700 ease-in-out hover:bg-black  hover:border-black"
+                  onClick={() => {
+                    savePresetSlot(presetSelectValue, presetName);
+                    loadPreset();
+                  }}
+                  disabled={presetName.length < 2 && presetSelectValue === "-1"}
+                >
+                  저장
+                  <div
+                    className={`absolute z-50 bottom-8 w-[300%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none  ${
+                      presetName.length < 2
+                        ? "group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto"
+                        : ""
+                    }  transition-opacity duration-300`}
+                  >
+                    이름을 정해주세요
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <div className="w-[70%] grid grid-cols-5 flex h-full">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <div key={index} className="flex items-center">
+                  <button
+                    className="w-4/5 mx-auto text-sm text-gray-500 font-bold hover:underline presetBtm"
+                    onClick={() => {
+                      loadPresetSlot(index);
+                      setPresetName(presetSlots[index].name);
+                      setPresetSelectValue(index + "");
+                    }}
+                  >
+                    {presetSlots[index]?.name || `${index + 1}`}
+                  </button>
+                  {index < 4 && <span className="px-2 text-[4px] text-gray-400">●</span>}
+                </div>
+              ))}
             </div>
           </div>
         </div>

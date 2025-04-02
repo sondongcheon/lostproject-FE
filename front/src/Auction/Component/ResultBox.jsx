@@ -115,7 +115,7 @@ const ResultBox = ({ number, result, staticNameList, onClick, className }) => {
               <div className="">
                 {result?.options?.length > 2 && (
                   <div className="font-bold">
-                    {result?.options[1]?.optName} {parseInt(result?.options[1]?.value) || "0"}{" "}
+                    {result?.options[1]?.optionName} {parseInt(result?.options[1]?.value) || "0"}{" "}
                     <br />
                     {result?.options?.length > 2 && (
                       <div className="group relative flex items-center">

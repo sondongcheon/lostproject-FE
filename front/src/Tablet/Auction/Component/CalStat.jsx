@@ -63,7 +63,7 @@ const Calstat = () => {
 
           <div className="mx-auto group relative w-4 h-8">
             <BsFillQuestionCircleFill className=" h-full"></BsFillQuestionCircleFill>
-            <div className="absolute z-10 top-full w-[2000%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+            <div className="absolute z-20 top-full w-[2000%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
               좋아보이는 장신구를 드셨군요? <br />
               그 장신구의 스텟을 입력해 보세요 <br /> 어느정도 급의 스텟인지 확인 할 수 있어요
             </div>

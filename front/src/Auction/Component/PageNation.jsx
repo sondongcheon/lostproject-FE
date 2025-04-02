@@ -156,14 +156,11 @@ const PageNation = ({
         <div className="w-[120%] h-full flex pl-2 pb-4 group relative">
           <BsFillQuestionCircleFill className="self-end h-8" />
           <div className="absolute z-50 top-full w-[400%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
-            좌측, 최저가 / 우측, 추가목록 입니다. <br />
             좌측에서 부위 클릭시 우측 목록이 해당 부위에 맞게 변경됩니다. <br />
-            우측 리스트에서 버튼을 통해 추가 매물을 조회할 수 있습니다. <br />
-            🔥주의🔥 추가 매물 조회시 API요청이 추가로 들어갑니다. <br />
+            🔥주의🔥 다음 페이지 조회시 API요청이 추가로 들어갑니다. <br />
             <br />
-            한번의 조회로는 한바구니에 10개만 담아올 수 있기 때문입니다. <br />
-            힘민지 필터의 경우 조회 → 자체 필터를 거치기 때문에 <br />
-            10개를 채우기 위해 다음페이지 요청 시 다소 시간이 소요됩니다.
+            추가 요청 → '없어? 다음 또봐' 를 반복하기 때문에 10개를 채우기 위해 다음페이지 요청 시
+            다소 시간이 소요됩니다.
           </div>
         </div>
         <div className="flex items-center justify-center col-span-4">
@@ -185,7 +182,6 @@ const PageNation = ({
             <img src={rightBtm} className="w-full h-full" />
           </button>
         </div>
-        <div></div>
       </div>
     </div>
   );

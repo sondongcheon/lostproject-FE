@@ -26,7 +26,9 @@ function MauctionTierFourSup({
   count,
   setCount,
   currentPage,
+
   setCurrentPage,
+  loadPresetSlot,
   staticNameList,
 }) {
   const [selectOptionReq, setSelectOptionReq] = useState([]);
@@ -56,6 +58,100 @@ function MauctionTierFourSup({
   });
 
   const [rotateFlags, setRotateFlags] = useState({});
+
+  const savePresetSlot = (slotIndex, presetName) => {
+    if (slotIndex < 0 || slotIndex > 4) return;
+
+    const presets = JSON.parse(localStorage.getItem("presetSlotsSup")) || [
+      {
+        name: "프리셋 1",
+      },
+      {
+        name: "프리셋 2",
+      },
+      {
+        name: "프리셋 3",
+      },
+      {
+        name: "프리셋 4",
+      },
+      {
+        name: "프리셋 5",
+      },
+    ];
+
+    presets[slotIndex] = {
+      name: presetName,
+      type: 1,
+      value: options, // 현재 선택된 options 배열
+    };
+
+    localStorage.setItem("presetSlotsSup", JSON.stringify(presets));
+    alert(`"${presetName}" 프리셋이 저장되었습니다.`);
+  };
+
+  const savePresetCodeSlot = async (slotIndex, code) => {
+    if (slotIndex < 0 || slotIndex > 4) return;
+
+    const presets = JSON.parse(localStorage.getItem("presetSlotsSup")) || [
+      {
+        name: "프리셋 1",
+      },
+      {
+        name: "프리셋 2",
+      },
+      {
+        name: "프리셋 3",
+      },
+      {
+        name: "프리셋 4",
+      },
+      {
+        name: "프리셋 5",
+      },
+    ];
+
+    try {
+      const decodedStr = atob(code);
+      // UTF-8로 복원
+      const jsonString = decodeURIComponent(escape(decodedStr));
+      // JSON 문자열을 배열로 변환
+      const decodedOption = JSON.parse(jsonString);
+
+      if (isValidPreset(decodedOption)) {
+        if (decodedOption.type === 1) {
+          alert("딜러 페이지의 프리셋 코드입니다.");
+          return;
+        }
+        presets[slotIndex] = {
+          name: decodedOption.name,
+          type: decodedOption.type,
+          value: decodedOption.value, // 현재 선택된 options 배열
+        };
+
+        await new Promise((resolve) => {
+          localStorage.setItem("presetSlotsSup", JSON.stringify(presets));
+          resolve(); // 로컬스토리지 저장이 끝나면 resolve
+        });
+
+        alert(`"${decodedOption.name}" 프리셋이 저장되었습니다.`);
+      } else {
+        alert("올바르지 않은 프리셋입니다.");
+      }
+    } catch (e) {
+      alert("잘못된 프리셋 코드입니다. 다시 확인해주세요.");
+      console.error("프리셋 불러오기 오류:", e);
+    }
+  };
+
+  function isValidPreset(preset) {
+    return (
+      typeof preset === "object" &&
+      typeof preset.name === "string" &&
+      typeof preset.type === "number" &&
+      Array.isArray(preset.value)
+    );
+  }
 
   const handleToggle = (key) => {
     // 회전 상태 변경
@@ -289,7 +385,16 @@ function MauctionTierFourSup({
               : "max-h-[120%] opacity-100 mt-4"
           }`}
         >
-          <AllSelectPresetComp updateSet={updateOptions} type={1}></AllSelectPresetComp>
+          <AllSelectPresetComp
+            updateSet={updateOptions}
+            type={1}
+            apiKey={apiKey}
+            search={updateSelect}
+            searchState={searchState}
+            savePresetSlot={savePresetSlot}
+            loadPresetSlot={loadPresetSlot}
+            savePresetCodeSlot={savePresetCodeSlot}
+          ></AllSelectPresetComp>
         </div>
 
         <div
