@@ -1,15 +1,69 @@
 import React, { useEffect, useState } from "react";
 
-const AllSelectPresetComp = ({ updateSet, type }) => {
+import shareBtm from "../../../Assets/shareBtm.png";
+import { BsFillQuestionCircleFill } from "react-icons/bs";
+
+const AllSelectPresetComp = ({
+  updateSet,
+  type,
+  apiKey,
+  search,
+  searchState,
+  savePresetSlot,
+  loadPresetSlot,
+  savePresetCodeSlot,
+}) => {
   const [sliderValue, setSliderValue] = useState(67);
   const [sliderStatValue, setSliderStatValue] = useState(10);
   const [options, setOptions] = useState({});
+  const [presetSelectValue, setPresetSelectValue] = useState("-1");
+  const [presetName, setPresetName] = useState("");
+  const [presetCode, setPresetCode] = useState("");
+
+  const [presetSlots, setPresetSlots] = useState([
+    {
+      name: "프리셋 1",
+    },
+    {
+      name: "프리셋 2",
+    },
+    {
+      name: "프리셋 3",
+    },
+    {
+      name: "프리셋 4",
+    },
+    {
+      name: "프리셋 5",
+    },
+  ]);
+
+  const exportPreset = (index) => {
+    const preset = JSON.parse(localStorage.getItem("presetSlots" + (type === 0 ? "Del" : "Sup")));
+
+    const presetString = JSON.stringify(preset[index]);
+    const encoded = btoa(unescape(encodeURIComponent(presetString)));
+    navigator.clipboard.writeText(encoded);
+    alert("프리셋이 클립보드에 복사되었습니다!");
+  };
 
   const setGrade = (key, value) => {
     updateSet.forEach((updateOption) => {
       updateOption(key, value);
     });
   };
+
+  const loadPreset = () => {
+    const stored = JSON.parse(localStorage.getItem("presetSlots" + (type === 0 ? "Del" : "Sup")));
+
+    if (stored) {
+      setPresetSlots(stored);
+    }
+  };
+
+  useEffect(() => {
+    loadPreset();
+  }, []);
 
   useEffect(() => {
     if (type === 0) {
@@ -97,103 +151,213 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
 
   return (
     <div>
-      <div className="shadow-lg border-2 rounded-3xl bg-[#F5F5F5] pt-4 pb-4">
-        <div className="py-2">
-          <div className="w-full flex justify-center items-center ">
-            <button className=" resetBtm text-center size-font-xl bg-[#b2ddad]" onClick={setReset}>
-              초기화
-            </button>
-          </div>
-          <div className="grid grid-cols-4 justify-center items-center p-4">
-            <span className="col-span-1 text-sm text-center font-bold">품질</span>
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value={sliderValue}
-              onChange={(e) => {
-                const value = parseInt(e.target.value, 10);
-                setSliderValue(value); // 로컬 상태 업데이트
-                setGrade("quality", value === 0 ? null : value); // 부모에 값 전달
-              }}
-              className="slider col-span-2 w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
-            />
-            <div className="col-span-1  text-center text-sm text-gray-500">
+      <div className="shadow-lg border-2 rounded-3xl bg-[#F5F5F5] pt-2">
+        <div className="overflow-hidden">
+          {apiKey === "" || !apiKey ? (
+            <div className="flex animate-marquee-loop whitespace-nowrap relative w-[200%] h-full flex items-center overflow-hidden text-sm text-red-500 font-bold">
+              <span className="">
+                🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로 분당 횟수 초과가
+                일어날 확률이 높습니다.
+              </span>
+              <span>
+                🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로 분당 횟수 초과가
+                일어날 확률이 높습니다.
+              </span>
+              <span className="">
+                🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로 분당 횟수 초과가
+                일어날 확률이 높습니다.
+              </span>
+              <span>
+                🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로 분당 횟수 초과가
+                일어날 확률이 높습니다.
+              </span>
+            </div>
+          ) : (
+            <div className="h-full flex items-center px-8">
+              <span className="font-bold text-xl"> 전체 선택 프리셋 |</span>
+            </div>
+          )}
+
+          {/* <h1
+                className={` ${
+                  apiKey === "" || !apiKey ? "visible" : "invisible"
+                }`}
+              >
+                
+              </h1> */}
+        </div>
+        <div className="grid grid-cols-5">
+          <div className="col-span-3 ">
+            <div className="grid grid-cols-4 justify-center items-center py-2">
+              <span className="col-span-1 text-sm text-center font-bold">품질</span>
               <input
-                className="w-1/2 text-center rounded-3xl border border-gray-300"
-                placeholder="미지정"
-                type="number"
+                type="range"
                 min="0"
                 max="100"
                 value={sliderValue}
                 onChange={(e) => {
                   const value = parseInt(e.target.value, 10);
                   setSliderValue(value); // 로컬 상태 업데이트
-                  setGrade("quality", isNaN(value) ? null : Math.min(100, Math.max(0, value)));
+                  setGrade("quality", value === 0 ? null : value); // 부모에 값 전달
                 }}
+                className="slider col-span-2 w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
               />
-              {/* {sliderValue === 0 ? "미지정" : sliderValue} */}
+              <div className="col-span-1  text-center text-sm text-gray-500">
+                <input
+                  className="w-3/4 text-center rounded-3xl border border-gray-300"
+                  placeholder="미지정"
+                  type="number"
+                  min="0"
+                  max="100"
+                  value={sliderValue}
+                  onChange={(e) => {
+                    const value = parseInt(e.target.value, 10);
+                    setSliderValue(value); // 로컬 상태 업데이트
+                    setGrade("quality", isNaN(value) ? null : Math.min(100, Math.max(0, value)));
+                  }}
+                />
+                {/* {sliderValue === 0 ? "미지정" : sliderValue} */}
+              </div>
             </div>
-          </div>
-          <div className="grid grid-cols-4 justify-center items-center p-4">
-            <span className="col-span-1 text-xs text-center font-bold">힘민지%</span>
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value={sliderStatValue}
-              onChange={(e) => {
-                const value = parseInt(e.target.value, 10);
-                setSliderStatValue(value); // 로컬 상태 업데이트
-                setGrade("statPer", value === 0 ? null : value); // 부모에 값 전달
-              }}
-              className="slider col-span-2 w-full  h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
-            />
-            <div className="col-span-1  text-center text-sm text-gray-500">
+            <div className="grid grid-cols-4 justify-center items-center py-2">
+              <span className="col-span-1 text-xs text-center font-bold">힘민지%</span>
               <input
-                className="w-1/2 text-center rounded-3xl border border-gray-300"
-                placeholder="미지정"
-                type="number"
+                type="range"
                 min="0"
                 max="100"
                 value={sliderStatValue}
                 onChange={(e) => {
                   const value = parseInt(e.target.value, 10);
                   setSliderStatValue(value); // 로컬 상태 업데이트
-                  setGrade("statPer", isNaN(value) ? null : Math.min(100, Math.max(0, value)));
+                  setGrade("statPer", value === 0 ? null : value); // 부모에 값 전달
                 }}
+                className="slider col-span-2 w-full  h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
               />
-              {/* {sliderValue === 0 ? "미지정" : sliderValue} */}
+              <div className="col-span-1  text-center text-sm text-gray-500">
+                <input
+                  className="w-3/4 text-center rounded-3xl border border-gray-300"
+                  placeholder="미지정"
+                  type="number"
+                  min="0"
+                  max="100"
+                  value={sliderStatValue}
+                  onChange={(e) => {
+                    const value = parseInt(e.target.value, 10);
+                    setSliderStatValue(value); // 로컬 상태 업데이트
+                    setGrade("statPer", isNaN(value) ? null : Math.min(100, Math.max(0, value)));
+                  }}
+                />
+                {/* {sliderValue === 0 ? "미지정" : sliderValue} */}
+              </div>
+            </div>
+          </div>
+          <div className="mx-4 gap-y-2 w-full col-span-2 grid grid-rows-2 size-font-sm">
+            <button className="w-8 resetBtm text-center bg-[#b2ddad]" onClick={setReset}>
+              초기화
+            </button>
+            <div className="w-full h-full">
+              <button
+                className="w-full h-full bg-[#40AC8D] resetBtm"
+                onClick={search}
+                disabled={searchState}
+              >
+                {searchState ? (
+                  <div className="h-full bg-[url('./Assets/loading.webp')] bg-contain bg-center bg-no-repeat">
+                    {" "}
+                  </div>
+                ) : (
+                  "검색하기"
+                )}
+              </button>
             </div>
           </div>
         </div>
 
         <div className="text-[8px] mb-4 font-bold pl-2 pr-4">
-          <div>
-            <div className="border-b-[3px] pb-1 border-[#2384bc] w-[75%] mx-auto text-[#2384bc]  font-bold size-font-2xl mb-2">
-              등급 선택
+          <div className="grid grid-cols-4">
+            <div>
+              <div className="border-b-[3px] pb-1 border-[#2384bc] w-[90%] mx-auto text-[#2384bc]  font-bold size-font-xl mb-2">
+                등급 선택
+              </div>
+              <div className="grid grid-rows-2 px-2 h-20 size-font-sm">
+                <button
+                  className="w-full mx-auto bg-[#e95a04] text-white border border-[#d75101] my-2 h-8  rounded-2xl font-bold  presetBtm"
+                  onClick={() => setGrade("itemGrade", "유물")}
+                >
+                  All 유물
+                </button>
+                <button
+                  className="w-full  mx-auto bg-[#ddb300] text-white border border-[#c9a302] my-2 h-8 border rounded-2xl font-bold   presetBtm"
+                  onClick={() => setGrade("itemGrade", "고대")}
+                >
+                  All 고대
+                </button>
+              </div>
             </div>
-            <div className="grid grid-cols-2 h-20 gap-x-12 px-8">
-              <button
-                className="w-full mx-auto bg-[#e95a04] text-white border border-[#d75101] my-2 h-8  rounded-2xl font-bold size-font-xl presetBtm"
-                onClick={() => setGrade("itemGrade", "유물")}
-              >
-                All 유물
-              </button>
-              <button
-                className="w-full mx-auto bg-[#ddb300] text-white border border-[#c9a302] my-2 h-8 border rounded-2xl font-bold size-font-xl  presetBtm"
-                onClick={() => setGrade("itemGrade", "고대")}
-              >
-                All 고대
-              </button>
+            <div className="col-span-3">
+              <div className="">
+                <div className="border-b-[3px] pb-1 border-[#40ac8d] w-[90%] mx-auto text-[#40ac8d] font-bold size-font-xl mb-2">
+                  공용옵션 선택
+                </div>
+                <div className="grid grid-rows-2 grid-cols-3 gap-x-4 px-2 h-20 size-font-sm">
+                  <button
+                    className="w-full  mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                    onClick={() => setGrade("selVal3", "3")}
+                  >
+                    공용 상
+                  </button>
+                  <button
+                    className="w-full mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                    onClick={() => setGrade("selVal3", "2")}
+                  >
+                    공용 중
+                  </button>
+                  <button
+                    className="w-full mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                    onClick={() => setGrade("selVal3", "1")}
+                  >
+                    공용 하
+                  </button>
+                  <button
+                    className="w-full mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                    onClick={(type) =>
+                      type === 0 ? setGrade("selOpt3", "53") : setGrade("selOpt3", "55")
+                    }
+                  >
+                    {type === 0 ? (
+                      <p className="font-bold">공용 공+</p>
+                    ) : (
+                      <p className=" font-bold">공용 최생</p>
+                    )}
+                  </button>
+                  <button
+                    className={`w-full mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm`}
+                    onClick={(type) =>
+                      type === 0 ? setGrade("selOpt3", "54") : setGrade("selOpt3", "56")
+                    }
+                  >
+                    {type === 0 ? (
+                      <p className=" font-bold">공용 무공</p>
+                    ) : (
+                      <p className=" font-bold">공용 최마</p>
+                    )}
+                  </button>
+                  <button
+                    className="w-full mx-auto bg-white text-gray-500 hover:bg-[#566863] hover:text-white border border-[#566863] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                    onClick={() => setGrade("selOpt3", null)}
+                  >
+                    일괄제거
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="">
-            <div className="border-b-[3px] pb-1 border-gray-500 text-gray-500 w-[95%] font-bold size-font-2xl mx-auto mb-2">
+          <div className="mt-2">
+            <div className="border-b-[3px] pb-1 border-gray-500 text-gray-500 w-[95%] font-bold size-font-xl mx-auto mb-2">
               연마등급 일괄선택
             </div>
-            <div className="grid grid-rows-2 grid-cols-5 gap-x-4 h-20">
+            <div className="grid grid-rows-2 grid-cols-5 gap-x-4 h-20 size-font-sm">
               <button
                 className="w-full mx-auto bg-white text-gray-500 hover:bg-[#e38e49] hover:text-white border border-gray-500 hover:border-[#da7c2f] my-2 h-8 rounded-2xl font-bold  presetBtm"
                 onClick={() => setOption("selVal1", "3", "selVal2", null)}
@@ -349,60 +513,130 @@ const AllSelectPresetComp = ({ updateSet, type }) => {
               </div>
             </div>
           </div>
-        </div>
-        <div className="">
-          <div className="border-b-[3px] pb-1 border-[#40ac8d] w-[95%] mx-auto text-[#40ac8d] font-bold size-font-2xl mb-2">
-            공용옵션 선택
-          </div>
-          <div className="grid grid-rows-2 grid-cols-3 gap-x-4 px-2 h-20">
-            <button
-              className="w-full mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
-              onClick={() => setGrade("selVal3", "3")}
-            >
-              공용 상
-            </button>
-            <button
-              className="w-full mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
-              onClick={() => setGrade("selVal3", "2")}
-            >
-              공용 중
-            </button>
-            <button
-              className="w-full mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
-              onClick={() => setGrade("selVal3", "1")}
-            >
-              공용 하
-            </button>
-            <button
-              className="w-full mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
-              onClick={(type) =>
-                type === 0 ? setGrade("selOpt3", "53") : setGrade("selOpt3", "55")
-              }
-            >
-              {type === 0 ? (
-                <p className="text-sm font-bold">공용 공+</p>
-              ) : (
-                <p className="text-sm font-bold">공용 최생</p>
-              )}
-            </button>
-            <button
-              className={`w-full mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm`}
-              onClick={(type) =>
-                type === 0 ? setGrade("selOpt3", "54") : setGrade("selOpt3", "56")
-              }
-            >
-              {type === 0 ? (
-                <p className="text-sm font-bold">공용 무공</p>
-              ) : (
-                <p className="text-sm font-bold">공용 최마</p>
-              )}
-            </button>
-            <button
-              className="w-full mx-auto bg-white text-gray-500 hover:bg-[#566863] hover:text-white border border-[#566863] my-2 h-8 rounded-2xl font-bold  presetBtm"
-              onClick={() => setGrade("selOpt3", null)}
-            >
-              일괄제거
-            </button>
+          {/* 프리셋 저장 */}
+          <div className="mt-2 h-28 col-span-9 p-2 bg-[#e0dedf] rounded-3xl inset-shadow-sm shadow-inset-indigo">
+            <div className="h-1/3 flex items-center justify-between size-font-xl">
+              <span>개인 프리셋 </span>
+
+              <div className="flex items-center">
+                <button
+                  className=" presetBtm"
+                  onClick={() => {
+                    exportPreset(presetSelectValue);
+                  }}
+                  disabled={presetSelectValue === "-1"}
+                >
+                  <img src={shareBtm} className="h-6" />
+                </button>
+                <select
+                  value={presetSelectValue || ""}
+                  onChange={(e) => setPresetSelectValue(e.target.value)}
+                  className="size-font-xs mr-2 text-center h-6 rounded-lg border-black border bg-[#F5F5F5]"
+                >
+                  <option value="-1">저장 위치 선택</option>
+                  {presetSlots.map((presetSlot, index) => (
+                    <option value={index}>{presetSlot?.name}</option>
+                  ))}
+                </select>
+                <input
+                  type="text"
+                  placeholder="공유 받은 코드 입력"
+                  className="w-20 h-6  size-font-xs text-center border-[#68afb4] border bg-white rounded-l-xl"
+                  onChange={(e) => setPresetCode(e.target.value)}
+                  value={presetCode}
+                  disabled={presetSelectValue === "-1"}
+                />
+                <button
+                  className="w-10 h-6 size-font-xxs px-2 text-white bg-[#68afb4]  border border-[#68afb4] rounded-r-xl font-bold transition duration-700 ease-in-out hover:bg-black  hover:border-black"
+                  onClick={async () => {
+                    await savePresetCodeSlot(presetSelectValue, presetCode);
+                    loadPresetSlot(presetSelectValue);
+                    loadPreset();
+                  }}
+                >
+                  저장
+                </button>
+              </div>
+            </div>
+            <div className="h-2/3 flex">
+              <div className="w-[40%] grid grid-cols-6 h-full size-font-xs">
+                <div className="col-span-2 h-full mx-auto group relative">
+                  <BsFillQuestionCircleFill className="self-end w-3 h-6" />
+                  <div className="absolute z-50 bottom-8 w-[2450%] px-3 py-2 bg-gray-800 text-white size-font-xs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+                    🛑주의🛑 저장 위치를 가장 먼저 선택해주세요 <br />
+                    <br />
+                    저장 위치를 선택한 뒤에 이름을 쓰고 저장을 누르면
+                    <br /> 다시 사이트에 접속해도 골라둔 옵션을 쉽게 불러올 수 있어요 <br />
+                    <br />
+                    👉선택 옵션 공유 <br /> 아이콘 오른쪽의 [선택한 프리셋]이 코드화됩니다 <br />{" "}
+                    저장 위치를 선택한 뒤에 공유받은 코드를 붙여놓고 저장을 눌러주세요
+                    <br /> 선택한 위치에 공유받은 프리셋이 저장됩니다.
+                  </div>
+                </div>
+                <div className="col-span-4 flex items-center">
+                  <select
+                    value={presetSelectValue || ""}
+                    onChange={(e) => setPresetSelectValue(e.target.value)}
+                    className="text-center w-full h-6 rounded-lg border-black border bg-[#F5F5F5]"
+                  >
+                    <option value="-1">저장 위치 선택</option>
+                    {presetSlots.map((presetSlot, index) => (
+                      <option value={index}>{presetSlot?.name}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="col-span-4 flex items-center">
+                  <input
+                    type="text"
+                    placeholder="이름 (1~8자)"
+                    className="w-full h-6 text-center border-[#2383bd] border bg-white rounded-l-xl"
+                    onChange={(e) => setPresetName(e.target.value)}
+                    value={presetName}
+                    disabled={presetSelectValue === "-1"}
+                    maxLength={8}
+                  />
+                </div>
+                <div className="col-span-2 flex items-center">
+                  <button
+                    className="group relative w-full h-6 text-white bg-[#2383bd]  border border-[#2383bd] rounded-r-xl font-bold transition duration-700 ease-in-out hover:bg-black  hover:border-black"
+                    onClick={() => {
+                      savePresetSlot(presetSelectValue, presetName);
+                      loadPreset();
+                    }}
+                    disabled={presetName.length < 2 && presetSelectValue === "-1"}
+                  >
+                    저장
+                    <div
+                      className={`absolute z-50 bottom-8 w-[300%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none  ${
+                        presetName.length < 2
+                          ? "group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto"
+                          : ""
+                      }  transition-opacity duration-300`}
+                    >
+                      이름을 정해주세요
+                    </div>
+                  </button>
+                </div>
+              </div>
+
+              <div className="w-[60%] grid grid-cols-3 flex h-full">
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <div key={index} className="flex items-center">
+                    <button
+                      className="w-4/5 mx-auto size-font-xs text-gray-500 font-bold hover:underline presetBtm"
+                      onClick={() => {
+                        loadPresetSlot(index);
+                        setPresetName(presetSlots[index].name);
+                        setPresetSelectValue(index + "");
+                      }}
+                    >
+                      {presetSlots[index]?.name || `${index + 1}`}
+                    </button>
+                    {index !== 2 && <span className="px-2 text-[3px] text-gray-400">●</span>}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -597,6 +597,7 @@ const AllSelectPresetComp = ({
                       className="group relative w-full h-full text-white bg-[#2383bd]  border border-[#2383bd] rounded-r-xl font-bold transition duration-700 ease-in-out hover:bg-black  hover:border-black"
                       onClick={() => {
                         savePresetSlot(presetSelectValue, presetName);
+                        loadPreset();
                       }}
                       disabled={presetName.length < 2 && presetSelectValue === "-1"}
                     >

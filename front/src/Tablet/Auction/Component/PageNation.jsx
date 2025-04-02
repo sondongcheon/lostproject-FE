@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { IoCaretForwardOutline } from "react-icons/io5";
-import { IoCaretBackOutline } from "react-icons/io5";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
+
+import leftBtm from "../../../Assets/leftBtm.png";
+import rightBtm from "../../../Assets/rightBtm.png";
+import loading from "../../../Assets/loading.webp";
 
 const PageNation = ({
   dataLength,
@@ -150,44 +152,36 @@ const PageNation = ({
 
   return (
     <div>
-      <div className="h-24 grid grid-cols-6 ">
-        <div className="h-full flex pl-2 pb-4 group relative">
+      <div className="h-16 flex">
+        <div className="w-[20%] h-full flex pl-16 pb-4 group relative">
           <BsFillQuestionCircleFill className="self-end w-1/5 h-1/2" />
-          <div className="absolute z-50 top-full w-[250%] mt-2 px-3 py-2 bg-gray-800 text-white size-font-xs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
-            좌측, 최저가 / 우측, 추가목록 입니다. <br />
-            좌측에서 부위 클릭시 우측 목록이 해당 부위에 맞게 변경됩니다. <br />
-            우측 리스트에서 버튼을 통해 추가 매물을 조회할 수 있습니다. <br />
-            🔥주의🔥 추가 매물 조회시 API요청이 추가로 들어갑니다. <br />
+          <div className="absolute z-50 top-full w-[350%] mt-2 px-3 py-2 bg-gray-800 text-white size-font-xs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
+            상단에서 부위 클릭시 우측 목록이 해당 부위에 맞게 변경됩니다. <br />
+            🔥주의🔥 다음 페이지 조회시 API요청이 추가로 들어갑니다. <br />
             <br />
-            한번의 조회로는 한바구니에 10개만 담아올 수 있기 때문입니다. <br />
-            힘민지 필터의 경우 조회 → 자체 필터를 거치기 때문에 <br />
-            10개를 채우기 위해 다음페이지 요청 시 다소 시간이 소요됩니다.
+            추가 요청 → '없어? 다음 또봐' 를 반복하기 때문에 10개를 채우기 위해 다음페이지 요청 시
+            다소 시간이 소요됩니다.
           </div>
         </div>
-        <div className="gap-x-6 flex items-center justify-center col-span-4">
+        <div className="w-[60%] flex items-center justify-center">
           <button
-            className="bg-[#F5F5F5] border-2 border-gray-500 rounded-xl w-24 h-1/3 flex items-center justify-center mx-auto"
+            className="h-12 flex items-center justify-center mx-auto"
             onClick={backPage}
             disabled={currentPage === 1}
           >
-            <IoCaretBackOutline />
+            <img src={leftBtm} className="w-full h-full" />
           </button>
-          <span className="size-font-2xl font-bold">{currentPage}</span>
+          <span className="text-center w-8 size-font-2xl font-bold text-[#2384bc]">
+            {nextPageBtm ? <img src={loading} className="h-8" /> : currentPage}
+          </span>
           <button
-            className="bg-[#F5F5F5] border-2 border-gray-500 rounded-xl w-24 h-1/3 flex items-center justify-center mx-auto"
+            className="h-12 flex items-center justify-center mx-auto"
             onClick={updateNextPage}
             disabled={nextPageBtm}
           >
-            {nextPageBtm ? (
-              <div className="w-full h-full bg-[url('./Assets/loading.webp')] bg-contain bg-center bg-no-repeat">
-                {" "}
-              </div>
-            ) : (
-              <IoCaretForwardOutline />
-            )}
+            <img src={rightBtm} className="w-full h-full" />
           </button>
         </div>
-        <div></div>
       </div>
     </div>
   );

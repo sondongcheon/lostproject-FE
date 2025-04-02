@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import ServiceBox from "./Component/ServiceBox";
+import BoardContent from "../Board/Component/BoardContent";
 import DisplayAds from "../common/Component/DisplayAds";
 
 function Main(props) {
+  const [notice, setNotice] = useState("");
+
   const boxInfo = [
     {
       imgUrl: require("../Assets/jobIcon/gunslinger.png"),
       title: "딜러 악세 검색기",
       info: (
         <>
-          인게임 경매장 매물을 검색합니다.
+          인게임 경매장을 검색합니다.
           <br />
           편리하게 여러 부위를 검색할 수 있습니다.
         </>
@@ -22,7 +26,7 @@ function Main(props) {
       title: "서폿 악세 검색기",
       info: (
         <>
-          인게임 경매장 매물을 검색합니다.
+          인게임 경매장을 검색합니다.
           <br />
           편리하게 여러 부위를 검색할 수 있습니다.
         </>
@@ -53,25 +57,43 @@ function Main(props) {
     },
   ];
 
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_URL}/board/notice/last`, {})
+      .then((res) => {
+        setNotice(res.data.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   return (
     <div className="flex">
       <div className="mt-32 w-[15%]">
         <DisplayAds />
       </div>
       <div className="mainbody">
-        <div>
-          <br />
-          <h1 className="mt-4 text-center text-3xl">주요 서비스</h1>
-        </div>
-        <div className="flex grid grid-cols-2">
-          {boxInfo.map((box, index) => (
-            <ServiceBox
-              imgUrl={box.imgUrl}
-              title={box.title}
-              info={box.info}
-              clicklink={box.clicklink}
-            />
-          ))}
+        <div className="grid grid-cols-2">
+          <div>
+            <br />
+            <h1 className="mt-4 text-center text-3xl">주요 서비스</h1>
+            <div className="flex grid grid-cols-2">
+              {boxInfo.map((box, index) => (
+                <ServiceBox
+                  imgUrl={box.imgUrl}
+                  title={box.title}
+                  info={box.info}
+                  clicklink={box.clicklink}
+                />
+              ))}
+            </div>
+          </div>
+          <div>
+            <br />
+            <h1 className="mt-4 text-center text-3xl">최신 변경 사항</h1>
+            <BoardContent content={notice?.content} />
+          </div>
         </div>
       </div>
       <div className="mt-32 w-[15%]">
