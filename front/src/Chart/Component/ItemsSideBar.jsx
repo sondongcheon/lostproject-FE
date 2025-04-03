@@ -26,7 +26,12 @@ const ItemsSideBar = ({}) => {
             <SideBarlist
               clickAction={() => navigate("/chartitems/jewel")}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_12_105.png"
-              name="&nbsp;보석(데이터수집중)"
+              name="&nbsp;4T 보석"
+            />
+            <SideBarlist
+              clickAction={() => navigate("/chartitems/items")}
+              img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_12_88.png"
+              name="&nbsp;재련 재료"
             />
           </div>
         </div>

@@ -91,7 +91,7 @@ function MainNav({ logSearch, getCountLog }) {
               </div>
               <div
                 className="cursor-pointer text-base hover:underline size-font-xxxs"
-                onClick={() => navigate("/chartitems/book")}
+                onClick={() => navigate("/chartitems/main")}
               >
                 주요 아이템 차트
               </div>

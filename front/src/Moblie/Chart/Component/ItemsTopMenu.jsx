@@ -24,7 +24,7 @@ function ItemsTopMenu(props) {
             <Menulist
               clickAction={() => navigate("/chartitems/jewel")}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_12_105.png"
-              name="&nbsp;보석(가격수집중)"
+              name="&nbsp;4T 보석"
             />
           </div>
         </div>

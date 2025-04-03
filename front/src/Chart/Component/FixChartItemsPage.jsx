@@ -125,7 +125,7 @@ const FixChartItemsPage = () => {
               <TbZoomReset className="w-28 h-20" />
             )}
           </button>
-          <div className="absolute top-full w-[270px] mt-2 px-3 py-2 bg-gray-800 text-white text-sm rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="absolute top-full right-0 w-[270px] mt-2 px-3 py-2 bg-gray-800 text-white text-sm rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             실시간 가격을 다시 불러옵니다. <br />
             API키가 없거나 반복해서 누르는 경우
             <br />
