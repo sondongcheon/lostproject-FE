@@ -11,7 +11,6 @@ import MiniBoard from "./Pages/MiniBoard.jsx";
 import Chart from "./Pages/Chart.jsx";
 import ChartItemsMain from "./Pages/Chart/ChartMain.jsx";
 import ChartItems from "./Pages/Chart/ChartItems.jsx";
-import ChartBook from "./Pages/ChartItems.jsx";
 import ChartJewel from "./Pages/ChartJewel.jsx";
 
 import TestFour from "./Main/TestFour.jsx";
@@ -45,8 +44,7 @@ function Router() {
         <Route path="/mini" element={<MiniBoard />} />
         <Route path="/chart" element={<Chart />} />
         <Route path="/chartitems/main" element={<ChartItemsMain />} />
-        <Route path="/chartitems/book" element={<ChartBook />} />
-        <Route path="/chartitems/items" element={<ChartItems />} />
+        <Route path="/chartitems/items/:type" element={<ChartItems />} />
         <Route path="/chartitems/jewel" element={<ChartJewel />} />
 
         <Route path="/test4" element={<TestFour />} />

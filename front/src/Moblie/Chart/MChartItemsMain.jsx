@@ -1,11 +1,11 @@
 import React from "react";
 
 import ItemsTopMenu from "./Component/ItemsTopMenu";
-import FixChartItemsPage from "./Component/FixChartItemsPage";
+import MainItemsComp from "./Component/MainItemsComp";
 
 import DisplayAds from "../../common/Component/DisplayAds";
 
-function TChartBook(props) {
+function MChartItemsMain(props) {
   return (
     <div>
       <div className="mainMobileBody">
@@ -13,7 +13,7 @@ function TChartBook(props) {
           <ItemsTopMenu />
         </div>
         <div className="">
-          <FixChartItemsPage />
+          <MainItemsComp />
         </div>
         <DisplayAds />
       </div>
@@ -21,4 +21,4 @@ function TChartBook(props) {
   );
 }
 
-export default TChartBook;
+export default MChartItemsMain;

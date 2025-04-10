@@ -2,6 +2,8 @@ import React from "react";
 import { useMediaQuery } from "react-responsive";
 
 import ChartItemsMain from "../../Chart/ChartItemsMain";
+import TChartItemsMain from "../../Tablet/Chart/TChartItemsMain";
+import MChartItemsMain from "../../Moblie/Chart/MChartItemsMain";
 
 function ChartMain(props) {
   const isMobile = useMediaQuery({
@@ -14,7 +16,7 @@ function ChartMain(props) {
   return (
     <div>
       <div className="">
-        {isMobile ? <ChartItemsMain /> : isTablet ? <ChartItemsMain /> : <ChartItemsMain />}
+        {isMobile ? <MChartItemsMain /> : isTablet ? <TChartItemsMain /> : <ChartItemsMain />}
       </div>
     </div>
   );

@@ -15,7 +15,9 @@ const HeadKeyBox = ({ apiKey, setApiKey, saveKey, setSaveKey }) => {
               placeholder="API KEY"
               value={apiKey}
               type="text"
-              onChange={(e) => setApiKey(e.target.value)}
+              onChange={(e) => {
+                setApiKey(e.target.value);
+              }}
             />
           </div>
 

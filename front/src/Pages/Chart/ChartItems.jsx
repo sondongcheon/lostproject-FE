@@ -2,6 +2,8 @@ import React from "react";
 import { useMediaQuery } from "react-responsive";
 
 import ChartItemsPage from "../../Chart/ChartItems";
+import TChartItems from "../../Tablet/Chart/TChartItems";
+import MChartItems from "../../Moblie/Chart/MChartItems";
 
 function ChartItems(props) {
   const isMobile = useMediaQuery({
@@ -11,9 +13,7 @@ function ChartItems(props) {
     query: "(max-width:800px)",
   });
 
-  return (
-    <div>{isMobile ? <ChartItemsPage /> : isTablet ? <ChartItemsPage /> : <ChartItemsPage />}</div>
-  );
+  return <div>{isMobile ? <MChartItems /> : isTablet ? <TChartItems /> : <ChartItemsPage />}</div>;
 }
 
 export default ChartItems;

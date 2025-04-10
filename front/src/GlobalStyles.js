@@ -5,7 +5,7 @@ const GlobalStyles = createGlobalStyle`
   width: 1900px; /* 고정된 너비 */
   min-height: 100vh; 
   overflow: auto; /* 넘치는 콘텐츠는 스크롤로 처리 */
-  background-color: #ECEBDE;
+  background-color:rgb(240, 239, 227);
     font-family: "Pretendard";
   }
 
@@ -168,6 +168,15 @@ const GlobalStyles = createGlobalStyle`
 .normalSelBtm:hover {
   background-color: white; /* 호버 시 배경색을 채움 */
   color: #40AC8D; /* 호버 시 텍스트 색상 변경 */
+}
+
+.mainIconHover:hover {
+  cursor: pointer;
+  font-style : bold;
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  // border: 2px solid #ddd; /* 테두리 추가 */
+  transition: all 0.3s ease; /* 애니메이션 추가 */
 }
 
 .commonHover:hover {

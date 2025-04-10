@@ -19,7 +19,7 @@ const ItemsSideBar = ({}) => {
 
           <div className="py-2">
             <SideBarlist
-              clickAction={() => navigate("/chartitems/book")}
+              clickAction={() => navigate("/chartitems/items/1")}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_9_25.png"
               name="&nbsp;유물 각인서"
             />
@@ -29,7 +29,7 @@ const ItemsSideBar = ({}) => {
               name="&nbsp;4T 보석"
             />
             <SideBarlist
-              clickAction={() => navigate("/chartitems/items")}
+              clickAction={() => navigate("/chartitems/items/2")}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_12_88.png"
               name="&nbsp;재련 재료"
             />

@@ -18,11 +18,7 @@ const ItemsLineChartComp = ({ data }) => {
       <div className="w-[80%] ">
         <h2 className="flex items-center justify-center text-center">
           {" "}
-          <img
-            className="w-8"
-            src="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_9_25.png"
-          />{" "}
-          {data.name}
+          <img className="w-8" src={data.iconUrl} /> {data.name}
         </h2>
         <ResponsiveContainer width="100%" height={250}>
           <ComposedChart
@@ -52,7 +48,23 @@ const ItemsLineChartComp = ({ data }) => {
                       ? 30000
                       : dataMax > 5000
                       ? 10000
-                      : 5000
+                      : dataMax > 3000
+                      ? 5000
+                      : dataMax > 1500
+                      ? 3000
+                      : dataMax > 750
+                      ? 1500
+                      : dataMax > 500
+                      ? 750
+                      : dataMax > 300
+                      ? 500
+                      : dataMax > 200
+                      ? 300
+                      : dataMax > 100
+                      ? 200
+                      : dataMax > 50
+                      ? 100
+                      : 50
                   ),
               ]}
             />

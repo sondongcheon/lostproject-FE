@@ -9,7 +9,9 @@ function ChartItemsMain(props) {
   return (
     <div>
       <div className="flex">
-        <div className="mt-32 w-[15%]">{/* <DisplayAds /> */}</div>
+        <div className="mt-32 w-[15%]">
+          <DisplayAds />
+        </div>
 
         <div className="mainbody flex">
           <div className="w-[15%]">
@@ -19,7 +21,9 @@ function ChartItemsMain(props) {
             <MainItemsComp />
           </div>
         </div>
-        <div className="mt-32 w-[15%]">{/* <DisplayAds /> */}</div>
+        <div className="mt-32 w-[15%]">
+          <DisplayAds />
+        </div>
       </div>
     </div>
   );

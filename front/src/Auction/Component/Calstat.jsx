@@ -57,7 +57,7 @@ const Calstat = () => {
   }, [stat, category, upgradeLevel]);
   return (
     <div>
-      <div className="w-full h-24 flex justify-center items-center border-gray-300 shadow-lg px-2 gap-x-2 border-2 rounded-3xl bg-[#F5F5F5]">
+      <div className="w-full h-44 flex justify-center items-center border-gray-200 shadow-lg px-2 gap-x-2 border-2 rounded-3xl bg-[#F5F5F5]">
         <div className="w-[15%]  text-center ">
           <span className="font-bold size-font-5xs">이 장신구는 몇?</span>
 

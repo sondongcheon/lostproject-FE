@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 
 import MenuDropdown from "./Component/MenuDropdown";
+import ModalApiKey from "./Component/ModalApiKey";
 
 function MainNav({ logSearch, getCountLog }) {
   const isMobile = useMediaQuery({
@@ -54,7 +55,7 @@ function MainNav({ logSearch, getCountLog }) {
         <div className="container mx-auto px-2 py-1 flex justify-between items-center h-full text-[#2b2b2b] font-bold ">
           {/* 왼쪽에 'test' 홈페이지 링크 */}
           <span className="text-3xl cursor-pointer text-white font-a" onClick={() => navigate("/")}>
-            LoaRoot <span className="size-font-xxxs">[Ver 2.3.2]</span>
+            LoaRoot <span className="size-font-xxxs">[Ver 2.4.0]</span>
           </span>
 
           {/* 오른쪽에 페이지 이동 공간 잡기 */}
@@ -71,6 +72,9 @@ function MainNav({ logSearch, getCountLog }) {
             </div>
           ) : (
             <div className="flex gap-10">
+              <div>
+                <ModalApiKey />
+              </div>
               <div
                 className="cursor-pointer text-base hover:underline size-font-xxxs"
                 onClick={() => navigate("/auction")}
