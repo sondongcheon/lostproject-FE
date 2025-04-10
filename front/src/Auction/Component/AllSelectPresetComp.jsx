@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import shareBtm from "../../Assets/shareBtm.png";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
+import { RxReset } from "react-icons/rx";
 
 const AllSelectPresetComp = ({
   updateSet,
@@ -181,7 +182,10 @@ const AllSelectPresetComp = ({
               </h1> */}
             </div>
             <div className=" w-full gap-x-4 text-center flex justify-center items-center ">
-              <button className="w-1/3 h-full resetBtm bg-[#b2ddad]" onClick={setReset}>
+              <button
+                className="w-1/3 py-2 px-4 h-full rounded-lg font-bold resetBtm bg-[#b2ddad]"
+                onClick={setReset}
+              >
                 초기화
               </button>
 

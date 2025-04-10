@@ -19,14 +19,19 @@ const ItemsSideBar = ({}) => {
 
           <div className="py-2">
             <SideBarlist
-              clickAction={() => navigate("/chartitems/book")}
+              clickAction={() => navigate("/chartitems/items/1")}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_9_25.png"
               name="&nbsp;유물 각인서"
             />
             <SideBarlist
               clickAction={() => navigate("/chartitems/jewel")}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_12_105.png"
-              name="&nbsp;보석(데이터수집중)"
+              name="&nbsp;4T 보석"
+            />
+            <SideBarlist
+              clickAction={() => navigate("/chartitems/items/2")}
+              img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_12_88.png"
+              name="&nbsp;재련 재료"
             />
           </div>
         </div>

@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import Cookies from "js-cookie";
-
-import HeadKeyBox from "./Component/HeadKeyBox";
 import AllSelectPresetComp from "./Component/AllSelectPresetComp";
 import SelectOptionComp from "./Component/SelectOptionComp";
 import SelectSummary from "./Component/SelectSummary";
@@ -14,6 +11,8 @@ import Calstat from "./Component/Calstat";
 
 import folderOpen from "../../Assets/folderOpen.png";
 import folderClose from "../../Assets/folderClose.png";
+
+import { useSelector, useDispatch } from "react-redux";
 
 function MauctionTierFourSup({
   getCountLog,
@@ -32,11 +31,8 @@ function MauctionTierFourSup({
   staticNameList,
 }) {
   const [selectOptionReq, setSelectOptionReq] = useState([]);
-
   const [searchState, setSearchState] = useState(false);
-
-  const [apiKey, setApiKey] = useState("");
-  const [saveKey, setSaveKey] = useState(false);
+  const apiKey = useSelector((state) => state.settings.apiKey);
 
   const [total, setTotal] = useState(0);
 
@@ -187,14 +183,6 @@ function MauctionTierFourSup({
   };
 
   useEffect(() => {
-    const cookieValue = Cookies.get("apiKey" ?? "");
-    if (Cookies.get("apiKey") !== undefined) {
-      setSaveKey(true);
-    }
-    setApiKey(cookieValue);
-  }, []);
-
-  useEffect(() => {
     localStorage.setItem("folderFlags", JSON.stringify(folderFlags));
   }, [folderFlags]);
 
@@ -202,13 +190,6 @@ function MauctionTierFourSup({
     if (selectOptionReq.length > 0) {
       const encodedApiKey = encodeURIComponent(apiKey);
       setSearchState(true);
-      if (saveKey)
-        Cookies.set("apiKey", apiKey, {
-          expires: 89,
-          secure: true,
-          sameSite: "Strict",
-        });
-      else Cookies.remove("apiKey");
       axios
         .post(`${process.env.REACT_APP_URL}/auction/test5`, selectOptionReq, {
           headers: { apiKey: encodedApiKey },
@@ -289,42 +270,6 @@ function MauctionTierFourSup({
 
   return (
     <div className="mainMobileBody">
-      <div
-        className="w-full flex items-center justify-center cursor-pointer"
-        onClick={() => handleToggle("folder1")}
-      >
-        <img
-          src={folderFlags.folder1 ? folderClose : folderOpen}
-          alt="toggle icon"
-          className={`absolute z-10 mr-20 w-8 h-8 transform transition-transform duration-300 ease-in-out ${
-            folderFlags.folder1
-              ? "animate-spinCounterClockwiseM" // 열 때
-              : "animate-spinClockwiseM" // 닫을 때
-          }`}
-        />
-        <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
-          {folderFlags.folder1 ? (
-            <span> API KEY 설정창 열기 </span>
-          ) : (
-            <span> API KEY 설정창 닫기 </span>
-          )}
-        </span>
-      </div>
-      <div
-        className={`transition-all duration-500 ${
-          folderFlags.folder1
-            ? "max-h-0 opacity-0 overflow-hidden"
-            : "max-h-[120%] opacity-100 mt-4"
-        }`}
-      >
-        <HeadKeyBox
-          apiKey={apiKey}
-          setApiKey={setApiKey}
-          saveKey={saveKey}
-          setSaveKey={setSaveKey}
-        ></HeadKeyBox>
-      </div>
-
       <div
         className="mt-4 w-full flex items-center justify-center cursor-pointer"
         onClick={() => handleToggle("calFolder")}

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import { useNavigate } from "react-router-dom";
+
 import ServiceBox from "./Component/ServiceBox";
 import BoardContent from "../Board/Component/BoardContent";
 import DisplayAds from "../common/Component/DisplayAds";
 
 function Main(props) {
+  const navigate = useNavigate();
   const [notice, setNotice] = useState("");
 
   const boxInfo = [
@@ -76,22 +79,31 @@ function Main(props) {
       <div className="mainbody">
         <div className="grid grid-cols-2">
           <div>
-            <br />
-            <h1 className="mt-4 text-center text-3xl">주요 서비스</h1>
-            <div className="flex grid grid-cols-2">
+            <div className="mt-20 flex grid grid-cols-2">
               {boxInfo.map((box, index) => (
                 <ServiceBox
                   imgUrl={box.imgUrl}
                   title={box.title}
                   info={box.info}
                   clicklink={box.clicklink}
+                  css={"shadow-2xl mainIconHover "}
                 />
               ))}
             </div>
           </div>
           <div>
             <br />
-            <h1 className="mt-4 text-center text-3xl">최신 변경 사항</h1>
+            <div className="flex justify-between">
+              <span className=" m-4 text-center text-2xl border-b-4 border-[#b2ddad]">
+                최신 변경 사항
+              </span>
+              <span
+                className="m-4 text-center text-2xl border-b-4 border-[#b2ddad] cursor-pointer hover:border-black transition-all duration-500"
+                onClick={() => navigate("/notice")}
+              >
+                공지사항 바로가기
+              </span>
+            </div>
             <BoardContent content={notice?.content} />
           </div>
         </div>

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import Swal from "sweetalert2";
-import Cookies from "js-cookie";
 
-import HeadKeyBox from "./Component/HeadKeyBox";
 import AllSelectPresetComp from "./Component/AllSelectPresetComp";
 import SelectOptionComp from "./Component/SelectOptionComp";
 import SearchBtm from "./Component/SearchBtm";
@@ -33,11 +32,8 @@ function AuctionTierFour({
   staticNameList,
 }) {
   const [selectOptionReq, setSelectOptionReq] = useState([]);
-
   const [searchState, setSearchState] = useState(false);
-
-  const [apiKey, setApiKey] = useState("");
-  const [saveKey, setSaveKey] = useState(false);
+  const apiKey = useSelector((state) => state.settings.apiKey);
 
   const [total, setTotal] = useState(0);
 
@@ -46,7 +42,6 @@ function AuctionTierFour({
     return savedFlags
       ? JSON.parse(savedFlags)
       : {
-          folder1: false,
           presetFolder: false,
           selAll: false,
           searchMenu: false,
@@ -193,24 +188,9 @@ function AuctionTierFour({
   }, [folderFlags]);
 
   useEffect(() => {
-    const cookieValue = Cookies.get("apiKey" ?? "");
-    if (Cookies.get("apiKey") !== undefined) {
-      setSaveKey(true);
-    }
-    setApiKey(cookieValue);
-  }, []);
-
-  useEffect(() => {
     if (selectOptionReq.length > 0) {
       const encodedApiKey = encodeURIComponent(apiKey);
       setSearchState(true);
-      if (saveKey)
-        Cookies.set("apiKey", apiKey, {
-          expires: 89,
-          secure: true,
-          sameSite: "Strict",
-        });
-      else Cookies.remove("apiKey");
       axios
         .post(`${process.env.REACT_APP_URL}/auction/test5`, selectOptionReq, {
           headers: { apiKey: encodedApiKey },
@@ -365,12 +345,6 @@ function AuctionTierFour({
           }`}
         >
           <div>
-            <HeadKeyBox
-              apiKey={apiKey}
-              setApiKey={setApiKey}
-              saveKey={saveKey}
-              setSaveKey={setSaveKey}
-            ></HeadKeyBox>
             <Calstat></Calstat>
           </div>
           <div>

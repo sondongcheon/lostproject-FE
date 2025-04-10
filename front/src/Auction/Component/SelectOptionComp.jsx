@@ -278,10 +278,8 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
           <div className="flex-[13] grid grid-rows-4">
             <div className="grid grid-cols-2">
               <div className="grid grid-cols-4">
-                <div className=" font-bold col-span-1 border-b-2 border-gray-300 flex items-center justify-center">
-                  품질
-                </div>
-                <div className="col-span-3 border-b-2 border-gray-300 flex items-center justify-center">
+                <div className=" font-bold col-span-1  flex items-center justify-center">품질</div>
+                <div className="col-span-3 flex items-center justify-center">
                   <div className="w-3/4 pl-2">
                     <input
                       type="range"
@@ -314,10 +312,10 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                 </div>
               </div>
               <div className="grid grid-cols-4">
-                <div className="font-bold col-span-1 border-b-2 border-gray-200 border-l-2 border-gray-300 flex items-center justify-center text-[12px]">
+                <div className="font-bold col-span-1 flex items-center justify-center text-[12px]">
                   힘민지%
                 </div>
-                <div className="col-span-3 border-b-2 border-gray-300 flex items-center justify-center relative">
+                <div className="col-span-3 flex items-center justify-center relative">
                   {/* 옵션이 200000일 경우만 덮기 */}
                   {options?.categoryCode === 200000 && (
                     <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center m-2">
@@ -420,7 +418,7 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                   </form>
                 </div>
               </div>
-              <div className="flex items-center justify-center border-l-2">
+              <div className="flex items-center justify-center">
                 {/* 그룹명 "연마효과"가 20% 영역에 정중앙 배치 */}
                 <div className="w-[20%] flex justify-center">
                   <p className="text-sm font-bold">등급</p>
@@ -536,7 +534,7 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                   </form>
                 </div>
               </div>
-              <div className="flex items-center justify-center border-l-2">
+              <div className="flex items-center justify-center ">
                 {/* 그룹명 "연마효과"가 20% 영역에 정중앙 배치 */}
                 <div className="w-[20%] flex justify-center">
                   <p className="text-sm font-bold">등급</p>
@@ -622,7 +620,7 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
               </div>
 
               {/* 오른쪽 "등급" 그룹 */}
-              <div className="flex items-center justify-center border-l-2">
+              <div className="flex items-center justify-center ">
                 <div className="w-[20%] flex justify-center">
                   <p className="text-sm font-bold">등급</p>
                 </div>
