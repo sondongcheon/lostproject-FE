@@ -4,7 +4,6 @@ import axios from "axios";
 import SelectSideBar from "./Component/SelectSideBar";
 import FixChartPage from "./Component/FixChartPage";
 import CustomChartPage from "./Component/CustomChartPage";
-import { type } from "@testing-library/user-event/dist/type";
 
 import DisplayAds from "../common/Component/DisplayAds";
 

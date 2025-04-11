@@ -8,9 +8,6 @@ import SelectOptionComp from "./Component/SelectOptionComp";
 import SearchBtm from "./Component/SearchBtm";
 import ResultBox from "./Component/ResultBox";
 import PageNation from "./Component/PageNation";
-
-import Calstat from "./Component/Calstat";
-
 import DisplayAds from "../common/Component/DisplayAds";
 
 import folderOpen from "../Assets/folderOpen.png";
@@ -345,7 +342,11 @@ function AuctionTierFour({
           }`}
         >
           <div>
-            <Calstat></Calstat>
+            <SelectOptionComp
+              options={options[1]}
+              onOptionsChange={updateOptions[1]}
+              staticNameList={staticNameList[1]}
+            ></SelectOptionComp>
           </div>
           <div>
             <SelectOptionComp
@@ -354,13 +355,7 @@ function AuctionTierFour({
               staticNameList={staticNameList[0]}
             ></SelectOptionComp>
           </div>
-          <div>
-            <SelectOptionComp
-              options={options[1]}
-              onOptionsChange={updateOptions[1]}
-              staticNameList={staticNameList[1]}
-            ></SelectOptionComp>
-          </div>
+
           <div>
             <SelectOptionComp
               options={options[2]}
@@ -374,6 +369,15 @@ function AuctionTierFour({
               onOptionsChange={updateOptions[3]}
               staticNameList={staticNameList[3]}
             ></SelectOptionComp>
+          </div>
+          <div>
+            <SearchBtm
+              selectOptions={options}
+              search={updateSelect}
+              total={total}
+              searchState={searchState}
+              apiKey={apiKey}
+            ></SearchBtm>
           </div>
           <div>
             <SelectOptionComp
@@ -400,9 +404,9 @@ function AuctionTierFour({
             />
             <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
               {folderFlags.searchMenu ? (
-                <span> 검색/캐릭터검색 열기 </span>
+                <span> 착용 악세 검색 열기 </span>
               ) : (
-                <span> 검색/캐릭터검색 닫기 </span>
+                <span> 착용 악세 검색 닫기 </span>
               )}
             </span>
           </div>
@@ -412,15 +416,7 @@ function AuctionTierFour({
                 ? "max-h-0 opacity-0 overflow-hidden"
                 : "max-h-44 opacity-100 mt-4"
             }`}
-          >
-            <SearchBtm
-              selectOptions={options}
-              search={updateSelect}
-              total={total}
-              searchState={searchState}
-              apiKey={apiKey}
-            ></SearchBtm>
-          </div>
+          ></div>
 
           <div className="grid grid-cols-2 gap-x-4 mt-6">
             <div className="space-y-2 mt-24">

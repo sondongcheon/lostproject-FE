@@ -79,37 +79,37 @@ function MainNav({ logSearch, getCountLog }) {
                 className="cursor-pointer text-base hover:underline size-font-xxxs"
                 onClick={() => navigate("/auction")}
               >
-                딜러악세 검색기
+                🔎딜러악세 검색기
               </div>
               <div
                 className="cursor-pointer text-base hover:underline size-font-xxxs"
                 onClick={() => navigate("/auctionsup")}
               >
-                서폿악세 검색기
+                🔎서폿악세 검색기
               </div>
               <div
                 className="cursor-pointer text-base hover:underline size-font-xxxs"
                 onClick={() => navigate("/chart")}
               >
-                시세 차트(악세)
+                🖨시세 차트(악세)
               </div>
               <div
                 className="cursor-pointer text-base hover:underline size-font-xxxs"
                 onClick={() => navigate("/chartitems/main")}
               >
-                주요 아이템 차트
+                🖨주요 아이템 차트
               </div>
               <div
                 className="cursor-pointer text-base hover:underline size-font-xxxs"
                 onClick={() => navigate("/notice")}
               >
-                공지사항
+                📖공지사항
               </div>
               <div
                 className="cursor-pointer text-base hover:underline size-font-xxxs"
                 onClick={() => navigate("/mini")}
               >
-                유저 코멘트
+                📃유저 코멘트
               </div>
             </div>
           )}

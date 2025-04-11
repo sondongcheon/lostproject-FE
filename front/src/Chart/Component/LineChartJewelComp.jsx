@@ -44,7 +44,7 @@ const LineChartJewelComp = ({ name, level, request, img }) => {
 
   return (
     <div>
-      <div className="flex m-10 border-b-2 border-red-200 bg-opacity-75 bg-white rounded-3xl">
+      <div className="flex m-10 border-b-2 border-red-200 bg-opacity-75 bg-white rounded-2xl">
         <div className="w-[80%]">
           <h2 className="flex items-center justify-center text-center">
             <img className="w-8" src={img} />

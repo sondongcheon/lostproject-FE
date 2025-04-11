@@ -8,7 +8,6 @@ import SelectOptionComp from "./Component/SelectOptionComp";
 import SearchBtm from "./Component/SearchBtm";
 import ResultBox from "./Component/ResultBox";
 import PageNation from "./Component/PageNation";
-import Calstat from "./Component/Calstat";
 
 import DisplayAds from "../common/Component/DisplayAds";
 
@@ -340,20 +339,17 @@ function AuctionTierFourSup({
           }`}
         >
           <div>
-            <Calstat></Calstat>
+            <SelectOptionComp
+              options={options[1]}
+              onOptionsChange={updateOptions[1]}
+              staticNameList={staticNameList[1]}
+            ></SelectOptionComp>
           </div>
           <div>
             <SelectOptionComp
               options={options[0]}
               onOptionsChange={updateOptions[0]}
               staticNameList={staticNameList[0]}
-            ></SelectOptionComp>
-          </div>
-          <div>
-            <SelectOptionComp
-              options={options[1]}
-              onOptionsChange={updateOptions[1]}
-              staticNameList={staticNameList[1]}
             ></SelectOptionComp>
           </div>
           <div>
@@ -371,42 +367,6 @@ function AuctionTierFourSup({
             ></SelectOptionComp>
           </div>
           <div>
-            <SelectOptionComp
-              options={options[4]}
-              onOptionsChange={updateOptions[4]}
-              staticNameList={staticNameList[4]}
-            ></SelectOptionComp>
-          </div>
-        </div>
-        <div className="mt-12">
-          <div
-            className=" flex items-center justify-center cursor-pointer"
-            onClick={() => handleToggle("searchMenu")}
-          >
-            <img
-              src={folderFlags.searchMenu ? folderClose : folderOpen}
-              alt="toggle icon"
-              className={`absolute z-10 w-8 h-8 mr-20 w-8 h-8 transform transition-transform duration-500 ease-in-out ${
-                folderFlags.searchMenu
-                  ? "animate-spinCounterClockwise" // 열 때
-                  : "animate-spinClockwise" // 닫을 때
-              }`}
-            />
-            <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
-              {folderFlags.searchMenu ? (
-                <span> 검색/캐릭터검색 열기 </span>
-              ) : (
-                <span> 검색/캐릭터검색 닫기 </span>
-              )}
-            </span>
-          </div>
-          <div
-            className={`transition-all duration-500 ${
-              folderFlags.searchMenu
-                ? "max-h-0 opacity-0 overflow-hidden"
-                : "max-h-44 opacity-100 mt-4"
-            }`}
-          >
             <SearchBtm
               selectOptions={options}
               search={updateSelect}
@@ -415,6 +375,15 @@ function AuctionTierFourSup({
               apiKey={apiKey}
             ></SearchBtm>
           </div>
+          <div>
+            <SelectOptionComp
+              options={options[4]}
+              onOptionsChange={updateOptions[4]}
+              staticNameList={staticNameList[4]}
+            ></SelectOptionComp>
+          </div>
+        </div>
+        <div className="mt-12">
           <div className="grid grid-cols-2 gap-x-4 mt-6">
             <div className="space-y-2 mt-24">
               {result.map((item, index) => (

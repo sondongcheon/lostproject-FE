@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import shareBtm from "../../../Assets/shareBtm.png";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
+import loading from "@/Assets/loading.webp";
 
 const AllSelectPresetComp = ({
   updateSet,
@@ -152,7 +153,7 @@ const AllSelectPresetComp = ({
 
   return (
     <div>
-      <div className="shadow-lg border-2 rounded-3xl bg-[#F5F5F5] pt-4">
+      <div className="shadow-lg border-2 rounded-2xl bg-[#F5F5F5] pt-4">
         <div className="flex grid grid-cols-5">
           <div className="col-span-3 grid grid-rows-3 gap-y-2">
             <div className="overflow-hidden">
@@ -191,23 +192,24 @@ const AllSelectPresetComp = ({
             </div>
             <div className="flex justify-center items-center gap-x-12">
               <button
-                className="w-1/3 resetBtm text-center size-font-xs bg-[#b2ddad]"
+                className="w-1/3 h-full resetBtm text-center size-font-xs bg-[#b2ddad]"
                 onClick={setReset}
               >
-                초기화
+                🔄초기화
               </button>
               <div className="w-1/3 h-full flex justify-center items-center ">
                 <button
-                  className="w-full h-full bg-[#40AC8D] resetBtm"
+                  className="w-full h-full bg-[#40AC8D] rounded-lg hover:text-white hover:bg-[#3A8F7A] hover:scale-105 transition-transform duration-300"
                   onClick={search}
                   disabled={searchState}
                 >
                   {searchState ? (
-                    <div className="h-full bg-[url('./Assets/loading.webp')] bg-contain bg-center bg-no-repeat">
-                      {" "}
+                    <div className="flex w-full mt-1 mx-2 size-font-xs">
+                      <img src={loading} className="w-6 "></img>
+                      결과는 하단에서!
                     </div>
                   ) : (
-                    "검색하기"
+                    <span>🔎검색하기</span>
                   )}
                 </button>
               </div>
@@ -228,7 +230,7 @@ const AllSelectPresetComp = ({
               />
               <div className="col-span-1  text-center text-sm text-gray-500">
                 <input
-                  className="w-3/4 text-center rounded-3xl border border-gray-300"
+                  className="w-3/4 text-center rounded-2xl border border-gray-300"
                   placeholder="미지정"
                   type="number"
                   min="0"
@@ -257,7 +259,7 @@ const AllSelectPresetComp = ({
               />
               <div className="col-span-1  text-center text-sm text-gray-500">
                 <input
-                  className="w-3/4 text-center rounded-3xl border border-gray-300"
+                  className="w-3/4 text-center rounded-2xl border border-gray-300"
                   placeholder="미지정"
                   type="number"
                   min="0"
@@ -512,7 +514,7 @@ const AllSelectPresetComp = ({
           </div>
         </div>
         {/* 프리셋 저장 */}
-        <div className="h-28 col-span-9 m-4 px-6 py-3 bg-[#e0dedf] rounded-3xl inset-shadow-sm shadow-inset-indigo">
+        <div className="h-28 col-span-9 m-4 px-6 py-3 bg-[#e0dedf] rounded-2xl inset-shadow-sm shadow-inset-indigo">
           <div className="h-1/3 flex items-center justify-between size-font-xxs">
             <span>개인 저장 프리셋 </span>
 

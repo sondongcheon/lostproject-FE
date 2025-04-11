@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import shareBtm from "../../Assets/shareBtm.png";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
-import { RxReset } from "react-icons/rx";
+
+import loading from "../../Assets/loading.webp";
 
 const AllSelectPresetComp = ({
   updateSet,
@@ -153,7 +154,7 @@ const AllSelectPresetComp = ({
   return (
     <div>
       <div className="flex">
-        <div className="h-72 w-full flex shadow-lg border-2 rounded-3xl bg-[#F5F5F5] ">
+        <div className="h-72 w-full flex shadow-lg border-2 rounded-2xl bg-[#F5F5F5] ">
           <div className="w-[25%] grid grid-rows-4 gap-y-2 py-2 ">
             <div className=" overflow-hidden">
               {apiKey === "" || !apiKey ? (
@@ -186,21 +187,22 @@ const AllSelectPresetComp = ({
                 className="w-1/3 py-2 px-4 h-full rounded-lg font-bold resetBtm bg-[#b2ddad]"
                 onClick={setReset}
               >
-                초기화
+                🔄초기화
               </button>
 
               <div className="w-1/3 h-full flex justify-center items-center ">
                 <button
-                  className="w-full h-full bg-[#40AC8D] resetBtm"
+                  className="w-full h-full bg-[#40AC8D] rounded-lg hover:text-white hover:bg-[#3A8F7A] hover:scale-105 transition-transform duration-300"
                   onClick={search}
                   disabled={searchState}
                 >
                   {searchState ? (
-                    <div className="h-full bg-[url('./Assets/loading.webp')] bg-contain bg-center bg-no-repeat">
-                      {" "}
+                    <div className="h-full mt-1 text-xs">
+                      <img src={loading} className="mx-auto h-1/3 "></img>
+                      결과는 하단에서 <br /> 확인하세요!
                     </div>
                   ) : (
-                    "검색하기"
+                    <span>🔎검색하기</span>
                   )}
                 </button>
               </div>
@@ -222,7 +224,7 @@ const AllSelectPresetComp = ({
               />
               <div className=" text-center text-sm text-gray-500">
                 <input
-                  className="w-2/3 h-[28px] text-center rounded-3xl border border-gray-300"
+                  className="w-2/3 h-[28px] text-center rounded-2xl border border-gray-300"
                   placeholder="미지정"
                   type="number"
                   min="0"
@@ -253,7 +255,7 @@ const AllSelectPresetComp = ({
               />
               <div className="  text-center text-sm text-gray-500">
                 <input
-                  className="w-2/3 h-[28px] text-center rounded-3xl border border-gray-300"
+                  className="w-2/3 h-[28px] text-center rounded-2xl border border-gray-300"
                   placeholder="미지정"
                   type="number"
                   min="0"
@@ -508,7 +510,7 @@ const AllSelectPresetComp = ({
             </div>
 
             {/* 프리셋 저장 */}
-            <div className="h-24 col-span-9 my-auto px-6 py-2 bg-[#e0dedf] rounded-3xl inset-shadow-sm shadow-inset-indigo">
+            <div className="h-24 col-span-9 my-auto px-6 py-2 bg-[#e0dedf] rounded-2xl inset-shadow-sm shadow-inset-indigo">
               <div className="h-1/2 flex items-center justify-between size-font-xxs">
                 <span>개인 저장 프리셋 </span>
 
@@ -517,10 +519,11 @@ const AllSelectPresetComp = ({
                     <BsFillQuestionCircleFill className=" h-4" />
                     <div className="absolute z-50 bottom-8 w-[2800%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                       🛑주의🛑 저장 위치를 가장 먼저 선택해주세요 <br />
+                      주황색 버튼 클릭시 선택한 프리셋을 공유할 수 있는 코드가 복사됩니다.
+                      <br />
                       <br />
                       저장 위치를 선택한 뒤에 공유받은 코드를 붙여놓고 저장을 눌러주세요
                       <br /> 선택한 위치에 공유받은 프리셋이 저장됩니다.
-                      <br /> 저장된 뒤 저장된 이름을 눌러 불러와주세요!
                     </div>
                   </div>
                   <button
