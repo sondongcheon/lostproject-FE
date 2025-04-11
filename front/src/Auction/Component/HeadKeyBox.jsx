@@ -6,7 +6,7 @@ import { set } from "date-fns";
 const HeadKeyBox = ({ apiKey, setApiKey, saveKey, setSaveKey }) => {
   return (
     <div>
-      <div className="h-20 shadow-lg border-2 rounded-3xl bg-[#F5F5F5]">
+      <div className="h-20 shadow-lg border-2 rounded-2xl bg-[#F5F5F5]">
         <div className="flex justify-center items-center gap-x-4">
           <div className=" flex items-center">
             {/* <span className="font-bold"> {`API 키`}</span> */}

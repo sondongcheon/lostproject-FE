@@ -67,7 +67,7 @@ const ResultBox = ({ number, result, onClick, className, staticNameList }) => {
   return (
     <div
       onClick={onClick}
-      className={`mx-8 my-2 py-2 px-6 shadow-lg border-2 rounded-3xl ${className}`}
+      className={`mx-8 my-2 py-2 px-6 shadow-lg border-2 rounded-2xl ${className}`}
     >
       <div className="grid grid-cols-10 mx-auto size-font-xxxs">
         <div

@@ -422,7 +422,7 @@ const CustomChartPage = () => {
             검색하기{""}
           </button>
         </div>
-        <div className="mt-10 bg-opacity-75 bg-white rounded-3xl">
+        <div className="mt-10 bg-opacity-75 bg-white rounded-2xl">
           <ResponsiveContainer width="100%" height={400}>
             <LineChart
               data={data.chartInfoList}
@@ -436,9 +436,7 @@ const CustomChartPage = () => {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="time" className="text-xs" />
               <YAxis tickFormatter={(value) => value.toLocaleString() + "G"} />
-              <Tooltip
-                formatter={(name) => [`${name.toLocaleString()} Gold`]}
-              />
+              <Tooltip formatter={(name) => [`${name.toLocaleString()} Gold`]} />
               <Line
                 type="monotone"
                 dataKey="buyPrice"

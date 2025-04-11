@@ -411,7 +411,7 @@ const CustomChartPage = () => {
             검색하기{""}
           </button>
         </div>
-        <div className="flex m-10 border-b-2 border-red-200 bg-opacity-75 bg-white rounded-3xl">
+        <div className="flex m-10 border-b-2 border-red-200 bg-opacity-75 bg-white rounded-2xl">
           <ResponsiveContainer width="100%" height={400}>
             <LineChart
               data={data.chartInfoList}

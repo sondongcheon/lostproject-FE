@@ -43,7 +43,7 @@ const LineChartComp = ({ category, grade, value, value2, type, request }) => {
 
   return (
     <div>
-      <div className="flex m-10 border-b-2 border-red-200 bg-opacity-75 bg-white rounded-3xl">
+      <div className="flex m-10 border-b-2 border-red-200 bg-opacity-75 bg-white rounded-2xl">
         <div className="w-[80%]">
           <h2 className="flex items-baseline justify-center text-center">
             {data?.name?.split(/(상|중|하)/g).map((part, index) =>

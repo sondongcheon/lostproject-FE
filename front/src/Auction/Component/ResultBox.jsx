@@ -67,7 +67,7 @@ const ResultBox = ({ number, result, staticNameList, onClick, className }) => {
   return (
     <div
       onClick={onClick}
-      className={`py-4 shadow-lg resultBoxHover border-2 rounded-3xl ${className}`}
+      className={`py-4 shadow-lg resultBoxHover border-2 rounded-2xl ${className}`}
     >
       <div className="grid grid-cols-10 mx-4 text-sm">
         <div

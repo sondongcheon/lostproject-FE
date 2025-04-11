@@ -59,7 +59,7 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
   return (
     <div>
       <div
-        className={`pt-2 pb-2 h-auto shadow-lg bg-[#F5F5F5] border-2 rounded-3xl ${
+        className={`pt-2 pb-2 h-auto shadow-lg bg-[#F5F5F5] border-2 rounded-2xl ${
           options.categoryCode === 200000 ? "border-red-500" : null
         }`}
       >
@@ -181,7 +181,7 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                   </div>
                   <div className="w-1/4 text-center text-xs text-gray-500">
                     <input
-                      className="w-full text-center rounded-3xl border border-gray-300"
+                      className="w-full text-center rounded-2xl border border-gray-300"
                       placeholder="0"
                       type="number"
                       min="0"
@@ -427,13 +427,13 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
               </div>
               <div className="grid grid-cols-2 relative">
                 {/* 전체를 덮는 미구현 메시지
-              <div className="absolute inset-0 bg-gray-200 bg-opacity-90 text-gray-500 text-xs flex justify-center items-center z-10 rounded-3xl">
+              <div className="absolute inset-0 bg-gray-200 bg-opacity-90 text-gray-500 text-xs flex justify-center items-center z-10 rounded-2xl">
                 현재 미구현, 특수 옵션 2개만 활용합니다. 공용 옵션 선택 추가 예정
               </div> */}
 
                 {/* 옵션이 200000일 경우만 덮기 */}
                 {/* {options.categoryCode === 200000 && (
-                <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center rounded-3xl m-1">
+                <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center rounded-2xl m-1">
                   <p className="text-xs text-red-500 font-bold">특옵만 선택합니다</p>
                 </div>
               )} */}
@@ -527,7 +527,7 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
               </div>
               <div className="w-1/4 text-center text-xs text-gray-500">
                 <input
-                  className="w-full text-center rounded-3xl border border-gray-300"
+                  className="w-full text-center rounded-2xl border border-gray-300"
                   placeholder="0"
                   type="number"
                   min="0"

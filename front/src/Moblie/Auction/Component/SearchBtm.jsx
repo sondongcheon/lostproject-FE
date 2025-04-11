@@ -67,7 +67,7 @@ const SearchBtm = ({ selectOptions, search, total, searchState, apiKey }) => {
 
   return (
     <div>
-      <div className="h-36 w-full border-2 rounded-3xl bg-[#F2F1E6]  shadow-lg">
+      <div className="h-36 w-full border-2 rounded-2xl bg-[#F2F1E6]  shadow-lg">
         <div className="flex flex-col items-center justify-center size-font-xs gap-y-2 mt-2">
           <p>착용 악세 검색</p>
           <div className="flex justify-center items-center ">

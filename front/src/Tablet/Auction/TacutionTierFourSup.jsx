@@ -10,8 +10,6 @@ import SearchBtm from "./Component/SearchBtm";
 import ResultBox from "./Component/ResultBox";
 import PageNation from "./Component/PageNation";
 
-import Calstat from "./Component/CalStat";
-
 import folderOpen from "../../Assets/folderOpen.png";
 import folderClose from "../../Assets/folderClose.png";
 
@@ -269,37 +267,6 @@ function TauctionTierFourSup({
 
   return (
     <div className="mainMobileBody">
-      <div
-        className="mt-4 w-full flex items-center justify-center cursor-pointer"
-        onClick={() => handleToggle("calFolder")}
-      >
-        <img
-          src={folderFlags.calFolder ? folderClose : folderOpen}
-          alt="toggle icon"
-          className={`absolute z-10 mr-20 w-8 h-8 transform transition-transform duration-300 ease-in-out ${
-            folderFlags.calFolder
-              ? "animate-spinCounterClockwiseM" // 열 때
-              : "animate-spinClockwiseM" // 닫을 때
-          }`}
-        />
-        <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
-          {folderFlags.calFolder ? (
-            <span> 스텟 계산기 열기 </span>
-          ) : (
-            <span> 스텟 계산기 닫기 </span>
-          )}
-        </span>
-      </div>
-      <div
-        className={`transition-all duration-500 ${
-          folderFlags.calFolder
-            ? "max-h-0 opacity-0 overflow-hidden"
-            : "max-h-[120%] opacity-100 mt-4"
-        }`}
-      >
-        <Calstat></Calstat>
-      </div>
-
       <div className="gap-x-4 gap-y-4">
         <div
           className="mt-4 w-full flex items-center justify-center cursor-pointer"
@@ -497,27 +464,6 @@ function TauctionTierFourSup({
 
         <div className="gap-x-4 mt-6">
           <div className="space-y-2">
-            <div
-              className="mt-4 w-full flex items-center justify-center cursor-pointer"
-              onClick={() => handleToggle("findCharacter")}
-            >
-              <img
-                src={folderFlags.findCharacter ? folderClose : folderOpen}
-                alt="toggle icon"
-                className={`absolute z-10 mr-20 w-8 h-8 transform transition-transform duration-300 ease-in-out ${
-                  folderFlags.findCharacter
-                    ? "animate-spinCounterClockwiseM" // 열 때
-                    : "animate-spinClockwiseM" // 닫을 때
-                }`}
-              />
-              <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
-                {folderFlags.findCharacter ? (
-                  <span> 캐릭터 검색창 열기 </span>
-                ) : (
-                  <span> 캐릭터 검색창 닫기 </span>
-                )}
-              </span>
-            </div>
             <div
               className={`transition-all duration-500 ${
                 folderFlags.findCharacter

@@ -14,7 +14,7 @@ import {
 
 const ItemsLineChartComp = ({ data }) => {
   return (
-    <div className=" border-b-2 border-red-200 bg-opacity-75 bg-white rounded-3xl">
+    <div className=" border-b-2 border-red-200 bg-opacity-75 bg-white rounded-2xl">
       <div className="">
         <h2 className="flex items-center justify-center text-center">
           <img className="w-8" src={data.iconUrl} /> {data.name}

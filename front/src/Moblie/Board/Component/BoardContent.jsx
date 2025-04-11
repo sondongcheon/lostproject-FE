@@ -3,12 +3,9 @@ import React from "react";
 const BoardContent = ({ content }) => {
   return (
     <div>
-      <div className="min-h-[60vh] bg-white p-4 rounded-3xl shadow-md">
+      <div className="min-h-[60vh] bg-white p-4 rounded-2xl shadow-md">
         {content ? (
-          <p
-            style={{ whiteSpace: "pre-wrap" }}
-            className="size-font-xs text-gray-700"
-          >
+          <p style={{ whiteSpace: "pre-wrap" }} className="size-font-xs text-gray-700">
             {content}
           </p>
         ) : (
