@@ -56,7 +56,7 @@ function Main(props) {
           각인서, 보석 등 <br /> 주요 아이템의 가격 변화를 확인할 수 있습니다.
         </>
       ),
-      clicklink: "/chartitems/book",
+      clicklink: "/chartitems/main",
     },
   ];
 
