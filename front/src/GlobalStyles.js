@@ -96,7 +96,7 @@ const GlobalStyles = createGlobalStyle`
 // }
 
 .presetBtm:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 
