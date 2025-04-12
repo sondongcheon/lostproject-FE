@@ -389,35 +389,6 @@ function AuctionTierFour({
         </div>
 
         <div className="mt-12">
-          <div
-            className=" flex items-center justify-center cursor-pointer"
-            onClick={() => handleToggle("searchMenu")}
-          >
-            <img
-              src={folderFlags.searchMenu ? folderClose : folderOpen}
-              alt="toggle icon"
-              className={`absolute z-10 w-8 h-8 mr-20 w-8 h-8 transform transition-transform duration-500 ease-in-out ${
-                folderFlags.searchMenu
-                  ? "animate-spinCounterClockwise" // 열 때
-                  : "animate-spinClockwise" // 닫을 때
-              }`}
-            />
-            <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
-              {folderFlags.searchMenu ? (
-                <span> 착용 악세 검색 열기 </span>
-              ) : (
-                <span> 착용 악세 검색 닫기 </span>
-              )}
-            </span>
-          </div>
-          <div
-            className={`transition-all duration-500 ${
-              folderFlags.searchMenu
-                ? "max-h-0 opacity-0 overflow-hidden"
-                : "max-h-44 opacity-100 mt-4"
-            }`}
-          ></div>
-
           <div className="grid grid-cols-2 gap-x-4 mt-6">
             <div className="space-y-2 mt-24">
               {result.map((item, index) => (

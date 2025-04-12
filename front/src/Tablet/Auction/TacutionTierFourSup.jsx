@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 import AllSelectPresetComp from "./Component/AllSelectPresetComp";
 import SelectOptionComp from "./Component/SelectOptionComp";
 import SelectSummary from "./Component/SelectSummary";
-import SearchBtm from "./Component/SearchBtm";
 import ResultBox from "./Component/ResultBox";
 import PageNation from "./Component/PageNation";
 
@@ -464,22 +463,6 @@ function TauctionTierFourSup({
 
         <div className="gap-x-4 mt-6">
           <div className="space-y-2">
-            <div
-              className={`transition-all duration-500 ${
-                folderFlags.findCharacter
-                  ? "max-h-0 opacity-0 overflow-hidden"
-                  : "max-h-[120%] opacity-100 mt-4"
-              }`}
-            >
-              <SearchBtm
-                selectOptions={options}
-                search={updateSelect}
-                total={total}
-                searchState={searchState}
-                apiKey={apiKey}
-              ></SearchBtm>
-            </div>
-
             {result.map((item, index) => (
               <ResultBox
                 result={item}

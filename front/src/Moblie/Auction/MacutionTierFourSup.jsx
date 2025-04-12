@@ -4,10 +4,8 @@ import Swal from "sweetalert2";
 import AllSelectPresetComp from "./Component/AllSelectPresetComp";
 import SelectOptionComp from "./Component/SelectOptionComp";
 import SelectSummary from "./Component/SelectSummary";
-import SearchBtm from "./Component/SearchBtm";
 import ResultBox from "./Component/ResultBox";
 import PageNation from "./Component/PageNation";
-import Calstat from "./Component/Calstat";
 
 import folderOpen from "../../Assets/folderOpen.png";
 import folderClose from "../../Assets/folderClose.png";

@@ -18,7 +18,7 @@ const SelectSummary = ({ search, total, searchState, apiKey }) => {
         <div className="w-[70%] flex flex-col justify-center items-center shadow-lg border-2 rounded-2xl bg-gray-200">
           <h1
             className={`h-1/3 ${
-              !apiKey === "" || apiKey
+              apiKey === "" || !apiKey
                 ? "font-bold text-center size-font-xxs text-red-500"
                 : "invisible"
             } `}
