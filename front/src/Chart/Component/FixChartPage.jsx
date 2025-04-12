@@ -47,8 +47,8 @@ const FixChartPage = ({ category, grade, type, request, setRequest }) => {
         });
       if (category === "ring")
         setOptionName({
-          first: "치피",
-          secound: "치적",
+          first: "치적",
+          secound: "치피",
         });
     }
   };
