@@ -388,6 +388,7 @@ function AuctionTierFourSup({
             <div className="space-y-2 mt-24">
               {result.map((item, index) => (
                 <ResultBox
+                  key={index}
                   result={item}
                   staticNameList={staticNameList[index]}
                   onClick={() => setCount(index)}

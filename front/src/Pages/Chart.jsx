@@ -26,7 +26,7 @@ function Chart({}) {
         ) : isTablet ? (
           <TChartMain request={request} setRequest={setRequest} />
         ) : (
-          <ChartMain request={request} setRequest={setRequest} />
+          <ChartMain />
         )}
       </div>
     </div>

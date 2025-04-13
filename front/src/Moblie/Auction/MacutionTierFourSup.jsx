@@ -467,6 +467,7 @@ function MauctionTierFourSup({
           <div className="space-y-2">
             {result.map((item, index) => (
               <ResultBox
+                key={index}
                 result={item}
                 staticNameList={staticNameList[index]}
                 onClick={() => setCount(index)}

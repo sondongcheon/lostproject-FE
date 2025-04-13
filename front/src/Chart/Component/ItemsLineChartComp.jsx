@@ -64,7 +64,11 @@ const ItemsLineChartComp = ({ data }) => {
                       ? 200
                       : dataMax > 50
                       ? 100
-                      : 50
+                      : dataMax > 30
+                      ? 50
+                      : dataMax > 10
+                      ? 30
+                      : 10
                   ),
               ]}
             />

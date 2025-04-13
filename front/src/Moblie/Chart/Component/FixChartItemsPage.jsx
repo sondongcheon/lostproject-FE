@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
 import Swal from "sweetalert2";
 import { useParams } from "react-router-dom";
 
@@ -69,7 +68,7 @@ const FixChartItemsPage = () => {
     <div>
       <div className="mb-10 space-y-10">
         {data?.map((item, index) => (
-          <ItemsLineChartComp data={item} />
+          <ItemsLineChartComp key={index} data={item} />
         ))}
       </div>
     </div>

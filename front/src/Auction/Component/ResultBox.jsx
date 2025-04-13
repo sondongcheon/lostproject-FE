@@ -178,7 +178,10 @@ const ResultBox = ({ number, result, staticNameList, onClick, className }) => {
                     .filter(Boolean) // 이건 optional, 옵션이 null/undefined일 경우만 제거
                     .map((option, index) => {
                       return (
-                        <div className={` ${option.valueGrade === "" ? "" : "font-bold"}`}>
+                        <div
+                          key={index}
+                          className={` ${option.valueGrade === "" ? "" : "font-bold"}`}
+                        >
                           {" "}
                           {option.optionName === "세레나데, 신성, 조화 게이지 획득량 증가"
                             ? "서폿 아덴 획득 증가"

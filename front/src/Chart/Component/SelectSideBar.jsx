@@ -2,16 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import SideBarlist from "./SideBarlist";
-import SelectBox from "../../common/Component/SelectBox";
 
-const SelectSideBar = ({
-  setSelectCategory,
-  setSelectGrade,
-  setSelectCustom,
-  setSelectType,
-  request,
-  setRequest,
-}) => {
+const SelectSideBar = ({ setSelectCategory, setSelectGrade, setSelectCustom, setSelectType }) => {
   const [logSearch, setLogSearch] = useState([]);
 
   const getCountLog = () => {
@@ -34,57 +26,8 @@ const SelectSideBar = ({
     getCountLog();
   }, []);
 
-  const updateOption = (key, value) => {
-    setRequest((prevState) => ({
-      ...prevState,
-      [key]: value,
-    }));
-  };
-
-  const pointList = [
-    {
-      value: 10,
-      content: "10개",
-    },
-    {
-      value: 15,
-      content: "15개",
-    },
-    {
-      value: 20,
-      content: "20개",
-    },
-  ];
-
-  const timeList = [
-    {
-      value: 1,
-      content: "1일 간격",
-    },
-    {
-      value: 2,
-      content: "2일 간격",
-    },
-    {
-      value: 3,
-      content: "3일 간격",
-    },
-    {
-      value: 4,
-      content: "4일 간격",
-    },
-    {
-      value: 5,
-      content: "5일 간격",
-    },
-    {
-      value: 7,
-      content: "7일 간격",
-    },
-  ];
-
   return (
-    <div className="h-full">
+    <div className="">
       <div className="bg-white shadow-2xl rounded-xl p-4 sticky top-20">
         <div className="border-gray-400 rounded-xl">
           <div className="flex">
@@ -92,7 +35,7 @@ const SelectSideBar = ({
             <div className="mt-[10px] mx-2 border-t-2 border-black border-dotted w-1/2" />
           </div>
 
-          <div className="py-2">
+          <div className="py-2 ">
             <SideBarlist
               clickAction={() => {
                 listclick("neck", "godae", false, "");
@@ -196,26 +139,6 @@ const SelectSideBar = ({
             예전에 삿다면 얼마였을까? 를 볼수 있습니다.
           </div>
         </button>
-        <div className="flex items-baseline  text-xs mb-4">
-          <span className="">조회 시간 주기&nbsp;</span>
-          <SelectBox
-            options={timeList}
-            value={request.time}
-            name="time"
-            onOptionsChange={updateOption}
-            css="text-center rounded-xl border-gray-400 border-2 w-24 bg-[#F5F5F5]"
-          />
-        </div>
-        <div className="flex items-baseline text-xs">
-          <span className="">검색 지점 갯수&nbsp;</span>
-          <SelectBox
-            options={pointList}
-            value={request.point}
-            name="point"
-            onOptionsChange={updateOption}
-            css="text-center rounded-xl border-gray-400 border-2 w-24 bg-[#F5F5F5]"
-          />
-        </div>
         <div className="my-[18px] border-t-2 border-gray-400 w-full" />
         <p className="text-xs">ㆍ금일 차트 방문자 - {logSearch[1]}</p>
         <p className="text-xs">ㆍ누적 차트 방문자 - {logSearch[0]}</p>

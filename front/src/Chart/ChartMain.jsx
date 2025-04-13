@@ -7,7 +7,7 @@ import CustomChartPage from "./Component/CustomChartPage";
 
 import DisplayAds from "../common/Component/DisplayAds";
 
-function ChartMain({ request, setRequest }) {
+function ChartMain({}) {
   const getCountLog = () => {
     axios
       .get(`${process.env.REACT_APP_URL}/chart/uplog`, {
@@ -38,21 +38,13 @@ function ChartMain({ request, setRequest }) {
             setSelectGrade={setSelectGrade}
             setSelectCustom={setSelectCustom}
             setSelectType={setSelectType}
-            request={request}
-            setRequest={setRequest}
           />
         </div>
         <div className="w-[85%]">
           {selectCustom ? (
             <CustomChartPage />
           ) : (
-            <FixChartPage
-              category={selectCategory}
-              grade={selectGrade}
-              type={selectType}
-              request={request}
-              setRequest={setRequest}
-            />
+            <FixChartPage category={selectCategory} grade={selectGrade} type={selectType} />
           )}
         </div>
       </div>
