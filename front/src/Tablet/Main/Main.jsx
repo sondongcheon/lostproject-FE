@@ -63,6 +63,7 @@ function Main(props) {
       <div className="">
         {boxInfo.map((box, index) => (
           <ServiceBox
+            key={index}
             imgUrl={box.imgUrl}
             title={box.title}
             info={box.info}

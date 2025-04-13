@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 import LineChartComp from "./LineChartComp";
+import { useSelector, useDispatch } from "react-redux";
+import { setAccChartSetting } from "@/store/settingsSlice";
 
-const FixChartPage = ({ category, grade, type, request, setRequest }) => {
+const FixChartPage = ({ category, grade, type }) => {
+  const accChartSetting = useSelector((state) => state.settings.accChartSetting);
+  const dispatch = useDispatch();
   const SectionDivider = ({ title, color }) => {
     const colorMap = {
       orange: "bg-[#f97316] text-white",
@@ -18,6 +22,48 @@ const FixChartPage = ({ category, grade, type, request, setRequest }) => {
       </div>
     );
   };
+
+  const pointList = [
+    {
+      value: 10,
+      content: "10개",
+    },
+    {
+      value: 15,
+      content: "15개",
+    },
+    {
+      value: 20,
+      content: "20개",
+    },
+  ];
+
+  const timeList = [
+    {
+      value: 1,
+      content: "1일 간격",
+    },
+    {
+      value: 2,
+      content: "2일 간격",
+    },
+    {
+      value: 3,
+      content: "3일 간격",
+    },
+    {
+      value: 4,
+      content: "4일 간격",
+    },
+    {
+      value: 5,
+      content: "5일 간격",
+    },
+    {
+      value: 7,
+      content: "7일 간격",
+    },
+  ];
 
   const [optionName, setOptionName] = useState({});
 
@@ -76,16 +122,7 @@ const FixChartPage = ({ category, grade, type, request, setRequest }) => {
     localStorage.setItem("grapeVisualState", JSON.stringify(newState));
   };
 
-  const updateOption = (key, value) => {
-    setRequest((prevState) => ({
-      ...prevState,
-      [key]: value,
-    }));
-  };
-
   useEffect(() => {
-    updateOption("time", 1);
-    updateOption("point", 15);
     const savedState = localStorage.getItem("grapeVisualState");
     if (savedState) {
       setVisualState(JSON.parse(savedState));
@@ -180,6 +217,37 @@ const FixChartPage = ({ category, grade, type, request, setRequest }) => {
             <span className=" text-xl text-[#E38E49]">상</span>
           </button>
 
+          <div className="flex flex-col items-center justify-center">
+            <span className="">조회 시간 주기&nbsp;</span>
+            <select
+              value={accChartSetting.time || ""}
+              onChange={(e) => dispatch(setAccChartSetting({ time: e.target.value }))}
+              className="text-center rounded-xl border-gray-400 border-2 w-24 bg-[#F5F5F5]"
+            >
+              <option value="" disabled>
+                옵션선택
+              </option>
+              {timeList.map((time) => (
+                <option value={time.value}>{time.content}</option>
+              ))}
+            </select>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <span className="">조회 지점 갯수&nbsp;</span>
+            <select
+              value={accChartSetting.point || ""}
+              onChange={(e) => dispatch(setAccChartSetting({ point: e.target.value }))}
+              className="text-center rounded-xl border-gray-400 border-2 w-24 bg-[#F5F5F5]"
+            >
+              <option value="" disabled>
+                옵션선택
+              </option>
+              {pointList.map((pointList) => (
+                <option value={pointList.value}>{pointList.content}</option>
+              ))}
+            </select>
+          </div>
+
           <button
             className={`m-2 p-1 w-[90%] justify-center presetBtm rounded-lg flex m-auto items-baseline text-center bg-white text-gray-500 font-bold ${
               visualState[7] ? "inset-shadow-sm shadow-inset-indigo" : ""
@@ -234,125 +302,41 @@ const FixChartPage = ({ category, grade, type, request, setRequest }) => {
       <div className="mb-10 space-y-10">
         <SectionDivider title="상" color="orange" />
         {visualState[0] && (
-          <LineChartComp
-            category={category}
-            grade={grade}
-            type={type}
-            value="h"
-            value2="h"
-            request={request}
-          />
+          <LineChartComp category={category} grade={grade} type={type} value="h" value2="h" />
         )}
         {visualState[1] && (
-          <LineChartComp
-            category={category}
-            grade={grade}
-            type={type}
-            value="h"
-            value2="m"
-            request={request}
-          />
+          <LineChartComp category={category} grade={grade} type={type} value="h" value2="m" />
         )}
         {visualState[2] && (
-          <LineChartComp
-            category={category}
-            grade={grade}
-            type={type}
-            value="m"
-            value2="h"
-            request={request}
-          />
+          <LineChartComp category={category} grade={grade} type={type} value="m" value2="h" />
         )}
         {visualState[3] && (
-          <LineChartComp
-            category={category}
-            grade={grade}
-            type={type}
-            value="h"
-            value2="l"
-            request={request}
-          />
+          <LineChartComp category={category} grade={grade} type={type} value="h" value2="l" />
         )}
         {visualState[4] && (
-          <LineChartComp
-            category={category}
-            grade={grade}
-            type={type}
-            value="l"
-            value2="h"
-            request={request}
-          />
+          <LineChartComp category={category} grade={grade} type={type} value="l" value2="h" />
         )}
         {visualState[5] && (
-          <LineChartComp
-            category={category}
-            grade={grade}
-            type={type}
-            value="h"
-            value2="x"
-            request={request}
-          />
+          <LineChartComp category={category} grade={grade} type={type} value="h" value2="x" />
         )}
         {visualState[6] && (
-          <LineChartComp
-            category={category}
-            grade={grade}
-            type={type}
-            value="x"
-            value2="h"
-            request={request}
-          />
+          <LineChartComp category={category} grade={grade} type={type} value="x" value2="h" />
         )}
         <SectionDivider title="중" color="purple" />
         {visualState[7] && (
-          <LineChartComp
-            category={category}
-            grade={grade}
-            type={type}
-            value="m"
-            value2="m"
-            request={request}
-          />
+          <LineChartComp category={category} grade={grade} type={type} value="m" value2="m" />
         )}
         {visualState[8] && (
-          <LineChartComp
-            category={category}
-            grade={grade}
-            type={type}
-            value="m"
-            value2="l"
-            request={request}
-          />
+          <LineChartComp category={category} grade={grade} type={type} value="m" value2="l" />
         )}
         {visualState[9] && (
-          <LineChartComp
-            category={category}
-            grade={grade}
-            type={type}
-            value="l"
-            value2="m"
-            request={request}
-          />
+          <LineChartComp category={category} grade={grade} type={type} value="l" value2="m" />
         )}
         {visualState[10] && (
-          <LineChartComp
-            category={category}
-            grade={grade}
-            type={type}
-            value="m"
-            value2="x"
-            request={request}
-          />
+          <LineChartComp category={category} grade={grade} type={type} value="m" value2="x" />
         )}
         {visualState[11] && (
-          <LineChartComp
-            category={category}
-            grade={grade}
-            type={type}
-            value="x"
-            value2="m"
-            request={request}
-          />
+          <LineChartComp category={category} grade={grade} type={type} value="x" value2="m" />
         )}
       </div>
     </div>

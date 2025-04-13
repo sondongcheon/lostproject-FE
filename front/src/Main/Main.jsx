@@ -82,6 +82,7 @@ function Main(props) {
             <div className="mt-20 flex grid grid-cols-2">
               {boxInfo.map((box, index) => (
                 <ServiceBox
+                  key={index}
                   imgUrl={box.imgUrl}
                   title={box.title}
                   info={box.info}

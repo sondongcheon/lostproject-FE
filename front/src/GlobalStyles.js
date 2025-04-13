@@ -182,9 +182,8 @@ const GlobalStyles = createGlobalStyle`
 .commonHover:hover {
   cursor: pointer;
   background-color: white; /* 호버 시 배경색을 채움 */
-  font-style : bold;
-  transform: scale(1.2);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+  // box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 16px; /* 테두리를 둥글게 만듦 */
   border: 2px solid #ddd; /* 테두리 추가 */
   transition: all 0.3s ease; /* 애니메이션 추가 */
