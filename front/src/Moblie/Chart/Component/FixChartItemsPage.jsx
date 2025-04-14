@@ -18,6 +18,12 @@ const FixChartItemsPage = () => {
     axios
       .get(`${process.env.REACT_APP_URL}/chart/items/info/${type}`, {
         headers: { apiKey: encodedApiKey },
+        params: {
+          // time: ItemsChartSetting[type]?.time || 1,
+          // point: ItemsChartSetting[type]?.point || 15,
+          time: 1,
+          point: 15,
+        },
       })
       .then((res) => {
         setData(res.data.data);

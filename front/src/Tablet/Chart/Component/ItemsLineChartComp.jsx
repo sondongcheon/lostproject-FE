@@ -12,7 +12,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-//다음에 이 부분을 지워주세요
 const ItemsLineChartComp = ({ data }) => {
   return (
     <div className="flex m-10 border-b-2 border-red-200 bg-opacity-75 bg-white rounded-2xl">
