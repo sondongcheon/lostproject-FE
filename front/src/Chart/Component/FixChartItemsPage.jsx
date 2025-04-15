@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useParams } from "react-router-dom";
 
 import ItemsLineChartComp from "./ItemsLineChartComp";
-import { setItemsChartSetting } from "@/store/settingsSlice";
 
 const FixChartItemsPage = () => {
-  const dispatch = useDispatch();
-  const ItemsChartSetting = useSelector((state) => state.settings.ItemsChartSetting);
   const [data, setData] = useState(null);
   const apiKey = useSelector((state) => state.settings.apiKey);
+
+  const [hasTimeMounted, setTimeHasMounted] = useState(true);
+  const [hasPointMounted, setPointHasMounted] = useState(true);
+  const [hasVisualMounted, setHasVisualMounted] = useState(true);
+
   const [hasKeyMounted, setHasKeyMounted] = useState(true);
-  const [hasMounted, setHasMounted] = useState(true);
 
   const [visualState, setVisualState] = useState(null);
+  const [time, setTime] = useState(1);
+  const [point, setPoint] = useState(15);
 
   const { type } = useParams();
 
@@ -65,38 +68,41 @@ const FixChartItemsPage = () => {
     setVisualState((prev) => {
       const newState = [...prev];
       newState[index] = !newState[index];
-      localStorage.setItem("ItemGrapeVisualState_" + type, JSON.stringify(newState));
       return newState;
     });
   };
 
-  const setAllTrue = () => {
-    const newState = Array(data.length).fill(true);
+  const setAll = (bool) => {
+    const newState = Array(data.length).fill(bool);
     setVisualState(newState);
-    localStorage.setItem("ItemGrapeVisualState_" + type, JSON.stringify(newState));
   };
 
-  const setAllFalse = () => {
-    const newState = Array(data.length).fill(false);
-    setVisualState(newState);
-    localStorage.setItem("ItemGrapeVisualState_" + type, JSON.stringify(newState));
-  };
-
-  const loadData = (key) => {
+  const loadData = (key, timeParam, pointParam) => {
     const encodedApiKey = encodeURIComponent(key);
     axios
       .get(`${process.env.REACT_APP_URL}/chart/items/info/${type}`, {
         headers: { apiKey: encodedApiKey },
         params: {
-          time: ItemsChartSetting[type]?.time || 1,
-          point: ItemsChartSetting[type]?.point || 15,
+          time: timeParam,
+          point: pointParam,
         },
       })
       .then((res) => {
         setData(res.data.data);
-        const savedState = localStorage.getItem("ItemGrapeVisualState_" + type);
+        const savedState = localStorage.getItem("ItemsChartSetting");
         if (savedState) {
-          setVisualState(JSON.parse(savedState));
+          try {
+            const parsed = JSON.parse(savedState);
+            if (parsed[type]) {
+              setVisualState(
+                parsed[type].visualState !== null
+                  ? parsed[type].visualState
+                  : Array(res.data.data.length).fill(true)
+              );
+            } else {
+              setVisualState(Array(res.data.data.length).fill(true));
+            }
+          } catch (err) {}
         } else {
           setVisualState(Array(res.data.data.length).fill(true));
         }
@@ -131,69 +137,133 @@ const FixChartItemsPage = () => {
   };
 
   useEffect(() => {
-    loadData(apiKey);
-
     const stored = localStorage.getItem("ItemsChartSetting");
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
-        if (parsed[type])
-          dispatch(
-            setItemsChartSetting({
-              [type]: {
-                time: parsed[type].time,
-                point: parsed[type].point,
-              },
-            })
-          );
+        if (parsed[type]) {
+          const { time, point, visualState } = parsed[type];
+          setTime(time);
+          setPoint(point);
+          setVisualState(visualState);
+          loadData(apiKey, time, point);
+          return;
+        } else {
+          loadData(apiKey, 1, 15);
+        }
       } catch (err) {}
+    } else {
+      loadData(apiKey, 1, 15);
     }
   }, []);
 
   useEffect(() => {
-    loadData(apiKey);
-    if (hasMounted) {
-      setHasMounted(false);
+    if (hasTimeMounted) {
+      setTimeHasMounted(false);
     } else {
-      loadData(apiKey);
+      const stored = JSON.parse(localStorage.getItem("ItemsChartSetting") || "{}");
+      if (stored[type].time === time) return;
+      stored[type] = {
+        time,
+        point,
+        visualState,
+      };
+      localStorage.setItem("ItemsChartSetting", JSON.stringify(stored));
+      loadData(apiKey, stored[type].time, stored[type].point);
     }
-  }, [ItemsChartSetting]);
+  }, [time]);
 
   useEffect(() => {
-    setData(null);
+    if (hasPointMounted) {
+      setPointHasMounted(false);
+    } else {
+      const stored = JSON.parse(localStorage.getItem("ItemsChartSetting") || "{}");
+      if (stored[type].point === point) return;
+      stored[type] = {
+        time,
+        point,
+        visualState,
+      };
+      localStorage.setItem("ItemsChartSetting", JSON.stringify(stored));
+      loadData(apiKey, stored[type].time, stored[type].point);
+    }
+  }, [point]);
+
+  useEffect(() => {
+    if (hasVisualMounted) {
+      setHasVisualMounted(false);
+    } else {
+      const stored = JSON.parse(localStorage.getItem("ItemsChartSetting") || "{}");
+      if ((stored[type]?.visualState || null) === visualState) return;
+      stored[type] = {
+        time,
+        point,
+        visualState,
+      };
+      localStorage.setItem("ItemsChartSetting", JSON.stringify(stored));
+    }
+  }, [visualState]);
+
+  useEffect(() => {
     if (hasKeyMounted) {
       setHasKeyMounted(false);
     } else {
-      loadData(apiKey);
+      setData(null);
+      setTimeHasMounted(true);
+      setPointHasMounted(true);
+      setHasVisualMounted(true);
+      const stored = localStorage.getItem("ItemsChartSetting");
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored);
+          if (parsed[type]) {
+            setTime(parsed[type].time);
+            setPoint(parsed[type].point);
+            setVisualState(parsed[type].visualState);
+            loadData(apiKey, parsed[type].time, parsed[type].point);
+          } else {
+            setTime(1);
+            setPoint(15);
+            setVisualState(null);
+            loadData(apiKey, 1, 15);
+          }
+        } catch (err) {}
+      } else {
+        loadData(apiKey, 1, 15);
+      }
     }
   }, [type]);
 
   return (
     <div>
       <div className="mb-10 space-y-10">
-        <div className="mx-auto w-[95%] flex px-6 py-2 bg-[#e0dedf] rounded-2xl inset-shadow-sm shadow-inset-indigo">
+        <div className="mx-auto w-[95%] max-h-48 flex px-6 py-2 bg-[#e0dedf] rounded-2xl inset-shadow-sm shadow-inset-indigo">
           <div className="w-[15%] my-auto">
             <h1 className="font-bold text-xl">| 이 물건만 볼래요</h1>
             <div className="grid grid-rows-2 text-sm">
-              <button className="presetBtm m-1 mx-4 rounded-lg bg-[#b2ddad]" onClick={setAllTrue}>
+              <button
+                className="presetBtm m-1 mx-4 rounded-lg bg-[#b2ddad]"
+                onClick={() => {
+                  setAll(true);
+                }}
+              >
                 ✅ 전체 선택
               </button>
-              <button className="presetBtm m-1 mx-4 rounded-lg bg-[#b2ddad]" onClick={setAllFalse}>
+              <button
+                className="presetBtm m-1 mx-4 rounded-lg bg-[#b2ddad]"
+                onClick={() => {
+                  setAll(false);
+                }}
+              >
                 🗑️ 전체 해제
               </button>
               <div className="flex flex-col items-center justify-center">
                 <span className="">조회 시간 주기&nbsp;</span>
                 <select
-                  value={ItemsChartSetting[type]?.time || ""}
-                  onChange={(e) =>
-                    dispatch(
-                      setItemsChartSetting({
-                        [type]: {
-                          time: e.target.value,
-                        },
-                      })
-                    )
-                  }
+                  value={time || ""}
+                  onChange={(e) => {
+                    setTime(e.target.value);
+                  }}
                   className="text-center rounded-xl border-gray-400 border-2 w-24 bg-[#F5F5F5]"
                 >
                   <option value="" disabled>
@@ -207,16 +277,8 @@ const FixChartItemsPage = () => {
               <div className="flex flex-col items-center justify-center">
                 <span className="">조회 지점 갯수&nbsp;</span>
                 <select
-                  value={ItemsChartSetting[type]?.point || ""}
-                  onChange={(e) =>
-                    dispatch(
-                      setItemsChartSetting({
-                        [type]: {
-                          point: e.target.value,
-                        },
-                      })
-                    )
-                  }
+                  value={point || ""}
+                  onChange={(e) => setPoint(e.target.value)}
                   className="text-center rounded-xl border-gray-400 border-2 w-24 bg-[#F5F5F5]"
                 >
                   <option value="" disabled>
@@ -229,23 +291,26 @@ const FixChartItemsPage = () => {
               </div>
             </div>
           </div>
-          <div className="w-[85%] grid grid-cols-4 text-sm gap-y-2">
-            {data?.map((item, index) => (
-              <button
-                className={`m-2 px-4 py-2 w-[90%] justify-between presetBtm rounded-lg flex m-auto items-center text-center bg-white text-gray-500 font-bold ${
-                  visualState[index] ? "inset-shadow-sm shadow-inset-indigo" : ""
-                }`}
-                onClick={() => grapeControll(index)}
-              >
-                <img className="w-6" src={item.iconUrl} />
-                &nbsp; {item.name}
-              </button>
-            ))}
+          <div className="w-[85%] grid grid-cols-4 text-sm gap-y-2 overflow-y-scroll slim-scrollbar">
+            {visualState &&
+              data?.map((item, index) => (
+                <button
+                  key={index}
+                  className={`m-2 px-4 py-2 w-[90%] justify-between presetBtm rounded-lg flex m-auto items-center text-center bg-white text-gray-500 font-bold ${
+                    visualState[index] ? "inset-shadow-sm shadow-inset-indigo" : ""
+                  }`}
+                  onClick={() => grapeControll(index)}
+                >
+                  <img className="w-6" src={item.iconUrl} />
+                  &nbsp; {item.name}
+                </button>
+              ))}
           </div>
         </div>
-        {data?.map((item, index) => (
-          <div> {visualState[index] && <ItemsLineChartComp key={index} data={item} />}</div>
-        ))}
+        {visualState &&
+          data?.map((item, index) => (
+            <div key={index}>{visualState[index] && <ItemsLineChartComp data={item} />}</div>
+          ))}
       </div>
     </div>
   );

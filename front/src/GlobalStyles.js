@@ -230,6 +230,25 @@ const GlobalStyles = createGlobalStyle`
   cursor: pointer;
 }
 
+.slim-scrollbar {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent; /* Firefox */
+}
+
+.slim-scrollbar::-webkit-scrollbar {
+  width: 6px;  /* Chrome, Safari */
+  height: 6px;
+}
+
+.slim-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.slim-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .color-tomato {
   color: #40AC8D;
 }

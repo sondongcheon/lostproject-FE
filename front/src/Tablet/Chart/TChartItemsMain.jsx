@@ -9,7 +9,7 @@ function TChartItemsMain(props) {
   return (
     <div>
       <div className="mainMobileBody">
-        <div className="mx-auto w-[50%] ">
+        <div className="w-1/2 mx-auto">
           <ItemsTopMenu />
         </div>
         <div className="">

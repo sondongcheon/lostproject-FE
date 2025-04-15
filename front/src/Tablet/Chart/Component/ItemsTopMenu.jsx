@@ -6,7 +6,7 @@ import Menulist from "./Menulist";
 function ItemsTopMenu(props) {
   const navigate = useNavigate();
   return (
-    <div className="w-full h-full mb-8">
+    <div className="w-full mx-auto h-full mb-8">
       <div className="bg-white shadow-2xl rounded-xl p-4 sticky top-20">
         <div className="border-gray-400 rounded-xl">
           <div className="flex">

@@ -36,26 +36,53 @@ const ItemsLineChartComp = ({ data }) => {
               yAxisId="left"
               tickFormatter={(value) => value.toLocaleString() + "G"}
               domain={[
-                0,
+                (dataMin) =>
+                  dataMin > 10000
+                    ? Math.floor((dataMin * 0.95) / 10000) * 10000
+                    : dataMin > 1000
+                    ? Math.floor((dataMin * 0.95) / 1000) * 1000
+                    : dataMin > 500
+                    ? Math.floor((dataMin * 0.95) / 500) * 500
+                    : dataMin > 100
+                    ? Math.floor((dataMin * 0.95) / 100) * 100
+                    : dataMin > 50
+                    ? Math.floor((dataMin * 0.95) / 50) * 50
+                    : 0,
                 (dataMax) =>
                   Math.max(
-                    Math.floor((dataMax * 1.2) / 10000) * 10000,
-                    dataMax > 50000
+                    Math.floor((dataMax * 1.07) / 10000) * 10000,
+                    dataMax > 80000
                       ? 100000
+                      : dataMax > 60000
+                      ? 80000
+                      : dataMax > 50000
+                      ? 60000
                       : dataMax > 30000
                       ? 50000
-                      : dataMax > 10000
+                      : dataMax > 20000
                       ? 30000
-                      : dataMax > 5000
+                      : dataMax > 10000
+                      ? 20000
+                      : dataMax > 8000
                       ? 10000
-                      : dataMax > 3000
+                      : dataMax > 6000
+                      ? 8000
+                      : dataMax > 5000
+                      ? 6000
+                      : dataMax > 4000
                       ? 5000
-                      : dataMax > 1500
+                      : dataMax > 3000
+                      ? 4000
+                      : dataMax > 2000
                       ? 3000
+                      : dataMax > 1500
+                      ? 2000
                       : dataMax > 750
                       ? 1500
-                      : dataMax > 500
+                      : dataMax > 625
                       ? 750
+                      : dataMax > 500
+                      ? 625
                       : dataMax > 300
                       ? 500
                       : dataMax > 200
@@ -136,7 +163,7 @@ const ItemsLineChartComp = ({ data }) => {
         <br />
         <p>
           실시간 최근 거래가 <br />
-          <p className="font-bold text-3xl">{data?.recentPrice.toLocaleString()} G</p>
+          <span className="font-bold text-3xl">{data?.recentPrice.toLocaleString()} G</span>
         </p>
         {/* <p>14일간 평균 거래가 : 구현중</p>
         <p>14일간 최저 거래가 : 구현중</p> */}
