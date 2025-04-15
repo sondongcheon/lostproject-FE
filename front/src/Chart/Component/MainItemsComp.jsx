@@ -27,6 +27,7 @@ const MainItemsComp = () => {
       <div className="flex grid grid-cols-4">
         {boxInfo.map((box, index) => (
           <ServiceBox
+            key={index}
             imgUrl={box.imgUrl}
             title={box.title}
             info={box.info}
