@@ -11,10 +11,11 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-
+import { useSelector, useDispatch } from "react-redux";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
 
-const LineChartComp = ({ category, grade, value, value2, type, request }) => {
+const LineChartComp = ({ category, grade, value, value2, type }) => {
+  const accChartSetting = useSelector((state) => state.settings.accChartSetting);
   const loadData = () => {
     axios
       .get(`${process.env.REACT_APP_URL}/chart/info`, {
@@ -25,8 +26,8 @@ const LineChartComp = ({ category, grade, value, value2, type, request }) => {
           value,
           value2,
           type,
-          time: request.time,
-          point: request.point,
+          time: accChartSetting.time,
+          point: accChartSetting.point,
         },
       })
       .then((res) => {
@@ -37,7 +38,7 @@ const LineChartComp = ({ category, grade, value, value2, type, request }) => {
 
   useEffect(() => {
     loadData();
-  }, [category, grade, type, request]);
+  }, [category, grade, type, accChartSetting]);
 
   const [data, setData] = useState(null);
 

@@ -11,10 +11,13 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { useSelector, useDispatch } from "react-redux";
 
 import { BsFillQuestionCircleFill } from "react-icons/bs";
 
-const LineChartComp = ({ category, grade, value, value2, type, request }) => {
+const LineChartComp = ({ category, grade, value, value2, type }) => {
+  const accChartSetting = useSelector((state) => state.settings.accChartSetting);
+
   const loadData = () => {
     axios
       .get(`${process.env.REACT_APP_URL}/chart/info`, {
@@ -25,8 +28,8 @@ const LineChartComp = ({ category, grade, value, value2, type, request }) => {
           value,
           value2,
           type,
-          time: request.time,
-          point: request.point,
+          time: accChartSetting.time,
+          point: accChartSetting.point,
         },
       })
       .then((res) => {
@@ -37,13 +40,13 @@ const LineChartComp = ({ category, grade, value, value2, type, request }) => {
 
   useEffect(() => {
     loadData();
-  }, [category, grade, type, request]);
+  }, [category, grade, type, accChartSetting]);
 
   const [data, setData] = useState(null);
 
   return (
     <div>
-      <div className="mt-10 border-b-2 border-red-200 bg-opacity-75 bg-white rounded-2xl">
+      <div className="mt-10 mx-8 border-b-2 border-red-200 bg-opacity-75 bg-white rounded-xl">
         <div className="">
           <h2 className="flex items-baseline justify-center text-center size-font-sm">
             {data?.name?.split(/(상|중|하)/g).map((part, index) =>
@@ -114,7 +117,7 @@ const LineChartComp = ({ category, grade, value, value2, type, request }) => {
             </ComposedChart>
           </ResponsiveContainer>
         </div>
-        <div className="items-center flex m-2 p-2 border-2 border-gray-500 rounded-xl size-font-xxs text-center">
+        <div className="items-center flex m-2 mx-20 p-2 border-2 border-gray-500 rounded-xl size-font-xxs text-center">
           <div className="w-[45%]">
             <p>월간 평균가 : {data?.monthAvg?.toLocaleString()} G</p>
             <p> 변동 비율 : {data?.monthAvgP}%</p>
