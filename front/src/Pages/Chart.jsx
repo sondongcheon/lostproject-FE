@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useMediaQuery } from "react-responsive";
 
 import MChartMain from "../Moblie/Chart/MChartMain";
@@ -13,22 +13,9 @@ function Chart({}) {
     query: "(max-width:800px)",
   });
 
-  const [request, setRequest] = useState({
-    time: 1,
-    point: 15,
-  });
-
   return (
     <div>
-      <div>
-        {isMobile ? (
-          <MChartMain request={request} setRequest={setRequest} />
-        ) : isTablet ? (
-          <TChartMain request={request} setRequest={setRequest} />
-        ) : (
-          <ChartMain />
-        )}
-      </div>
+      <div>{isMobile ? <MChartMain /> : isTablet ? <TChartMain /> : <ChartMain />}</div>
     </div>
   );
 }

@@ -7,7 +7,7 @@ import CustomChartPage from "./Component/CustomChartPage";
 
 import DisplayAds from "../../common/Component/DisplayAds";
 
-function MChartMain({ request, setRequest }) {
+function TChartMain() {
   const getCountLog = () => {
     axios
       .get(`${process.env.REACT_APP_URL}/chart/uplog`, {
@@ -20,6 +20,8 @@ function MChartMain({ request, setRequest }) {
   useEffect(() => {
     getCountLog();
   }, []);
+
+  const [visualState, setVisualState] = useState(Array(12).fill(true));
 
   const [selectCustom, setSelectCustom] = useState(false);
   const [selectCategory, setSelectCategory] = useState("neck");
@@ -35,8 +37,10 @@ function MChartMain({ request, setRequest }) {
             setSelectGrade={setSelectGrade}
             setSelectCustom={setSelectCustom}
             setSelectType={setSelectType}
-            request={request}
-            setRequest={setRequest}
+            visualState={visualState}
+            setVisualState={setVisualState}
+            type={selectType}
+            category={selectCategory}
           />
         </div>
         <div className="">
@@ -47,8 +51,7 @@ function MChartMain({ request, setRequest }) {
               category={selectCategory}
               grade={selectGrade}
               type={selectType}
-              request={request}
-              setRequest={setRequest}
+              visualState={visualState}
             />
           )}
         </div>
@@ -58,4 +61,4 @@ function MChartMain({ request, setRequest }) {
   );
 }
 
-export default MChartMain;
+export default TChartMain;
