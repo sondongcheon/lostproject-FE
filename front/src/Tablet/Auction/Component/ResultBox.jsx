@@ -79,7 +79,7 @@ const ResultBox = ({ number, result, onClick, className, staticNameList }) => {
             className={`w-2/3 rounded-lg p-1 border-dotted border-black ${
               result?.grade === "고대"
                 ? "bg-[#9c8c6a]"
-                : result?.grade === "고대"
+                : result?.grade === "유물"
                 ? "bg-[#b9614f]"
                 : ""
             }`}
