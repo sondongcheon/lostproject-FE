@@ -74,7 +74,11 @@ const ResultBox = ({ number, result, onClick, className, staticNameList }) => {
         >
           <img
             className={`w-2/3 rounded-lg p-1 border-dotted border-black ${
-              result?.grade === "고대" ? "bg-[#9c8c6a]" : "bg-[#b9614f]"
+              result?.grade === "고대"
+                ? "bg-[#9c8c6a]"
+                : result?.grade === "고대"
+                ? "bg-[#b9614f]"
+                : ""
             }`}
             src={result?.icon || ""}
           />
