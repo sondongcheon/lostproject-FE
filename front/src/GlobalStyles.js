@@ -5,7 +5,7 @@ const GlobalStyles = createGlobalStyle`
   width: 1900px; /* 고정된 너비 */
   min-height: 100vh; 
   overflow: auto; /* 넘치는 콘텐츠는 스크롤로 처리 */
-  background-color:rgb(240, 239, 227);
+  background-color:rgb(240, 239, 229);
     font-family: "Pretendard";
   }
 
