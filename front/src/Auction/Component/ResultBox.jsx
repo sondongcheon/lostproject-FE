@@ -75,7 +75,12 @@ const ResultBox = ({ number, result, staticNameList, onClick, className }) => {
             number !== undefined ? "text-xl" : null
           }`}
         >
-          <img className="w-2/3 border-dotted border-black bg-[#9c8c6a]" src={result?.icon || ""} />
+          <img
+            className={`w-2/3 rounded-lg p-1 border-dotted border-black ${
+              result?.grade === "고대" ? "bg-[#9c8c6a]" : "bg-[#b9614f]"
+            }`}
+            src={result?.icon || ""}
+          />
           {number !== undefined ? `${number + 1}` : staticNameList?.accName}
           {result?.options?.length > 5 && number === undefined && (
             <div className="group relative">
