@@ -307,7 +307,7 @@ const FixChartItemsPage = () => {
               ))}
           </div>
         </div>
-        {data !== null && data[0].goldoEvent !== null && (
+        {/* {data !== null && data[0].goldoEvent !== null && (
           <div className="flex m-10 border-b-2 border-red-200 justify-center items-center bg-opacity-75 bg-white rounded-2xl size-font-xl">
             <img className="w-8" src={data !== null && data[0].iconUrl} />
             &nbsp; 골두껍이 실시간 기댓값 : &nbsp;{" "}
@@ -315,7 +315,7 @@ const FixChartItemsPage = () => {
               {data !== null && data[0].goldoEvent?.avgPrice.toLocaleString()} G
             </p>
           </div>
-        )}
+        )} */}
         {visualState &&
           data?.map((item, index) => (
             <div key={index}>{visualState[index] && <ItemsLineChartComp data={item} />}</div>

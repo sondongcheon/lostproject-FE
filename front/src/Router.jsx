@@ -12,6 +12,9 @@ import Chart from "./Pages/Chart.jsx";
 import ChartItemsMain from "./Pages/Chart/ChartMain.jsx";
 import ChartItems from "./Pages/Chart/ChartItems.jsx";
 import ChartJewel from "./Pages/ChartJewel.jsx";
+import Raid from "./Pages/Raid/Raid.jsx";
+import RaidResult from "@/Pages/Raid/Result.jsx";
+import RaidSave from "./Pages/Raid/RaidSave.jsx";
 
 import TestFour from "./Main/TestFour.jsx";
 import { useState } from "react";
@@ -46,7 +49,9 @@ function Router() {
         <Route path="/chartitems/main" element={<ChartItemsMain />} />
         <Route path="/chartitems/items/:type" element={<ChartItems />} />
         <Route path="/chartitems/jewel" element={<ChartJewel />} />
-
+        <Route path="/raid" element={<Raid />} />
+        <Route path="/raid/result" element={<RaidResult />} />
+        <Route path="/raid/save" element={<RaidSave />} />
         <Route path="/test4" element={<TestFour />} />
       </Routes>
       <Footer />
