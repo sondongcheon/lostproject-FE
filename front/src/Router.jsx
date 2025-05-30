@@ -46,7 +46,6 @@ function Router() {
         <Route path="/chartitems/main" element={<ChartItemsMain />} />
         <Route path="/chartitems/items/:type" element={<ChartItems />} />
         <Route path="/chartitems/jewel" element={<ChartJewel />} />
-
         <Route path="/test4" element={<TestFour />} />
       </Routes>
       <Footer />
