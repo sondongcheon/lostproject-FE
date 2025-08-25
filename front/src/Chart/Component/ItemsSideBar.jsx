@@ -31,6 +31,11 @@ const ItemsSideBar = ({}) => {
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_12_88.png"
               name="&nbsp;재련 재료"
             />
+            <SideBarlist
+              clickAction={() => navigate("/chartitems/main")}
+              img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_13_114.png"
+              name="&nbsp;젬(준비중)"
+            />
           </div>
         </div>
       </div>

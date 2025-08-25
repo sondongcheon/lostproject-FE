@@ -41,7 +41,9 @@ const AllSelectPresetComp = ({
   ]);
 
   const exportPreset = (index) => {
-    const preset = JSON.parse(localStorage.getItem("presetSlots" + (type === 0 ? "Del" : "Sup")));
+    const preset = JSON.parse(
+      localStorage.getItem("presetSlots" + (type === 0 ? "Del" : "Sup"))
+    );
 
     const presetString = JSON.stringify(preset[index]);
     const encoded = btoa(unescape(encodeURIComponent(presetString)));
@@ -56,7 +58,9 @@ const AllSelectPresetComp = ({
   };
 
   const loadPreset = () => {
-    const stored = JSON.parse(localStorage.getItem("presetSlots" + (type === 0 ? "Del" : "Sup")));
+    const stored = JSON.parse(
+      localStorage.getItem("presetSlots" + (type === 0 ? "Del" : "Sup"))
+    );
 
     if (stored) {
       setPresetSlots(stored);
@@ -158,20 +162,20 @@ const AllSelectPresetComp = ({
           {apiKey === "" || !apiKey ? (
             <div className="flex animate-marquee-loop whitespace-nowrap relative w-[200%] h-full flex items-center overflow-hidden text-sm text-red-500 font-bold">
               <span className="">
-                🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로 분당 횟수 초과가
-                일어날 확률이 높습니다.
+                🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로
+                분당 횟수 초과가 일어날 확률이 높습니다.
               </span>
               <span>
-                🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로 분당 횟수 초과가
-                일어날 확률이 높습니다.
+                🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로
+                분당 횟수 초과가 일어날 확률이 높습니다.
               </span>
               <span className="">
-                🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로 분당 횟수 초과가
-                일어날 확률이 높습니다.
+                🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로
+                분당 횟수 초과가 일어날 확률이 높습니다.
               </span>
               <span>
-                🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로 분당 횟수 초과가
-                일어날 확률이 높습니다.
+                🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로
+                분당 횟수 초과가 일어날 확률이 높습니다.
               </span>
             </div>
           ) : (
@@ -191,7 +195,9 @@ const AllSelectPresetComp = ({
         <div className="grid grid-cols-5">
           <div className="col-span-3 ">
             <div className="grid grid-cols-4 justify-center items-center py-2">
-              <span className="col-span-1 text-sm text-center font-bold">품질</span>
+              <span className="col-span-1 text-sm text-center font-bold">
+                품질
+              </span>
               <input
                 type="range"
                 min="0"
@@ -215,14 +221,19 @@ const AllSelectPresetComp = ({
                   onChange={(e) => {
                     const value = parseInt(e.target.value, 10);
                     setSliderValue(value); // 로컬 상태 업데이트
-                    setGrade("quality", isNaN(value) ? null : Math.min(100, Math.max(0, value)));
+                    setGrade(
+                      "quality",
+                      isNaN(value) ? null : Math.min(100, Math.max(0, value))
+                    );
                   }}
                 />
                 {/* {sliderValue === 0 ? "미지정" : sliderValue} */}
               </div>
             </div>
             <div className="grid grid-cols-4 justify-center items-center py-2">
-              <span className="col-span-1 text-xs text-center font-bold">힘민지%</span>
+              <span className="col-span-1 text-xs text-center font-bold">
+                힘민지%
+              </span>
               <input
                 type="range"
                 min="0"
@@ -246,7 +257,10 @@ const AllSelectPresetComp = ({
                   onChange={(e) => {
                     const value = parseInt(e.target.value, 10);
                     setSliderStatValue(value); // 로컬 상태 업데이트
-                    setGrade("statPer", isNaN(value) ? null : Math.min(100, Math.max(0, value)));
+                    setGrade(
+                      "statPer",
+                      isNaN(value) ? null : Math.min(100, Math.max(0, value))
+                    );
                   }}
                 />
                 {/* {sliderValue === 0 ? "미지정" : sliderValue} */}
@@ -254,7 +268,10 @@ const AllSelectPresetComp = ({
             </div>
           </div>
           <div className="mx-4 gap-y-2 w-full col-span-2 grid grid-rows-2 size-font-sm">
-            <button className="w-8 resetBtm text-center bg-[#b2ddad]" onClick={setReset}>
+            <button
+              className="w-8 resetBtm text-center bg-[#b2ddad]"
+              onClick={setReset}
+            >
               🔄초기화
             </button>
             <div className="w-20">
@@ -302,7 +319,7 @@ const AllSelectPresetComp = ({
                 <div className="border-b-[3px] pb-1 border-[#40ac8d] w-[90%] mx-auto text-[#40ac8d] font-bold size-font-xl mb-2">
                   공용옵션 선택
                 </div>
-                <div className="grid grid-rows-2 grid-cols-3 gap-x-4 px-2 h-20 size-font-sm">
+                <div className="grid grid-rows-2 grid-cols-4 gap-x-4 px-2 h-20 size-font-sm">
                   <button
                     className="w-full  mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
                     onClick={() => setGrade("selVal3", "3")}
@@ -321,10 +338,29 @@ const AllSelectPresetComp = ({
                   >
                     공용 하
                   </button>
+                  <select
+                    onClick={(e) =>
+                      setGrade(
+                        "upgradeLevel",
+                        e.target.value === "" ? null : e.target.value
+                      )
+                    }
+                    className="mx-auto my-2 h-8 size-font-xxs text-center text-gray-500 bg-white rounded-2xl border-[#566863] border bg-[#F5F5F5]"
+                  >
+                    <option value="" disabled selected>
+                      연마 단계
+                    </option>
+                    <option value="">모든 단계</option>
+                    <option value="1">1단계</option>
+                    <option value="2">2단계</option>
+                    <option value="3">3단계</option>
+                  </select>
                   <button
                     className="w-full mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
                     onClick={(type) =>
-                      type === 0 ? setGrade("selOpt3", "53") : setGrade("selOpt3", "55")
+                      type === 0
+                        ? setGrade("selOpt3", "53")
+                        : setGrade("selOpt3", "55")
                     }
                   >
                     {type === 0 ? (
@@ -336,7 +372,9 @@ const AllSelectPresetComp = ({
                   <button
                     className={`w-full mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm`}
                     onClick={(type) =>
-                      type === 0 ? setGrade("selOpt3", "54") : setGrade("selOpt3", "56")
+                      type === 0
+                        ? setGrade("selOpt3", "54")
+                        : setGrade("selOpt3", "56")
                     }
                   >
                     {type === 0 ? (
@@ -351,6 +389,23 @@ const AllSelectPresetComp = ({
                   >
                     일괄제거
                   </button>
+                  <select
+                    onClick={(e) =>
+                      setGrade(
+                        "trdCnt",
+                        e.target.value === "" ? null : e.target.value
+                      )
+                    }
+                    className="mx-auto my-2 h-8 size-font-xxs text-center text-gray-500 bg-white rounded-2xl border-[#566863] border bg-[#F5F5F5]"
+                  >
+                    <option value="" disabled selected>
+                      거래 횟수
+                    </option>
+                    <option value="">모든 횟수</option>
+                    <option value="0">0회</option>
+                    <option value="1">1회</option>
+                    <option value="2">2회</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -384,12 +439,14 @@ const AllSelectPresetComp = ({
                 <div className="absolute z-20 bottom-8 w-[200%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                   {type === 0 ? (
                     <span>
-                      목걸이 → 추피 상, 적주피 중 <br /> 귀걸이 → 공 상, 무공 중 <br />
+                      목걸이 → 추피 상, 적주피 중 <br /> 귀걸이 → 공 상, 무공 중{" "}
+                      <br />
                       반지 → 치적 상, 치피 중
                     </span>
                   ) : (
                     <span>
-                      목걸이 → 아덴+ 상, 낙인력 중 <br /> 귀걸이 → 무공% 상, 무공+ 중 <br />
+                      목걸이 → 아덴+ 상, 낙인력 중 <br /> 귀걸이 → 무공% 상,
+                      무공+ 중 <br />
                       반지 → 아공강 상, 아피강 중
                     </span>
                   )}
@@ -405,12 +462,14 @@ const AllSelectPresetComp = ({
                 <div className="absolute z-20 bottom-8 w-[200%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                   {type === 0 ? (
                     <span>
-                      목걸이 → 추피 상, 적주피 하 <br /> 귀걸이 → 공 상, 무공 하 <br />
+                      목걸이 → 추피 상, 적주피 하 <br /> 귀걸이 → 공 상, 무공 하{" "}
+                      <br />
                       반지 → 치적 상, 치피 중
                     </span>
                   ) : (
                     <span>
-                      목걸이 → 아덴+ 상, 낙인력 하 <br /> 귀걸이 → 무공% 상, 무공+ 하 <br />
+                      목걸이 → 아덴+ 상, 낙인력 하 <br /> 귀걸이 → 무공% 상,
+                      무공+ 하 <br />
                       반지 → 아공강 상, 아피강 하
                     </span>
                   )}
@@ -427,12 +486,14 @@ const AllSelectPresetComp = ({
                 <div className="absolute z-20 bottom-8 right-0 w-[200%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                   {type === 0 ? (
                     <span>
-                      목걸이 → 추피 하, 적주피 상 <br /> 귀걸이 → 공 하, 무공 상 <br />
+                      목걸이 → 추피 하, 적주피 상 <br /> 귀걸이 → 공 하, 무공 상{" "}
+                      <br />
                       반지 → 치적 하, 치피 상
                     </span>
                   ) : (
                     <span>
-                      목걸이 → 아덴+ 하, 낙인력 상 <br /> 귀걸이 → 무공% 하, 무공+ 상 <br />
+                      목걸이 → 아덴+ 하, 낙인력 상 <br /> 귀걸이 → 무공% 하,
+                      무공+ 상 <br />
                       반지 → 아공강 하, 아피강 상
                     </span>
                   )}
@@ -461,12 +522,14 @@ const AllSelectPresetComp = ({
                 <div className="absolute z-20 top-full w-[200%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                   {type === 0 ? (
                     <span>
-                      목걸이 → 추피 중, 적주피 상 <br /> 귀걸이 → 공 중, 무공 상 <br />
+                      목걸이 → 추피 중, 적주피 상 <br /> 귀걸이 → 공 중, 무공 상{" "}
+                      <br />
                       반지 → 치적 중, 치피 상
                     </span>
                   ) : (
                     <span>
-                      목걸이 → 아덴+ 중, 낙인력 상 <br /> 귀걸이 → 무공% 중, 무공+ 상 <br />
+                      목걸이 → 아덴+ 중, 낙인력 상 <br /> 귀걸이 → 무공% 중,
+                      무공+ 상 <br />
                       반지 → 아공강 중, 아피강 상
                     </span>
                   )}
@@ -482,12 +545,14 @@ const AllSelectPresetComp = ({
                 <div className="absolute z-20 top-full w-[200%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                   {type === 0 ? (
                     <span>
-                      목걸이 → 추피 중, 적주피 하 <br /> 귀걸이 → 공 중, 무공 하 <br />
+                      목걸이 → 추피 중, 적주피 하 <br /> 귀걸이 → 공 중, 무공 하{" "}
+                      <br />
                       반지 → 치적 중, 치피 하
                     </span>
                   ) : (
                     <span>
-                      목걸이 → 아덴+ 중, 낙인력 하 <br /> 귀걸이 → 무공% 중, 무공+ 하 <br />
+                      목걸이 → 아덴+ 중, 낙인력 하 <br /> 귀걸이 → 무공% 중,
+                      무공+ 하 <br />
                       반지 → 아공강 중, 아피강 하
                     </span>
                   )}
@@ -503,12 +568,14 @@ const AllSelectPresetComp = ({
                 <div className="absolute z-20 top-full right-0 w-[200%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                   {type === 0 ? (
                     <span>
-                      목걸이 → 추피 하, 적주피 중 <br /> 귀걸이 → 공 하, 무공 중 <br />
+                      목걸이 → 추피 하, 적주피 중 <br /> 귀걸이 → 공 하, 무공 중{" "}
+                      <br />
                       반지 → 치적 하, 치피 중
                     </span>
                   ) : (
                     <span>
-                      목걸이 → 아덴+ 하, 낙인력 중 <br /> 귀걸이 → 무공% 하, 무공+ 중 <br />
+                      목걸이 → 아덴+ 하, 낙인력 중 <br /> 귀걸이 → 무공% 하,
+                      무공+ 중 <br />
                       반지 → 아공강 하, 아피강 중
                     </span>
                   )}
@@ -569,10 +636,12 @@ const AllSelectPresetComp = ({
                     🛑주의🛑 저장 위치를 가장 먼저 선택해주세요 <br />
                     <br />
                     저장 위치를 선택한 뒤에 이름을 쓰고 저장을 누르면
-                    <br /> 다시 사이트에 접속해도 골라둔 옵션을 쉽게 불러올 수 있어요 <br />
+                    <br /> 다시 사이트에 접속해도 골라둔 옵션을 쉽게 불러올 수
+                    있어요 <br />
                     <br />
-                    👉선택 옵션 공유 <br /> 아이콘 오른쪽의 [선택한 프리셋]이 코드화됩니다 <br />{" "}
-                    저장 위치를 선택한 뒤에 공유받은 코드를 붙여놓고 저장을 눌러주세요
+                    👉선택 옵션 공유 <br /> 아이콘 오른쪽의 [선택한 프리셋]이
+                    코드화됩니다 <br /> 저장 위치를 선택한 뒤에 공유받은 코드를
+                    붙여놓고 저장을 눌러주세요
                     <br /> 선택한 위치에 공유받은 프리셋이 저장됩니다.
                   </div>
                 </div>
@@ -606,7 +675,9 @@ const AllSelectPresetComp = ({
                       savePresetSlot(presetSelectValue, presetName);
                       loadPreset();
                     }}
-                    disabled={presetName.length < 2 && presetSelectValue === "-1"}
+                    disabled={
+                      presetName.length < 2 && presetSelectValue === "-1"
+                    }
                   >
                     저장
                     <div
@@ -635,7 +706,9 @@ const AllSelectPresetComp = ({
                     >
                       {presetSlots[index]?.name || `${index + 1}`}
                     </button>
-                    {index !== 2 && <span className="px-2 text-[3px] text-gray-400">●</span>}
+                    {index !== 2 && (
+                      <span className="px-2 text-[3px] text-gray-400">●</span>
+                    )}
                   </div>
                 ))}
               </div>

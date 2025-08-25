@@ -69,12 +69,20 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
             <div className="flex-[7] grid grid-rows-3">
               <div className="px-1 flex justify-center items-center border-b-2 border-gray-300 gap-x-2">
                 <p className="font-bold size-font-xxs ">
-                  {options.categoryCode === 200000 ? "" : staticNameList.accName}
+                  {options.categoryCode === 200000
+                    ? ""
+                    : staticNameList.accName}
                 </p>
                 <button
                   className={`size-font-xxxs font-bold ${
-                    options.categoryCode === 200000 ? "normalSelBtm" : "normalBtm color-tomato"
-                  } ${["54"].includes(staticNameList?.optVal?.second) ? "hidden" : ""}`}
+                    options.categoryCode === 200000
+                      ? "normalSelBtm"
+                      : "normalBtm color-tomato"
+                  } ${
+                    ["54"].includes(staticNameList?.optVal?.second)
+                      ? "hidden"
+                      : ""
+                  }`}
                   onClick={handleCategoryCode}
                 >
                   특수추적
@@ -82,17 +90,23 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                 </button>
                 <div
                   className={` flex items-center group relative mx-1 ${
-                    ["54"].includes(staticNameList?.optVal?.second) ? "hidden" : ""
+                    ["54"].includes(staticNameList?.optVal?.second)
+                      ? "hidden"
+                      : ""
                   }`}
                 >
                   <BsFillQuestionCircleFill className="w-full" />
                   <div className="absolute w-[1500%] z-20 bottom-8 px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
-                    특수추적 이란? 연마 등급만 정하고(ex. 상단일 1개 중중 2개) <br />
-                    그 등급을 어느 악세서리와 매칭하는게 가장 저렴한지 검색합니다.
+                    특수추적 이란? 연마 등급만 정하고(ex. 상단일 1개 중중 2개){" "}
                     <br />
-                    연마 옵션을 선택 하지 않고, 등급만 선택한 후 모든 경우의수를 비교합니다. <br />
+                    그 등급을 어느 악세서리와 매칭하는게 가장 저렴한지
+                    검색합니다.
+                    <br />
+                    연마 옵션을 선택 하지 않고, 등급만 선택한 후 모든 경우의수를
+                    비교합니다. <br />
                     대신, 스텟 필터 기능이 동작하지 않습니다. <br /> <br />
-                    예시처럼 고른다면? 아래 조합을 다 검색돌리고 제일 싼 결과를 알려줍니다.
+                    예시처럼 고른다면? 아래 조합을 다 검색돌리고 제일 싼 결과를
+                    알려줍니다.
                     <br />
                     목걸이 추피 상, 귀걸이 중중, 반지 중중 <br />
                     목걸이 적추피 상, 귀걸이 중중, 반지 중중 <br />
@@ -126,14 +140,18 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                         : "grid-cols-2 gap-2 text-xs"
                     }`}
                   >
-                    <label className={`${options.tier === "4" ? "hidden" : ""}`}>
+                    <label
+                      className={`${options.tier === "4" ? "hidden" : ""}`}
+                    >
                       <input
                         type="radio"
                         name={`${staticNameList.id}_itemGrade`}
                         value="전설"
                         checked={options.itemGrade === "전설"}
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("itemGrade", e.target.value)}
+                        onChange={(e) =>
+                          onOptionsChange("itemGrade", e.target.value)
+                        }
                       />
                       전설
                     </label>
@@ -144,7 +162,9 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                         value="유물"
                         checked={options.itemGrade === "유물"}
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("itemGrade", e.target.value)}
+                        onChange={(e) =>
+                          onOptionsChange("itemGrade", e.target.value)
+                        }
                       />
                       유물
                     </label>
@@ -155,7 +175,9 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                         value="고대"
                         checked={options.itemGrade === "고대"}
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("itemGrade", e.target.value)}
+                        onChange={(e) =>
+                          onOptionsChange("itemGrade", e.target.value)
+                        }
                       />
                       고대
                     </label>
@@ -174,7 +196,10 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                       max="100"
                       value={options.quality || 0}
                       onChange={(e) =>
-                        onOptionsChange("quality", parseInt(e.target.value, 10) || null)
+                        onOptionsChange(
+                          "quality",
+                          parseInt(e.target.value, 10) || null
+                        )
                       }
                       className="slider w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
                     />
@@ -191,7 +216,9 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                         const value = parseInt(e.target.value, 10);
                         onOptionsChange(
                           "quality",
-                          isNaN(value) ? null : Math.min(100, Math.max(0, value))
+                          isNaN(value)
+                            ? null
+                            : Math.min(100, Math.max(0, value))
                         );
                       }}
                     />
@@ -214,7 +241,9 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                     {/* 옵션이 200000일 경우만 덮기 */}
                     {options.categoryCode === 200000 && (
                       <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center m-1">
-                        <p className="text-xs text-red-500 font-bold">등급만 선택 합니다</p>
+                        <p className="text-xs text-red-500 font-bold">
+                          등급만 선택 합니다
+                        </p>
                       </div>
                     )}
                     <form className="grid mobile-grid-3 justify-items-center pr-2">
@@ -223,11 +252,19 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                           type="radio"
                           name={`${staticNameList.id}selOpt1`}
                           value={staticNameList.optVal.first}
-                          checked={options.selOpt1 === staticNameList.optVal.first}
-                          disabled={options.selOpt2 === staticNameList.optVal.first}
-                          onChange={(e) => onOptionsChange("selOpt1", e.target.value)}
+                          checked={
+                            options.selOpt1 === staticNameList.optVal.first
+                          }
+                          disabled={
+                            options.selOpt2 === staticNameList.optVal.first
+                          }
+                          onChange={(e) =>
+                            onOptionsChange("selOpt1", e.target.value)
+                          }
                         />
-                        <span className="text-[8px]">{staticNameList.optName.first}</span>
+                        <span className="text-[8px]">
+                          {staticNameList.optName.first}
+                        </span>
                       </label>
 
                       <label>
@@ -235,11 +272,19 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                           type="radio"
                           name={`${staticNameList.id}selOpt1`}
                           value={staticNameList.optVal.second}
-                          checked={options.selOpt1 === staticNameList.optVal.second}
-                          disabled={options.selOpt2 === staticNameList.optVal.second}
-                          onChange={(e) => onOptionsChange("selOpt1", e.target.value)}
+                          checked={
+                            options.selOpt1 === staticNameList.optVal.second
+                          }
+                          disabled={
+                            options.selOpt2 === staticNameList.optVal.second
+                          }
+                          onChange={(e) =>
+                            onOptionsChange("selOpt1", e.target.value)
+                          }
                         />
-                        <span className="text-[8px]">{staticNameList.optName.second}</span>
+                        <span className="text-[8px]">
+                          {staticNameList.optName.second}
+                        </span>
                       </label>
 
                       {/* <label>
@@ -275,7 +320,9 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                         value="3"
                         checked={options.selVal1 === "3"}
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("selVal1", e.target.value)}
+                        onChange={(e) =>
+                          onOptionsChange("selVal1", e.target.value)
+                        }
                       />
                       <span className="text-xs">상</span>
                     </label>
@@ -286,7 +333,9 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                         value="2"
                         checked={options.selVal1 === "2"}
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("selVal1", e.target.value)}
+                        onChange={(e) =>
+                          onOptionsChange("selVal1", e.target.value)
+                        }
                       />
                       <span className="text-xs">중</span>
                     </label>
@@ -297,7 +346,9 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                         value="1"
                         checked={options.selVal1 === "1"}
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("selVal1", e.target.value)}
+                        onChange={(e) =>
+                          onOptionsChange("selVal1", e.target.value)
+                        }
                       />
                       <span className="text-xs">하</span>
                     </label>
@@ -327,7 +378,9 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                     {/* 옵션이 200000일 경우만 덮기 */}
                     {options.categoryCode === 200000 && (
                       <div className="absolute inset-0 bg-gray-200 z-10 flex justify-center items-center  m-1">
-                        <p className="text-xs text-red-500 font-bold">등급만 선택 합니다</p>
+                        <p className="text-xs text-red-500 font-bold">
+                          등급만 선택 합니다
+                        </p>
                       </div>
                     )}
                     <form className="grid mobile-grid-3 justify-items-center pr-2">
@@ -336,22 +389,38 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                           type="radio"
                           name={`${staticNameList.id}selOpt2`}
                           value={staticNameList.optVal.first}
-                          checked={options.selOpt2 === staticNameList.optVal.first}
-                          disabled={options.selOpt1 === staticNameList.optVal.first}
-                          onChange={(e) => onOptionsChange("selOpt2", e.target.value)}
+                          checked={
+                            options.selOpt2 === staticNameList.optVal.first
+                          }
+                          disabled={
+                            options.selOpt1 === staticNameList.optVal.first
+                          }
+                          onChange={(e) =>
+                            onOptionsChange("selOpt2", e.target.value)
+                          }
                         />
-                        <span className="text-[8px]">{staticNameList.optName.first}</span>
+                        <span className="text-[8px]">
+                          {staticNameList.optName.first}
+                        </span>
                       </label>
                       <label>
                         <input
                           type="radio"
                           name={`${staticNameList.id}selOpt2`}
                           value={staticNameList.optVal.second}
-                          checked={options.selOpt2 === staticNameList.optVal.second}
-                          disabled={options.selOpt1 === staticNameList.optVal.second}
-                          onChange={(e) => onOptionsChange("selOpt2", e.target.value)}
+                          checked={
+                            options.selOpt2 === staticNameList.optVal.second
+                          }
+                          disabled={
+                            options.selOpt1 === staticNameList.optVal.second
+                          }
+                          onChange={(e) =>
+                            onOptionsChange("selOpt2", e.target.value)
+                          }
                         />
-                        <span className="text-[8px]">{staticNameList.optName.second}</span>
+                        <span className="text-[8px]">
+                          {staticNameList.optName.second}
+                        </span>
                       </label>
                       {/* <label>
                       <input
@@ -385,7 +454,9 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                         value="3"
                         checked={options.selVal2 === "3"}
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("selVal2", e.target.value)}
+                        onChange={(e) =>
+                          onOptionsChange("selVal2", e.target.value)
+                        }
                       />
                       <span className="text-xs">상</span>
                     </label>
@@ -396,7 +467,9 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                         value="2"
                         checked={options.selVal2 === "2"}
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("selVal2", e.target.value)}
+                        onChange={(e) =>
+                          onOptionsChange("selVal2", e.target.value)
+                        }
                       />
                       <span className="text-xs">중</span>
                     </label>
@@ -407,7 +480,9 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                         value="1"
                         checked={options.selVal2 === "1"}
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("selVal2", e.target.value)}
+                        onChange={(e) =>
+                          onOptionsChange("selVal2", e.target.value)
+                        }
                       />
                       <span className="text-xs">하</span>
                     </label>
@@ -466,7 +541,9 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                         value="3"
                         checked={options.selVal3 === "3"}
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("selVal3", e.target.value)}
+                        onChange={(e) =>
+                          onOptionsChange("selVal3", e.target.value)
+                        }
                       />
                       <span className="text-xs">상</span>
                     </label>
@@ -477,7 +554,9 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                         value="2"
                         checked={options.selVal3 === "2"}
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("selVal3", e.target.value)}
+                        onChange={(e) =>
+                          onOptionsChange("selVal3", e.target.value)
+                        }
                       />
                       <span className="text-xs">중</span>
                     </label>
@@ -488,7 +567,9 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                         checked={options.selVal3 === "1"}
                         value="1"
                         className="mr-1"
-                        onChange={(e) => onOptionsChange("selVal3", e.target.value)}
+                        onChange={(e) =>
+                          onOptionsChange("selVal3", e.target.value)
+                        }
                       />
                       <span className="text-xs">하</span>
                     </label>
@@ -521,7 +602,12 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                   min="0"
                   max="100"
                   value={options.statPer || 0}
-                  onChange={(e) => onOptionsChange("statPer", parseInt(e.target.value, 10) || null)}
+                  onChange={(e) =>
+                    onOptionsChange(
+                      "statPer",
+                      parseInt(e.target.value, 10) || null
+                    )
+                  }
                   className="slider w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-blue-500"
                 />
               </div>
@@ -569,7 +655,10 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                       name={`${staticNameList.id}_upgradeLevel`}
                       value="1"
                       className="mr-1"
-                      onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
+                      checked={options.upgradeLevel === "1"}
+                      onChange={(e) =>
+                        onOptionsChange("upgradeLevel", e.target.value)
+                      }
                     />
                     <span className="text-xs">1</span>
                   </label>
@@ -580,7 +669,10 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                       name={`${staticNameList.id}_upgradeLevel`}
                       value="2"
                       className="mr-1"
-                      onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
+                      checked={options.upgradeLevel === "2"}
+                      onChange={(e) =>
+                        onOptionsChange("upgradeLevel", e.target.value)
+                      }
                     />
                     <span className="text-xs">2</span>
                   </label>
@@ -591,7 +683,10 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                       name={`${staticNameList.id}_upgradeLevel`}
                       value="3"
                       className="mr-1"
-                      onChange={(e) => onOptionsChange("upgradeLevel", e.target.value)}
+                      checked={options.upgradeLevel === "3"}
+                      onChange={(e) =>
+                        onOptionsChange("upgradeLevel", e.target.value)
+                      }
                     />
                     <span className="text-xs">3</span>
                   </label>
@@ -621,7 +716,10 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                       name={`${staticNameList.id}tradeCount`}
                       value="0"
                       className="mr-1"
-                      onChange={(e) => onOptionsChange("trdCnt", e.target.value)}
+                      checked={options.trdCnt === "0"}
+                      onChange={(e) =>
+                        onOptionsChange("trdCnt", e.target.value)
+                      }
                     />
                     <span className="text-xs">0</span>
                   </label>
@@ -631,7 +729,10 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                       name={`${staticNameList.id}tradeCount`}
                       value="1"
                       className="mr-1"
-                      onChange={(e) => onOptionsChange("trdCnt", e.target.value)}
+                      checked={options.trdCnt === "1"}
+                      onChange={(e) =>
+                        onOptionsChange("trdCnt", e.target.value)
+                      }
                     />
                     <span className="text-xs">1</span>
                   </label>
@@ -642,7 +743,10 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                       name={`${staticNameList.id}tradeCount`}
                       value="2"
                       className="mr-1"
-                      onChange={(e) => onOptionsChange("trdCnt", e.target.value)}
+                      checked={options.trdCnt === "2"}
+                      onChange={(e) =>
+                        onOptionsChange("trdCnt", e.target.value)
+                      }
                     />
                     <span className="text-xs">2</span>
                   </label>

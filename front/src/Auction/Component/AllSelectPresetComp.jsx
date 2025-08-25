@@ -41,7 +41,9 @@ const AllSelectPresetComp = ({
   ]);
 
   const exportPreset = (index) => {
-    const preset = JSON.parse(localStorage.getItem("presetSlots" + (type === 0 ? "Del" : "Sup")));
+    const preset = JSON.parse(
+      localStorage.getItem("presetSlots" + (type === 0 ? "Del" : "Sup"))
+    );
 
     const presetString = JSON.stringify(preset[index]);
     const encoded = btoa(unescape(encodeURIComponent(presetString)));
@@ -56,7 +58,9 @@ const AllSelectPresetComp = ({
   };
 
   const loadPreset = () => {
-    const stored = JSON.parse(localStorage.getItem("presetSlots" + (type === 0 ? "Del" : "Sup")));
+    const stored = JSON.parse(
+      localStorage.getItem("presetSlots" + (type === 0 ? "Del" : "Sup"))
+    );
 
     if (stored) {
       setPresetSlots(stored);
@@ -160,12 +164,12 @@ const AllSelectPresetComp = ({
               {apiKey === "" || !apiKey ? (
                 <div className="flex animate-marquee-loop whitespace-nowrap relative w-full h-full flex items-center overflow-hidden text-sm text-red-500 font-bold">
                   <span className="mr-10">
-                    🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로 분당 횟수
-                    초과가 일어날 확률이 높습니다.
+                    🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어
+                    검색되므로 분당 횟수 초과가 일어날 확률이 높습니다.
                   </span>
                   <span>
-                    🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어 검색되므로 분당 횟수
-                    초과가 일어날 확률이 높습니다.
+                    🚨 API Key가 입력되지 않았습니다 🚨 공용키가 사용되어
+                    검색되므로 분당 횟수 초과가 일어날 확률이 높습니다.
                   </span>
                 </div>
               ) : (
@@ -233,7 +237,10 @@ const AllSelectPresetComp = ({
                   onChange={(e) => {
                     const value = parseInt(e.target.value, 10);
                     setSliderValue(value); // 로컬 상태 업데이트
-                    setGrade("quality", isNaN(value) ? null : Math.min(100, Math.max(0, value)));
+                    setGrade(
+                      "quality",
+                      isNaN(value) ? null : Math.min(100, Math.max(0, value))
+                    );
                   }}
                 />
                 {/* {sliderValue === 0 ? "미지정" : sliderValue} */}
@@ -264,27 +271,30 @@ const AllSelectPresetComp = ({
                   onChange={(e) => {
                     const value = parseInt(e.target.value, 10);
                     setSliderStatValue(value); // 로컬 상태 업데이트
-                    setGrade("statPer", isNaN(value) ? null : Math.min(100, Math.max(0, value)));
+                    setGrade(
+                      "statPer",
+                      isNaN(value) ? null : Math.min(100, Math.max(0, value))
+                    );
                   }}
                 />
                 {/* {sliderValue === 0 ? "미지정" : sliderValue} */}
               </div>
             </div>
           </div>
-          <div className="w-[75%] mt-4 mr-8 flex grid grid-cols-9 items-center text-sm font-bold">
+          <div className="w-[75%] mt-4 mr-8 flex grid grid-cols-10 items-center text-sm font-bold">
             <div>
               <div className="border-b-[3px] pb-1 border-[#2384bc] w-[75%] mx-auto text-[#2384bc] size-font-xxs mb-2">
                 등급 선택
               </div>
               <div className="grid grid-rows-2 h-20">
                 <button
-                  className="w-[95px] mx-auto bg-[#e95a04] text-white border border-[#d75101] my-2 h-8  rounded-2xl font-bold  presetBtm"
+                  className="w-[75px] mx-auto bg-[#e95a04] text-white border border-[#d75101] my-2 h-8  rounded-2xl font-bold  presetBtm"
                   onClick={() => setGrade("itemGrade", "유물")}
                 >
                   All 유물
                 </button>
                 <button
-                  className="w-[95px] mx-auto bg-[#ddb300] text-white border border-[#c9a302] my-2 h-8 border rounded-2xl font-bold  presetBtm"
+                  className="w-[75px] mx-auto bg-[#ddb300] text-white border border-[#c9a302] my-2 h-8 border rounded-2xl font-bold  presetBtm"
                   onClick={() => setGrade("itemGrade", "고대")}
                 >
                   All 고대
@@ -298,21 +308,21 @@ const AllSelectPresetComp = ({
               </div>
               <div className="grid grid-rows-2 grid-cols-5 h-20">
                 <button
-                  className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#e38e49] hover:text-white border border-gray-500 hover:border-[#da7c2f] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                  className="w-[75px] mx-auto bg-white text-gray-500 hover:bg-[#e38e49] hover:text-white border border-gray-500 hover:border-[#da7c2f] my-2 h-8 rounded-2xl font-bold  presetBtm"
                   onClick={() => setOption("selVal1", "3", "selVal2", null)}
                 >
                   상단일
                 </button>
 
                 <button
-                  className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#e38e49] hover:text-white border border-gray-500 hover:border-[#da7c2f] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                  className="w-[75px] mx-auto bg-white text-gray-500 hover:bg-[#e38e49] hover:text-white border border-gray-500 hover:border-[#da7c2f] my-2 h-8 rounded-2xl font-bold  presetBtm"
                   onClick={() => setOption("selVal1", "3", "selVal2", "3")}
                 >
                   상 상
                 </button>
                 <div className=" group relative flex justify-center">
                   <button
-                    className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#e38e49] hover:text-white border border-gray-500 hover:border-[#da7c2f] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                    className="w-[75px] mx-auto bg-white text-gray-500 hover:bg-[#e38e49] hover:text-white border border-gray-500 hover:border-[#da7c2f] my-2 h-8 rounded-2xl font-bold  presetBtm"
                     onClick={() => setOption("selVal1", "3", "selVal2", "2")}
                   >
                     상 중
@@ -320,12 +330,14 @@ const AllSelectPresetComp = ({
                   <div className="absolute z-20 bottom-8 w-[250%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                     {type === 0 ? (
                       <span>
-                        목걸이 → 추피 상, 적주피 중 <br /> 귀걸이 → 공 상, 무공 중 <br />
+                        목걸이 → 추피 상, 적주피 중 <br /> 귀걸이 → 공 상, 무공
+                        중 <br />
                         반지 → 치적 상, 치피 중
                       </span>
                     ) : (
                       <span>
-                        목걸이 → 아덴+ 상, 낙인력 중 <br /> 귀걸이 → 무공% 상, 무공+ 중 <br />
+                        목걸이 → 아덴+ 상, 낙인력 중 <br /> 귀걸이 → 무공% 상,
+                        무공+ 중 <br />
                         반지 → 아공강 상, 아피강 중
                       </span>
                     )}
@@ -333,7 +345,7 @@ const AllSelectPresetComp = ({
                 </div>
                 <div className=" group relative flex justify-center">
                   <button
-                    className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#e38e49] hover:text-white border border-gray-500 hover:border-[#da7c2f] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                    className="w-[75px] mx-auto bg-white text-gray-500 hover:bg-[#e38e49] hover:text-white border border-gray-500 hover:border-[#da7c2f] my-2 h-8 rounded-2xl font-bold  presetBtm"
                     onClick={() => setOption("selVal1", "3", "selVal2", "1")}
                   >
                     상 하
@@ -341,12 +353,14 @@ const AllSelectPresetComp = ({
                   <div className="absolute z-20 bottom-8 w-[250%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                     {type === 0 ? (
                       <span>
-                        목걸이 → 추피 상, 적주피 하 <br /> 귀걸이 → 공 상, 무공 하 <br />
+                        목걸이 → 추피 상, 적주피 하 <br /> 귀걸이 → 공 상, 무공
+                        하 <br />
                         반지 → 치적 상, 치피 중
                       </span>
                     ) : (
                       <span>
-                        목걸이 → 아덴+ 상, 낙인력 하 <br /> 귀걸이 → 무공% 상, 무공+ 하 <br />
+                        목걸이 → 아덴+ 상, 낙인력 하 <br /> 귀걸이 → 무공% 상,
+                        무공+ 하 <br />
                         반지 → 아공강 상, 아피강 하
                       </span>
                     )}
@@ -355,7 +369,7 @@ const AllSelectPresetComp = ({
 
                 <div className=" group relative flex justify-center">
                   <button
-                    className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#2f5a9b] hover:text-white border border-gray-500 hover:border-[#0a3981] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                    className="w-[75px] mx-auto bg-white text-gray-500 hover:bg-[#2f5a9b] hover:text-white border border-gray-500 hover:border-[#0a3981] my-2 h-8 rounded-2xl font-bold  presetBtm"
                     onClick={() => setOption("selVal1", "1", "selVal2", "3")}
                   >
                     하 상
@@ -363,25 +377,27 @@ const AllSelectPresetComp = ({
                   <div className="absolute z-20 bottom-8 w-[250%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                     {type === 0 ? (
                       <span>
-                        목걸이 → 추피 하, 적주피 상 <br /> 귀걸이 → 공 하, 무공 상 <br />
+                        목걸이 → 추피 하, 적주피 상 <br /> 귀걸이 → 공 하, 무공
+                        상 <br />
                         반지 → 치적 하, 치피 상
                       </span>
                     ) : (
                       <span>
-                        목걸이 → 아덴+ 하, 낙인력 상 <br /> 귀걸이 → 무공% 하, 무공+ 상 <br />
+                        목걸이 → 아덴+ 하, 낙인력 상 <br /> 귀걸이 → 무공% 하,
+                        무공+ 상 <br />
                         반지 → 아공강 하, 아피강 상
                       </span>
                     )}
                   </div>
                 </div>
                 <button
-                  className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#953fb2] hover:text-white border border-gray-500 hover:border-[#781f96] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                  className="w-[75px] mx-auto bg-white text-gray-500 hover:bg-[#953fb2] hover:text-white border border-gray-500 hover:border-[#781f96] my-2 h-8 rounded-2xl font-bold  presetBtm"
                   onClick={() => setOption("selVal1", "2", "selVal2", null)}
                 >
                   중단일
                 </button>
                 <button
-                  className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#953fb2] hover:text-white border border-gray-500 hover:border-[#781f96] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                  className="w-[75px] mx-auto bg-white text-gray-500 hover:bg-[#953fb2] hover:text-white border border-gray-500 hover:border-[#781f96] my-2 h-8 rounded-2xl font-bold  presetBtm"
                   onClick={() => setOption("selVal1", "2", "selVal2", "2")}
                 >
                   중 중
@@ -389,7 +405,7 @@ const AllSelectPresetComp = ({
 
                 <div className=" group relative flex justify-center">
                   <button
-                    className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#953fb2] hover:text-white border border-gray-500 hover:border-[#781f96] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                    className="w-[75px] mx-auto bg-white text-gray-500 hover:bg-[#953fb2] hover:text-white border border-gray-500 hover:border-[#781f96] my-2 h-8 rounded-2xl font-bold  presetBtm"
                     onClick={() => setOption("selVal1", "2", "selVal2", "3")}
                   >
                     중 상
@@ -397,12 +413,14 @@ const AllSelectPresetComp = ({
                   <div className="absolute z-20 top-full w-[250%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                     {type === 0 ? (
                       <span>
-                        목걸이 → 추피 중, 적주피 상 <br /> 귀걸이 → 공 중, 무공 상 <br />
+                        목걸이 → 추피 중, 적주피 상 <br /> 귀걸이 → 공 중, 무공
+                        상 <br />
                         반지 → 치적 중, 치피 상
                       </span>
                     ) : (
                       <span>
-                        목걸이 → 아덴+ 중, 낙인력 상 <br /> 귀걸이 → 무공% 중, 무공+ 상 <br />
+                        목걸이 → 아덴+ 중, 낙인력 상 <br /> 귀걸이 → 무공% 중,
+                        무공+ 상 <br />
                         반지 → 아공강 중, 아피강 상
                       </span>
                     )}
@@ -410,7 +428,7 @@ const AllSelectPresetComp = ({
                 </div>
                 <div className=" group relative flex justify-center">
                   <button
-                    className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#953fb2] hover:text-white border border-gray-500 hover:border-[#781f96] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                    className="w-[75px] mx-auto bg-white text-gray-500 hover:bg-[#953fb2] hover:text-white border border-gray-500 hover:border-[#781f96] my-2 h-8 rounded-2xl font-bold  presetBtm"
                     onClick={() => setOption("selVal1", "2", "selVal2", "1")}
                   >
                     중 하
@@ -418,12 +436,14 @@ const AllSelectPresetComp = ({
                   <div className="absolute z-20 top-full w-[250%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                     {type === 0 ? (
                       <span>
-                        목걸이 → 추피 중, 적주피 하 <br /> 귀걸이 → 공 중, 무공 하 <br />
+                        목걸이 → 추피 중, 적주피 하 <br /> 귀걸이 → 공 중, 무공
+                        하 <br />
                         반지 → 치적 중, 치피 하
                       </span>
                     ) : (
                       <span>
-                        목걸이 → 아덴+ 중, 낙인력 하 <br /> 귀걸이 → 무공% 중, 무공+ 하 <br />
+                        목걸이 → 아덴+ 중, 낙인력 하 <br /> 귀걸이 → 무공% 중,
+                        무공+ 하 <br />
                         반지 → 아공강 중, 아피강 하
                       </span>
                     )}
@@ -431,7 +451,7 @@ const AllSelectPresetComp = ({
                 </div>
                 <div className=" group relative flex justify-center">
                   <button
-                    className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#2f5a9b] hover:text-white border border-gray-500 hover:border-[#0a3981] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                    className="w-[75px] mx-auto bg-white text-gray-500 hover:bg-[#2f5a9b] hover:text-white border border-gray-500 hover:border-[#0a3981] my-2 h-8 rounded-2xl font-bold  presetBtm"
                     onClick={() => setOption("selVal1", "1", "selVal2", "2")}
                   >
                     하 중
@@ -439,12 +459,14 @@ const AllSelectPresetComp = ({
                   <div className="absolute z-20 top-full w-[250%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                     {type === 0 ? (
                       <span>
-                        목걸이 → 추피 하, 적주피 중 <br /> 귀걸이 → 공 하, 무공 중 <br />
+                        목걸이 → 추피 하, 적주피 중 <br /> 귀걸이 → 공 하, 무공
+                        중 <br />
                         반지 → 치적 하, 치피 중
                       </span>
                     ) : (
                       <span>
-                        목걸이 → 아덴+ 하, 낙인력 중 <br /> 귀걸이 → 무공% 하, 무공+ 중 <br />
+                        목걸이 → 아덴+ 하, 낙인력 중 <br /> 귀걸이 → 무공% 하,
+                        무공+ 중 <br />
                         반지 → 아공강 하, 아피강 중
                       </span>
                     )}
@@ -453,33 +475,52 @@ const AllSelectPresetComp = ({
               </div>
             </div>
 
-            <div className="col-span-3 pr-4">
+            <div className="col-span-4 pr-4">
               <div className="border-b-[3px] pb-1 border-[#40ac8d] w-[95%] mx-auto text-[#40ac8d] size-font-xxs mb-2">
                 공용옵션 선택
               </div>
-              <div className="grid grid-rows-2 grid-cols-3 h-20">
+              <div className="grid grid-rows-2 grid-cols-4 h-20">
                 <button
-                  className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                  className="w-[75px] mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
                   onClick={() => setGrade("selVal3", "3")}
                 >
                   공용 상
                 </button>
                 <button
-                  className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                  className="w-[75px] mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
                   onClick={() => setGrade("selVal3", "2")}
                 >
                   공용 중
                 </button>
                 <button
-                  className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                  className="w-[75px] mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
                   onClick={() => setGrade("selVal3", "1")}
                 >
                   공용 하
                 </button>
+                <select
+                  onClick={(e) =>
+                    setGrade(
+                      "upgradeLevel",
+                      e.target.value === "" ? null : e.target.value
+                    )
+                  }
+                  className="mx-auto my-2 h-8 text-xs text-center text-gray-500 bg-white rounded-2xl border-[#566863] border bg-[#F5F5F5]"
+                >
+                  <option value="" disabled selected>
+                    연마 단계 선택
+                  </option>
+                  <option value="">모든 단계</option>
+                  <option value="1">1단계</option>
+                  <option value="2">2단계</option>
+                  <option value="3">3단계</option>
+                </select>
                 <button
-                  className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                  className="w-[75px] mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm"
                   onClick={() =>
-                    type === 0 ? setGrade("selOpt3", "53") : setGrade("selOpt3", "55")
+                    type === 0
+                      ? setGrade("selOpt3", "53")
+                      : setGrade("selOpt3", "55")
                   }
                 >
                   {type === 0 ? (
@@ -489,9 +530,11 @@ const AllSelectPresetComp = ({
                   )}
                 </button>
                 <button
-                  className={`w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm`}
+                  className={`w-[75px] mx-auto bg-white text-gray-500 hover:bg-[#40ac8d] hover:text-white border border-[#40ac8d] my-2 h-8 rounded-2xl font-bold  presetBtm`}
                   onClick={() =>
-                    type === 0 ? setGrade("selOpt3", "54") : setGrade("selOpt3", "56")
+                    type === 0
+                      ? setGrade("selOpt3", "54")
+                      : setGrade("selOpt3", "56")
                   }
                 >
                   {type === 0 ? (
@@ -501,16 +544,33 @@ const AllSelectPresetComp = ({
                   )}
                 </button>
                 <button
-                  className="w-[95px] mx-auto bg-white text-gray-500 hover:bg-[#566863] hover:text-white border border-[#566863] my-2 h-8 rounded-2xl font-bold  presetBtm"
+                  className="w-[75px] mx-auto bg-white text-gray-500 hover:bg-[#566863] hover:text-white border border-[#566863] my-2 h-8 rounded-2xl font-bold  presetBtm"
                   onClick={() => setGrade("selOpt3", null)}
                 >
                   일괄제거
                 </button>
+                <select
+                  onClick={(e) =>
+                    setGrade(
+                      "trdCnt",
+                      e.target.value === "" ? null : e.target.value
+                    )
+                  }
+                  className="mx-auto my-2 h-8 text-xs text-center text-gray-500 bg-white rounded-2xl border-[#566863] border bg-[#F5F5F5]"
+                >
+                  <option value="" disabled selected>
+                    거래 횟수 선택
+                  </option>
+                  <option value="">모든 횟수</option>
+                  <option value="0">0회</option>
+                  <option value="1">1회</option>
+                  <option value="2">2회</option>
+                </select>
               </div>
             </div>
 
             {/* 프리셋 저장 */}
-            <div className="h-24 col-span-9 my-auto px-6 py-2 bg-[#e0dedf] rounded-2xl inset-shadow-sm shadow-inset-indigo">
+            <div className="h-24 col-span-10 my-auto px-6 py-2 bg-[#e0dedf] rounded-2xl inset-shadow-sm shadow-inset-indigo">
               <div className="h-1/2 flex items-center justify-between size-font-xxs">
                 <span>개인 저장 프리셋 </span>
 
@@ -519,10 +579,12 @@ const AllSelectPresetComp = ({
                     <BsFillQuestionCircleFill className=" h-4" />
                     <div className="absolute z-50 bottom-8 w-[2800%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                       🛑주의🛑 저장 위치를 가장 먼저 선택해주세요 <br />
-                      주황색 버튼 클릭시 선택한 프리셋을 공유할 수 있는 코드가 복사됩니다.
+                      주황색 버튼 클릭시 선택한 프리셋을 공유할 수 있는 코드가
+                      복사됩니다.
                       <br />
                       <br />
-                      저장 위치를 선택한 뒤에 공유받은 코드를 붙여놓고 저장을 눌러주세요
+                      저장 위치를 선택한 뒤에 공유받은 코드를 붙여놓고 저장을
+                      눌러주세요
                       <br /> 선택한 위치에 공유받은 프리셋이 저장됩니다.
                     </div>
                   </div>
@@ -573,7 +635,8 @@ const AllSelectPresetComp = ({
                       🛑주의🛑 저장 위치를 가장 먼저 선택해주세요 <br />
                       <br />
                       저장 위치를 선택한 뒤에 이름을 쓰고 저장을 누르면
-                      <br /> 다시 사이트에 접속해도 골라둔 옵션을 쉽게 불러올 수 있어요
+                      <br /> 다시 사이트에 접속해도 골라둔 옵션을 쉽게 불러올 수
+                      있어요
                     </div>
                   </div>
                   <div className="col-span-4 flex items-center">
@@ -606,7 +669,9 @@ const AllSelectPresetComp = ({
                         savePresetSlot(presetSelectValue, presetName);
                         loadPreset();
                       }}
-                      disabled={presetName.length < 2 && presetSelectValue === "-1"}
+                      disabled={
+                        presetName.length < 2 && presetSelectValue === "-1"
+                      }
                     >
                       저장
                       <div
@@ -635,7 +700,9 @@ const AllSelectPresetComp = ({
                       >
                         {presetSlots[index]?.name || `${index + 1}`}
                       </button>
-                      {index < 4 && <span className="px-2 text-[4px] text-gray-400">●</span>}
+                      {index < 4 && (
+                        <span className="px-2 text-[4px] text-gray-400">●</span>
+                      )}
                     </div>
                   ))}
                 </div>
