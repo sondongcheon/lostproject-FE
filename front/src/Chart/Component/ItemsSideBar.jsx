@@ -32,9 +32,9 @@ const ItemsSideBar = ({}) => {
               name="&nbsp;재련 재료"
             />
             <SideBarlist
-              clickAction={() => navigate("/chartitems/main")}
+              clickAction={() => navigate("/chartitems/items/3")}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_13_114.png"
-              name="&nbsp;젬(준비중)"
+              name="&nbsp;젬"
             />
           </div>
         </div>
