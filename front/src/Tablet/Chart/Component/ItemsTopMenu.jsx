@@ -31,6 +31,11 @@ function ItemsTopMenu(props) {
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_12_88.png"
               name="&nbsp;재련 재료"
             />
+            <Menulist
+              clickAction={() => navigate("/chartitems/items/3")}
+              img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_13_114.png"
+              name="&nbsp;젬"
+            />
           </div>
         </div>
       </div>

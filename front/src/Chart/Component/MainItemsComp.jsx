@@ -27,9 +27,9 @@ const MainItemsComp = () => {
     {
       imgUrl:
         "https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_13_114.png",
-      title: "젬(준비 중)",
+      title: "젬",
       info: <></>,
-      clicklink: "/chartitems/main",
+      clicklink: "/chartitems/items/3",
     },
   ];
   return (

@@ -11,7 +11,7 @@ function ItemsTopMenu(props) {
         <div className="border-gray-400 rounded-xl">
           <div className="flex">
             <span className="font-bold size-font-sm">주요 아이템</span>
-            <div className="mt-[10px] mx-2 border-t-2 border-black border-dotted w-1/5" />
+            <div className="mt-[10px] mx-2 border-t-2 border-black border-dotted w-1/6" />
           </div>
 
           <div className="py-2">
@@ -30,6 +30,11 @@ function ItemsTopMenu(props) {
               clickAction={() => navigate("/chartitems/items/2")}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_12_88.png"
               name="&nbsp;재련 재료"
+            />
+            <Menulist
+              clickAction={() => navigate("/chartitems/items/3")}
+              img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_13_114.png"
+              name="&nbsp;젬"
             />
           </div>
         </div>

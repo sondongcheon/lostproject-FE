@@ -137,6 +137,14 @@ function TChartItems(props) {
 
   function truncateString(str, maxLength) {
     if (!str) return ""; // 문자열이 null 또는 undefined인 경우 처리
+    if (str.includes("의 젬"))
+      return str.length > maxLength
+        ? str.substring(0, 2) +
+            " " +
+            str.substring(3, 5) +
+            " : " +
+            str.substring(11, 13)
+        : str;
     return str.length > maxLength ? str.substring(0, maxLength) + "..." : str;
   }
 
@@ -170,7 +178,9 @@ function TChartItems(props) {
     if (hasTimeMounted) {
       setTimeHasMounted(false);
     } else {
-      const stored = JSON.parse(localStorage.getItem("ItemsChartSetting") || "{}");
+      const stored = JSON.parse(
+        localStorage.getItem("ItemsChartSetting") || "{}"
+      );
       if (stored[type].time === time) return;
       stored[type] = {
         time,
@@ -186,7 +196,9 @@ function TChartItems(props) {
     if (hasPointMounted) {
       setPointHasMounted(false);
     } else {
-      const stored = JSON.parse(localStorage.getItem("ItemsChartSetting") || "{}");
+      const stored = JSON.parse(
+        localStorage.getItem("ItemsChartSetting") || "{}"
+      );
       if (stored[type].point === point) return;
       stored[type] = {
         time,
@@ -202,7 +214,9 @@ function TChartItems(props) {
     if (hasVisualMounted) {
       setHasVisualMounted(false);
     } else {
-      const stored = JSON.parse(localStorage.getItem("ItemsChartSetting") || "{}");
+      const stored = JSON.parse(
+        localStorage.getItem("ItemsChartSetting") || "{}"
+      );
       if ((stored[type]?.visualState || null) === visualState) return;
       stored[type] = {
         time,
@@ -252,7 +266,9 @@ function TChartItems(props) {
           </div>
           <div className="w-[70%] max-h-60 mx-auto flex px-4 py-2 bg-[#e0dedf] rounded-2xl inset-shadow-sm shadow-inset-indigo">
             <div className="w-[25%]">
-              <h1 className="font-bold size-font-xs my-auto">| 이 물건만 볼래요</h1>
+              <h1 className="font-bold size-font-xs my-auto">
+                | 이 물건만 볼래요
+              </h1>
               <div className=" grid grid-rows-4 size-font-xs">
                 <button
                   className="presetBtm m-2 rounded-lg bg-[#b2ddad]"
@@ -298,7 +314,9 @@ function TChartItems(props) {
                       옵션선택
                     </option>
                     {pointList.map((pointList) => (
-                      <option value={pointList.value}>{pointList.content}</option>
+                      <option value={pointList.value}>
+                        {pointList.content}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -309,7 +327,9 @@ function TChartItems(props) {
                 data?.map((item, index) => (
                   <button
                     className={`m-2 px-4 py-2 w-[90%] justify-between presetBtm rounded-lg flex m-auto items-center text-center bg-white text-gray-500 font-bold ${
-                      visualState[index] ? "inset-shadow-sm shadow-inset-indigo" : ""
+                      visualState[index]
+                        ? "inset-shadow-sm shadow-inset-indigo"
+                        : ""
                     }`}
                     onClick={() => grapeControll(index)}
                   >
