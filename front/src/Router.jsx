@@ -9,6 +9,8 @@ import NoticeBoard from "./Pages/NoticeBoard.jsx";
 import NoticeBoardDetail from "./Pages/NoticeBoardDetail.jsx";
 import MiniBoard from "./Pages/MiniBoard.jsx";
 import Chart from "./Pages/Chart.jsx";
+import SimulatorMain from "./Pages/Simulator/SimulatorMain.jsx";
+import SimulatorGem from "@/Pages/Simulator/SimulatorGem.jsx";
 import ChartItemsMain from "./Pages/Chart/ChartMain.jsx";
 import ChartItems from "./Pages/Chart/ChartItems.jsx";
 import ChartJewel from "./Pages/ChartJewel.jsx";
@@ -36,8 +38,14 @@ function Router() {
       <MainNav logSearch={logSearch} getCountLog={getCountLog} />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/auction" element={<Auction getCountLog={getCountLog} />} />
-        <Route path="/auctionsup" element={<AuctionSup getCountLog={getCountLog} />} />
+        <Route
+          path="/auction"
+          element={<Auction getCountLog={getCountLog} />}
+        />
+        <Route
+          path="/auctionsup"
+          element={<AuctionSup getCountLog={getCountLog} />}
+        />
         <Route path="/usebasicinfo" element={<UseBasicInfo />} />
         <Route path="/notice" element={<NoticeBoard />} />
         <Route path="/notice/:id" element={<NoticeBoardDetail />} />
@@ -47,6 +55,8 @@ function Router() {
         <Route path="/chartitems/items/:type" element={<ChartItems />} />
         <Route path="/chartitems/jewel" element={<ChartJewel />} />
         <Route path="/test4" element={<TestFour />} />
+        <Route path="/simulator/main" element={<SimulatorMain />} />
+        <Route path="/simulator/gem/:type" element={<SimulatorGem />} />
       </Routes>
       <Footer />
     </BrowserRouter>
