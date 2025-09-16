@@ -87,10 +87,8 @@ function TChartJewel({ request, setRequest }) {
             <ItemsTopMenu />
           </div>
           <div className="w-[70%] max-h-60 mx-auto flex px-4 py-2 bg-[#e0dedf] rounded-2xl inset-shadow-sm shadow-inset-indigo">
-            <div className="w-[25%]">
-              <h1 className="font-bold size-font-xs my-auto">
-                | 이 보석만 볼래요
-              </h1>
+            <div className="w-[30%]">
+              <h1 className="font-bold size-font-xs my-auto">| 이 보석만 볼래요</h1>
               <div className="grid grid-rows-2 size-font-xs">
                 <button
                   className="presetBtm m-1 mx-4 rounded-lg bg-[#b2ddad]"
@@ -140,7 +138,7 @@ function TChartJewel({ request, setRequest }) {
                 </select>
               </div>
             </div>
-            <div className="w-[75%] overflow-scroll grid grid-cols-2 size-font-xs gap-y-2">
+            <div className="w-[70%] overflow-scroll grid grid-cols-2 size-font-xs gap-y-2">
               <button
                 className={`m-2 p-1 w-[90%] justify-center presetBtm rounded-lg flex m-auto items-baseline text-center bg-white text-gray-500 font-bold ${
                   visualState[0] ? "inset-shadow-sm shadow-inset-indigo" : ""
