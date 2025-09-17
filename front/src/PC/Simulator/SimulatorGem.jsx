@@ -26,6 +26,7 @@ const SimulatorGem = ({}) => {
     remainingProcessCount: 9,
     effectNum: [],
     effectName: [],
+    rerollChoiceList: 1,
   });
 
   const loadPage = () => {
@@ -34,12 +35,13 @@ const SimulatorGem = ({}) => {
       .post(`${process.env.REACT_APP_URL}/simulator/gem/${type}`, gemState)
       .then((res) => {
         setGemState(res.data.data);
-        console.log(res.data.data);
       })
       .catch((error) => {
         console.error(error);
       });
+  };
 
+  const processGem = () => {
     axios
       //, { params: { page: 0 }, }
       .post(
@@ -47,7 +49,7 @@ const SimulatorGem = ({}) => {
         gemState
       )
       .then((res) => {
-        //console.log(res.data.data);
+        setGemState(res.data.data);
       })
       .catch((error) => {
         console.error(error);
@@ -96,23 +98,26 @@ const SimulatorGem = ({}) => {
 
             <div className="my-4 flex flex-col items-center border-2 border-black">
               <p>옵션 선택</p>
+              <p> 선택지 1 : {gemState.effectName[0]}</p>
+              <p> 선택지 2 : {gemState.effectName[1]}</p>
+              <p> 선택지 3 : {gemState.effectName[2]}</p>
+              <p> 선택지 4 : {gemState.effectName[3]}</p>
+              <p>가공 가능 횟수 : {gemState.remainingProcessCount}</p>
+            </div>
+
+            <div className="my-4 flex flex-col items-center border-2 border-black">
               <button className="normalBtm">
-                {" "}
-                선택지 1 : {gemState.effectName[0]}
+                다른 항목 보기 - {gemState.rerollChoiceList}회 남음 // 아직 못씀
+                눌러도 아무일도 안일어남
               </button>
-              <button className="normalBtm">
-                {" "}
-                선택지 2 : {gemState.effectName[1]}
+              <button
+                className={`normalBtm ${
+                  gemState.remainingProcessCount > 0 ? " " : "hidden"
+                }`}
+                onClick={() => processGem()}
+              >
+                가공 하기
               </button>
-              <button className="normalBtm">
-                {" "}
-                선택지 3 : {gemState.effectName[2]}
-              </button>
-              <button className="normalBtm">
-                {" "}
-                선택지 4 : {gemState.effectName[3]}
-              </button>
-              <p>가공 가능 횟수</p>
             </div>
           </div>
         </div>
