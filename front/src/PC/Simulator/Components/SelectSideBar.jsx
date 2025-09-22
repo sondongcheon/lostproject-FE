@@ -11,30 +11,57 @@ const ItemsSideBar = ({}) => {
       <div className="bg-white shadow-2xl rounded-xl p-4 sticky top-20">
         <div className="border-gray-400 rounded-xl">
           <div className="flex">
-            <span className="font-bold">주요 아이템</span>
+            <span className="font-bold">젬 종류 선택</span>
             <div className="mt-[10px] mx-2 border-t-2 border-black border-dotted w-1/3" />
           </div>
 
           <div className="py-2">
             <SideBarlist
               clickAction={() => navigate("/simulator/gem/1")}
-              img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_9_25.png"
-              name="&nbsp;혼돈의 젬 : 왜곡"
+              img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_13_112.png"
+              name={
+                <>
+                  &nbsp;혼돈의 젬 : 왜곡
+                  <br />
+                  &nbsp;질서의 젬 : 견고
+                </>
+              }
             />
+            <br />
             <SideBarlist
               clickAction={() => navigate("/simulator/gem/2")}
-              img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_12_105.png"
-              name="&nbsp;혼돈의 젬 : 침식"
+              img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_13_113.png"
+              name={
+                <>
+                  &nbsp;혼돈의 젬 : 침식
+                  <br />
+                  &nbsp;질서의 젬 : 안정
+                </>
+              }
             />
+            <br />
             <SideBarlist
               clickAction={() => navigate("/simulator/gem/3")}
-              img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_12_88.png"
-              name="&nbsp;혼돈의 젬 : 붕괴"
-            />
-            <SideBarlist
-              clickAction={() => navigate("/simulator/gem/4")}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_13_114.png"
-              name="&nbsp;혼돈의 젬 : 불변"
+              name={
+                <>
+                  &nbsp;혼돈의 젬 : 붕괴
+                  <br />
+                  &nbsp;질서의 젬 : 불변
+                </>
+              }
+            />
+            <br />
+            <SideBarlist
+              clickAction={() => navigate("/")}
+              img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_13_111.png"
+              name={
+                <>
+                  &nbsp; 옵션 커스텀
+                  <br />
+                  &nbsp; (만드는중 클릭x)
+                </>
+              }
             />
           </div>
         </div>
