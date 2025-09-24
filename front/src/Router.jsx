@@ -32,6 +32,13 @@ function Router() {
       .catch((error) => {
         console.error(error);
       });
+
+    axios
+      .get(`${process.env.REACT_APP_URL}/log/uplog`, {
+        withCredentials: true,
+      })
+      .then(() => {})
+      .catch((error) => {});
   };
 
   return (
