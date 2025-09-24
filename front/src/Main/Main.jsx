@@ -49,14 +49,28 @@ function Main(props) {
       clicklink: "/chart",
     },
     {
-      imgUrl: "https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_9_25.png",
+      imgUrl:
+        "https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_9_25.png",
       title: "주요아이템 차트",
       info: (
         <>
-          각인서, 보석 등 <br /> 주요 아이템의 가격 변화를 확인할 수 있습니다.
+          각인서, 보석, 젬 등 <br /> 주요 아이템의 가격 변화를 확인할 수
+          있습니다.
         </>
       ),
       clicklink: "/chartitems/main",
+    },
+    {
+      imgUrl:
+        "https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_13_114.png",
+      title: "젬 가공 시뮬레이터",
+      info: (
+        <>
+          연습용 젬 가공 <br />
+          시뮬레이터 입니다.
+        </>
+      ),
+      clicklink: "/simulator/gem/1",
     },
   ];
 

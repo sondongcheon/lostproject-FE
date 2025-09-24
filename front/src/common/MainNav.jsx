@@ -58,7 +58,7 @@ function MainNav({ logSearch, getCountLog }) {
             className="text-3xl cursor-pointer text-white font-a"
             onClick={() => navigate("/")}
           >
-            LoaRoot <span className="size-font-xxxs">[Ver 2.5]</span>
+            LoaRoot <span className="size-font-xxxs">[Ver 2.6]</span>
           </span>
 
           {/* 오른쪽에 페이지 이동 공간 잡기 */}
@@ -101,6 +101,13 @@ function MainNav({ logSearch, getCountLog }) {
                 onClick={() => navigate("/chartitems/main")}
               >
                 🖨주요 아이템 차트
+              </div>
+
+              <div
+                className="cursor-pointer text-base hover:underline size-font-xxxs"
+                onClick={() => navigate("/simulator/gem/1")}
+              >
+                🔄 젬 가공 시뮬레이터
               </div>
               <div
                 className="cursor-pointer text-base hover:underline size-font-xxxs"

@@ -11,6 +11,7 @@ import MiniBoard from "./Pages/MiniBoard.jsx";
 import Chart from "./Pages/Chart.jsx";
 import SimulatorMain from "./Pages/Simulator/SimulatorMain.jsx";
 import SimulatorGem from "@/Pages/Simulator/SimulatorGem.jsx";
+import CustomGem from "@/Pages/Simulator/CustomGem.jsx";
 import ChartItemsMain from "./Pages/Chart/ChartMain.jsx";
 import ChartItems from "./Pages/Chart/ChartItems.jsx";
 import ChartJewel from "./Pages/ChartJewel.jsx";
@@ -57,6 +58,7 @@ function Router() {
         <Route path="/test4" element={<TestFour />} />
         <Route path="/simulator/main" element={<SimulatorMain />} />
         <Route path="/simulator/gem/:type" element={<SimulatorGem />} />
+        <Route path="/simulator/gem/custom" element={<CustomGem />} />
       </Routes>
       <Footer />
     </BrowserRouter>
