@@ -53,15 +53,9 @@ const ItemsSideBar = ({}) => {
             />
             <br />
             <SideBarlist
-              clickAction={() => navigate("/")}
+              clickAction={() => navigate("/simulator/gem/custom")}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_13_111.png"
-              name={
-                <>
-                  &nbsp; 옵션 커스텀
-                  <br />
-                  &nbsp; (만드는중 클릭x)
-                </>
-              }
+              name={<>&nbsp; 옵션 커스텀</>}
             />
           </div>
         </div>

@@ -102,6 +102,13 @@ function MainNav({ logSearch, getCountLog }) {
               >
                 🖨주요 아이템 차트
               </div>
+
+              <div
+                className="cursor-pointer text-base hover:underline size-font-xxxs"
+                onClick={() => navigate("/simulator/gem/1")}
+              >
+                🔄 젬 가공 시뮬레이터
+              </div>
               <div
                 className="cursor-pointer text-base hover:underline size-font-xxxs"
                 onClick={() => navigate("/notice")}
