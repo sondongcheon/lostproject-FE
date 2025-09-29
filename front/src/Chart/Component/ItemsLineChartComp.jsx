@@ -14,7 +14,7 @@ import {
 
 const ItemsLineChartComp = ({ data }) => {
   return (
-    <div className="flex m-10 border-b-2 border-red-200 bg-opacity-75 bg-white rounded-2xl">
+    <div className="flex m-10 border-b-2 border-red-200 bg-opacity-75 bg-white dark:bg-gray-800 rounded-2xl">
       <div className="w-[80%] ">
         <h2 className="flex items-center justify-center text-center">
           {" "}
@@ -99,14 +99,18 @@ const ItemsLineChartComp = ({ data }) => {
                   ),
               ]}
             />
-            <YAxis yAxisId="right" orientation="right" domain={[0, (dataMax) => dataMax * 1.5]} />
+            <YAxis
+              yAxisId="right"
+              orientation="right"
+              domain={[0, (dataMax) => dataMax * 1.5]}
+            />
 
             <Tooltip
               content={({ payload, label }) => {
                 if (!payload || payload.length === 0) return null;
                 const data = payload[0].payload;
                 return (
-                  <div className="bg-white p-2 border rounded shadow-md">
+                  <div className="bgWtoB p-2 border rounded shadow-md">
                     <p>{label}</p> {/* X축 값 (예: 시간) */}
                     <p>{`${data.avgPrice.toLocaleString()} Gold`}</p>
                     <p>{`판매 수량: ${data.tradeCount}`}</p>
@@ -140,7 +144,9 @@ const ItemsLineChartComp = ({ data }) => {
       <div className="w-[20%] m-2 flex flex-col items-center justify-center border-2 border-gray-500 rounded-xl h-[250px] text-xl text-center">
         <p>
           실시간 현재 최저가 <br />
-          <p className="font-bold text-3xl">{data?.currentMinPrice.toLocaleString()} G</p>
+          <p className="font-bold text-3xl">
+            {data?.currentMinPrice.toLocaleString()} G
+          </p>
           <p className="text-xs">
             전일, 현재 차액{" "}
             {data?.stats?.length > 0
@@ -153,7 +159,8 @@ const ItemsLineChartComp = ({ data }) => {
 
                   return (
                     <span className={isUp ? "text-green-500" : "text-red-500"}>
-                      {isUp ? "▲" : "▼"} {diff.toLocaleString()} G ({percent.toFixed(1)}%)
+                      {isUp ? "▲" : "▼"} {diff.toLocaleString()} G (
+                      {percent.toFixed(1)}%)
                     </span>
                   );
                 })()
@@ -163,7 +170,9 @@ const ItemsLineChartComp = ({ data }) => {
         <br />
         <p>
           실시간 최근 거래가 <br />
-          <span className="font-bold text-3xl">{data?.recentPrice.toLocaleString()} G</span>
+          <span className="font-bold text-3xl">
+            {data?.recentPrice.toLocaleString()} G
+          </span>
         </p>
         {/* <p>14일간 평균 거래가 : 구현중</p>
         <p>14일간 최저 거래가 : 구현중</p> */}

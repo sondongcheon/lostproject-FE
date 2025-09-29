@@ -5,7 +5,8 @@ const GlobalStyles = createGlobalStyle`
   width: 1900px; /* 고정된 너비 */
   min-height: 100vh; 
   overflow: auto; /* 넘치는 콘텐츠는 스크롤로 처리 */
-  background-color:rgb(240, 239, 229);
+    background-color: ${({ theme }) => theme.darkMode ? "rgb(46, 44, 34)" : "rgb(240, 239, 229)"};
+    color: ${({ theme }) => theme.darkMode ? "#ffffff" : "#000000"};
     font-family: "Pretendard";
   }
 
@@ -91,15 +92,58 @@ const GlobalStyles = createGlobalStyle`
   transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 부드러운 전환 */
 }
 
-// .presetBtm {
-//   transition: background-color 1s, color 1s; /* 호버 효과를 위한 부드러운 전환 */
-// }
+  .presetBtm {
+    /* 공통 속성 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 2rem; /* h-8 */
+    margin: 0.5rem auto; /* my-2 */
+    border-radius: 1rem; /* rounded-2xl */
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
 
-.presetBtm:hover {
-  transform: scale(1.1);
-}
+    /* 라이트/다크 공통 텍스트 & 배경 */
+    background-color: ${({ theme }) =>
+      theme.darkMode ? "#2A2A2A" : "#ffffff"};
+    color: ${({ theme }) => (theme.darkMode ? "#D1D5DB" : "#6B7280")}; /* text-gray-300 vs gray-500 */
 
+    /* 라이트/다크 테두리 */
+    border: 1px solid
+      ${({ theme }) => (theme.darkMode ? "#4B5563" : "#6B7280")}; /* dark:border-gray-600 vs border-gray-500 */
+  }
 
+  .presetBtm:hover {
+    transform: scale(1.1);
+  }
+
+    .presetBtmNoneBG {
+    /* 공통 속성 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 2rem; /* h-8 */
+    margin: 0.5rem auto; /* my-2 */
+    border-radius: 1rem; /* rounded-2xl */
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+
+    color: ${({ theme }) => (theme.darkMode ? "#000000ff" : "#ffffffff")}; /* text-gray-300 vs gray-500 */
+  }
+
+  .presetBtmNoneBG:hover {
+    transform: scale(1.1);
+  }
+
+  .scaleBtm:hover {
+    transform: scale(1.1);
+  }
+
+  .bgWtoB {
+    background-color: ${({ theme }) => theme.darkMode ? "#0b0b0b" : "white"};
+  }
 
 .normalBtm:hover {
   background-color: #40AC8D; /* 호버 시 배경색을 채움 */
@@ -182,6 +226,7 @@ const GlobalStyles = createGlobalStyle`
 .commonHover:hover {
   cursor: pointer;
   background-color: white; /* 호버 시 배경색을 채움 */
+  background-color: ${({ theme }) => theme.darkMode ? "rgb(46, 44, 34)" : "white"};
   transform: scale(1.1);
   // box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 16px; /* 테두리를 둥글게 만듦 */

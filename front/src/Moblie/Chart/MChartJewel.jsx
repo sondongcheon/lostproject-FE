@@ -93,7 +93,7 @@ function MChartJewel({ request, setRequest }) {
               </h1>
               <div className="grid grid-rows-4 size-font-xs">
                 <button
-                  className="presetBtm m-1 p-1 rounded-lg bg-[#b2ddad]"
+                  className="scaleBtm m-1 p-1 rounded-lg bg-[#b2ddad]"
                   onClick={() => {
                     setAll(true);
                   }}
@@ -101,7 +101,7 @@ function MChartJewel({ request, setRequest }) {
                   ✅ 전체 선택
                 </button>
                 <button
-                  className="presetBtm m-1 p-1 rounded-lg bg-[#b2ddad]"
+                  className="scaleBtm m-1 p-1 rounded-lg bg-[#b2ddad]"
                   onClick={() => {
                     setAll(false);
                   }}
@@ -144,7 +144,7 @@ function MChartJewel({ request, setRequest }) {
             </div>
             <div className="w-[65%] overflow-scroll size-font-xs space-y-4">
               <button
-                className={`w-[90%] m-auto justify-center presetBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
+                className={`w-[90%] m-auto justify-center scaleBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
                   visualState[0] ? "inset-shadow-sm shadow-inset-indigo" : ""
                 }`}
                 onClick={() => grapeControll(0)}
@@ -152,7 +152,7 @@ function MChartJewel({ request, setRequest }) {
                 <span className=" text-xl text-[#E38E49]">10</span> 레벨 겁화
               </button>
               <button
-                className={`w-[90%] m-auto justify-center presetBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
+                className={`w-[90%] m-auto justify-center scaleBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
                   visualState[1] ? "inset-shadow-sm shadow-inset-indigo" : ""
                 }`}
                 onClick={() => grapeControll(1)}
@@ -160,7 +160,7 @@ function MChartJewel({ request, setRequest }) {
                 <span className=" text-xl text-[#E38E49]">10</span> 레벨 작열
               </button>
               <button
-                className={`w-[90%] m-auto justify-center presetBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
+                className={`w-[90%] m-auto justify-center scaleBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
                   visualState[2] ? "inset-shadow-sm shadow-inset-indigo" : ""
                 }`}
                 onClick={() => grapeControll(2)}
@@ -168,7 +168,7 @@ function MChartJewel({ request, setRequest }) {
                 <span className=" text-xl text-[#7E1891]">9</span> 레벨 겁화
               </button>
               <button
-                className={`w-[90%] m-auto justify-center presetBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
+                className={`w-[90%] m-auto justify-center scaleBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
                   visualState[3] ? "inset-shadow-sm shadow-inset-indigo" : ""
                 }`}
                 onClick={() => grapeControll(3)}
@@ -176,7 +176,7 @@ function MChartJewel({ request, setRequest }) {
                 <span className=" text-xl text-[#7E1891]">9</span> 레벨 작열
               </button>
               <button
-                className={`w-[90%] m-auto justify-center presetBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
+                className={`w-[90%] m-auto justify-center scaleBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
                   visualState[4] ? "inset-shadow-sm shadow-inset-indigo" : ""
                 }`}
                 onClick={() => grapeControll(4)}
@@ -184,7 +184,7 @@ function MChartJewel({ request, setRequest }) {
                 <span className=" text-xl text-[#0A3981]">8</span> 레벨 겁화
               </button>
               <button
-                className={`w-[90%] m-auto justify-center presetBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
+                className={`w-[90%] m-auto justify-center scaleBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
                   visualState[5] ? "inset-shadow-sm shadow-inset-indigo" : ""
                 }`}
                 onClick={() => grapeControll(5)}
@@ -192,7 +192,7 @@ function MChartJewel({ request, setRequest }) {
                 <span className=" text-xl text-[#0A3981]">8</span> 레벨 작열
               </button>
               <button
-                className={`w-[90%] m-auto justify-center presetBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
+                className={`w-[90%] m-auto justify-center scaleBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
                   visualState[6] ? "inset-shadow-sm shadow-inset-indigo" : ""
                 }`}
                 onClick={() => grapeControll(6)}
@@ -201,7 +201,7 @@ function MChartJewel({ request, setRequest }) {
               </button>
 
               <button
-                className={`w-[90%] m-auto justify-center presetBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
+                className={`w-[90%] m-auto justify-center scaleBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
                   visualState[7] ? "inset-shadow-sm shadow-inset-indigo" : ""
                 }`}
                 onClick={() => grapeControll(7)}

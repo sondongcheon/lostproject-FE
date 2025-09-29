@@ -59,7 +59,7 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
   return (
     <div>
       <div
-        className={`h-44 flex shadow-lg bg-[#F5F5F5] border-2 rounded-2xl ${
+        className={`h-44 flex shadow-lg bg-[#F5F5F5] dark:bg-[#2A2A2A] border-2 rounded-2xl ${
           options?.categoryCode === 200000 ? "border-red-500" : null
         }`}
       >
@@ -701,7 +701,7 @@ const SelectOptionComp = ({ options, onOptionsChange, staticNameList }) => {
                       value={options?.selOpt3}
                       name="selOpt3"
                       onOptionsChange={onOptionsChange}
-                      css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5]"
+                      css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5] dark:bg-[#2A2A2A]"
                     />
                   </div>
                 </div>

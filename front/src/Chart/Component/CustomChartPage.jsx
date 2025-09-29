@@ -363,7 +363,7 @@ const CustomChartPage = () => {
               value={request.box1}
               name="box1"
               onOptionsChange={updateOption}
-              css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5]"
+              css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5] dark:bg-[#2A2A2A]"
             />
           </div>
           <div>
@@ -373,7 +373,7 @@ const CustomChartPage = () => {
               value={request.box2}
               name="box2"
               onOptionsChange={updateOption}
-              css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5]"
+              css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5] dark:bg-[#2A2A2A]"
             />
           </div>
           <div>
@@ -383,7 +383,7 @@ const CustomChartPage = () => {
               value={request.box3}
               name="box3"
               onOptionsChange={updateOption}
-              css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5]"
+              css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5] dark:bg-[#2A2A2A]"
             />
           </div>
           <div>
@@ -393,7 +393,7 @@ const CustomChartPage = () => {
               value={request.box4}
               name="box4"
               onOptionsChange={updateOption}
-              css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5]"
+              css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5] dark:bg-[#2A2A2A]"
             />
           </div>
           <div>
@@ -403,7 +403,7 @@ const CustomChartPage = () => {
               value={request.box5}
               name="box5"
               onOptionsChange={updateOption}
-              css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5]"
+              css="text-center rounded-xl border-gray-400 border-2 bg-[#F5F5F5] dark:bg-[#2A2A2A]"
             />
           </div>
           <button className="normalBtm" onClick={search}>
@@ -411,7 +411,7 @@ const CustomChartPage = () => {
             검색하기{""}
           </button>
         </div>
-        <div className="flex m-10 border-b-2 border-red-200 bg-opacity-75 bg-white rounded-2xl">
+        <div className="flex m-10 border-b-2 border-red-200 bg-opacity-75 bg-white dark:bg-[#2A2A2A] rounded-2xl">
           <ResponsiveContainer width="100%" height={400}>
             <LineChart
               data={data.chartInfoList}
@@ -425,7 +425,20 @@ const CustomChartPage = () => {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="time" className="text-xs" />
               <YAxis tickFormatter={(value) => value.toLocaleString() + "G"} />
-              <Tooltip formatter={(name) => [`${name.toLocaleString()} Gold`]} />
+              <Tooltip
+                //formatter={(name) => [`${name.toLocaleString()} Gold`]}
+
+                content={({ payload, label }) => {
+                  if (!payload || payload.length === 0) return null;
+                  const data = payload[0].payload;
+                  return (
+                    <div className="bgWtoB p-2 border rounded shadow-md">
+                      <p>{label}</p> {/* X축 값 (예: 시간) */}
+                      <p>{`${data.buyPrice.toLocaleString()} Gold`}</p>
+                    </div>
+                  );
+                }}
+              />
               <Line
                 type="monotone"
                 dataKey="buyPrice"

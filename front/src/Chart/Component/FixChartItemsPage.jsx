@@ -161,7 +161,9 @@ const FixChartItemsPage = () => {
     if (hasTimeMounted) {
       setTimeHasMounted(false);
     } else {
-      const stored = JSON.parse(localStorage.getItem("ItemsChartSetting") || "{}");
+      const stored = JSON.parse(
+        localStorage.getItem("ItemsChartSetting") || "{}"
+      );
       if (stored[type].time === time) return;
       stored[type] = {
         time,
@@ -177,7 +179,9 @@ const FixChartItemsPage = () => {
     if (hasPointMounted) {
       setPointHasMounted(false);
     } else {
-      const stored = JSON.parse(localStorage.getItem("ItemsChartSetting") || "{}");
+      const stored = JSON.parse(
+        localStorage.getItem("ItemsChartSetting") || "{}"
+      );
       if (stored[type].point === point) return;
       stored[type] = {
         time,
@@ -193,7 +197,9 @@ const FixChartItemsPage = () => {
     if (hasVisualMounted) {
       setHasVisualMounted(false);
     } else {
-      const stored = JSON.parse(localStorage.getItem("ItemsChartSetting") || "{}");
+      const stored = JSON.parse(
+        localStorage.getItem("ItemsChartSetting") || "{}"
+      );
       if ((stored[type]?.visualState || null) === visualState) return;
       stored[type] = {
         time,
@@ -237,12 +243,12 @@ const FixChartItemsPage = () => {
   return (
     <div>
       <div className="mb-10 space-y-10">
-        <div className="mx-auto w-[95%] max-h-48 flex px-6 py-2 bg-[#e0dedf] rounded-2xl inset-shadow-sm shadow-inset-indigo">
+        <div className="mx-auto w-[95%] max-h-48 flex px-6 py-2 bg-[#e0dedf] dark:bg-[#1e1d1f] rounded-2xl inset-shadow-sm shadow-inset-indigo">
           <div className="w-[15%] my-auto">
             <h1 className="font-bold text-xl">| 이 물건만 볼래요</h1>
             <div className="grid grid-rows-2 text-sm">
               <button
-                className="presetBtm m-1 mx-4 rounded-lg bg-[#b2ddad]"
+                className="scaleBtm m-1 mx-4 rounded-lg bg-[#b2ddad] dark:bg-[#2d4f29]"
                 onClick={() => {
                   setAll(true);
                 }}
@@ -250,7 +256,7 @@ const FixChartItemsPage = () => {
                 ✅ 전체 선택
               </button>
               <button
-                className="presetBtm m-1 mx-4 rounded-lg bg-[#b2ddad]"
+                className="scaleBtm m-1 mx-4 rounded-lg bg-[#b2ddad] dark:bg-[#2d4f29]"
                 onClick={() => {
                   setAll(false);
                 }}
@@ -264,7 +270,7 @@ const FixChartItemsPage = () => {
                   onChange={(e) => {
                     setTime(e.target.value);
                   }}
-                  className="text-center rounded-xl border-gray-400 border-2 w-24 bg-[#F5F5F5]"
+                  className="text-center rounded-xl border-gray-400 border-2 w-24 bg-[#F5F5F5] dark:bg-[#2A2A2A]"
                 >
                   <option value="" disabled>
                     옵션선택
@@ -279,7 +285,7 @@ const FixChartItemsPage = () => {
                 <select
                   value={point || ""}
                   onChange={(e) => setPoint(e.target.value)}
-                  className="text-center rounded-xl border-gray-400 border-2 w-24 bg-[#F5F5F5]"
+                  className="text-center rounded-xl border-gray-400 border-2 w-24 bg-[#F5F5F5] dark:bg-[#2A2A2A]"
                 >
                   <option value="" disabled>
                     옵션선택
@@ -296,8 +302,10 @@ const FixChartItemsPage = () => {
               data?.map((item, index) => (
                 <button
                   key={index}
-                  className={`m-2 px-4 py-2 w-[90%] justify-between presetBtm rounded-lg flex m-auto items-center text-center bg-white text-gray-500 font-bold ${
-                    visualState[index] ? "inset-shadow-sm shadow-inset-indigo" : ""
+                  className={`m-2 px-4 py-2 w-[90%] justify-between scaleBtm rounded-lg flex m-auto items-center text-center bg-white dark:bg-gray-300 text-gray-500 dark:text-gray-800 font-bold ${
+                    visualState[index]
+                      ? "inset-shadow-sm shadow-inset-indigo dark:bg-gray-400"
+                      : ""
                   }`}
                   onClick={() => grapeControll(index)}
                 >
@@ -318,7 +326,9 @@ const FixChartItemsPage = () => {
         )} */}
         {visualState &&
           data?.map((item, index) => (
-            <div key={index}>{visualState[index] && <ItemsLineChartComp data={item} />}</div>
+            <div key={index}>
+              {visualState[index] && <ItemsLineChartComp data={item} />}
+            </div>
           ))}
       </div>
     </div>

@@ -318,7 +318,7 @@ const SimulatorGem = ({}) => {
                     <select
                       value={gemState.optionName[0]}
                       onChange={(e) => updateName(0, e.target.value)}
-                      className="flex-1"
+                      className="flex-1 mx-auto my-1 h-6 text-sm text-center text-gray-500 dark:text-gray-300 rounded-2xl border-[#566863] border bg-[#F5F5F5] dark:bg-[#2A2A2A]"
                     >
                       <option value="" disabled>
                         옵션 선택
@@ -337,7 +337,7 @@ const SimulatorGem = ({}) => {
                     <select
                       value={gemState.optionName[1]}
                       onChange={(e) => updateName(1, e.target.value)}
-                      className="flex-1"
+                      className="flex-1 mx-auto my-1 h-6 text-sm text-center text-gray-500 dark:text-gray-300 rounded-2xl border-[#566863] border bg-[#F5F5F5] dark:bg-[#2A2A2A]"
                     >
                       <option value="" disabled>
                         옵션 선택
@@ -364,7 +364,7 @@ const SimulatorGem = ({}) => {
                     <select
                       value={gemState.optionState[0]}
                       onChange={(e) => updateState(0, e.target.value)}
-                      className="flex-1"
+                      className="flex-1 mx-auto my-1 h-6 text-sm text-center text-gray-500 dark:text-gray-300 rounded-2xl border-[#566863] border bg-[#F5F5F5] dark:bg-[#2A2A2A]"
                     >
                       <option value={1}>1</option>
                       <option value={2}>2</option>
@@ -381,7 +381,7 @@ const SimulatorGem = ({}) => {
                     <select
                       value={gemState.optionState[1]}
                       onChange={(e) => updateState(1, e.target.value)}
-                      className="flex-1"
+                      className="flex-1 mx-auto my-1 h-6 text-sm text-center text-gray-500 dark:text-gray-300 rounded-2xl border-[#566863] border bg-[#F5F5F5] dark:bg-[#2A2A2A]"
                     >
                       <option value={1}>1</option>
                       <option value={2}>2</option>
@@ -398,7 +398,7 @@ const SimulatorGem = ({}) => {
                     <select
                       value={gemState.optionState[2]}
                       onChange={(e) => updateState(2, e.target.value)}
-                      className="flex-1"
+                      className="flex-1 mx-auto my-1 h-6 text-sm text-center text-gray-500 dark:text-gray-300 rounded-2xl border-[#566863] border bg-[#F5F5F5] dark:bg-[#2A2A2A]"
                     >
                       <option value={1}>1</option>
                       <option value={2}>2</option>
@@ -415,7 +415,7 @@ const SimulatorGem = ({}) => {
                     <select
                       value={gemState.optionState[3]}
                       onChange={(e) => updateState(3, e.target.value)}
-                      className="flex-1"
+                      className="flex-1 mx-auto my-1 h-6 text-sm text-center text-gray-500 dark:text-gray-300 rounded-2xl border-[#566863] border bg-[#F5F5F5] dark:bg-[#2A2A2A]"
                     >
                       <option value={1}>1</option>
                       <option value={2}>2</option>
@@ -456,7 +456,7 @@ const SimulatorGem = ({}) => {
                     backgroundRepeat: "no-repeat",
                   }}
                 >
-                  <span className="bg-white px-2 py-1 rounded-lg text-center">
+                  <span className="bgWtoB px-2 py-1 rounded-lg text-center">
                     {nameCustom(gemState.effectName[1])}
                   </span>
                 </div>{" "}
@@ -469,7 +469,7 @@ const SimulatorGem = ({}) => {
                     backgroundRepeat: "no-repeat",
                   }}
                 >
-                  <span className="bg-white px-2 py-1 rounded-lg text-center">
+                  <span className="bgWtoB px-2 py-1 rounded-lg text-center">
                     {nameCustom(gemState.effectName[2])}
                   </span>
                 </div>
@@ -482,11 +482,12 @@ const SimulatorGem = ({}) => {
                     backgroundRepeat: "no-repeat",
                   }}
                 >
-                  <span className="bg-white px-2 py-1 rounded-lg text-center">
+                  <span className="bgWtoB px-2 py-1 rounded-lg text-center">
                     {nameCustom(gemState.effectName[3])}
                   </span>
                 </div>
                 <select
+                  className="mx-auto my-1 h-6 text-sm text-center text-gray-500 dark:text-gray-300 rounded-2xl border-[#566863] border bg-[#F5F5F5] dark:bg-[#2A2A2A]"
                   value={gemState.effectName[0]}
                   onChange={(e) => {
                     const num = e.target.value;
@@ -506,6 +507,7 @@ const SimulatorGem = ({}) => {
                   ))}
                 </select>
                 <select
+                  className="mx-auto my-1 h-6 text-sm text-center text-gray-500 dark:text-gray-300 rounded-2xl border-[#566863] border bg-[#F5F5F5] dark:bg-[#2A2A2A]"
                   value={gemState.effectName[1]}
                   onChange={(e) => {
                     const num = e.target.value;
@@ -525,6 +527,7 @@ const SimulatorGem = ({}) => {
                   ))}
                 </select>
                 <select
+                  className="mx-auto my-1 h-6 text-sm text-center text-gray-500 dark:text-gray-300 rounded-2xl border-[#566863] border bg-[#F5F5F5] dark:bg-[#2A2A2A]"
                   value={gemState.effectName[2]}
                   onChange={(e) => {
                     const num = e.target.value;
@@ -544,6 +547,7 @@ const SimulatorGem = ({}) => {
                   ))}
                 </select>
                 <select
+                  className="mx-auto my-1 h-6 text-sm text-center text-gray-500 dark:text-gray-300 rounded-2xl border-[#566863] border bg-[#F5F5F5] dark:bg-[#2A2A2A]"
                   value={gemState.effectName[3]}
                   onChange={(e) => {
                     const num = e.target.value;

@@ -17,7 +17,7 @@ function Calstat({}) {
   const [stat, setStat] = useState(null);
 
   const [statPer, setStatPer] = useState(null);
-  const [statFull, setStatFull] = useState(null);
+  const [statFull, setStatFull] = useState(0);
 
   useEffect(() => {
     if (category === "0") {
@@ -81,15 +81,15 @@ function Calstat({}) {
                     <BsFillQuestionCircleFill className=" h-full"></BsFillQuestionCircleFill>
                     <div className="absolute z-10 top-full w-[2000%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
                       좋아보이는 장신구를 드셨군요? <br />
-                      그 장신구의 스텟을 입력해 보세요 <br /> 어느정도 급의 스텟인지 확인 할 수
-                      있어요
+                      그 장신구의 스텟을 입력해 보세요 <br /> 어느정도 급의
+                      스텟인지 확인 할 수 있어요
                     </div>
                   </div>
                   <span className="ml-6">이 장신구는 몇?</span>
                 </div>
               </DialogTitle>
             </DialogHeader>
-            <div className="w-[400px] sm:w-[640px] lg:w-[800px] h-36 flex justify-center items-center border-gray-200 shadow-lg gap-x-2 border-2 rounded-2xl bg-[#F5F5F5]">
+            <div className="w-[400px] sm:w-[640px] lg:w-[800px] h-36 flex justify-center items-center border-gray-200 shadow-lg gap-x-2 border-2 rounded-2xl bgWtoB">
               <div className="w-[47%] ">
                 <div className="grid grid-cols-4">
                   <div className="font-bold col-span-1 border-b-2 border-gray-300 flex items-center justify-center ">
@@ -193,7 +193,7 @@ function Calstat({}) {
                 </div>
                 <div className=" border-gray-300 flex items-center justify-center">
                   <input
-                    className="border boder-gray-200 rounded-xl text-end"
+                    className="border boder-gray-200 rounded-xl text-end text-gray-500"
                     placeholder="0"
                     type="number"
                     min="0"
@@ -212,7 +212,10 @@ function Calstat({}) {
                 </p>
                 <p>
                   {" "}
-                  연마 완료시 스텟 - <span className="font-bold">{statFull}</span>
+                  연마 완료시 스텟 -{" "}
+                  <span className="font-bold">
+                    {isNaN(statFull) ? 0 : statFull}
+                  </span>
                 </p>
               </div>
             </div>

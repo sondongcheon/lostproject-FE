@@ -1,11 +1,16 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleDarkMode } from "@/store/settingsSlice.js";
 
 import MenuDropdown from "./Component/MenuDropdown";
 import ModalApiKey from "./Component/ModalApiKey";
 
 function MainNav({ logSearch, getCountLog }) {
+  const dispatch = useDispatch();
+  const darkMode = useSelector((state) => state.settings.darkMode);
+
   const isMobile = useMediaQuery({
     query: "(max-width:800px)",
   });
@@ -51,14 +56,14 @@ function MainNav({ logSearch, getCountLog }) {
 
   return (
     <div>
-      <div className="h-16 fixed top-0 left-0 w-full bg-gradient-to-r from-[#2384bc] to-[#b2ddad] shadow-md z-50">
-        <div className="container mx-auto px-2 py-1 flex justify-between items-center h-full text-[#2b2b2b] font-bold ">
+      <div className="h-16 fixed top-0 left-0 w-full bg-gradient-to-r from-[#2384bc] to-[#b2ddad] dark:from-[#1B4F72] dark:to-[#5C8F5A] shadow-md z-50">
+        <div className="container mx-auto px-2 py-1 flex justify-between items-center h-full text-[#2b2b2b] dark:text[#2b2b2b] font-bold ">
           {/* 왼쪽에 'test' 홈페이지 링크 */}
           <span
-            className="text-3xl cursor-pointer text-white font-a"
+            className="text-3xl cursor-pointer text-white dark:text-black font-a"
             onClick={() => navigate("/")}
           >
-            LoaRoot <span className="size-font-xxxs">[Ver 2.6]</span>
+            LoaRoot <span className="size-font-xxxs">[Ver 2.6.1]</span>
           </span>
 
           {/* 오른쪽에 페이지 이동 공간 잡기 */}
@@ -74,7 +79,7 @@ function MainNav({ logSearch, getCountLog }) {
               ☰
             </div>
           ) : (
-            <div className="flex gap-10">
+            <div className="flex gap-8">
               <div>
                 <ModalApiKey />
               </div>
@@ -121,6 +126,14 @@ function MainNav({ logSearch, getCountLog }) {
               >
                 📃유저 코멘트
               </div>
+              <div className="w-32">
+                <button
+                  onClick={() => dispatch(toggleDarkMode())}
+                  className="border rounded "
+                >
+                  {darkMode ? "🌞 라이트(BETA)" : "🌙 다크(BETA)"}
+                </button>
+              </div>
             </div>
           )}
         </div>
@@ -135,7 +148,7 @@ function MainNav({ logSearch, getCountLog }) {
               <MenuDropdown />
             </div>
           )}
-          <div className="container mx-auto sm:px-28 px-8 py-4 flex justify-end h-full text-[#191919] sm:text-sm text-[12px] font-a gap-x-10 z-49">
+          <div className="container mx-auto sm:px-28 px-8 py-4 flex justify-end h-full sm:text-sm text-[12px] font-a gap-x-10 z-49">
             <span>TodaySearch : {logSearch[1]} </span>
             <span>TotalSearch : {logSearch[0]}</span>
           </div>

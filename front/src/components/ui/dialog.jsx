@@ -10,10 +10,12 @@ export function Dialog({ children, onClose }) {
 
   return createPortal(
     <div
-      className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center"
+      className="fixed inset-0 bg-black dark:bg-white bg-opacity-50 z-50 flex justify-center items-center"
       onClick={handleBackdropClick}
     >
-      <div className="bg-white p-6 rounded shadow-lg">{children}</div>
+      <div className="bgWtoB border border-white p-6 rounded shadow-lg">
+        {children}
+      </div>
     </div>,
     document.body
   );

@@ -7,6 +7,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html.dark-mode-filter {
+  filter: invert(1) hue-rotate(180deg);
+  background-color: #121212;
+}
+
+/* 이미지와 비디오 요소는 다시 원상복귀 */
+html.dark-mode-filter img,
+html.dark-mode-filter video,
+html.dark-mode-filter picture {
+  filter: invert(1) hue-rotate(180deg);
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

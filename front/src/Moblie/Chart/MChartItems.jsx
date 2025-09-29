@@ -272,7 +272,7 @@ function MChartItems(props) {
               </h1>
               <div className=" grid grid-rows-4 size-font-xs">
                 <button
-                  className="presetBtm m-1 rounded-lg bg-[#b2ddad]"
+                  className="scaleBtm m-1 rounded-lg bg-[#b2ddad]"
                   onClick={() => {
                     setAll(true);
                   }}
@@ -280,7 +280,7 @@ function MChartItems(props) {
                   ✅ 전체 선택
                 </button>
                 <button
-                  className="presetBtm m-1 rounded-lg bg-[#b2ddad]"
+                  className="scaleBtm m-1 rounded-lg bg-[#b2ddad]"
                   onClick={() => {
                     setAll(false);
                   }}
@@ -327,7 +327,7 @@ function MChartItems(props) {
               {visualState &&
                 data?.map((item, index) => (
                   <button
-                    className={`m-1 px-2 py-1 w-[90%] justify-between presetBtm rounded-lg flex m-auto items-center text-center bg-white text-gray-500 font-bold ${
+                    className={`m-1 px-2 py-1 w-[90%] justify-between scaleBtm rounded-lg flex m-auto items-center text-center bg-white text-gray-500 font-bold ${
                       visualState[index]
                         ? "inset-shadow-sm shadow-inset-indigo"
                         : ""

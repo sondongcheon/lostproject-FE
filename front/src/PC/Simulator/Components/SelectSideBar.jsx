@@ -8,14 +8,14 @@ const ItemsSideBar = ({}) => {
   const navigate = useNavigate();
   return (
     <div className="h-full">
-      <div className="bg-white shadow-2xl rounded-xl p-4 sticky top-20">
+      <div className="bgWtoB shadow-2xl rounded-xl p-4 sticky top-20">
         <div className="border-gray-400 rounded-xl">
           <div className="flex">
             <span className="font-bold">젬 종류 선택</span>
             <div className="mt-[10px] mx-2 border-t-2 border-black border-dotted w-1/3" />
           </div>
 
-          <div className="py-2">
+          <div className="py-2 space-y-2">
             <SideBarlist
               clickAction={() => navigate("/simulator/gem/1")}
               img="https://cdn-lostark.game.onstove.com/efui_iconatlas/use/use_13_112.png"
