@@ -17,7 +17,9 @@ const TopMenu = ({
   type,
   category,
 }) => {
-  const accChartSetting = useSelector((state) => state.settings.accChartSetting);
+  const accChartSetting = useSelector(
+    (state) => state.settings.accChartSetting
+  );
   const [logSearch, setLogSearch] = useState([]);
   const dispatch = useDispatch();
 
@@ -242,22 +244,30 @@ const TopMenu = ({
               <br />
               합산된 그래프를 볼 수 있는 기능입니다. <br />
               <br />
-              예시로, 목걸이 상중, 귀걸이 상하, 상을 선택하면 <br /> 각 부위별로 저장된 시간별
-              가격들이 합산되어
+              예시로, 목걸이 상중, 귀걸이 상하, 상을 선택하면 <br /> 각 부위별로
+              저장된 시간별 가격들이 합산되어
               <br />
               예전에 삿다면 얼마였을까? 를 볼수 있습니다.
             </div>
           </div>
           <br />
-          <h1 className="size-font-xxs text-center"> 오늘의 차트 방문자 - {logSearch[1]}</h1>
-          <h1 className="size-font-xxs text-center"> 누적 차트 방문자 - {logSearch[0]}</h1>
+          <h1 className="size-font-xxs text-center">
+            {" "}
+            오늘의 차트 방문자 - {logSearch[1]}
+          </h1>
+          <h1 className="size-font-xxs text-center">
+            {" "}
+            누적 차트 방문자 - {logSearch[0]}
+          </h1>
         </div>
         <div className="p-4 w-[65%] flex max-h-44 mx-auto bg-[#e0dedf] rounded-xl inset-shadow-sm shadow-inset-indigo overflow-scroll">
           <div className="w-[35%]">
-            <h1 className="font-bold size-font-xs my-auto">| 이 물건만 볼래요</h1>
+            <h1 className="font-bold size-font-xs my-auto">
+              | 이 물건만 볼래요
+            </h1>
             <div className=" grid grid-rows-4 size-font-xs">
               <button
-                className="presetBtm m-1 p-1 rounded-lg bg-[#b2ddad]"
+                className="scaleBtm m-1 p-1 rounded-lg bg-[#b2ddad]"
                 onClick={() => {
                   setAll(true);
                 }}
@@ -265,7 +275,7 @@ const TopMenu = ({
                 ✅ 전체 선택
               </button>
               <button
-                className="presetBtm m-1 p-1 rounded-lg bg-[#b2ddad]"
+                className="scaleBtm m-1 p-1 rounded-lg bg-[#b2ddad]"
                 onClick={() => {
                   setAll(false);
                 }}
@@ -276,7 +286,9 @@ const TopMenu = ({
                 <span className="">조회 시간 주기&nbsp;</span>
                 <select
                   value={accChartSetting.time}
-                  onChange={(e) => dispatch(setAccChartSetting({ time: e.target.value }))}
+                  onChange={(e) =>
+                    dispatch(setAccChartSetting({ time: e.target.value }))
+                  }
                   className="text-center size-font-xs rounded-xl border-gray-400 border-2 w-16 bg-[#F5F5F5]"
                 >
                   <option value="" disabled>
@@ -291,7 +303,9 @@ const TopMenu = ({
                 <span className="">조회 지점 갯수&nbsp;</span>
                 <select
                   value={accChartSetting.point}
-                  onChange={(e) => dispatch(setAccChartSetting({ point: e.target.value }))}
+                  onChange={(e) =>
+                    dispatch(setAccChartSetting({ point: e.target.value }))
+                  }
                   className="text-center size-font-xs rounded-xl border-gray-400 border-2 w-16 bg-[#F5F5F5]"
                 >
                   <option value="" disabled>
@@ -306,57 +320,62 @@ const TopMenu = ({
           </div>
           <div className="w-[65%] overflow-scroll size-font-xs space-y-4">
             <button
-              className={`w-[90%] m-auto justify-center presetBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
+              className={`w-[90%] m-auto justify-center scaleBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
                 visualState[0] ? "inset-shadow-sm shadow-inset-indigo" : ""
               }`}
               onClick={() => grapeControll(0)}
             >
               {optionName.first}
-              <span className=" size-font-xl text-[#E38E49]">상</span> {optionName.secound}
+              <span className=" size-font-xl text-[#E38E49]">상</span>{" "}
+              {optionName.secound}
               <span className=" size-font-xl text-[#E38E49]">상</span>
             </button>
             <button
-              className={`m-auto w-[90%] justify-center presetBtm rounded-lg flex  items-baseline text-center bg-white text-gray-500 font-bold ${
+              className={`m-auto w-[90%] justify-center scaleBtm rounded-lg flex  items-baseline text-center bg-white text-gray-500 font-bold ${
                 visualState[1] ? "inset-shadow-sm shadow-inset-indigo" : ""
               }`}
               onClick={() => grapeControll(1)}
             >
               {optionName.first}
-              <span className=" size-font-xl text-[#E38E49]">상</span> {optionName.secound}
+              <span className=" size-font-xl text-[#E38E49]">상</span>{" "}
+              {optionName.secound}
               <span className=" size-font-xl text-[#7E1891]">중</span>
             </button>
             <button
-              className={`m-auto w-[90%] justify-center presetBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
+              className={`m-auto w-[90%] justify-center scaleBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
                 visualState[2] ? "inset-shadow-sm shadow-inset-indigo" : ""
               }`}
               onClick={() => grapeControll(2)}
             >
               {optionName.first}
-              <span className=" size-font-xl text-[#7E1891]">중</span> {optionName.secound}
+              <span className=" size-font-xl text-[#7E1891]">중</span>{" "}
+              {optionName.secound}
               <span className=" size-font-xl text-[#E38E49]">상</span>
             </button>
             <button
-              className={`m-auto w-[90%] justify-center presetBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
+              className={`m-auto w-[90%] justify-center scaleBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
                 visualState[3] ? "inset-shadow-sm shadow-inset-indigo" : ""
               }`}
               onClick={() => grapeControll(3)}
             >
               {optionName.first}
-              <span className=" size-font-xl text-[#E38E49]">상</span> {optionName.secound}
+              <span className=" size-font-xl text-[#E38E49]">상</span>{" "}
+              {optionName.secound}
               <span className=" size-font-xl text-[#0A3981]">하</span>
             </button>
             <button
-              className={`m-auto w-[90%] justify-center presetBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
+              className={`m-auto w-[90%] justify-center scaleBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
                 visualState[4] ? "inset-shadow-sm shadow-inset-indigo" : ""
               }`}
               onClick={() => grapeControll(4)}
             >
               {optionName.first}
-              <span className=" size-font-xl text-[#0A3981]">하</span> {optionName.secound}
+              <span className=" size-font-xl text-[#0A3981]">하</span>{" "}
+              {optionName.secound}
               <span className=" size-font-xl text-[#E38E49]">상</span>
             </button>
             <button
-              className={`m-auto w-[90%] justify-center presetBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
+              className={`m-auto w-[90%] justify-center scaleBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
                 visualState[5] ? "inset-shadow-sm shadow-inset-indigo" : ""
               }`}
               onClick={() => grapeControll(5)}
@@ -365,7 +384,7 @@ const TopMenu = ({
               <span className=" size-font-xl text-[#E38E49]">상</span>
             </button>
             <button
-              className={`m-auto w-[90%] justify-center presetBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
+              className={`m-auto w-[90%] justify-center scaleBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
                 visualState[6] ? "inset-shadow-sm shadow-inset-indigo" : ""
               }`}
               onClick={() => grapeControll(6)}
@@ -374,37 +393,40 @@ const TopMenu = ({
               <span className=" size-font-xl text-[#E38E49]">상</span>
             </button>
             <button
-              className={`m-auto w-[90%] justify-center presetBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
+              className={`m-auto w-[90%] justify-center scaleBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
                 visualState[7] ? "inset-shadow-sm shadow-inset-indigo" : ""
               }`}
               onClick={() => grapeControll(7)}
             >
               {optionName.first}
-              <span className=" size-font-xl text-[#7E1891]">중</span> {optionName.secound}
+              <span className=" size-font-xl text-[#7E1891]">중</span>{" "}
+              {optionName.secound}
               <span className=" size-font-xl text-[#7E1891]">중</span>
             </button>
             <button
-              className={`m-auto w-[90%] justify-center presetBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
+              className={`m-auto w-[90%] justify-center scaleBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
                 visualState[8] ? "inset-shadow-sm shadow-inset-indigo" : ""
               }`}
               onClick={() => grapeControll(8)}
             >
               {optionName.first}
-              <span className=" size-font-xl text-[#7E1891]">중</span> {optionName.secound}
+              <span className=" size-font-xl text-[#7E1891]">중</span>{" "}
+              {optionName.secound}
               <span className=" size-font-xl text-[#0A3981]">하</span>
             </button>
             <button
-              className={`m-auto w-[90%] justify-center presetBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
+              className={`m-auto w-[90%] justify-center scaleBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
                 visualState[9] ? "inset-shadow-sm shadow-inset-indigo" : ""
               }`}
               onClick={() => grapeControll(9)}
             >
               {optionName.first}
-              <span className=" size-font-xl text-[#0A3981]">하</span> {optionName.secound}
+              <span className=" size-font-xl text-[#0A3981]">하</span>{" "}
+              {optionName.secound}
               <span className=" size-font-xl text-[#7E1891]">중</span>
             </button>
             <button
-              className={`m-auto w-[90%] justify-center presetBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
+              className={`m-auto w-[90%] justify-center scaleBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
                 visualState[10] ? "inset-shadow-sm shadow-inset-indigo" : ""
               }`}
               onClick={() => grapeControll(10)}
@@ -413,7 +435,7 @@ const TopMenu = ({
               <span className=" size-font-xl text-[#7E1891]">중</span>
             </button>
             <button
-              className={`m-auto w-[90%] justify-center presetBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
+              className={`m-auto w-[90%] justify-center scaleBtm rounded-lg flex items-baseline text-center bg-white text-gray-500 font-bold ${
                 visualState[11] ? "inset-shadow-sm shadow-inset-indigo" : ""
               }`}
               onClick={() => grapeControll(11)}

@@ -104,12 +104,12 @@ const FixChartJewelPage = ({ request, setRequest }) => {
 
   return (
     <div>
-      <div className="mx-auto w-[95%] flex h-28 px-6 py-2 bg-[#e0dedf] rounded-2xl inset-shadow-sm shadow-inset-indigo">
+      <div className="mx-auto w-[95%] flex h-28 px-6 py-2 bg-[#e0dedf] dark:bg-[#1e1d1f] rounded-2xl inset-shadow-sm shadow-inset-indigo">
         <div className="w-[15%] my-auto">
           <h1 className="font-bold text-xl">| 이 보석만 볼래요</h1>
           <div className="grid grid-rows-2 text-sm">
             <button
-              className="presetBtm m-1 mx-4 rounded-lg bg-[#b2ddad]"
+              className="scaleBtm m-1 mx-4 rounded-lg bg-[#b2ddad] dark:bg-[#2d4f29]"
               onClick={() => {
                 setAll(true);
               }}
@@ -117,7 +117,7 @@ const FixChartJewelPage = ({ request, setRequest }) => {
               ✅ 전체 선택
             </button>
             <button
-              className="presetBtm m-1 mx-4 rounded-lg bg-[#b2ddad]"
+              className="scaleBtm m-1 mx-4 rounded-lg bg-[#b2ddad] dark:bg-[#2d4f29]"
               onClick={() => {
                 setAll(false);
               }}
@@ -132,7 +132,7 @@ const FixChartJewelPage = ({ request, setRequest }) => {
             <select
               value={request.time || ""}
               onChange={(e) => updateOption("time", e.target.value)}
-              className="text-center rounded-xl border-gray-400 border-2 w-24 bg-[#F5F5F5]"
+              className="text-center rounded-xl border-gray-400 border-2 w-24 bg-[#F5F5F5] dark:bg-[#2A2A2A] "
             >
               <option value="" disabled>
                 옵션선택
@@ -147,7 +147,7 @@ const FixChartJewelPage = ({ request, setRequest }) => {
             <select
               value={request.point || ""}
               onChange={(e) => updateOption("point", e.target.value)}
-              className="text-center rounded-xl border-gray-400 border-2 w-24 bg-[#F5F5F5]"
+              className="text-center rounded-xl border-gray-400 border-2 w-24 bg-[#F5F5F5] dark:bg-[#2A2A2A]"
             >
               <option value="" disabled>
                 옵션선택
@@ -160,7 +160,7 @@ const FixChartJewelPage = ({ request, setRequest }) => {
         </div>
         <div className="w-[60%] grid grid-cols-4 grid-rows-2 text-sm">
           <button
-            className={`m-2 p-1 w-[90%] justify-center presetBtm rounded-lg flex m-auto items-baseline text-center bg-white text-gray-500 font-bold ${
+            className={`m-2 p-1 w-[90%] justify-center scaleBtm rounded-lg flex m-auto items-baseline text-center bgWtoB text-gray-500 dark:text-gray-300 font-bold ${
               visualState[0] ? "inset-shadow-sm shadow-inset-indigo" : ""
             }`}
             onClick={() => grapeControll(0)}
@@ -168,7 +168,7 @@ const FixChartJewelPage = ({ request, setRequest }) => {
             <span className=" text-xl text-[#E38E49]">10</span> 레벨 겁화
           </button>
           <button
-            className={`m-2 p-1 w-[90%] justify-center presetBtm rounded-lg flex m-auto items-baseline text-center bg-white text-gray-500 font-bold ${
+            className={`m-2 p-1 w-[90%] justify-center scaleBtm rounded-lg flex m-auto items-baseline text-center bgWtoB text-gray-500 dark:text-gray-300 font-bold ${
               visualState[1] ? "inset-shadow-sm shadow-inset-indigo" : ""
             }`}
             onClick={() => grapeControll(1)}
@@ -176,7 +176,7 @@ const FixChartJewelPage = ({ request, setRequest }) => {
             <span className=" text-xl text-[#E38E49]">10</span> 레벨 작열
           </button>
           <button
-            className={`m-2 p-1 w-[90%] justify-center presetBtm rounded-lg flex m-auto items-baseline text-center bg-white text-gray-500 font-bold ${
+            className={`m-2 p-1 w-[90%] justify-center scaleBtm rounded-lg flex m-auto items-baseline text-center bgWtoB text-gray-500 dark:text-gray-300 font-bold ${
               visualState[2] ? "inset-shadow-sm shadow-inset-indigo" : ""
             }`}
             onClick={() => grapeControll(2)}
@@ -184,7 +184,7 @@ const FixChartJewelPage = ({ request, setRequest }) => {
             <span className=" text-xl text-[#7E1891]">9</span> 레벨 겁화
           </button>
           <button
-            className={`m-2 p-1 w-[90%] justify-center presetBtm rounded-lg flex m-auto items-baseline text-center bg-white text-gray-500 font-bold ${
+            className={`m-2 p-1 w-[90%] justify-center scaleBtm rounded-lg flex m-auto items-baseline text-center bgWtoB text-gray-500 dark:text-gray-300 font-bold ${
               visualState[3] ? "inset-shadow-sm shadow-inset-indigo" : ""
             }`}
             onClick={() => grapeControll(3)}
@@ -192,7 +192,7 @@ const FixChartJewelPage = ({ request, setRequest }) => {
             <span className=" text-xl text-[#7E1891]">9</span> 레벨 작열
           </button>
           <button
-            className={`m-2 p-1 w-[90%] justify-center presetBtm rounded-lg flex m-auto items-baseline text-center bg-white text-gray-500 font-bold ${
+            className={`m-2 p-1 w-[90%] justify-center scaleBtm rounded-lg flex m-auto items-baseline text-center bgWtoB text-gray-500 dark:text-gray-300 font-bold ${
               visualState[4] ? "inset-shadow-sm shadow-inset-indigo" : ""
             }`}
             onClick={() => grapeControll(4)}
@@ -200,7 +200,7 @@ const FixChartJewelPage = ({ request, setRequest }) => {
             <span className=" text-xl text-[#0A3981]">8</span> 레벨 겁화
           </button>
           <button
-            className={`m-2 p-1 w-[90%] justify-center presetBtm rounded-lg flex m-auto items-baseline text-center bg-white text-gray-500 font-bold ${
+            className={`m-2 p-1 w-[90%] justify-center scaleBtm rounded-lg flex m-auto items-baseline text-center bgWtoB text-gray-500 dark:text-gray-300 font-bold ${
               visualState[5] ? "inset-shadow-sm shadow-inset-indigo" : ""
             }`}
             onClick={() => grapeControll(5)}
@@ -208,7 +208,7 @@ const FixChartJewelPage = ({ request, setRequest }) => {
             <span className=" text-xl text-[#0A3981]">8</span> 레벨 작열
           </button>
           <button
-            className={`m-2 p-1 w-[90%] justify-center presetBtm rounded-lg flex m-auto items-baseline text-center bg-white text-gray-500 font-bold ${
+            className={`m-2 p-1 w-[90%] justify-center scaleBtm rounded-lg flex m-auto items-baseline text-center bgWtoB text-gray-500 dark:text-gray-300 font-bold ${
               visualState[6] ? "inset-shadow-sm shadow-inset-indigo" : ""
             }`}
             onClick={() => grapeControll(6)}
@@ -217,7 +217,7 @@ const FixChartJewelPage = ({ request, setRequest }) => {
           </button>
 
           <button
-            className={`m-2 p-1 w-[90%] justify-center presetBtm rounded-lg flex m-auto items-baseline text-center bg-white text-gray-500 font-bold ${
+            className={`m-2 p-1 w-[90%] justify-center scaleBtm rounded-lg flex m-auto items-baseline text-center bgWtoB text-gray-500 dark:text-gray-300 font-bold ${
               visualState[7] ? "inset-shadow-sm shadow-inset-indigo" : ""
             }`}
             onClick={() => grapeControll(7)}

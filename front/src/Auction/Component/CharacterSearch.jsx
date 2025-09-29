@@ -105,7 +105,7 @@ function CharacterSearch({}) {
             <div>
               <div className="h-32 flex justify-center items-center w-full">
                 <div className="grid grid-cols-6 h-full bg-[#F2F1E6] flex rounded-3xl bg-gray-200 shadow-lg">
-                  <div className="h-full flex flex-col items-center justify-center gap-y-2">
+                  <div className="h-full flex flex-col items-center justify-center gap-y-2 text-black">
                     <p>착용 악세 간편 확인</p>
                     <div className="flex justify-center items-center ">
                       <input
@@ -138,7 +138,10 @@ function CharacterSearch({}) {
                   {resultAcc
                     .filter((item) => item?.option?.length > 0)
                     .map((item, index) => (
-                      <div key={index} className="h-full flex items-center">
+                      <div
+                        key={index}
+                        className="h-full flex items-center text-black"
+                      >
                         <div className="text-sm">
                           <div className="font-bold">
                             <span
@@ -161,12 +164,17 @@ function CharacterSearch({}) {
                               <div key={i}>
                                 <span
                                   className="rounded-full text-white px-1"
-                                  style={{ backgroundColor: rankColor(item?.valueLevel[i] || "") }}
+                                  style={{
+                                    backgroundColor: rankColor(
+                                      item?.valueLevel[i] || ""
+                                    ),
+                                  }}
                                 >
                                   {item?.valueLevel[i]}
                                 </span>{" "}
                                 <span>
-                                  {truncateString(item?.option[i], 9)} {item?.value[i]}
+                                  {truncateString(item?.option[i], 9)}{" "}
+                                  {item?.value[i]}
                                 </span>
                                 <br />
                               </div>

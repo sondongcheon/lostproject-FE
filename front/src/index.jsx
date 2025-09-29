@@ -6,16 +6,32 @@ import Router from "./Router";
 import reportWebVitals from "./reportWebVitals";
 import GlobalStyle from "./GlobalStyles";
 
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
+import { ThemeProvider } from "styled-components";
 import store from "./store/store";
+
+const DarkModeWrapper = ({ children }) => {
+  const darkMode = useSelector((state) => state.settings.darkMode);
+  const theme = { darkMode };
+
+  return (
+    <ThemeProvider theme={theme}>
+      <div className={darkMode ? "dark" : ""}>
+        <GlobalStyle />
+        {children}
+      </div>
+    </ThemeProvider>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
   <>
-    <GlobalStyle />
     <Provider store={store}>
-      <Router />
+      <DarkModeWrapper>
+        <Router />
+      </DarkModeWrapper>
     </Provider>
   </>
   // </React.StrictMode>

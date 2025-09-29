@@ -16,7 +16,9 @@ import { useSelector } from "react-redux";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
 
 const LineChartComp = ({ category, grade, value, value2, type }) => {
-  const accChartSetting = useSelector((state) => state.settings.accChartSetting);
+  const accChartSetting = useSelector(
+    (state) => state.settings.accChartSetting
+  );
 
   const loadData = () => {
     axios
@@ -46,7 +48,7 @@ const LineChartComp = ({ category, grade, value, value2, type }) => {
 
   return (
     <div>
-      <div className="flex m-10 border-b-2 border-red-200 bg-opacity-75 bg-white rounded-2xl">
+      <div className="flex m-10 border-b-2 border-red-200 bg-opacity-75 bg-white dark:bg-gray-800 rounded-2xl">
         <div className="w-[80%]">
           <h2 className="flex items-baseline justify-center text-center">
             {data?.name?.split(/(상|중|하)/g).map((part, index) =>
@@ -68,7 +70,11 @@ const LineChartComp = ({ category, grade, value, value2, type }) => {
             )}
           </h2>
           {/* <img className="" src={neckHH} alt="" /> */}
-          <ResponsiveContainer width="100%" height={250}>
+          <ResponsiveContainer
+            width="100%"
+            height={250}
+            className="dark:font-bold"
+          >
             <ComposedChart
               data={data?.chartInfoList}
               margin={{
@@ -80,15 +86,22 @@ const LineChartComp = ({ category, grade, value, value2, type }) => {
             >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="time" className="text-xs" />
-              <YAxis yAxisId="left" tickFormatter={(value) => value.toLocaleString() + "G"} />
-              <YAxis yAxisId="right" orientation="right" domain={[0, (dataMax) => dataMax * 2]} />
+              <YAxis
+                yAxisId="left"
+                tickFormatter={(value) => value.toLocaleString() + "G"}
+              />
+              <YAxis
+                yAxisId="right"
+                orientation="right"
+                domain={[0, (dataMax) => dataMax * 2]}
+              />
 
               <Tooltip
                 content={({ payload, label }) => {
                   if (!payload || payload.length === 0) return null;
                   const data = payload[0].payload;
                   return (
-                    <div className="bg-white p-2 border rounded shadow-md">
+                    <div className="bgWtoB p-2 border rounded shadow-md">
                       <p>{label}</p> {/* X축 값 (예: 시간) */}
                       <p>{`${data.buyPrice.toLocaleString()} Gold`}</p>
                       <p>{`경매장 등록 수량: ${data.totalCount}`}</p>
@@ -125,11 +138,14 @@ const LineChartComp = ({ category, grade, value, value2, type }) => {
               <BsFillQuestionCircleFill className="h-full" />
               <div className="absolute top-full w-[230%] px-3 py-2 bg-gray-800 text-white size-font-xxxs rounded shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300 right-0">
                 매물 검색 기준은 품질80, 스텟 필터X 버전입니다. <br />
-                스텟 필터 기능이 3월 3주차부터 제공되어서 기준 수정중입니다. <br />
+                스텟 필터 기능이 3월 3주차부터 제공되어서 기준 수정중입니다.{" "}
+                <br />
                 <br />
                 평균, 최저 기준입니다. <br />
-                7, 30일 전 부터 금일까지의 매물 데이터의 가격의 평균 → 주간, 월간 평균가 <br />
-                7, 30일 전 부터 금일까지의 매물 데이터중 가장 낮은가격 → 주간,월간 최저가 <br />
+                7, 30일 전 부터 금일까지의 매물 데이터의 가격의 평균 → 주간,
+                월간 평균가 <br />
+                7, 30일 전 부터 금일까지의 매물 데이터중 가장 낮은가격 →
+                주간,월간 최저가 <br />
               </div>
             </div>
           </div>

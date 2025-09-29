@@ -282,7 +282,7 @@ function AuctionTierFourSup({
                 : "animate-spinClockwise" // 닫을 때
             }`}
           />
-          <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
+          <span className="bgWtoB text-[#2384bc] dark:text-[#5CAEE6] font-bold items-center rounded-xl w-40 ml-20 pl-6 text-sm">
             {folderFlags.presetFolder ? (
               <span> 일괄 선택 프리셋 열기 </span>
             ) : (
@@ -323,7 +323,7 @@ function AuctionTierFourSup({
                 : "animate-spinClockwise" // 닫을 때
             }`}
           />
-          <span className="bg-white font-bold text-[#2384bc] items-center rounded-xl w-40 ml-20 pl-6 text-sm">
+          <span className="bgWtoB text-[#2384bc] dark:text-[#5CAEE6] font-bold items-center rounded-xl w-40 ml-20 pl-6 text-sm">
             {folderFlags.selAll ? (
               <span> 전체 옵션 선택창 열기 </span>
             ) : (
@@ -394,8 +394,8 @@ function AuctionTierFourSup({
                   onClick={() => setCount(index)}
                   className={`${
                     count === index
-                      ? "bg-[#EDF1D6] " // 선택된 인덱스에 배경색과 투명도
-                      : "bg-[#F5F5F5]" // 선택되지 않은 경우
+                      ? "bg-[#EDF1D6] dark:bg-[#3C4F38]" // 선택된 인덱스에 배경색과 투명도
+                      : "bg-[#F5F5F5] dark:bg-[#2A2A2A]" // 선택되지 않은 경우
                   }`}
                 />
               ))}
@@ -403,7 +403,8 @@ function AuctionTierFourSup({
             <div className="h-[952px] rounded-xl overflow-y-invisible overflow-x-hidden">
               <div
                 className={`"h-12 gap-x-4 w-full border-black border-2" ${
-                  (result[count]?.cntCount || 0) < 1 && (result[count]?.cntPage || 0) < 1
+                  (result[count]?.cntCount || 0) < 1 &&
+                  (result[count]?.cntPage || 0) < 1
                     ? "invisible"
                     : ""
                 }`}
@@ -422,19 +423,24 @@ function AuctionTierFourSup({
                   setCurrentPage={setCurrentPage}
                 />
               </div>
-              {count < 5 && resultList[count][currentPage[count] - 1]?.length > 0 && (
-                <div className="space-y-2">
-                  {resultList[count][currentPage[count] - 1].map((item, index) => (
-                    <ResultBox
-                      key={index}
-                      result={item}
-                      staticNameList={staticNameList[count]}
-                      number={index}
-                      className={"bg-[#F5F5F5] pointer-events-none"}
-                    />
-                  ))}
-                </div>
-              )}
+              {count < 5 &&
+                resultList[count][currentPage[count] - 1]?.length > 0 && (
+                  <div className="space-y-2">
+                    {resultList[count][currentPage[count] - 1].map(
+                      (item, index) => (
+                        <ResultBox
+                          key={index}
+                          result={item}
+                          staticNameList={staticNameList[count]}
+                          number={index}
+                          className={
+                            "bg-[#F5F5F5] dark:bg-[#2A2A2A] pointer-events-none"
+                          }
+                        />
+                      )
+                    )}
+                  </div>
+                )}
             </div>
           </div>
         </div>

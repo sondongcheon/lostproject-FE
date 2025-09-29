@@ -3,7 +3,12 @@ import axios from "axios";
 
 import SideBarlist from "./SideBarlist";
 
-const SelectSideBar = ({ setSelectCategory, setSelectGrade, setSelectCustom, setSelectType }) => {
+const SelectSideBar = ({
+  setSelectCategory,
+  setSelectGrade,
+  setSelectCustom,
+  setSelectType,
+}) => {
   const [logSearch, setLogSearch] = useState([]);
 
   const getCountLog = () => {
@@ -28,11 +33,11 @@ const SelectSideBar = ({ setSelectCategory, setSelectGrade, setSelectCustom, set
 
   return (
     <div className="">
-      <div className="bg-white shadow-2xl rounded-xl p-4 sticky top-20">
-        <div className="border-gray-400 rounded-xl">
+      <div className="bgWtoB shadow-2xl rounded-xl p-4 sticky top-20">
+        <div className="border-gray-400 dark:border-gray-800 rounded-xl">
           <div className="flex">
             <span className="font-bold">딜러 옵션</span>
-            <div className="mt-[10px] mx-2 border-t-2 border-black border-dotted w-1/2" />
+            <div className="mt-[10px] mx-2 border-t-2 border-black dark:border-white border-dotted w-1/2" />
           </div>
 
           <div className="py-2 ">
@@ -120,7 +125,7 @@ const SelectSideBar = ({ setSelectCategory, setSelectGrade, setSelectCustom, set
           </div>
         </div>
         <button
-          className="w-full border-2 border-gray-300 bg-[#d1d5db] hover:bg-white my-4 rounded-xl px-2 py-4 group relative"
+          className="w-full border-2 border-gray-300 dark:border-gray-600 bg-[#d1d5db] dark:bg-[#2a2d31] hover:bg-white dark:hover:bg-black my-4 rounded-xl px-2 py-4 group relative"
           onClick={() => {
             setSelectCustom(true);
           }}
@@ -133,8 +138,8 @@ const SelectSideBar = ({ setSelectCategory, setSelectGrade, setSelectCustom, set
             <br />
             합산된 그래프를 볼 수 있는 기능입니다. <br />
             <br />
-            예시로, 목걸이 상중, 귀걸이 상하, 상을 선택하면 <br /> 각 부위별로 저장된 시간별
-            가격들이 합산되어
+            예시로, 목걸이 상중, 귀걸이 상하, 상을 선택하면 <br /> 각 부위별로
+            저장된 시간별 가격들이 합산되어
             <br />
             예전에 삿다면 얼마였을까? 를 볼수 있습니다.
           </div>

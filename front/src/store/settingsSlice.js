@@ -9,6 +9,7 @@ const settingsSlice = createSlice({
       point: 15,
     },
     ItemsChartSetting: [{ time: 1, point: 15 }],
+    darkMode: false,
   },
   reducers: {
     setApiKey: (state, action) => {
@@ -30,10 +31,16 @@ const settingsSlice = createSlice({
       copy[index] = { ...copy[index], ...newSetting }; // 병합 or 덮어쓰기
       state.ItemsChartSetting = copy;
       localStorage.setItem("ItemsChartSetting", JSON.stringify(copy));
-    }
+    },
+    toggleDarkMode: (state) => {
+      state.darkMode = !state.darkMode;
+    },
+    setDarkMode: (state, action) => {
+      state.darkMode = action.payload;
+    },
 
   },
 });
 
-export const { setApiKey, setAccChartSetting, setItemsChartSetting } = settingsSlice.actions;
+export const { setApiKey, setAccChartSetting, setItemsChartSetting, toggleDarkMode, setDarkMode } = settingsSlice.actions;
 export default settingsSlice.reducer;

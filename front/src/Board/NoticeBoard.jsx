@@ -35,7 +35,7 @@ function NoticeBoard(props) {
         <div className="flex justify-center items-center ">
           <div className="w-4/5">
             <table className="border-collapse border border-gray-300 w-full text-center">
-              <thead className="bg-gray-100">
+              <thead className="bg-gray-100 dark:bg-gray-800">
                 <tr>
                   <th className="p-4 ">번호</th>
                   <th className="p-4 ">카테고리</th>
@@ -48,7 +48,7 @@ function NoticeBoard(props) {
                 {contents?.contentList.map((content, index) => (
                   <tr
                     key={index}
-                    className="hover:bg-gray-50"
+                    className="hover:bg-gray-50 dark:hover:bg-gray-500"
                     onClick={() => navigate(`/notice/${content.number}`)}
                   >
                     <td className="p-4 ">{content.number}</td>

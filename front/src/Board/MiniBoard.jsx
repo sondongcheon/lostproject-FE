@@ -69,15 +69,18 @@ function MiniBoard(props) {
             value={text.content}
             onChange={(e) => updateText("content", e.target.value)}
           />
-          <button className="h-10 bg-[#40AC8D] resetBtm" onClick={sendText}>
+          <button
+            className="h-10 bg-[#40AC8D] dark:bg-[#3fc2a0] resetBtm"
+            onClick={sendText}
+          >
             {" "}
             글쓰기
           </button>
         </div>
         <div className="flex justify-center items-center mt-4">
           <div className="w-4/5 overflow-x-auto">
-            <table className="border-collapse border-t border-b border-gray-300 w-full text-center">
-              <thead className="bg-[#b2ddad]">
+            <table className="border-collapse border-t border-b border-gray-300 dark:border-gray-600 w-full text-center">
+              <thead className="bg-[#b2ddad] dark:bg-[#2d4f29]">
                 <tr>
                   <th className="p-4 w-1/10">번호</th>
                   <th className="p-4 w-1/2">내용</th>
@@ -89,8 +92,8 @@ function MiniBoard(props) {
                 {contents.map((content, index) => (
                   <tr
                     key={index}
-                    className={`hover:bg-gray-50 ${
-                      index % 2 === 0 ? "bg-[#e3e2d5]" : null
+                    className={`hover:bg-gray-50 dark:hover:bg-gray-500 ${
+                      index % 2 === 0 ? "bg-[#e3e2d5] dark:bg-[#1d1d18]" : null
                     }`}
                   >
                     <td className="p-4 ">{content.number}</td>

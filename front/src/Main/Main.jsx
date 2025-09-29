@@ -109,11 +109,11 @@ function Main(props) {
           <div>
             <br />
             <div className="flex justify-between">
-              <span className=" m-4 text-center text-2xl border-b-4 border-[#b2ddad]">
+              <span className=" m-4 text-center text-2xl border-b-4 border-[#b2ddad] dark:border-[#5C8F5A]">
                 최신 변경 사항
               </span>
               <span
-                className="m-4 text-center text-2xl border-b-4 border-[#b2ddad] cursor-pointer hover:border-black transition-all duration-500"
+                className="m-4 text-center text-2xl border-b-4 border-[#b2ddad] dark:border-[#5C8F5A] cursor-pointer hover:border-black transition-all duration-500"
                 onClick={() => navigate("/notice")}
               >
                 공지사항 바로가기

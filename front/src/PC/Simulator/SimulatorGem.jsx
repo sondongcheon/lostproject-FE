@@ -282,7 +282,7 @@ const SimulatorGem = ({}) => {
                     backgroundRepeat: "no-repeat",
                   }}
                 >
-                  <span className="bg-white px-2 py-1 rounded-lg text-center">
+                  <span className="bgWtoB px-2 py-1 rounded-lg text-center">
                     {nameCustom(gemState.effectName[1])}
                   </span>
                 </div>{" "}
@@ -295,7 +295,7 @@ const SimulatorGem = ({}) => {
                     backgroundRepeat: "no-repeat",
                   }}
                 >
-                  <span className="bg-white px-2 py-1 rounded-lg text-center">
+                  <span className="bgWtoB px-2 py-1 rounded-lg text-center">
                     {nameCustom(gemState.effectName[2])}
                   </span>
                 </div>
@@ -308,7 +308,7 @@ const SimulatorGem = ({}) => {
                     backgroundRepeat: "no-repeat",
                   }}
                 >
-                  <span className="bg-white px-2 py-1 rounded-lg text-center">
+                  <span className="bgWtoB px-2 py-1 rounded-lg text-center">
                     {nameCustom(gemState.effectName[3])}
                   </span>
                 </div>

@@ -37,7 +37,7 @@ function BoardDetail(props) {
         <div className="flex justify-center items-center ">
           <div className="w-4/5">
             <table className="border-collapse border border-gray-300 w-full text-center">
-              <thead className="bg-gray-100">
+              <thead className="bg-gray-100 dark:bg-gray-600">
                 <tr>
                   <th className="p-4 ">{contents?.number || ""}</th>
                   <th className="p-4 ">{contents?.title || ""}</th>
