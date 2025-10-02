@@ -28,7 +28,10 @@ function ModalApiKey({}) {
 
   return (
     <div>
-      <DialogTrigger onClick={() => setOpen(true)} css="hover:underline">
+      <DialogTrigger
+        onClick={() => setOpen(true)}
+        css="size-font-xxs hover:underline"
+      >
         🔑 API KEY입력
       </DialogTrigger>
 
