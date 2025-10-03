@@ -6,11 +6,11 @@ const ServiceBox = ({ imgUrl, title, info, clicklink, css }) => {
   return (
     <div>
       <div
-        className={`flex flex-col items-center justify-center rounded-lg h-[200px] my-4 mx-auto p-4 lg:m-8 lg:p-8 bgWtoB ${css}`}
+        className={`flex flex-col items-center justify-center rounded-lg h-[10rem] bgWtoB ${css}`}
         onClick={() => navigate(clicklink)}
       >
         <img
-          className="w-8 h-8 lg:w-10 lg:h-10 dark:bg-white dark:rounded-xl"
+          className="w-8 h-8 dark:bg-white dark:rounded-xl"
           src={imgUrl}
           alt=""
         />

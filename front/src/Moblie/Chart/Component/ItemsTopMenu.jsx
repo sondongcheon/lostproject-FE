@@ -7,7 +7,7 @@ function ItemsTopMenu(props) {
   const navigate = useNavigate();
   return (
     <div className="w-full h-full mb-8">
-      <div className="bg-white shadow-2xl rounded-xl p-4 sticky top-20">
+      <div className="bg-white shadow-2xl rounded-xl p-4 sticky top-20 z-40">
         <div className="border-gray-400 rounded-xl">
           <div className="flex">
             <span className="font-bold size-font-sm">주요 아이템</span>

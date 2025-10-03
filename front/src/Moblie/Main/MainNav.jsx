@@ -52,27 +52,32 @@ function MainNav({ logSearch, getCountLog }) {
       <div className="fixed top-0 left-0 w-full z-50">
         {/* Main NavBar */}
         <div>
-          <div className="h-16 group bg-gradient-to-r from-[#2384bc] to-[#b2ddad] dark:from-[#1B4F72] dark:to-[#5C8F5A] shadow-md transition-all duration-300">
-            <div className="container mx-auto px-2 py-1 flex items-center w-full h-full text-[#2b2b2b] dark:text[#2b2b2b] font-bold">
+          <div className="h-16 group bg-gradient-to-r px-8 from-[#2384bc] to-[#b2ddad] dark:from-[#1B4F72] dark:to-[#5C8F5A] shadow-md transition-all duration-300">
+            <div className="container mx-auto flex items-center justify-between w-full h-full text-[#2b2b2b] dark:text[#2b2b2b] font-bold">
               {/* 왼쪽에 'test' 홈페이지 링크 */}
               <span
-                className="w-72 text-3xl cursor-pointer text-white dark:text-black font-a"
+                className=" text-lg cursor-pointer text-white dark:text-black font-a"
                 onClick={() => navigate("/")}
               >
-                LoaRoot <span className="size-font-xxxs">[Ver 2.6.1]</span>
+                LoaRoot <span className="size-font-xs">[Ver 2.6.2]</span>
               </span>
 
               {/* 오른쪽에 페이지 이동 공간 잡기 */}
 
               <div
-                className=""
+                className="cursor-pointer px-4 py-2 rounded-lg transition-all duration-300 hover:scale-110 flex items-center space-x-3 bg-white/50 dark:bg-black/50 backdrop-blur-sm"
                 ref={buttonRef}
                 onClick={(event) => {
                   event.stopPropagation();
                   setIsMenuClick(!isMenuClick);
                 }}
               >
-                ☰
+                <div className="size-font-xs font-semibold">MENU</div>
+                <div className="flex space-x-1">
+                  <div className="w-1 h-1 bg-current rounded-full"></div>
+                  <div className="w-1 h-1 bg-current rounded-full"></div>
+                  <div className="w-1 h-1 bg-current rounded-full"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -84,7 +89,7 @@ function MainNav({ logSearch, getCountLog }) {
         {isMobile && (
           <div
             ref={sidebarRef}
-            className={`fixed top-16 right-0 w-64 bg-white shadow-lg transform transition-transform duration-500 ease-out ${
+            className={`fixed top-16 right-0 w-64 bg-white shadow-lg transform transition-transform duration-500 ease-out z-50 ${
               isMenuClick ? "translate-x-0" : "translate-x-full"
             }`}
           >

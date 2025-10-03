@@ -66,7 +66,7 @@ function MainNav({ logSearch, getCountLog }) {
                 className="w-72 text-3xl cursor-pointer text-white dark:text-black font-a "
                 onClick={() => navigate("/")}
               >
-                LoaRoot <span className="size-font-xxxs">[Ver 2.6.1]</span>
+                LoaRoot <span className="size-font-xxxs">[Ver 2.6.2]</span>
               </span>
 
               {/* 오른쪽에 페이지 이동 공간 잡기 */}
@@ -89,20 +89,20 @@ function MainNav({ logSearch, getCountLog }) {
                         <ModalApiKey />
                       </div>
 
-                      {/* 검색 도구 카테고리 */}
+                      {/* 악세 검색 카테고리 */}
                       <div
                         className="cursor-pointer text-base hover:underline size-font-xxs transition-all duration-300 group-hover:scale-110 py-2 rounded-lg flex items-center justify-center"
                         onClick={() => navigate("/auction")}
                       >
-                        🔍 검색 도구
+                        🔍 악세 검색기
                       </div>
 
-                      {/* 차트 도구 카테고리 */}
+                      {/* 차트 확인 카테고리 */}
                       <div
                         className="cursor-pointer text-base hover:underline size-font-xxs transition-all duration-300 group-hover:scale-110 py-2 rounded-lg flex items-center justify-center"
                         onClick={() => navigate("/chart")}
                       >
-                        📊 차트 도구
+                        📊 차트 확인
                       </div>
 
                       {/* 시뮬레이터 카테고리 */}
@@ -110,7 +110,7 @@ function MainNav({ logSearch, getCountLog }) {
                         className="cursor-pointer text-base hover:underline size-font-xxs transition-all duration-300 group-hover:scale-110 py-2 rounded-lg flex items-center justify-center"
                         onClick={() => navigate("/simulator/gem/1")}
                       >
-                        ⚙️ 시뮬레이터
+                        ⚙️ 젬 가공 시뮬레이터
                       </div>
 
                       {/* 커뮤니티 카테고리 */}
@@ -118,7 +118,7 @@ function MainNav({ logSearch, getCountLog }) {
                         className="cursor-pointer text-base hover:underline size-font-xxs transition-all duration-300 group-hover:scale-110 py-2 rounded-lg flex items-center justify-center"
                         onClick={() => navigate("/notice")}
                       >
-                        👥 커뮤니티
+                        👥 공지 & 코멘트
                       </div>
 
                       <div className="flex items-center justify-center">
@@ -168,7 +168,7 @@ function MainNav({ logSearch, getCountLog }) {
                     {/* Search Tools Section */}
                     <div className="space-y-3 px-2">
                       <h3 className="size-font-xxs font-bold text-gray-800 dark:text-white border-b-2 border-blue-500 pb-2">
-                        🔍 검색 도구
+                        🔍 악세 검색기
                       </h3>
                       <div className="space-y-2">
                         <div
@@ -199,7 +199,7 @@ function MainNav({ logSearch, getCountLog }) {
                     {/* Chart Tools Section */}
                     <div className="space-y-3 px-2">
                       <h3 className="size-font-xxs font-bold text-gray-800 dark:text-white border-b-2 border-purple-500 pb-2">
-                        📊 차트 도구
+                        📊 차트 확인
                       </h3>
                       <div className="space-y-2">
                         <div
@@ -230,7 +230,7 @@ function MainNav({ logSearch, getCountLog }) {
                     {/* Simulator Section */}
                     <div className="space-y-3 px-2">
                       <h3 className="size-font-xxs font-bold text-gray-800 dark:text-white border-b-2 border-orange-500 pb-2">
-                        ⚙️ 시뮬레이터
+                        ⚙️ 젬 가공 시뮬레이터
                       </h3>
                       <div className="space-y-2">
                         <div
@@ -250,7 +250,7 @@ function MainNav({ logSearch, getCountLog }) {
                     {/* Community Section */}
                     <div className="space-y-3 px-2">
                       <h3 className="size-font-xxs font-bold text-gray-800 dark:text-white border-b-2 border-pink-500 pb-2">
-                        👥 커뮤니티
+                        👥 공지 & 코멘트
                       </h3>
                       <div className="space-y-2">
                         <div
@@ -292,7 +292,9 @@ function MainNav({ logSearch, getCountLog }) {
                             테마 설정
                           </div>
                           <div className="size-font-xxxs text-gray-600 dark:text-gray-300">
-                            {darkMode ? "🌞 라이트 모드로 전환" : "🌙 다크 모드로 전환"}
+                            {darkMode
+                              ? "🌞 라이트 모드로 전환"
+                              : "🌙 다크 모드로 전환"}
                           </div>
                         </div>
                       </div>
