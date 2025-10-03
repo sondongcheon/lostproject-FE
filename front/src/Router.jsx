@@ -1,6 +1,6 @@
 import { BrowserRouter, React, Route, Routes } from "react-router-dom";
 import Main from "./Pages/Main.jsx";
-import MainNav from "./common/MainNav";
+import MainNav from "./Pages/MainNav.jsx";
 import Footer from "./common/Footer.jsx";
 import Auction from "./Pages/Auction.jsx";
 import AuctionSup from "./Pages/AuctionSup.jsx";
@@ -46,14 +46,8 @@ function Router() {
       <MainNav logSearch={logSearch} getCountLog={getCountLog} />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route
-          path="/auction"
-          element={<Auction getCountLog={getCountLog} />}
-        />
-        <Route
-          path="/auctionsup"
-          element={<AuctionSup getCountLog={getCountLog} />}
-        />
+        <Route path="/auction" element={<Auction getCountLog={getCountLog} />} />
+        <Route path="/auctionsup" element={<AuctionSup getCountLog={getCountLog} />} />
         <Route path="/usebasicinfo" element={<UseBasicInfo />} />
         <Route path="/notice" element={<NoticeBoard />} />
         <Route path="/notice/:id" element={<NoticeBoardDetail />} />
