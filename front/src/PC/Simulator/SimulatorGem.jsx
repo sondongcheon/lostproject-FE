@@ -373,7 +373,7 @@ const SimulatorGem = ({}) => {
 
                     {/* 툴팁 내용 */}
                     <div
-                      className={`absolute mt-6 px-8 py-4 transform top-full bg-slate-900 text-white rounded-3xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border border-slate-700 ${
+                      className={`absolute mt-6 px-8 py-4 transform top-full bg-slate-900 text-white rounded-3xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[100] border border-slate-700 ${
                         tooltip ? "w-[100rem] -translate-x-1/4" : "w-[38rem] left-1"
                       }`}
                     >
