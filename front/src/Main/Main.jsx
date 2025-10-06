@@ -86,14 +86,15 @@ function Main(props) {
   }, []);
 
   return (
-    <div className="flex">
-      <div className="mt-32 w-[15%]">
-        <DisplayAds />
-      </div>
-      <div className="mainbody">
-        <div className="grid grid-cols-2">
-          <div>
-            <div className="mt-20 flex grid grid-cols-2">
+    <div className="min-h-screen">
+      <div className="flex">
+        <div className="mt-32 w-[15%]">
+          <DisplayAds />
+        </div>
+        <div className="mainbody flex-1">
+          {/* 서비스 박스 섹션 */}
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-6 mx-8 border border-slate-200 dark:border-slate-700">
+            <div className="grid grid-cols-3 gap-4">
               {boxInfo.map((box, index) => (
                 <ServiceBox
                   key={index}
@@ -101,30 +102,35 @@ function Main(props) {
                   title={box.title}
                   info={box.info}
                   clicklink={box.clicklink}
-                  css={"shadow-2xl mainIconHover "}
+                  css={
+                    "shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl my-1 mx-8 "
+                  }
                 />
               ))}
             </div>
           </div>
-          <div>
-            <br />
-            <div className="flex justify-between">
-              <span className=" m-4 text-center text-2xl border-b-4 border-[#b2ddad] dark:border-[#5C8F5A]">
+
+          {/* 공지사항 섹션 */}
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-6 mx-8 mt-4 border border-slate-200 dark:border-slate-700">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold text-slate-800 dark:text-slate-200 border-b-2 border-slate-400 dark:border-slate-500 pb-1">
                 최신 변경 사항
-              </span>
-              <span
-                className="m-4 text-center text-2xl border-b-4 border-[#b2ddad] dark:border-[#5C8F5A] cursor-pointer hover:border-black transition-all duration-500"
+              </h2>
+              <button
+                className="px-4 py-2 bg-slate-600 hover:bg-slate-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
                 onClick={() => navigate("/notice")}
               >
                 공지사항 바로가기
-              </span>
+              </button>
             </div>
-            <BoardContent content={notice?.content} />
+            <div className="bg-slate-50 dark:bg-slate-700 rounded-xl p-4 border border-slate-200 dark:border-slate-600">
+              <BoardContent content={notice?.content} />
+            </div>
           </div>
         </div>
-      </div>
-      <div className="mt-32 w-[15%]">
-        <DisplayAds />
+        <div className="mt-32 w-[15%]">
+          <DisplayAds />
+        </div>
       </div>
     </div>
   );

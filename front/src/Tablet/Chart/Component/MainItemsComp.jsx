@@ -42,7 +42,7 @@ const MainItemsComp = () => {
             title={box.title}
             info={box.info}
             clicklink={box.clicklink}
-            css={"w-[70%] h-[70%] mainIconHover"}
+            css={"w-[70%] h-[70%] mainIconHover mx-8 my-4 shadow-md"}
           />
         ))}
       </div>

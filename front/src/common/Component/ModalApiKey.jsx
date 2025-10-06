@@ -41,15 +41,14 @@ function ModalApiKey({}) {
                   <div className="group relative pr-4">
                     <BsFillQuestionCircleFill className="ml-4 h-6" />
                     <div className="absolute z-50 text-center w-[640%] sm:w-[940%] lg:w-[1500%] px-3 py-2 bg-gray-800 dark:bg-gray-200 text-white dark:text-black size-font-xxs sm:size-font-xxxs lg:size-font-4xs rounded-lg shadow-lg opacity-0 visibility-hidden pointer-events-none group-hover:opacity-100 group-hover:visibility-visible group-hover:pointer-events-auto transition-opacity duration-300">
-                      🔥API KEY는 인게임 정보를 가져오기 위한 일종의 로아 신분증
-                      입니다.🔥 <br />
+                      🔥API KEY는 인게임 정보를 가져오기 위한 일종의 로아 신분증 입니다.🔥 <br />
                       <br />
-                      API KEY를 같이 전달해야 로아측에서 정보를 주기 때문에
-                      필수적인 항목입니다. <br />
-                      우리 사이트에선 인게임 정보를 API KEY를 통해 전달받고 보기
-                      쉽게 포장해 주는 역할을 하는것이죠 <br />
-                      API KEY에는 분당 100회의 제한이 있기 때문에 개인 KEY를
-                      사용할 경우 사이트 이용이 좀더 쾌적합니다!
+                      API KEY를 같이 전달해야 로아측에서 정보를 주기 때문에 필수적인 항목입니다.{" "}
+                      <br />
+                      우리 사이트에선 인게임 정보를 API KEY를 통해 전달받고 보기 쉽게 포장해 주는
+                      역할을 하는것이죠 <br />
+                      API KEY에는 분당 100회의 제한이 있기 때문에 개인 KEY를 사용할 경우 사이트
+                      이용이 좀더 쾌적합니다!
                     </div>
                   </div>
                   왜 API KEY를 입력해야 하나요?
@@ -105,8 +104,8 @@ function ModalApiKey({}) {
                     : "opacity-0 invisible size-font-xxxs"
                 } `}
               >
-                🚨 API Key가 입력되지 않았습니다 🚨 <br /> 공용키가 사용되어
-                검색은 가능합니다. 분당 횟수 초과가 일어날 확률이 높습니다.
+                🚨 API Key가 입력되지 않았습니다 🚨 <br /> 공용키가 사용되어 검색은 가능합니다. 분당
+                횟수 초과가 일어날 확률이 높습니다.
               </div>
               <button
                 className="mt-4 w-[75%] px-3 py-1 bg-zinc-800 text-white rounded size-font-xs"
