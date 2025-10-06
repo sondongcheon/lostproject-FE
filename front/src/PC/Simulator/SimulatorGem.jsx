@@ -45,10 +45,7 @@ const SimulatorGem = ({}) => {
   const loadPage = (grade) => {
     axios
       //, { params: { page: 0 }, }
-      .post(
-        `${process.env.REACT_APP_URL}/simulator/gem/${type}?grade=${grade}`,
-        gemState
-      )
+      .post(`${process.env.REACT_APP_URL}/simulator/gem/${type}?grade=${grade}`, gemState)
       .then((res) => {
         setGemState(res.data.data);
         setGrade(grade);
@@ -113,10 +110,7 @@ const SimulatorGem = ({}) => {
     setUseGold(useGold + (9 * gemState.costExtraPercent + 900));
     axios
       //, { params: { page: 0 }, }
-      .post(
-        `${process.env.REACT_APP_URL}/simulator/gem/process/${type}`,
-        gemState
-      )
+      .post(`${process.env.REACT_APP_URL}/simulator/gem/process/${type}`, gemState)
       .then((res) => {
         setGemState(res.data.data);
         console.log(res.data.data);
@@ -273,12 +267,8 @@ const SimulatorGem = ({}) => {
                           }}
                         >
                           <div className="">
-                            <div className="font-semibold">
-                              {gemState.optionName[0]}
-                            </div>
-                            <div className="font-bold mt-1">
-                              Lv. {gemState.optionState[0]}
-                            </div>
+                            <div className="font-semibold">{gemState.optionName[0]}</div>
+                            <div className="font-bold mt-1">Lv. {gemState.optionState[0]}</div>
                           </div>
                         </div>
                       </div>
@@ -299,9 +289,7 @@ const SimulatorGem = ({}) => {
                               <div className="leading-tight font-semibold">
                                 {gemState.optionName[2]}
                               </div>
-                              <div className="font-bold mt-1">
-                                Lv. {gemState.optionState[2]}
-                              </div>
+                              <div className="font-bold mt-1">Lv. {gemState.optionState[2]}</div>
                             </div>
                           </div>
                         </div>
@@ -320,9 +308,7 @@ const SimulatorGem = ({}) => {
                               <div className="leading-tight font-semibold">
                                 {gemState.optionName[3]}
                               </div>
-                              <div className="font-bold mt-1">
-                                Lv. {gemState.optionState[3]}
-                              </div>
+                              <div className="font-bold mt-1">Lv. {gemState.optionState[3]}</div>
                             </div>
                           </div>
                         </div>
@@ -343,9 +329,7 @@ const SimulatorGem = ({}) => {
                             <div className="leading-tight font-semibold">
                               {gemState.optionName[1]}
                             </div>
-                            <div className="font-bold mt-1">
-                              Lv. {gemState.optionState[1]}
-                            </div>
+                            <div className="font-bold mt-1">Lv. {gemState.optionState[1]}</div>
                           </div>
                         </div>
                       </div>
@@ -390,9 +374,7 @@ const SimulatorGem = ({}) => {
                     {/* 툴팁 내용 */}
                     <div
                       className={`absolute mt-6 px-8 py-4 transform top-full bg-slate-900 text-white rounded-3xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border border-slate-700 ${
-                        tooltip
-                          ? "w-[100rem] -translate-x-1/4"
-                          : "w-[38rem] left-1"
+                        tooltip ? "w-[100rem] -translate-x-1/4" : "w-[38rem] left-1"
                       }`}
                     >
                       <div className="text-center mb-4">
@@ -403,9 +385,7 @@ const SimulatorGem = ({}) => {
                       </div>
                       <div
                         className={`grid gap-3 overflow-y-auto ${
-                          tooltip
-                            ? "grid-cols-5 max-h-[24rem]"
-                            : "grid-cols-2 max-h-[11rem]"
+                          tooltip ? "grid-cols-5 max-h-[24rem]" : "grid-cols-2 max-h-[11rem]"
                         }`}
                       >
                         {gemState.weight.map((effect) => (
@@ -421,10 +401,7 @@ const SimulatorGem = ({}) => {
                                 <div
                                   className="bg-purple-500 h-3 rounded-full transition-all duration-500"
                                   style={{
-                                    width: `${Math.min(
-                                      effect.weight * 2,
-                                      100
-                                    )}%`,
+                                    width: `${Math.min(effect.weight * 2, 100)}%`,
                                   }}
                                 ></div>
                               </div>
@@ -451,9 +428,7 @@ const SimulatorGem = ({}) => {
                       <span className="text-2xl">🔄</span>
                       <div>
                         <div className="text-lg">다른 항목 보기</div>
-                        <div className="text-sm opacity-90">
-                          {gemState.rerollChoiceList}회 남음
-                        </div>
+                        <div className="text-sm opacity-90">{gemState.rerollChoiceList}회 남음</div>
                       </div>
                     </div>
                   </button>
@@ -472,10 +447,7 @@ const SimulatorGem = ({}) => {
                         <div className="text-lg">가공 하기</div>
                         <div className="text-sm opacity-90">
                           {gemState.remainingProcessCount} / {grade} -{" "}
-                          {(
-                            9 * gemState.costExtraPercent +
-                            900
-                          ).toLocaleString()}
+                          {(9 * gemState.costExtraPercent + 900).toLocaleString()}
                           골드
                         </div>
                       </div>
