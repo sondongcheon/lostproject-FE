@@ -487,9 +487,7 @@ const SimulatorGem = ({}) => {
             </h5>
           </div>
         </div>
-        <div className="mt-32 w-[15%]">
-          <DisplayAds />
-        </div>
+        <div className="mt-32 w-[15%]">{/* <DisplayAds /> */}</div>
       </div>
     </div>
   );
