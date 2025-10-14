@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
 import PcSimulatorMain from "@/PC/Simulator/SimulatorMain";
+import MSimulatorMain from "@/Moblie/Simulator/SimulatorMain";
 
 function SimulatorMain({}) {
   const isMobile = useMediaQuery({
@@ -13,16 +14,15 @@ function SimulatorMain({}) {
 
   return (
     <div>
-      {/* <div>
+      <div>
         {isMobile ? (
-          <MNoticeBoard />
+          <MSimulatorMain />
         ) : isTablet ? (
-          <TNoticeBoard />
+          <PcSimulatorMain />
         ) : (
-          <PcNoticeBoard />
+          <PcSimulatorMain />
         )}
-      </div> */}
-      <PcSimulatorMain />
+      </div>
     </div>
   );
 }

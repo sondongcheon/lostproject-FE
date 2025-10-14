@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
 import PcSimulatorGem from "@/PC/Simulator/SimulatorGem";
+import MSimulatorGem from "@/Moblie/Simulator/SimulatorGem";
 
 function SimulatorGem({}) {
   const isMobile = useMediaQuery({
@@ -13,16 +14,15 @@ function SimulatorGem({}) {
 
   return (
     <div>
-      {/* <div>
+      <div>
         {isMobile ? (
-          <MNoticeBoard />
+          <MSimulatorGem />
         ) : isTablet ? (
-          <TNoticeBoard />
+          <PcSimulatorGem />
         ) : (
-          <PcNoticeBoard />
+          <PcSimulatorGem />
         )}
-      </div> */}
-      <PcSimulatorGem />
+      </div>
     </div>
   );
 }

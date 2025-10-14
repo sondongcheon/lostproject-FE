@@ -12,8 +12,11 @@ const MenuDropdown = ({}) => {
         <ModalApiKey />
         <p onClick={() => navigate("/auction")}>🔎딜러악세 검색기</p>
         <p onClick={() => navigate("/auctionsup")}>🔎서폿악세 검색기</p>
-        <p onClick={() => navigate("/chart")}>🖨시세 차트(악세)</p>
-        <p onClick={() => navigate("/chartitems/main")}>🖨주요 아이템 차트</p>
+        <p onClick={() => navigate("/chart")}>📊시세 차트(악세)</p>
+        <p onClick={() => navigate("/chartitems/main")}>📊주요 아이템 차트</p>
+        <p onClick={() => navigate("/simulator/gem/1")}>
+          ⚙️ 젬 가공 시뮬레이터
+        </p>
         <p onClick={() => navigate("/notice")}>📖공지사항</p>
         <p onClick={() => navigate("/mini")}>📃유저 코멘트</p>
       </div>
