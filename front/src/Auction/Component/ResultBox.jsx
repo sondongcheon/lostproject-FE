@@ -124,18 +124,18 @@ const ResultBox = ({ number, result, staticNameList, onClick, className }) => {
               <div className="">
                 {result?.options?.length > 2 && (
                   <div className="font-bold">
-                    {result?.options[1]?.optionName} {parseInt(result?.options[1]?.value) || "0"}{" "}
-                    <br />
+                    {result?.options.at(-1)?.optionName}&nbsp;
+                    {parseInt(result?.options.at(-1)?.value) || "0"} <br />
                     {result?.options?.length > 2 && (
                       <div className="group relative flex items-center">
-                        힘민지 {parseInt(result?.options[2]?.value) || "0"} &nbsp;
+                        힘민지 {parseInt(result?.options[4]?.value) || "0"} &nbsp;
                         <span
                           className={`rounded-full text-white px-1`}
                           style={{
                             backgroundColor: (() => {
                               if (
                                 (
-                                  ((parseFloat(result?.options[2]?.value || "0") - minValue) /
+                                  ((parseFloat(result?.options[4]?.value || "0") - minValue) /
                                     (maxValue - minValue)) *
                                   100
                                 ).toFixed(2) > 75
@@ -143,7 +143,7 @@ const ResultBox = ({ number, result, staticNameList, onClick, className }) => {
                                 return "#E38E49";
                               if (
                                 (
-                                  ((parseFloat(result?.options[2]?.value || "0") - minValue) /
+                                  ((parseFloat(result?.options[4]?.value || "0") - minValue) /
                                     (maxValue - minValue)) *
                                   100
                                 ).toFixed(2) > 50
@@ -151,7 +151,7 @@ const ResultBox = ({ number, result, staticNameList, onClick, className }) => {
                                 return "#7E1891";
                               if (
                                 (
-                                  ((parseFloat(result?.options[2]?.value || "0") - minValue) /
+                                  ((parseFloat(result?.options[4]?.value || "0") - minValue) /
                                     (maxValue - minValue)) *
                                   100
                                 ).toFixed(2) > 25
@@ -162,7 +162,7 @@ const ResultBox = ({ number, result, staticNameList, onClick, className }) => {
                           }}
                         >
                           {(
-                            ((parseFloat(result?.options[2]?.value || "0") - minValue) /
+                            ((parseFloat(result?.options[4]?.value || "0") - minValue) /
                               (maxValue - minValue)) *
                             100
                           ).toFixed(2)}
@@ -182,9 +182,10 @@ const ResultBox = ({ number, result, staticNameList, onClick, className }) => {
             <div className="col-span-5">
               <div className="grid grid-cols-5">
                 <div className="col-span-3">
-                  {[5, 6, 7]
+                  {[1, 2, 3]
                     .map((i) => result?.options[i])
                     .filter(Boolean) // 이건 optional, 옵션이 null/undefined일 경우만 제거
+                    .filter((option) => !["힘", "민첩", "지능", "체력"].includes(option.optionName))
                     .map((option, index) => {
                       return (
                         <div
@@ -203,56 +204,56 @@ const ResultBox = ({ number, result, staticNameList, onClick, className }) => {
                 <div className=" col-span-2 flex flex-col ">
                   <div className="grid grid-rows-3">
                     <div className="text-end">
-                      {result?.options[5]?.valueGrade && (
+                      {result?.options[1]?.valueGrade && (
                         <span
                           className={`rounded-full text-white pl-2 pr-2`}
                           style={{
                             backgroundColor: (() => {
-                              if (result?.options[5]?.valueGrade.includes("상")) return "#E38E49";
-                              if (result?.options[5]?.valueGrade.includes("중")) return "#7E1891";
-                              if (result?.options[5]?.valueGrade.includes("하")) return "#0A3981";
+                              if (result?.options[1]?.valueGrade.includes("상")) return "#E38E49";
+                              if (result?.options[1]?.valueGrade.includes("중")) return "#7E1891";
+                              if (result?.options[1]?.valueGrade.includes("하")) return "#0A3981";
                               return "#ffffff"; // 기본값
                             })(),
                           }}
                         >
                           {/* {getLevel(result?.options[1]?. optName, result?.options[1]?.value)} -{" "} */}
-                          {result?.options[5]?.valueGrade}
+                          {result?.options[1]?.valueGrade}
                         </span>
                       )}
                     </div>
                     <div className="text-end">
-                      {result?.options[6]?.valueGrade && (
+                      {result?.options[2]?.valueGrade && (
                         <span
                           className={`rounded-full text-white pl-2 pr-2`}
                           style={{
                             backgroundColor: (() => {
-                              if (result?.options[6]?.valueGrade.includes("상")) return "#E38E49";
-                              if (result?.options[6]?.valueGrade.includes("중")) return "#7E1891";
-                              if (result?.options[6]?.valueGrade.includes("하")) return "#0A3981";
+                              if (result?.options[2]?.valueGrade.includes("상")) return "#E38E49";
+                              if (result?.options[2]?.valueGrade.includes("중")) return "#7E1891";
+                              if (result?.options[2]?.valueGrade.includes("하")) return "#0A3981";
                               return "#ffffff"; // 기본값
                             })(),
                           }}
                         >
                           {/* {getLevel(result?.options[2]?. optName, result?.options[2]?.value)} */}
-                          {result?.options[6]?.valueGrade}
+                          {result?.options[2]?.valueGrade}
                         </span>
                       )}
                     </div>
                     <div className="text-end">
-                      {result?.options[7]?.valueGrade && (
+                      {result?.options[3]?.valueGrade && (
                         <span
                           className={`rounded-full text-white pl-2 pr-2`}
                           style={{
                             backgroundColor: (() => {
-                              if (result?.options[7]?.valueGrade.includes("상")) return "#E38E49";
-                              if (result?.options[7]?.valueGrade.includes("중")) return "#7E1891";
-                              if (result?.options[7]?.valueGrade.includes("하")) return "#0A3981";
+                              if (result?.options[3]?.valueGrade.includes("상")) return "#E38E49";
+                              if (result?.options[3]?.valueGrade.includes("중")) return "#7E1891";
+                              if (result?.options[3]?.valueGrade.includes("하")) return "#0A3981";
                               return "#ffffff"; // 기본값
                             })(),
                           }}
                         >
                           {/* {getLevel(result?.options[3]?. optName, result?.options[3]?.value)} */}
-                          {result?.options[7]?.valueGrade || <br />}
+                          {result?.options[3]?.valueGrade || <br />}
                         </span>
                       )}
                     </div>

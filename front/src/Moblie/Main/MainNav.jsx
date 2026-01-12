@@ -59,7 +59,7 @@ function MainNav({ logSearch, getCountLog }) {
                 className=" text-lg cursor-pointer text-white dark:text-black font-a"
                 onClick={() => navigate("/")}
               >
-                LoaRoot <span className="size-font-xs">[Ver 2.6.2]</span>
+                LoaRoot <span className="size-font-xs">[Ver 2.6.3]</span>
               </span>
 
               {/* 오른쪽에 페이지 이동 공간 잡기 */}
