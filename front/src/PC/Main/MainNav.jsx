@@ -36,9 +36,7 @@ function MainNav({ logSearch, getCountLog }) {
               </div>
             </div>
             <div className="cursor-pointer p-3 rounded-lg bg-gray-50 dark:bg-gray-900/30 hover:bg-gray-100 dark:hover:bg-gray-900/50 transition-all duration-200">
-              <div className="font-semibold text-gray-800 dark:text-white text-sm">
-                검색 통계
-              </div>
+              <div className="font-semibold text-gray-800 dark:text-white text-sm">검색 통계</div>
               <div className="text-xs text-gray-600 dark:text-gray-300">
                 <div>TodaySearch : {logSearch[1] || 0}</div>
                 <div>TotalSearch : {logSearch[0] || 0}</div>
@@ -63,9 +61,7 @@ function MainNav({ logSearch, getCountLog }) {
               <div className="font-semibold text-gray-800 dark:text-white text-sm">
                 딜러악세 검색기
               </div>
-              <div className="text-xs text-gray-600 dark:text-gray-300">
-                딜러용 악세사리 검색
-              </div>
+              <div className="text-xs text-gray-600 dark:text-gray-300">딜러용 악세사리 검색</div>
             </div>
             <div
               className="cursor-pointer p-3 rounded-lg bg-green-50 dark:bg-green-900/30 hover:bg-green-100 dark:hover:bg-green-900/50 transition-all duration-200"
@@ -77,9 +73,7 @@ function MainNav({ logSearch, getCountLog }) {
               <div className="font-semibold text-gray-800 dark:text-white text-sm">
                 서폿악세 검색기
               </div>
-              <div className="text-xs text-gray-600 dark:text-gray-300">
-                서포터용 악세사리 검색
-              </div>
+              <div className="text-xs text-gray-600 dark:text-gray-300">서포터용 악세사리 검색</div>
             </div>
           </div>
         </div>
@@ -100,9 +94,7 @@ function MainNav({ logSearch, getCountLog }) {
               <div className="font-semibold text-gray-800 dark:text-white text-sm">
                 시세 차트(악세)
               </div>
-              <div className="text-xs text-gray-600 dark:text-gray-300">
-                악세사리 가격 추이
-              </div>
+              <div className="text-xs text-gray-600 dark:text-gray-300">악세사리 가격 추이</div>
             </div>
             <div
               className="cursor-pointer p-3 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-all duration-200"
@@ -114,9 +106,7 @@ function MainNav({ logSearch, getCountLog }) {
               <div className="font-semibold text-gray-800 dark:text-white text-sm">
                 주요 아이템 차트
               </div>
-              <div className="text-xs text-gray-600 dark:text-gray-300">
-                주요 아이템 가격 추이
-              </div>
+              <div className="text-xs text-gray-600 dark:text-gray-300">주요 아이템 가격 추이</div>
             </div>
           </div>
         </div>
@@ -137,9 +127,7 @@ function MainNav({ logSearch, getCountLog }) {
               <div className="font-semibold text-gray-800 dark:text-white text-sm">
                 젬 가공 시뮬레이터
               </div>
-              <div className="text-xs text-gray-600 dark:text-gray-300">
-                젬 가공 시뮬레이션
-              </div>
+              <div className="text-xs text-gray-600 dark:text-gray-300">젬 가공 시뮬레이션</div>
             </div>
           </div>
         </div>
@@ -157,12 +145,8 @@ function MainNav({ logSearch, getCountLog }) {
                 navigate("/notice");
               }}
             >
-              <div className="font-semibold text-gray-800 dark:text-white text-sm">
-                공지사항
-              </div>
-              <div className="text-xs text-gray-600 dark:text-gray-300">
-                최신 공지 및 업데이트
-              </div>
+              <div className="font-semibold text-gray-800 dark:text-white text-sm">공지사항</div>
+              <div className="text-xs text-gray-600 dark:text-gray-300">최신 공지 및 업데이트</div>
             </div>
             <div
               className="cursor-pointer p-3 rounded-lg bg-cyan-50 dark:bg-cyan-900/30 hover:bg-cyan-100 dark:hover:bg-cyan-900/50 transition-all duration-200"
@@ -171,12 +155,8 @@ function MainNav({ logSearch, getCountLog }) {
                 navigate("/mini");
               }}
             >
-              <div className="font-semibold text-gray-800 dark:text-white text-sm">
-                유저 코멘트
-              </div>
-              <div className="text-xs text-gray-600 dark:text-gray-300">
-                사용자 의견 및 피드백
-              </div>
+              <div className="font-semibold text-gray-800 dark:text-white text-sm">유저 코멘트</div>
+              <div className="text-xs text-gray-600 dark:text-gray-300">사용자 의견 및 피드백</div>
             </div>
           </div>
         </div>
@@ -194,9 +174,7 @@ function MainNav({ logSearch, getCountLog }) {
                 dispatch(toggleDarkMode());
               }}
             >
-              <div className="font-semibold text-gray-800 dark:text-white text-sm">
-                테마 설정
-              </div>
+              <div className="font-semibold text-gray-800 dark:text-white text-sm">테마 설정</div>
               <div className="text-xs text-gray-600 dark:text-gray-300">
                 {darkMode ? "🌞 라이트 모드로 전환" : "🌙 다크 모드로 전환"}
               </div>
@@ -225,7 +203,7 @@ function MainNav({ logSearch, getCountLog }) {
                 className="w-72 text-3xl cursor-pointer text-white dark:text-black font-a "
                 onClick={() => navigate("/")}
               >
-                LoaRoot <span className="size-font-xxxs">[Ver 2.6.2]</span>
+                LoaRoot <span className="size-font-xxxs">[Ver 2.6.3]</span>
               </span>
 
               <div className="w-full relative">
@@ -237,10 +215,7 @@ function MainNav({ logSearch, getCountLog }) {
                   >
                     <ModalApiKey />
                     <div onMouseLeave={() => setHoveredMenu(null)}>
-                      <DropdownMenu
-                        menuType="api"
-                        isVisible={hoveredMenu === "api"}
-                      />
+                      <DropdownMenu menuType="api" isVisible={hoveredMenu === "api"} />
                     </div>
                   </div>
 
@@ -252,10 +227,7 @@ function MainNav({ logSearch, getCountLog }) {
                   >
                     🔍 악세 검색기
                     <div onMouseLeave={() => setHoveredMenu(null)}>
-                      <DropdownMenu
-                        menuType="search"
-                        isVisible={hoveredMenu === "search"}
-                      />
+                      <DropdownMenu menuType="search" isVisible={hoveredMenu === "search"} />
                     </div>
                   </div>
 
@@ -267,10 +239,7 @@ function MainNav({ logSearch, getCountLog }) {
                   >
                     📊 차트 확인
                     <div onMouseLeave={() => setHoveredMenu(null)}>
-                      <DropdownMenu
-                        menuType="chart"
-                        isVisible={hoveredMenu === "chart"}
-                      />
+                      <DropdownMenu menuType="chart" isVisible={hoveredMenu === "chart"} />
                     </div>
                   </div>
 
@@ -282,10 +251,7 @@ function MainNav({ logSearch, getCountLog }) {
                   >
                     ⚙️ 젬 가공 시뮬레이터
                     <div onMouseLeave={() => setHoveredMenu(null)}>
-                      <DropdownMenu
-                        menuType="simulator"
-                        isVisible={hoveredMenu === "simulator"}
-                      />
+                      <DropdownMenu menuType="simulator" isVisible={hoveredMenu === "simulator"} />
                     </div>
                   </div>
 
@@ -297,10 +263,7 @@ function MainNav({ logSearch, getCountLog }) {
                   >
                     👥 공지 & 코멘트
                     <div onMouseLeave={() => setHoveredMenu(null)}>
-                      <DropdownMenu
-                        menuType="community"
-                        isVisible={hoveredMenu === "community"}
-                      />
+                      <DropdownMenu menuType="community" isVisible={hoveredMenu === "community"} />
                     </div>
                   </div>
 
@@ -316,10 +279,7 @@ function MainNav({ logSearch, getCountLog }) {
                       {darkMode ? "🌞 라이트(BETA)" : "🌙 다크(BETA)"}
                     </button>
                     <div onMouseLeave={() => setHoveredMenu(null)}>
-                      <DropdownMenu
-                        menuType="settings"
-                        isVisible={hoveredMenu === "settings"}
-                      />
+                      <DropdownMenu menuType="settings" isVisible={hoveredMenu === "settings"} />
                     </div>
                   </div>
                 </div>

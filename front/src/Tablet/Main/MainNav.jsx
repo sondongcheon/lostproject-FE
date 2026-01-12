@@ -55,7 +55,7 @@ function MainNav({ logSearch, getCountLog }) {
                 className="w-72 text-3xl cursor-pointer text-white dark:text-black font-a "
                 onClick={() => navigate("/")}
               >
-                LoaRoot <span className="size-font-xxxs">[Ver 2.6.2]</span>
+                LoaRoot <span className="size-font-xxxs">[Ver 2.6.3]</span>
               </span>
 
               <div

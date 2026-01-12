@@ -66,7 +66,7 @@ function MainNav({ logSearch, getCountLog }) {
                 className="w-72 text-3xl cursor-pointer text-white dark:text-black font-a "
                 onClick={() => navigate("/")}
               >
-                LoaRoot <span className="size-font-xxxs">[Ver 2.6.2]</span>
+                LoaRoot <span className="size-font-xxxs">[Ver 2.6.3]</span>
               </span>
 
               {/* 오른쪽에 페이지 이동 공간 잡기 */}
@@ -292,9 +292,7 @@ function MainNav({ logSearch, getCountLog }) {
                             테마 설정
                           </div>
                           <div className="size-font-xxxs text-gray-600 dark:text-gray-300">
-                            {darkMode
-                              ? "🌞 라이트 모드로 전환"
-                              : "🌙 다크 모드로 전환"}
+                            {darkMode ? "🌞 라이트 모드로 전환" : "🌙 다크 모드로 전환"}
                           </div>
                         </div>
                       </div>
